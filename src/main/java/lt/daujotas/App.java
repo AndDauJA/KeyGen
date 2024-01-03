@@ -2,7 +2,9 @@ package lt.daujotas;
 
 import lt.daujotas.config.HibernateConfig;
 import lt.daujotas.config.HibernateDaoManager;
+import lt.daujotas.dao.ClientAccountDao;
 import lt.daujotas.pojo.ClientAccountPojo;
+import lt.daujotas.service.ClientAccountService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -15,11 +17,12 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        System.out.println("data from NativeQuery -> SQL");
-        nativeQueryExample();
-        System.out.println("data from Query -> HQL");
-        hqlQueryExample();
-
+//        System.out.println("data from NativeQuery -> SQL");
+//        nativeQueryExample();
+//        System.out.println("data from Query -> HQL");
+//        hqlQueryExample();
+//        System.out.println("CRUD example ");
+        crudExample();
 
         //Lorem ipsum - pasirinkti kiek zodziu
 //        int fakeWordNumber = 5;
@@ -38,6 +41,15 @@ public class App {
 //        GenKeySaveToFile.fileOutGoing(0);
 //      PasswEntrophyCalc.centrohyCalculator();
 //        System.out.println(generatePassword(8));
+
+    }
+
+    private static void crudExample() {
+       ClientAccountService clientAccountService= new ClientAccountService(new ClientAccountDao(getSession()));
+
+        System.out.println("----GET all clients");
+       clientAccountService.getAll().forEach(System.out::println);
+clientAccountService.getById(1L);
     }
 
     private static void hqlQueryExample() {
@@ -58,5 +70,8 @@ public class App {
     private static Session getSession() {
         return HibernateDaoManager.getSessnionFactory().openSession();
     }
+
+
+
 
 }
