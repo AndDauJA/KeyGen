@@ -1,6 +1,8 @@
 package lt.daujotas;
 
 import lt.daujotas.config.HibernateConfig;
+import lt.daujotas.config.HibernateDaoManager;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.security.SecureRandom;
  */
 public class App {
       public static void main(String[] args) throws IOException {
-          HibernateConfig.init();
+         SessionFactory sessionFactory= HibernateDaoManager.getSessnionFactory();
 
         //Lorem ipsum - pasirinkti kiek zodziu
         int fakeWordNumber = 5;

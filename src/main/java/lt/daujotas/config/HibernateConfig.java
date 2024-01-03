@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateConfig {
 
-    public static void init(){
+    public static Configuration initConfiguration(){
         Configuration cfg=new Configuration();
         cfg.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
         cfg.setProperty("hibernate.connection.driver_class","com.mysql.jdbc.Driver");
@@ -20,6 +20,6 @@ public class HibernateConfig {
         cfg.addAnnotatedClass(ClientAccountPojo.class);
         cfg.addAnnotatedClass(LoginCredentialsPojo.class);
 
-        cfg.buildSessionFactory();
+       return cfg;
     }
 }
