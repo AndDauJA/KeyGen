@@ -15,7 +15,7 @@ public class HibernateConfig {
         cfg.setProperty("hibernate.connection.password","password");
         cfg.setProperty("hibernate.connection.autocommit","true");
         cfg.setProperty("hibernate.show_sql","true");
-        cfg.setProperty("hibernate.hbm2ddl.auto","create");
+        cfg.setProperty("hibernate.hbm2ddl.auto","update");
 
         cfg.addAnnotatedClass(ClientAccountPojo.class);
         cfg.addAnnotatedClass(LoginCredentialsPojo.class);
