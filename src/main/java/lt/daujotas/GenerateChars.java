@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class GenerateChars {
     static Random random = new Random();
-    static int noOfRandChars=0;
-    public String getRandomKeyChar(){
+    static int noOfRandChars=4;
+    public String getRandomKeyChar(int noOfRandChars){
 
         return getCharToString(noOfRandChars);
     }
     private static String getCharToString(int minLength) {
-        String possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        String possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~abcdefghijklmnopqrstuvwxyz";
         int minLetters = noOfRandChars;
         int minNumbers = noOfRandChars;
         int numLetters = Math.max(random.nextInt(minLength - minNumbers+1), minLetters); // Ensure at least minLetters

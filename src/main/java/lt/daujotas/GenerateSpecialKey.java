@@ -4,16 +4,16 @@ import java.util.Random;
 
 public class GenerateSpecialKey {
     static Random random = new Random();
-    static int noOfRandChars = 1;
+    static int noOfRandSpecChars = 1;
 
-    public String getSpecKey() {
-        return getCharToString(noOfRandChars);
+    public String getSpecKey(int noOfRandSpecChars) {
+        return getCharToString(noOfRandSpecChars);
     }
 
     private static String getCharToString(int minLength) {
         String possibleChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-        int minLetters = noOfRandChars;
-        int minNumbers = noOfRandChars;
+        int minLetters = noOfRandSpecChars;
+        int minNumbers = noOfRandSpecChars;
         int numLetters = Math.max(random.nextInt(minLength - minNumbers + 1), minLetters); // Ensure at least minLetters
         int numNumbers = Math.max(minLength - numLetters, minNumbers); // Ensure at least minNumbers
 

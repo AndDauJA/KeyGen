@@ -21,7 +21,7 @@ public class GenKeySaveToFile implements Serializable {
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
             writer.write("Timestamp: " + timeStamp);
             writer.newLine();
-            String key = keyGen.generateNoKey(); // Replace 123 with the desired numberKey
+            String key = keyGen.generateNoKey(0); // Replace 123 with the desired numberKey
 
             // Write the key to the file
             writer.write(key);
