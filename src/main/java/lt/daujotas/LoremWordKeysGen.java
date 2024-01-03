@@ -2,7 +2,7 @@ package lt.daujotas;
 
 import com.github.javafaker.Faker;
 
-public class WordKeysGen {
+public class LoremWordKeysGen {
 
 
 //     String name = faker.name().fullName(); // Miss Samanta Schmidt
