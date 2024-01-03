@@ -4,6 +4,7 @@ import lt.daujotas.pojo.ClientAccountPojo;
 import org.hibernate.Session;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ClientAccountDao {
 
@@ -20,8 +21,8 @@ public class ClientAccountDao {
         return session.createQuery("FROM ClientAccountPojo", ClientAccountPojo.class).list();
     }
 
-    public ClientAccountPojo getOneById(Long id) {
-        return session.get(ClientAccountPojo.class, id);
+    public Optional<ClientAccountPojo> getOneById(Long id) {
+        return Optional.ofNullable(session.get(ClientAccountPojo.class, id));
     }
 
     //Create and Save
@@ -34,10 +35,8 @@ public class ClientAccountDao {
     }
 
     public void deleteById(Long id) {  //trina pagal pasirnkta kriteriju
-        ClientAccountPojo clientAccountPojo=getOneById(id);
-        if(getOneById(id)!=null){
-            session.remove(clientAccountPojo);
-        }
+        getOneById(id).ifPresent(obj->session.remove(obj));
+
     }
 
 }
