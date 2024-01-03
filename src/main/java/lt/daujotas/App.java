@@ -12,18 +12,11 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.List;
 
-/**
- * Hello world!
- */
 public class App {
     public static void main(String[] args) throws IOException {
-        SessionFactory sessionFactory = HibernateDaoManager.getSessnionFactory();
 
-        Session session = sessionFactory.openSession();
+nativeQueryExample();
 
-        NativeQuery<ClientAccountPojo> query = session.createNativeQuery("SELECT * FROM clientaccount", ClientAccountPojo.class);
-        List<ClientAccountPojo> clients = query.list();
-        clients.forEach(System.out::println);
 
 
         //Lorem ipsum - pasirinkti kiek zodziu
@@ -44,4 +37,15 @@ public class App {
 //      PasswEntrophyCalc.centrohyCalculator();
 //        System.out.println(generatePassword(8));
     }
+
+    private static void nativeQueryExample(){
+
+        NativeQuery<ClientAccountPojo> query = getSession().createNativeQuery("SELECT * FROM clientaccount", ClientAccountPojo.class);
+        List<ClientAccountPojo> clients = query.list();
+        clients.forEach(System.out::println);
+    }
+    private static Session getSession(){
+        return HibernateDaoManager.getSessnionFactory().openSession();
+    }
+
 }
