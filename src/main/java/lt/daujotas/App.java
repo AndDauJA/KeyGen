@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.security.SecureRandom;
@@ -14,9 +15,10 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) throws IOException {
-
-nativeQueryExample();
-
+        System.out.println("data from NativeQuery -> SQL");
+        nativeQueryExample();
+        System.out.println("data from Query -> HQL");
+        hqlQueryExample();
 
 
         //Lorem ipsum - pasirinkti kiek zodziu
@@ -38,13 +40,22 @@ nativeQueryExample();
 //        System.out.println(generatePassword(8));
     }
 
-    private static void nativeQueryExample(){
-
-        NativeQuery<ClientAccountPojo> query = getSession().createNativeQuery("SELECT * FROM clientaccount", ClientAccountPojo.class);
+    private static void hqlQueryExample() {
+        Query<ClientAccountPojo> query = getSession().createQuery("FROM ClientAccountPojo ", ClientAccountPojo.class);
         List<ClientAccountPojo> clients = query.list();
         clients.forEach(System.out::println);
     }
-    private static Session getSession(){
+
+    private static void nativeQueryExample() {
+        try (Session session = getSession()) {  //viskas  ivyksta try bloke ir kai iseina ijo sesija uzsidaro automatshkai
+
+            NativeQuery<ClientAccountPojo> query = session.createNativeQuery("SELECT * FROM clientaccount", ClientAccountPojo.class);
+            List<ClientAccountPojo> clients = query.list();
+            clients.forEach(System.out::println);
+        }
+    }
+
+    private static Session getSession() {
         return HibernateDaoManager.getSessnionFactory().openSession();
     }
 

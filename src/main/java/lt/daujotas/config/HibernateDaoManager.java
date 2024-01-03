@@ -4,12 +4,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateDaoManager {
-
+    private static SessionFactory sessionFactory;
 
     public static SessionFactory getSessnionFactory() {
-
-        Configuration cfg = HibernateConfig.initConfiguration();
-        return cfg.buildSessionFactory();
+        if (sessionFactory == null) {
+            sessionFactory = HibernateConfig.initConfiguration().buildSessionFactory();
+        }
+        return sessionFactory;
 
 
     }
