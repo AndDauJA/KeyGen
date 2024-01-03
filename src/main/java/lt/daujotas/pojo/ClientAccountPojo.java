@@ -14,10 +14,13 @@ public class ClientAccountPojo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    //    @Column(name="first_Name")
+    @Column(length = 50, nullable = false)
     private String firstName;
+    @Column(length = 30, nullable = false)
     private String lastName;
+    @Column(length = 20, nullable = false)
     private long phoneNumber;
+    @Column(length = 250, nullable = false)
     private String emailAddress;
 
 
