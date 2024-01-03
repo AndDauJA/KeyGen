@@ -1,24 +1,24 @@
 package lt.daujotas.pojo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Entity
+@Table(name = "clientaccount")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 
 
 public class ClientAccountPojo {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    //    @Column(name="first_Name")
     private String firstName;
     private String lastName;
     private long phoneNumber;
     private String emailAddress;
-
-//    public ClientAccountPojo() {
-//    }
 
 
 

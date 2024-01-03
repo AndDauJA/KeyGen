@@ -1,20 +1,25 @@
 package lt.daujotas.pojo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Entity
+@Table(name = "loginCredentials")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
+
 
 public class LoginCredentialsPojo {
 
-private int id;
-private String generatedKey;
-private String webBrowser;
-private String webAddress;
-private String userName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String generatedKey;
+    private String webBrowser;
+    private String webAddress;
+    @Column(name="user_name")
+    private String userName;
 
 
 }
