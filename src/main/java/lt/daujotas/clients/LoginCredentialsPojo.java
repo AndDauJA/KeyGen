@@ -1,4 +1,4 @@
-package lt.daujotas.pojo;
+package lt.daujotas.clients;
 
 import jakarta.persistence.*;
 import lombok.*;

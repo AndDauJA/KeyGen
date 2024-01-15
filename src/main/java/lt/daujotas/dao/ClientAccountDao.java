@@ -1,42 +1,55 @@
-package lt.daujotas.dao;
-
-import lt.daujotas.pojo.ClientAccountPojo;
-import org.hibernate.Session;
-
-import java.util.List;
-import java.util.Optional;
-
-public class ClientAccountDao {
-
-    private final Session session;
-
-
-    public ClientAccountDao(Session session) {
-        this.session = session;
-    }
-
-    //Read
-    public List<ClientAccountPojo> getAll() {
-
-        return session.createQuery("FROM ClientAccountPojo", ClientAccountPojo.class).list();
-    }
-
-    public Optional<ClientAccountPojo> getOneById(Long id) {
-        return Optional.ofNullable(session.get(ClientAccountPojo.class, id));
-    }
-
-    //Create and Save
-    public void creat(ClientAccountPojo clientAccountPojo) {
-        session.merge(clientAccountPojo);
-    }
-
-    public void delete(ClientAccountPojo clientAccountPojo) {  //trina visa objekta
-        session.remove(clientAccountPojo);
-    }
-
-    public void deleteById(Long id) {  //trina pagal pasirnkta kriteriju
-        getOneById(id).ifPresent(obj->session.remove(obj));
-
-    }
-
-}
+//package lt.daujotas.dao;
+//
+//import com.mysql.cj.xdevapi.SessionFactory;
+//import lt.daujotas.clients.ClientAccountPojo;
+//import org.hibernate.Session;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Repository;
+//
+//import java.util.List;
+//@Repository
+//public class ClientAccountDao {
+//
+//    private final SessionFactory sessionFactory;
+//
+//    @Autowired
+//    public ClientAccountDao(SessionFactory sessionFactory) {
+//        this.sessionFactory = sessionFactory;
+//    }
+//
+//
+//    //Read
+//    public List<ClientAccountPojo> getAll() {
+//
+//        try (Session session = sessionFactory.getSession()) {
+//            return session.createQuery("FROM ClientAccountPojo", ClientAccountPojo.class).list();
+//    }
+//
+////    public Optional<ClientAccountPojo> getOneById(Long id) {
+////        return Optional.ofNullable(sessionFactory.get(ClientAccountPojo.class, id));
+////    }
+//
+//
+//
+//    public void persist(ClientAccountPojo clientAccountPojo) {
+////        clientAccountPojo.setUuid(UUID.randomUUID());
+//        try (Session session = sessionFactory.openSession()) {
+//            session.beginTransaction();
+//            session.merge(clientAccountPojo);
+//            session.getTransaction().commit();
+//        }
+//
+//        public void delete (ClientAccountPojo clientAccountPojo) {
+//            try (Session session = sessionFactory.openSession()) {
+//                session.beginTransaction();
+//                session.remove(clientAccountPojo);
+//                session.getTransaction().commit();
+//            }
+//        }
+//
+//    public void deleteById(Long id) {  //trina pagal pasirnkta kriteriju
+//        getOneById(id).ifPresent(obj->session.remove(obj));
+//
+//    }
+//
+//}
