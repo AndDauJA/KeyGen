@@ -1,29 +1,65 @@
 /* style.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
 body { 
 	display: flex; 
 	align-items: center; 
 	justify-content: center; 
 	font-family: sans-serif; 
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("images/fonas-webpage.jpeg");
 	line-height: 1.5; 
 	min-height: 100vh; 
-	background: #f3f3f3; 
+	/* background: #f3f3f3;  */
 	flex-direction: column; 
 	margin: 0; 
 } 
+.body-background {
+    /* Centruojame turinį horizontaliai */
+   display: flex;
+   flex-direction: column;
+   align-items: center; /* Centruojame elementus horizontaliai */
+}
 
-.main { 
-	background-color: #fff; 
-	border-radius: 15px; 
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
-	padding: 10px 20px; 
-	transition: transform 0.2s; 
+
+form {
+    border-width: 0 3px 3px 3px;
+    border-style: solid;
+    border-color: #f1f1f1;
+    border-radius: 0 0 15px 15px; 
+    max-width: 500px;
+    width: 100%;
+    padding: 10px 20px;
+    transition: transform 0.2s; 
 	width: 500px; 
-	text-align: center; 
-} 
+    background-color: rgba(255, 255, 255, 0.8);
+       
+}
+
 
 h1 { 
 	color: #4CAF50; 
-} 
+    text-align: center;
+    background-color: #f1f1f1 ;
+    border-width: 3px 3px 0  3px;
+    border-style: solid;
+    border-color: #f1f1f1;
+    border-radius: 15px 15px 0 0;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+   } 
 
 label { 
 	display: block; 
