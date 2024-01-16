@@ -1,6 +1,7 @@
 package lt.daujotas.dao;
 
 import lt.daujotas.clients.ClientAccountPojo;
+import lt.daujotas.clients.ClientLoginPojo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 public interface ClientDao {
     void save(ClientAccountPojo clientAccountPojo);
+
 
     void update(ClientAccountPojo clientAccountPojo);
 

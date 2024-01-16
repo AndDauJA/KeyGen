@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logind to User account</title>
     <link rel="stylesheet" href="login_stile.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,42 +10,43 @@
 </head>
 
 <body>
-    <div class="body-background">
-    <form action="action_page.php" method="post">
-       <div>
-        <div class="imgcontainer">
-        <img id="body-img-logo" src="/images/3786012.jpg" alt="">
-         <h1 id="comany-name">UAB BRIGAMA</h1>
-         </div>
-        <div class="login" alt="Login" >Login</div>
+<div class="body-background">
+    <form method="post" th:action="@{/login}" th:object="${clientLogin}">
+        <div>
+            <div class="imgcontainer">
+                <img id="body-img-logo" src="/images/3786012.jpg" alt="">
+                <h1 id="comany-name">UAB BRIGAMA</h1>
+            </div>
+            <div class="login" alt="Login">Login</div>
         </div>
         <div class="container">
-          <label ><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-      
-          <label ><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" th:field="*{username}" required>
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" th:field="*{password}" required>
+
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
         </div>
-      
+
         <div class="cancle-container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <div class="register-forgot-container">
-          <span class="psw-forgot"><a href="#">Užmiršote slaptažodį?</a></span>
-          <span class="register-new-acc"> Esate naujas klientas? <a href="#">Registruokitės</a><span>
-            
+            <button type="button" class="cancelbtn">Cancel</button>
+            <div class="register-forgot-container">
+                <span class="psw-forgot"><a href="#">Užmiršote slaptažodį?</a></span>
+                <span class="register-new-acc"> Esate naujas klientas? <a href="#">Registruokitės</a></span>
+
+            </div>
         </div>
-    </div>
         <div class="login-announcment">
-        <p>Naudokite unikalius slaptažodžius ir veskite juos tik įsitikinę svetainės saugumu. Daugiau informacijos rasite <a href="#">čia.</a> </p>
-       
+            <p>Naudokite unikalius slaptažodžius ir veskite juos tik įsitikinę svetainės saugumu. Daugiau informacijos
+                rasite <a href="#">čia.</a></p>
+
         </div>
-      </form> 
-      
-    </div>
+    </form>
+
+</div>
 </body>
 </html>

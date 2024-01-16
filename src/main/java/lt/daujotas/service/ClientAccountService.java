@@ -1,6 +1,7 @@
 package lt.daujotas.service;
 
 
+
 import lt.daujotas.dao.ClientDao;
 import lt.daujotas.clients.ClientAccountPojo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,11 @@ import java.util.UUID;
 
 
 @Service
-
 public class ClientAccountService {
 
 
     private ClientDao clientDao;
+
 
     @Autowired
     public ClientAccountService(ClientDao clientDao) {
@@ -30,6 +31,7 @@ public class ClientAccountService {
 
         clientDao.save(clientAccountPojo);
     }
+
 
     public void updateClient(ClientAccountPojo clientAccountPojo) {
         clientDao.update(clientAccountPojo);

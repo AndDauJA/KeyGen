@@ -1,6 +1,8 @@
 package lt.daujotas.dao;
 
 import lt.daujotas.clients.ClientAccountPojo;
+import lt.daujotas.clients.ClientLoginPojo;
+import lt.daujotas.clients.ClientLoginRepository;
 import lt.daujotas.clients.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,16 +19,19 @@ import java.util.UUID;
 public class ClientJPADao implements ClientDao {
     ClientRepository repository;
 
+
     @Autowired
     public ClientJPADao(ClientRepository clientRepository) {
         this.repository = clientRepository;
     }
+
 
     @Override
     public void save(ClientAccountPojo clientAccountPojo) {
 //        clientAccountPojo.setUuid(UUID.randomUUID());
         repository.save(clientAccountPojo);
     }
+
 
 
     @Override

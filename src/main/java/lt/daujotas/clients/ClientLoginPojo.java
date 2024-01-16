@@ -18,8 +18,8 @@ public class ClientLoginPojo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(length = 50, nullable = false)
-    private String UserName;
-    @Column(length = 30, nullable = true)
+    private String username;
+    @Column(length = 30, nullable = false)
     private String password;
 }
 
