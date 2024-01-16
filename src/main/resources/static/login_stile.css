@@ -16,7 +16,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-image: url("images/fonas-webpage.jpeg");
+    background-image: url('/images/fonas-webpage.jpeg');
 }
 .body-background {
      /* Centruojame turinį horizontaliai */
@@ -28,7 +28,8 @@ body {
 #body-img-logo {
     display: block;
     margin: 5px; 
-        width: 100%;
+    
+    width: 100%;
     max-width: 100px;
 }
 
@@ -46,6 +47,14 @@ form {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     
+}
+
+.psw-lable-scndpart{
+    text-align: center;
+    font-size: 12px;
+    align-self: center;
+    color: rgb(113, 111, 111);
+
 }
 
 /* Full-width inputs */

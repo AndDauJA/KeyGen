@@ -2,10 +2,7 @@ package lt.daujotas.clients;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-
 import java.sql.Date;
-
 import java.util.UUID;
 
 @Entity
@@ -16,8 +13,6 @@ import java.util.UUID;
 @ToString
 @Builder
 @AllArgsConstructor
-
-
 public class ClientAccountPojo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +34,8 @@ public class ClientAccountPojo {
     @Column(name="dateofbirth")
     @Temporal(TemporalType.DATE)
     private Date dateofbirth;
+    @Column(length = 10, nullable = true)
+    private String gender;
 
 
 }
