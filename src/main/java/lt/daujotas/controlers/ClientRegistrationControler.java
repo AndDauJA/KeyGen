@@ -1,7 +1,9 @@
 package lt.daujotas.controlers;
 
 
+import lt.daujotas.clients.ClientAccountPojo;
 import lt.daujotas.clients.ClientLoginPojo;
+import lt.daujotas.service.ClientAccountService;
 import lt.daujotas.service.ClientLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,17 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ClientRegistrationControler {
 
     @Autowired
-    private ClientLoginService clientLoginService;
+    private ClientAccountService clientAccountService;
 
     @GetMapping("/registrationform")
     public String showLoginForm(Model model) {
-        model.addAttribute("clientRegistration", new ClientLoginPojo());
+        model.addAttribute("clientRegistration", new ClientAccountPojo());
         return "brigama/registrationform"; // kelias iki failo
     }
 
-    @PostMapping("/create")
-    public String createLoginClient(ClientLoginPojo clientLoginPojo) {
-        clientLoginService.saveLoginClient(clientLoginPojo);
+    @PostMapping("/registrationform")
+    public String createLoginClient(ClientAccountPojo clientAccountPojo) {
+        clientAccountService.saveClient(clientAccountPojo);
 
         return "redirect:/client/clientTestWeb";
 

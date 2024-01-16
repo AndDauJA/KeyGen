@@ -28,7 +28,7 @@ public class ClientJPADao implements ClientDao {
 
     @Override
     public void save(ClientAccountPojo clientAccountPojo) {
-//        clientAccountPojo.setUuid(UUID.randomUUID());
+        clientAccountPojo.setUuid(UUID.randomUUID());
         repository.save(clientAccountPojo);
     }
 
