@@ -3,6 +3,9 @@ package lt.daujotas.clients;
 import jakarta.persistence.*;
 import lombok.*;
 
+
+import java.sql.Date;
+
 import java.util.UUID;
 
 @Entity
@@ -33,6 +36,10 @@ public class ClientAccountPojo {
     private String emailAddress;
     @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
+    @Column(name="dateofbirth")
+    @Temporal(TemporalType.DATE)
+    private Date dateofbirth;
+
 
 }
 
