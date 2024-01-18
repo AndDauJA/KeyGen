@@ -1,12 +1,12 @@
 package lt.daujotas;
 
+import lombok.var;
+
 import java.io.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class GenKeySaveToFile implements Serializable {

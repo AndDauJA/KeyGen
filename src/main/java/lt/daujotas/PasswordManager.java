@@ -120,9 +120,24 @@ public class PasswordManager implements ActionListener {
     PasswordManager(int length) {
 
         frame = new JFrame("Password Manager");
+
+        conn1 = frame.getContentPane();
+        JCheckBox checkBox1 = new JCheckBox("Option 1");
+        checkBox1.setBackground(new Color(0XFF8787));
+        checkBox1.setBounds(90, 450, 150, 30);
+        conn1.add(checkBox1);
+
+        // Pridedame antrą žymimą langą (checkbox)
+        JCheckBox checkBox2 = new JCheckBox("Option 2");
+        checkBox2.setBackground(new Color(0XFF8787));
+        checkBox2.setBounds(250, 450, 150, 30);
+        conn1.add(checkBox2);
+
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 650);
         frame.setResizable(false);
+
         ImageIcon img = new ImageIcon("background.png");
         background = new JLabel("", img, JLabel.CENTER);
         background.setBounds(0, 0, 400, 650);
@@ -163,6 +178,7 @@ public class PasswordManager implements ActionListener {
                     }
                 }
         );
+
 
         // add a encryption button and action
 //        JButton EncryptBtn = new JButton("ENCRYPT Text");

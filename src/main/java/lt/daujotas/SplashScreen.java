@@ -27,11 +27,14 @@ public class SplashScreen {
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(new Color(0XFF8787)); // to set the background color of the frame
         frame.setVisible(true);
+
+
     }
 
     public void addImage() {
         image.setSize(400, 200); // to set the size of the image
         frame.add(image);
+
     }
 
     public void addText() {
@@ -65,5 +68,6 @@ public class SplashScreen {
             }
         }
     }
+
 }
 

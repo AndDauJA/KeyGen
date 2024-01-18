@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="regform.css">
+    <title>Kleinto registracijos forma</title>
+</head>
+<body>
+<div class="body-background">
+    <div class="main">
+        <h1>Kliento registracijos forma</h1>
+        <div th:if="${message ne null and message.length() > 0}"
+             class="alert alert-success" role="alert"
+             th:text="${message}">
+            Success message when add product
+        </div>
+        <form method="post" th:action="@{/registrationform}" th:object="${clientRegistration}">
+
+            <label for="first">First Name:</label>
+            <input type="text" id="first"
+                   name="firstName"
+                   placeholder="Enter your first name" th:field="*{firstName}">
+
+            <span class="form-error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"  >
+                Field 'First Name' must not be empty
+            </span>
+
+
+            <label for="last">Last Name:</label>
+            <input type="text" id="last"
+                   name="lastName"
+                   placeholder="Enter your last name" th:field="*{lastName}" required>
+
+            <label for="middle">Middle Name:</label>
+            <input type="text" id="middle"
+                   name="middleName"
+                   placeholder="Enter your middle name" th:field="*{middleName}">
+
+            <label for="post">Post address:</label>
+            <input type="text" id="post"
+                   name="postAddress"
+                   placeholder="Enter your post address" th:field="*{postAddres}" >
+
+            <label for="email">Email:</label>
+            <input type="email" id="email"
+                   name="emailAddress"
+                   placeholder="Enter your email" th:field="*{emailAddress}" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date"
+                   id="dob" name="dob"
+                   placeholder="Enter your DOB" th:field="*{dateofbirth}"  required>
+
+            <label for="mobile">Contact:</label>
+            <input type="text" id="mobile"
+                   name="mobile"
+                   placeholder="Enter your Mobile Number" th:field="*{phoneNumber}" required
+                   maxlength="15">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" th:field="*{gender}" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <div class="wrap">
+                <button type="submit" onclick="solve()">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

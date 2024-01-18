@@ -1,30 +1,56 @@
 package lt.daujotas.service;
 
-import lombok.RequiredArgsConstructor;
-import lt.daujotas.dao.ClientAccountDao;
-import lt.daujotas.exception.DataNotFoundException;
-import lt.daujotas.pojo.ClientAccountPojo;
+
+
+import lt.daujotas.dao.ClientDao;
+import lt.daujotas.clients.ClientAccountInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-@RequiredArgsConstructor
 
-
+@Service
 public class ClientAccountService {
 
-    private final ClientAccountDao clientAccountDao;
-//get data all  bet turi buti cia DOmenas
 
-    public List<ClientAccountPojo> getAll(){
+    private ClientDao clientDao;
 
-        return clientAccountDao.getAll();
 
-    }public ClientAccountPojo getById(Long id){
+    @Autowired
+    public ClientAccountService(ClientDao clientDao) {
+        this.clientDao = clientDao;
+    }
 
-       return clientAccountDao
-               .getOneById(id)
-               .orElseThrow(DataNotFoundException::new);
+    public void saveClient(ClientAccountInfo clientAccountInfo) {
 
+        clientDao.save(clientAccountInfo);
+    }
+
+
+    public void updateClient(ClientAccountInfo clientAccountInfo) {
+        clientDao.update(clientAccountInfo);
+    }
+
+    public List<ClientAccountInfo> getAllClients() {
+        return clientDao.getAll();
+    }
+
+    public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
+        return clientDao.getClientByUUID(id);
+    }
+
+    public void deleteClientByUUID(UUID id) {
+        clientDao.deleteClientByUUID(id);
+    }
+
+    public Page<ClientAccountInfo> getAllClientsPages(Pageable pageable) {
+        return clientDao.getPage(pageable);
     }
 
 }
