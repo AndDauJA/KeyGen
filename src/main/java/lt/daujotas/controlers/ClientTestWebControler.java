@@ -1,6 +1,6 @@
 package lt.daujotas.controlers;
 
-import lombok.AllArgsConstructor;
+
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

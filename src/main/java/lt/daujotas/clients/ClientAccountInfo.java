@@ -1,6 +1,8 @@
 package lt.daujotas.clients;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import java.sql.Date;
 import java.util.UUID;
@@ -13,10 +15,11 @@ import java.util.UUID;
 @ToString
 @Builder
 @AllArgsConstructor
-public class ClientAccountPojo {
+public class ClientAccountInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotEmpty (message= "Negali buti tuscia eilute")
     @Column(length = 50, nullable = false)
     private String firstName;
     @Column(length = 30, nullable = true)

@@ -1,9 +1,9 @@
 package lt.daujotas.dao;
 
-import lt.daujotas.clients.ClientAccountPojo;
-import lt.daujotas.clients.ClientLoginPojo;
+import lt.daujotas.clients.ClientLoginInfo;
+
 
 public interface ClientLoginDao {
 
-    void login(ClientLoginPojo clientLoginPojo);
+    void login(ClientLoginInfo clientLoginInfo);
 }

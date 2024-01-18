@@ -3,7 +3,7 @@ package lt.daujotas.service;
 
 
 import lt.daujotas.dao.ClientDao;
-import lt.daujotas.clients.ClientAccountPojo;
+import lt.daujotas.clients.ClientAccountInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,21 +27,21 @@ public class ClientAccountService {
         this.clientDao = clientDao;
     }
 
-    public void saveClient(ClientAccountPojo clientAccountPojo) {
+    public void saveClient(ClientAccountInfo clientAccountInfo) {
 
-        clientDao.save(clientAccountPojo);
+        clientDao.save(clientAccountInfo);
     }
 
 
-    public void updateClient(ClientAccountPojo clientAccountPojo) {
-        clientDao.update(clientAccountPojo);
+    public void updateClient(ClientAccountInfo clientAccountInfo) {
+        clientDao.update(clientAccountInfo);
     }
 
-    public List<ClientAccountPojo> getAllClients() {
+    public List<ClientAccountInfo> getAllClients() {
         return clientDao.getAll();
     }
 
-    public Optional<ClientAccountPojo> getClientByUUID(UUID id) {
+    public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
         return clientDao.getClientByUUID(id);
     }
 
@@ -49,7 +49,7 @@ public class ClientAccountService {
         clientDao.deleteClientByUUID(id);
     }
 
-    public Page<ClientAccountPojo> getAllClientsPages(Pageable pageable) {
+    public Page<ClientAccountInfo> getAllClientsPages(Pageable pageable) {
         return clientDao.getPage(pageable);
     }
 

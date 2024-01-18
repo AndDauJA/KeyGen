@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 
-public class ClientLoginPojo {
+public class ClientLoginInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

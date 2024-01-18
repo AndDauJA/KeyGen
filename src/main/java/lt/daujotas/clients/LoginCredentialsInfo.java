@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 
 
-public class LoginCredentialsPojo {
+public class LoginCredentialsInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

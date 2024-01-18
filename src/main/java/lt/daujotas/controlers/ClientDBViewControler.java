@@ -1,6 +1,6 @@
 package lt.daujotas.controlers;
 
-import lt.daujotas.clients.ClientAccountPojo;
+import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +18,7 @@ public class ClientDBViewControler {
     @GetMapping("/dbview")  //sitas turi sutapti su return
     public String dataBAseViewForm(Model model, Pageable pageable){
         try {
-            final Page<ClientAccountPojo> clientAccounts = clientAccountService.getAllClientsPages(pageable);
+            final Page<ClientAccountInfo> clientAccounts = clientAccountService.getAllClientsPages(pageable);
             model.addAttribute("clientList", clientAccounts.getContent());
         }catch (Exception e){
             System.out.println("ClientDbViewControler - KLAIDA");

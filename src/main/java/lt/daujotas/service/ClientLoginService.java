@@ -1,7 +1,7 @@
 package lt.daujotas.service;
 
 
-import lt.daujotas.clients.ClientLoginPojo;
+import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.dao.ClientLoginDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,9 +18,9 @@ public class ClientLoginService {
         this.clientLoginDao=clientLoginDao;
     }
 
-    public void saveLoginClient(ClientLoginPojo clientLoginPojo) {
+    public void saveLoginClient(ClientLoginInfo clientLoginInfo) {
 
-        clientLoginDao.login(clientLoginPojo);
+        clientLoginDao.login(clientLoginInfo);
     }
 
 //    public Page<ClientLoginPojo> getAllLoginClientsPages(Pageable pageable) {

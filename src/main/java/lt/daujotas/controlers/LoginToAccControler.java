@@ -1,8 +1,9 @@
 package lt.daujotas.controlers;
 
 
-import lt.daujotas.clients.ClientLoginPojo;
-import lt.daujotas.service.ClientAccountService;
+import lt.daujotas.clients.ClientLoginInfo;
+
+
 import lt.daujotas.service.ClientLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +19,13 @@ public class LoginToAccControler {
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-        model.addAttribute("clientLogin", new ClientLoginPojo());
+        model.addAttribute("clientLogin", new ClientLoginInfo());
         return "brigama/login"; // kelias iki failo
     }
 
     @PostMapping("/login")
-    public String createLoginClient(ClientLoginPojo clientLoginPojo) {
-        clientLoginService.saveLoginClient(clientLoginPojo);
+    public String createLoginClient(ClientLoginInfo clientLoginInfo) {
+        clientLoginService.saveLoginClient(clientLoginInfo);
 
         return "redirect:/client/clientTestWeb";
 

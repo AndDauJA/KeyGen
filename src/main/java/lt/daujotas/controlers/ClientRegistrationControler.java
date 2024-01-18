@@ -1,10 +1,9 @@
 package lt.daujotas.controlers;
 
 
-import lt.daujotas.clients.ClientAccountPojo;
-import lt.daujotas.clients.ClientLoginPojo;
+import jakarta.validation.Valid;
+import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.service.ClientAccountService;
-import lt.daujotas.service.ClientLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,13 +20,13 @@ public class ClientRegistrationControler {
 
     @GetMapping("/registrationform")
     public String showLoginForm(Model model) {
-        model.addAttribute("clientRegistration", new ClientAccountPojo());
+        model.addAttribute("clientRegistration", new ClientAccountInfo());
         return "brigama/registrationform"; // kelias iki failo
     }
 
     @PostMapping("/registrationform")
-    public String createLoginClient(ClientAccountPojo clientAccountPojo) {
-        clientAccountService.saveClient(clientAccountPojo);
+    public String createLoginClient(Model model, @Valid ClientAccountInfo clientAccountInfo) {
+        clientAccountService.saveClient(clientAccountInfo);
 
         return "redirect:/client/clientTestWeb";
 

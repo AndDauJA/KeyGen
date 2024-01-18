@@ -39,7 +39,8 @@
         </div>
 
         <div class="cancle-container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="button" class="cancelbtn" >Cancel</button>
+
             <div class="register-forgot-container">
                 <span class="psw-forgot"><a href="#">Užmiršote slaptažodį?</a></span>
                 <span class="register-new-acc"> Esate naujas klientas? <a href="#">Registruokitės</a></span>
@@ -54,5 +55,13 @@
     </form>
 
 </div>
+<script>
+    document.querySelector('.cancelbtn').addEventListener('click', function () {
+        // Čia įrašykite kodą, kuris atliks veiksmus, kai paspaudžiamas "Cancel" mygtukas
+        // Pavyzdys: perkelti į kitą puslapį
+        window.location.href = "/";
+    });
+</script>
+
 </body>
 </html>

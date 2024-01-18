@@ -5,6 +5,70 @@
     margin: 0;
     padding: 0;
 }
+:root {
+    --fontcolor-primary: antiquewhite;
+    --testcolre-1: none;
+    --testcolre-2: none;
+    --testcolre-3: none;
+    --testcolre-4: none;
+    --testcolre-5: none;
+
+    --fsizepx-h1: 100px;
+    --fsizepx-h2: 65px;
+    --fsizepx-h3: 0px;
+    --fsizepx-compname: 25px;
+    --fsizepx-hedertext: 40px;
+    --fsizepx-ulmenutxt: 55px;
+    --fsizepx-maintext: 60px;
+    --fsizepx-footertext: 35px;
+    --fsizepx-homelink: 35px;
+    --fsizepx-lihuver: 55px;
+
+    --fsize1900px-h1: 0px;
+    --fsize1900px-h2: 50px;
+    --fsize1900px-h3:40px;
+    --fsize1900px-compname: 40px;
+    --fsize1900px-hedertext: 30px;
+    --fsize1900px-ulmenutxt: 40px;
+    --fsize1900px-maintext: 45px;
+    --fsize1900px-footertext: 30px;
+    --fsize1900px-homelink: 35px;
+    --fsize1900px-lihuver: 40px;
+
+    --fsize1230px-h1: 80px;
+    --fsize1230px-h2: 45px;
+    --fsize1230px-h3: 0px;
+    --fsize1230px-compname: 35px;
+    --fsize1230px-hedertext: 35px;
+    --fsize1230px-ulmenutxt: 35px;
+    --fsize1230px-maintext: 45px;
+    --fsize1230px-footertext: 30px;
+    --fsize1230px-homelink: 35px;
+    --fsize1230px-lihuver: 35px;
+
+    --fsize768px-h1: 18px;
+    --fsize768px-h2: 35px;
+    --fsize768px-h3: 0px;
+    --fsize768px-compname: 35px;
+    --fsize768px-hedertext: 25px;
+    --fsize768px-ulmenutxt: 25px;
+    --fsize768px-maintext: 25px;
+    --fsize768px-footertext: 18px;
+    --fsize768px-homelink: 25px;
+
+    --fsize399px-h1: 0px;
+    --fsize399px-h2: 20px;
+    --fsize399px-h3: 18px;
+    --fsize399px-compname: 20px;
+    --fsize399px-hedertext: 25px;
+    --fsize399px-ulmenutxt: 16px;
+    --fsize399px-maintext: 18px;
+    --fsize399px-footertext: 16px;
+    --fsize399px-homelink: 16px;
+
+
+}
+
 
 body {
     display: flex;
@@ -16,26 +80,27 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-image: url('/images/fonas-webpage.jpeg');
+    background-image: url("images/fonas-webpage.jpeg");
 }
 .body-background {
-     /* Centruojame turinį horizontaliai */
+    /* Centruojame turinį horizontaliai */
     display: flex;
     flex-direction: column;
     align-items: center; /* Centruojame elementus horizontaliai */
 }
 
+
 #body-img-logo {
     display: block;
-    margin: 5px; 
-    
+    margin: 5px;
+
     width: 100%;
     max-width: 100px;
 }
 
 #comany-name {
     font-size: var(--fsizepx-compname);
-    color: var(--fontcolor-primary);
+    color: black;
     margin: 20px;
 }
 /* Avatar image */
@@ -46,7 +111,7 @@ form {
     max-width: 500px;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
-    
+
 }
 
 .psw-lable-scndpart{
@@ -93,7 +158,7 @@ button:hover {
 /* Center the avatar image inside this container */
 .imgcontainer {
     display: flex;
-    
+
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -113,25 +178,25 @@ button:hover {
 .login {
     display: flex;
     justify-content: center;
-     margin: 10px auto; /* Centruojame "Login" horizontaliai su 10px atstumu nuo viršaus */
-     font-size: 24px;
- }
- .register-forgot-container{
-     display: flex;
-     flex-direction: column;
-     margin-top: 5px;
-     margin-left: auto;
- }
- .psw-forgot{
+    margin: 10px auto; /* Centruojame "Login" horizontaliai su 10px atstumu nuo viršaus */
+    font-size: 24px;
+}
+.register-forgot-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
     margin-left: auto;
- }
- .login-announcment{
+}
+.psw-forgot{
+    margin-left: auto;
+}
+.login-announcment{
     display: flex;
     display: block;
     align-items: center;
     text-align: center;
     font-size: 12px;
- }
+}
 
 /* The "Forgot password" text */
 span.psw {

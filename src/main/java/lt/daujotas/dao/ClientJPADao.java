@@ -1,9 +1,7 @@
 package lt.daujotas.dao;
 
-import lt.daujotas.clients.ClientAccountPojo;
-import lt.daujotas.clients.ClientLoginPojo;
-import lt.daujotas.clients.ClientLoginRepository;
-import lt.daujotas.clients.ClientRepository;
+import lt.daujotas.clients.ClientAccountInfo;
+import lt.daujotas.clients.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -27,37 +25,37 @@ public class ClientJPADao implements ClientDao {
 
 
     @Override
-    public void save(ClientAccountPojo clientAccountPojo) {
-        clientAccountPojo.setUuid(UUID.randomUUID());
-        repository.save(clientAccountPojo);
+    public void save(ClientAccountInfo clientAccountInfo) {
+        clientAccountInfo.setUuid(UUID.randomUUID());
+        repository.save(clientAccountInfo);
     }
 
 
 
     @Override
-    public void update(ClientAccountPojo clientAccountPojo) {
-        repository.save(clientAccountPojo);
+    public void update(ClientAccountInfo clientAccountInfo) {
+        repository.save(clientAccountInfo);
     }
 
     @Override
-    public List<ClientAccountPojo> getAll() {
+    public List<ClientAccountInfo> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<ClientAccountPojo> getClientByUUID(UUID id) {
+    public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
         return repository.findByUuid(id);
     }
 
     @Override
     public void deleteClientByUUID(UUID id) {
-        Optional<ClientAccountPojo> client = repository.findById(id);
+        Optional<ClientAccountInfo> client = repository.findById(id);
         client.ifPresent(repository::delete);
 
     }
 
     @Override
-    public Page<ClientAccountPojo> getPage(Pageable pageable) {
+    public Page<ClientAccountInfo> getPage(Pageable pageable) {
         return repository.findAll(pageable);
     }
 }
