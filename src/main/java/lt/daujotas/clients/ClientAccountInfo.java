@@ -19,7 +19,7 @@ public class ClientAccountInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.Name.message}")
     @Column(length = 50, nullable = false)
     private String firstName;
     @Column(length = 30, nullable = true)
