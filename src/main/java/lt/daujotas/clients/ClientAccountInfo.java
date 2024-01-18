@@ -1,6 +1,7 @@
 package lt.daujotas.clients;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import lombok.*;
@@ -19,8 +20,9 @@ public class ClientAccountInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotEmpty(message = "{NotEmpty.Name.message}")
+    @NotBlank(message = "{NotEmpty.Name.message}")
     @Column(length = 50, nullable = false)
+    @NotEmpty(message = "{NotEmpty.Name.message}")
     private String firstName;
     @Column(length = 30, nullable = true)
     private String middleName;

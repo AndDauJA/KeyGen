@@ -7,6 +7,7 @@ import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,14 @@ public class ClientRegistrationControler {
     }
 
     @PostMapping("/registrationform")
-    public String createLoginClient(Model model, @Valid ClientAccountInfo clientAccountInfo) {
+    public String createLoginClient(Model model, @Valid ClientAccountInfo clientAccountInfo, BindingResult errors) {
+
+        if(errors.hasErrors()){
+            model.addAttribute("errors", errors);
+            model.addAttribute("clientRegistration", clientAccountInfo);
+            return "brigama/registrationform";
+        }
+
         clientAccountService.saveClient(clientAccountInfo);
 
         return "redirect:/client/clientTestWeb";

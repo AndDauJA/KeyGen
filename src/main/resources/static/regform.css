@@ -84,9 +84,12 @@ body {
     background-position: center;
     /* Centruoja background vaizdą */
     background-attachment: fixed;
-    background-image: url(/images/fonas-webpage.jpeg);
+    background-image: url('/images/fonas-webpage.jpeg');
 	
-} 
+}
+.form-error{
+    color: #04AA6D;
+}
 .header-main-container {
 	position: fixed;
     top: 0;
