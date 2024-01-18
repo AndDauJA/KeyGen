@@ -17,7 +17,7 @@ import java.sql.Date;
 @ToString
 public class ClientDto {
     private UUID clientID;
-    @NotNull (message= "Negali buti tuscia eilute")
+    @NotNull (message= "Negali buti tuscia eilute ${ValidatedValue}")
     private String firstName;
     private String middleName;
     private String lastName;
