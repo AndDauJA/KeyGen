@@ -1,9 +1,9 @@
 package lt.daujotas.service;
 
 
-
 import lt.daujotas.dao.ClientDao;
 import lt.daujotas.clients.ClientAccountInfo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +37,10 @@ public class ClientAccountService {
         clientDao.update(clientAccountInfo);
     }
 
+    public void getClientByName(ClientAccountInfo clientAccountInfo) {
+
+    }
+
     public List<ClientAccountInfo> getAllClients() {
         return clientDao.getAll();
     }
@@ -53,4 +57,6 @@ public class ClientAccountService {
         return clientDao.getPage(pageable);
     }
 
-}
+
+    }
+

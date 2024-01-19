@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cybersecnews.css">
+    <title>Cber Security</title>
+</head>
+<div class="body-background">
+    <div class="header-main-container">
+
+        <header id="header-id" class="wrap-header mobile-only">
+
+            <div class="logo-menu-list">
+                <div class="logo-name-container">
+
+                    <img id="body-img-logo" src="/images/3786012.jpg" alt="">
+
+                    <h1 id="comany-name">UAB BRIGAMA</h1>
+
+                </div>
+                <div class="menu-list">
+                    <menu class="menu-container on-hover">
+                        <ul class="menu-ul">
+                            <li class="menu-ul-item"><a href="index.html">Apie įmonę</a></li>
+                            <li class="menu-ul-item"><a href="/cybersecnews.html">Najienos</a></li>
+                            <li class="menu-ul-item"><a href="#">Projektai</a></li>
+                            <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
+                            
+
+
+                        </ul>
+                    </menu>
+                </div>
+
+            </div>
+
+        </header>
+    </div>
+    <div class="main-container">
+        <main class="main-wrap">
+           <h2>Cyber Security pasaulio NAUJIENOS</h2>
+           <div id="naujienos"></div>
+
+           <!-- <script src="/javasc/main.js"></script> -->
+        <p>
+        2024 m. sausio 17 d.
+        <h3>„Chrome“ nulinės dienos pažeidžiamumas</h3>
+
+            „Google“ antradienį išleido naujinimus, kad išspręstų keturias „Chrome“ naršyklės saugos problemas, įskaitant aktyviai naudojamą nulinės dienos trūkumą.
+
+            Problema, pažymėta kaip CVE-2024-0519, susijusi su neribota prieiga prie atminties V8 JavaScript ir WebAssembly variklyje, kurią gali panaudoti grėsmės veikėjai, kad sukeltų avariją.
+            Kibernetinė sauga
+
+            „Skaitydamas neribotą atmintį, užpuolikas gali gauti slaptas reikšmes, pvz., atminties adresus, kurie gali būti apėjimo apsaugos mechanizmai, pvz., ASLR, siekiant padidinti patikimumą ir tikimybę, kad bus išnaudota atskira silpnybė, kad gautų kodą. vykdymas, o ne tiesiog atsisakymas teikti paslaugą“, – teigiama MITRE bendrojo silpnumo sąraše (CWE).
+
+            Papildoma informacija apie atakų pobūdį ir grėsmės veikėjus, kurie gali jomis pasinaudoti, buvo nuslėpta, siekiant užkirsti kelią tolesniam išnaudojimui. Apie problemą anonimiškai pranešta 2024 m. sausio 11 d.
+
+            „Neribota prieiga prie atminties V8 versijoje „Google Chrome“ iki 120.0.6099.224 leido nuotoliniam užpuolikui potencialiai išnaudoti krūvos korupciją per sukurtą HTML puslapį“, – rašoma NIST nacionalinės pažeidžiamumo duomenų bazės (NVD) trūkumo aprašyme.
+            Kibernetinė sauga
+
+            Šis kūrimas žymi pirmą aktyviai išnaudotą nulinę dieną, kurią Google 2024 m. pataisys naršyklėje Chrome. Praėjusiais metais technologijų milžinas iš viso išsprendė 8 tokias aktyviai išnaudotas nulines dienas naršyklėje.
+
+            Norint sumažinti galimas grėsmes, naudotojams rekomenduojama naujovinti į „Chrome“ versiją 120.0.6099.224/225, skirtą „Windows“, 120.0.6099.234, skirtą „MacOS“, ir 120.0.6099.224, skirtą „Linux“.
+
+            „Chromium“ pagrindu veikiančių naršyklių, tokių kaip „Microsoft Edge“, „Brave“, „Opera“ ir „Vivaldi“, naudotojams taip pat patariama taikyti pataisymus, kai tik jie bus pasiekiami.
+        </p>
+        <h3>„GitHub“ sukasi raktus, kai dėl didelio pažeidžiamumo atskleidžiami prisijungimo duomenys</h3>
+
+        
+        2024 m. sausio 17 d.
+        „GitHub“ pažeidžiamumas
+        
+        „GitHub“ atskleidė, kad kai kuriuos raktus pakeitė reaguodamas į saugos pažeidžiamumą, kurį galima panaudoti norint gauti prieigą prie kredencialų gamybos konteineryje.
+        
+        „Microsoft“ priklausanti dukterinė įmonė pranešė, kad apie problemą ji buvo informuota 2023 m. gruodžio 26 d. ir ją išsprendė tą pačią dieną, be to, per daug atsargumo pakeitė visus galimai atskleistus kredencialus.
+        
+        Pasukti raktai apima „GitHub“ įsipareigojimo pasirašymo raktą, taip pat „GitHub Actions“, „GitHub Codespaces“ ir „Dependabot“ klientų šifravimo raktus, todėl naudotojams, kurie naudojasi šiais raktais, reikia importuoti naujus raktus.
+        Kibernetinė sauga
+        
+        Nėra įrodymų, kad didelio sunkumo pažeidžiamumas, stebimas kaip CVE-2024-0200 (CVSS balas: 7,2), anksčiau buvo rastas ir išnaudotas laukinėje gamtoje.
+        
+        „Šis pažeidžiamumas taip pat yra „GitHub Enterprise Server“ (GHES)“, – sakė „GitHub“ atstovas Jacobas DePriestas. „Tačiau norint išnaudoti, autentifikuotas vartotojas, turintis organizacijos savininko vaidmenį, turi būti prisijungęs prie GHES egzemplioriaus paskyros, o tai yra reikšmingas galimą išnaudojimą lengvinančių aplinkybių rinkinys.
+        
+        Atskirame patarime „GitHub“ pažeidžiamumą apibūdino kaip „nesaugaus atspindžio“ GHES atvejį, dėl kurio gali atsirasti atspindžių injekcija ir nuotolinis kodo vykdymas. Jis buvo pataisytas 3.8.13, 3.9.8, 3.10.5 ir 3.11.3 GHES versijose.
+        Kibernetinė sauga
+        
+        „GitHub“ taip pat pašalino kitą labai pavojingą klaidą, stebimą kaip CVE-2024-0507 (CVSS balas: 6,5), kuri gali leisti užpuolikui, turinčiam prieigą prie valdymo pulto vartotojo abonemento su redaktoriaus vaidmeniu, išplėsti privilegijas įpurškiant komandą.
+        
+        Plėtra prasidėjo praėjus beveik metams po to, kai bendrovė „iš didelio atsargumo“ ėmėsi žingsnio pakeisdama RSA SSH pagrindinio kompiuterio raktą, naudojamą Git operacijoms apsaugoti, po to, kai jis buvo trumpam atskleistas viešoje saugykloje.
+     </p>
+
+        </main>
+    </div>
+    <footer id="contact-id" class="footer-wrap mobile-only">
+        <h2 class="kontaktai">Kontaktai</h2>
+        <div>
+            <ol class="wrap-kontakt-ul">
+                <li>UAB Brigama</li>
+                <li>Įmonės kodas: 302607361</li>
+                <li>PVM kodas: LT100007601018</li>
+                <li>El.pašto adresas: info@brigama.lt</li>
+            </ol>
+        </div>
+        <div class="go-home-link">
+            <a href="#header-id">Grįžti į meniu</a>
+        </div>
+    </footer>
+</div>
+</body>
+
+</html>

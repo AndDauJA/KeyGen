@@ -21,7 +21,7 @@ public class ClientRegistrationControler {
 
     @GetMapping("/registrationform")
     public String showLoginForm(Model model) {
-        model.addAttribute("clientRegistration", new ClientAccountInfo());
+        model.addAttribute("clientAccountInfo", new ClientAccountInfo());
         return "brigama/registrationform"; // kelias iki failo
     }
 
@@ -29,8 +29,7 @@ public class ClientRegistrationControler {
     public String createLoginClient(Model model, @Valid ClientAccountInfo clientAccountInfo, BindingResult errors) {
 
         if(errors.hasErrors()){
-            model.addAttribute("errors", errors);
-            model.addAttribute("clientRegistration", clientAccountInfo);
+
             return "brigama/registrationform";
         }
 

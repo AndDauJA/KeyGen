@@ -31,7 +31,6 @@ public class ClientJPADao implements ClientDao {
     }
 
 
-
     @Override
     public void update(ClientAccountInfo clientAccountInfo) {
         repository.save(clientAccountInfo);
@@ -58,4 +57,6 @@ public class ClientJPADao implements ClientDao {
     public Page<ClientAccountInfo> getPage(Pageable pageable) {
         return repository.findAll(pageable);
     }
+
 }
+

@@ -87,12 +87,13 @@
 
 }
 
+
 .wrap-header {
     max-width: 100%;
     padding: 0;
     margin: 0;
     background-color: rgb(59, 59, 84, 0.1);
-
+    order: 1; /* Užtikrina, kad header būtų viršuje */
 
 }
 
@@ -188,10 +189,13 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* padding-left: 175px; */
     width: 85%;
-    background-color: var(--testcolre-4);
+    background-color: rgba(77, 75, 75, 0.8);
     color: var(--fontcolor-primary);
     font-style: italic;
     padding-left: 300px;
+}
+.main-container{
+    flex: 1;  /* Užpildo likusią vietą tarp header ir footer */
 }
 .link-check-email{
     color: red;
@@ -218,7 +222,7 @@
     background-color: rgb(59, 59, 84);
     font-size: var(--fsizepx-footertext);
     padding-bottom: 50px;
-
+    order: 2;
 
 }
 

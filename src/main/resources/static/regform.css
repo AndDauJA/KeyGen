@@ -68,9 +68,9 @@
     --fsize399px-footertext: 16px;
     --fsize399px-homelink: 15px;
 
-   
+
 }
-body { 
+body {
 	margin: 0;
 	position: relative;
 	display: flex;
@@ -85,7 +85,7 @@ body {
     /* Centruoja background vaizdą */
     background-attachment: fixed;
     background-image: url('/images/fonas-webpage.jpeg');
-	
+
 }
 .form-error{
     color: #04AA6D;
@@ -183,32 +183,32 @@ form {
     border-width: 0 3px 3px 3px;
     border-style: solid;
     border-color: #f1f1f1;
-    border-radius: 0 0 15px 15px; 
+    border-radius: 0 0 15px 15px;
     max-width: 460px;
     width: 100%;
     padding: 10px 20px;
-    transition: transform 0.2s; 
-	width: 500px; 
+    transition: transform 0.2s;
+	width: 500px;
     background-color: rgba(255, 255, 255, 0.8);
-       
+
 }
-.main { 
+.main {
 	position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff; 
-    border-radius: 15px; 
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
-    padding: 10px 20px; 
-    transition: transform 0.2s; 
-    width: 500px; 
-    text-align: center; 
-} 
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 500px;
+    text-align: center;
+}
 
 
-h2 { 
-	color: #04AA6D; 
+h2 {
+	color: #04AA6D;
     text-align: center;
     background-color: #f1f1f1 ;
     border-width: 3px 3px 0  3px;
@@ -217,60 +217,60 @@ h2 {
     border-radius: 15px 15px 0 0;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.8);
-   } 
+   }
 
-label { 
-	display: block; 
-	width: 100%; 
-	margin-top: 10px; 
-	margin-bottom: 5px; 
-	text-align: left; 
-	color: #555; 
-	font-weight: bold; 
-} 
+label {
+	display: block;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	text-align: left;
+	color: #555;
+	font-weight: bold;
+}
 
-#pass { 
-	color: red; 
-	font-size: 12px; 
-} 
+#pass {
+	color: red;
+	font-size: 12px;
+}
 
-input { 
-	display: block; 
-	width: 100%; 
-	margin-bottom: 15px; 
-	padding: 10px; 
-	box-sizing: border-box; 
-	border: 1px solid #ddd; 
-	border-radius: 5px; 
-} 
+input {
+	display: block;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
 
-select { 
-	display: block; 
-	width: 100%; 
-	margin-bottom: 15px; 
-	padding: 10px; 
-	box-sizing: border-box; 
-	border: 1px solid #ddd; 
-	border-radius: 5px; 
-} 
+select {
+	display: block;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
 
-button { 
-	padding: 15px; 
-	border-radius: 10px; 
-	margin-top: 15px; 
-	margin-bottom: 15px; 
-	border: none; 
-	color: white; 
-	cursor: pointer; 
-	background-color:#04AA6D; 
-	width: 100%; 
-	font-size: 16px; 
-} 
+button {
+	padding: 15px;
+	border-radius: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: none;
+	color: white;
+	cursor: pointer;
+	background-color:#04AA6D;
+	width: 100%;
+	font-size: 16px;
+}
 
-.wrap { 
-	display: flex; 
-	justify-content: center; 
-	align-items: center; 
+.wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 @media screen and (max-width: 1900px) {
     .body-background {
@@ -362,7 +362,7 @@ button {
         font-size: var(--fsize1900px-maintext);
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         width: 97%;
-        
+
         color: var(--fontcolor-primary);
         font-style: italic;
         padding-left: 40px;
@@ -500,7 +500,7 @@ button {
         font-size: var(--fsize1230px-maintext);
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         width: 97%;
-        
+
         color: var(--fontcolor-primary);
         font-style: italic;
         padding-left: 40px;
@@ -639,7 +639,7 @@ button {
     .main-wrap h2 {
         font-size: var(--fsize768px-h2);
     }
-	
+
 
 
     .footer-wrap {
@@ -804,33 +804,33 @@ button {
 		max-width: none;
 		border-style: solid;
 		border-color: #f1f1f1;
-		border-radius: 0 0 15px 15px; 
+		border-radius: 0 0 15px 15px;
 		width: 100%;
 		box-sizing: border-box;
 		/* padding: 10px 20px; */
-		transition: transform 0.2s; 
+		transition: transform 0.2s;
 		background-color: rgba(255, 255, 255, 0.8);
 		margin: 0;
 		padding: 20px;
 	}
-	.main { 
+	.main {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		background-color: #fff; 
-		border-radius: 15px; 
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
-		padding: 10px 20px; 
-		transition: transform 0.2s; 
+		background-color: #fff;
+		border-radius: 15px;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		padding: 10px 20px;
+		transition: transform 0.2s;
 		width: 100%;
-		padding: 20px; 
-		text-align: center; 
-	} 
-	
-	
-	h2 { 
-		color: #04AA6D; 
+		padding: 20px;
+		text-align: center;
+	}
+
+
+	h2 {
+		color: #04AA6D;
 		text-align: center;
 		background-color: #f1f1f1 ;
 		border-width: 3px 3px 0  3px;
@@ -839,60 +839,60 @@ button {
 		border-radius: 15px 15px 0 0;
 		margin: 0;
 		background-color: rgba(255, 255, 255, 0.8);
-	   } 
-	
-	label { 
-		display: block; 
-		width: 100%; 
-		margin-top: 15px; 
-		margin-bottom: 5px; 
-		text-align: left; 
-		color: #555; 
-		font-weight: bold; 
-	} 
-	
-	#pass { 
-		color: red; 
-		font-size: 12px; 
-	} 
-	
-	input { 
-		display: block; 
-		width: 100%; 
-		margin-bottom: 15px; 
-		padding: 10px; 
-		box-sizing: border-box; 
-		border: 1px solid #ddd; 
-		border-radius: 5px; 
-	} 
-	
-	select { 
-		display: block; 
-		width: 100%; 
-		margin-bottom: 15px; 
-		padding: 10px; 
-		box-sizing: border-box; 
-		border: 1px solid #ddd; 
-		border-radius: 5px; 
-	} 
-	
-	button { 
-		padding: 15px; 
-		border-radius: 10px; 
-		margin-top: 15px; 
-		margin-bottom: 15px; 
-		border: none; 
-		color: white; 
-		cursor: pointer; 
-		background-color:#04AA6D; 
-		width: 100%; 
-		font-size: 16px; 
-	} 
-	
-	.wrap { 
-		display: flex; 
-		justify-content: center; 
-		align-items: center; 
+	   }
+
+	label {
+		display: block;
+		width: 100%;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		text-align: left;
+		color: #555;
+		font-weight: bold;
+	}
+
+	#pass {
+		color: red;
+		font-size: 12px;
+	}
+
+	input {
+		display: block;
+		width: 100%;
+		margin-bottom: 15px;
+		padding: 10px;
+		box-sizing: border-box;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+	}
+
+	select {
+		display: block;
+		width: 100%;
+		margin-bottom: 15px;
+		padding: 10px;
+		box-sizing: border-box;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+	}
+
+	button {
+		padding: 15px;
+		border-radius: 10px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		border: none;
+		color: white;
+		cursor: pointer;
+		background-color:#04AA6D;
+		width: 100%;
+		font-size: 16px;
+	}
+
+	.wrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class GenerateChars {
     static Random random = new Random();
-    static int noOfRandChars=4;
+    static int noOfRandChars=1;
     public String getRandomKeyChar(int noOfRandChars){
 
         return getCharToString(noOfRandChars);
@@ -13,8 +13,8 @@ public class GenerateChars {
         String possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~abcdefghijklmnopqrstuvwxyz";
         int minLetters = noOfRandChars;
         int minNumbers = noOfRandChars;
-        int numLetters = Math.max(random.nextInt(minLength - minNumbers+1), minLetters); // Ensure at least minLetters
-        int numNumbers = Math.max(minLength - numLetters, minNumbers); // Ensure at least minNumbers
+        int numLetters = Math.max(random.nextInt(minLength - minNumbers+1), minLetters);
+        int numNumbers = Math.max(minLength - numLetters, minNumbers);
 
         StringBuilder result = new StringBuilder();
 
@@ -24,11 +24,11 @@ public class GenerateChars {
         }
 
         for (int i = 0; i < numNumbers; i++) {
-            int index = random.nextInt(10); // Index for numbers (0-9)
-            result.append((char) ('0' + index)); // Numbers start at index 26
+            int index = random.nextInt(10); // SKAICIAI (0-9)
+            result.append((char) ('0' + index)); // skaiciai nuo index 26
         }
 
-        // Shuffle the characters to randomize their order
+
         return shuffleString(result.toString());
     }
 

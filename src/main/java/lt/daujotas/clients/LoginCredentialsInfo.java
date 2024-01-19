@@ -9,8 +9,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @ToString
-
-
+@Builder
+@AllArgsConstructor
 public class LoginCredentialsInfo {
 
     @Id

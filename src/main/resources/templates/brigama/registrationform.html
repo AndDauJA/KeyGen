@@ -8,14 +8,40 @@
 </head>
 <body>
 <div class="body-background">
+    <div class="header-main-container">
+
+        <header id="header-id" class="wrap-header mobile-only">
+
+            <div class="logo-menu-list">
+                <div class="logo-name-container">
+
+                    <img id="body-img-logo" src="/images/3786012.jpg" alt="">
+
+                    <h1 id="comany-name">UAB BRIGAMA</h1>
+
+                </div>
+                <div class="menu-list">
+                    <menu class="menu-container on-hover">
+                        <ul class="menu-ul">
+
+                            <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
+
+                        </ul>
+                    </menu>
+                </div>
+
+            </div>
+
+        </header>
+    </div>
     <div class="main">
-        <h1>Kliento registracijos forma</h1>
+        <h2>Kliento registracijos forma</h2>
         <div th:if="${message ne null and message.length() > 0}"
              class="alert alert-success" role="alert"
              th:text="${message}">
             Success message when add product
         </div>
-        <form method="post" th:action="@{/registrationform}" th:object="${clientRegistration}">
+        <form method="post" th:action="@{/registrationform}" th:object="${clientAccountInfo}">
 
             <label for="first">First Name:</label>
             <input type="text" id="first"
@@ -23,7 +49,7 @@
                    placeholder="Enter your first name" th:field="*{firstName}">
 
             <span class="form-error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"  >
-                Field 'First Name' must not be empty
+
             </span>
 
 

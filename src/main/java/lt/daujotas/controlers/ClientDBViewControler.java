@@ -20,6 +20,7 @@ public class ClientDBViewControler {
         try {
             final Page<ClientAccountInfo> clientAccounts = clientAccountService.getAllClientsPages(pageable);
             model.addAttribute("clientList", clientAccounts.getContent());
+
         }catch (Exception e){
             System.out.println("ClientDbViewControler - KLAIDA");
         }

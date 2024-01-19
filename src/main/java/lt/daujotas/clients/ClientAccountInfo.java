@@ -20,10 +20,12 @@ public class ClientAccountInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotBlank(message = "{NotEmpty.Name.message}")
+
+
     @Column(length = 50, nullable = false)
     @NotEmpty(message = "{NotEmpty.Name.message}")
     private String firstName;
+
     @Column(length = 30, nullable = true)
     private String middleName;
     @Column(length = 30, nullable = false)
@@ -41,7 +43,8 @@ public class ClientAccountInfo {
     private Date dateofbirth;
     @Column(length = 10, nullable = true)
     private String gender;
-
+    @OneToOne(mappedBy = "clientAccountInfo")
+    private ClientLoginInfo loginInfo;
 
 }
 

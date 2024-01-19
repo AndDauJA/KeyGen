@@ -11,7 +11,6 @@ import lombok.*;
 @ToString
 @Builder
 @AllArgsConstructor
-
 public class ClientLoginInfo {
 
     @Id
@@ -21,5 +20,10 @@ public class ClientLoginInfo {
     private String username;
     @Column(length = 30, nullable = false)
     private String password;
+
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private ClientAccountInfo clientAccountInfo;
+
 }
 
