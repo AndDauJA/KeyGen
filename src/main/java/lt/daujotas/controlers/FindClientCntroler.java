@@ -19,15 +19,15 @@ public class FindClientCntroler {
     @Autowired
     ClientAccountService clientAccountService;
 
-    @GetMapping("/findClient")
+    @GetMapping("/temp")
     public String showFindClientForm(Model model) {
         model.addAttribute("findClient", new ClientAccountInfo());
         model.addAttribute("clientList", clientAccountService.getAllClients());
-        return "/findClient";
+        return "/temp";
     }
 
 
-    @PostMapping("/findClient")
+    @PostMapping("/temp")
     public String findClient(@ModelAttribute ClientAccountInfo findClient, Model model) {
 //        Optional<ClientAccountInfo> client = clientAccountService.getClientByUUID(findClient.getUuid());
         Optional<ClientAccountInfo>clientByName=clientAccountService.getClientByFirstName(findClient.getFirstName());
@@ -37,7 +37,7 @@ public class FindClientCntroler {
             model.addAttribute("error", "Client not found");
         }
 //        model.addAttribute("clientList", clientAccountService.getAllClients());
-        return "/findClient";
+        return "/temp";
     }
 
 }
