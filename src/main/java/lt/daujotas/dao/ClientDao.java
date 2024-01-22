@@ -17,9 +17,13 @@ public interface ClientDao {
     List<ClientAccountInfo> getAll();
 
     Optional<ClientAccountInfo> getClientByUUID(UUID id);
+    Optional<ClientAccountInfo> getClientByFirstName(String firstName);
+
+
     void deleteClientByUUID(UUID id);
 
     Page<ClientAccountInfo> getPage(Pageable pageable);
 
-//    Optional<ClientAccountInfo> getClientByUsername(String username);
+    Optional<ClientAccountInfo> getClientByUsername(String username);
+
 }

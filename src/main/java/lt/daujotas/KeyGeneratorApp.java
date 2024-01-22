@@ -21,7 +21,7 @@ public class KeyGeneratorApp {
 //
 //        GenerateChars.noOfRandChars = 1; // 1- viena raide+1 skaicius, 2- 2raides ir 2 skaiciai
 //        GenerateSpecialKey.noOfRandSpecChars = 1;                 // 1 - => 1 specraide ir simboli +1 skaicius arba spec simboli, etc
-////
+//////
 //        KeyGen.generateNoKey(5);
 //        new SplashScreen();
 //        try {

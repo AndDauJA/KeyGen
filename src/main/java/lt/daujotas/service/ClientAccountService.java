@@ -48,7 +48,9 @@ public class ClientAccountService {
     public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
         return clientDao.getClientByUUID(id);
     }
-
+    public Optional<ClientAccountInfo> getClientByFirstName(String firstName) {
+        return clientDao.getClientByFirstName(firstName);
+    }
     public void deleteClientByUUID(UUID id) {
         clientDao.deleteClientByUUID(id);
     }

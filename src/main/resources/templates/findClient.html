@@ -5,11 +5,12 @@
     <title>Client Details</title>
 </head>
 <body>
-<form method="post" th:if="${findClient}" :action="@{/client/findClient}" th:object="${findClient}">
+<form method="post" th:if="${findClient}" th:action="@{/client/findClient}" th:object="${findClient}">
 <!--    //patikrinti jei nera uuid tai mestu Error-->
     <label>Client ID:</label>
     <label>
-        <input type="text" th:field="*{uuid}" placeholder="Enter Client ID"/>
+<!--        <input type="text" th:field="*{uuid}" placeholder="Enter Client ID"/>-->
+        <input type="text" th:field="*{firstName}" placeholder="Enter Client first Name"/>
     </label>
     <button type="submit">Find Client</button>
 </form>

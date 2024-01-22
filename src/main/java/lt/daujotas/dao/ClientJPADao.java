@@ -2,6 +2,7 @@ package lt.daujotas.dao;
 
 import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.clients.repositories.ClientRepository;
+import lt.daujotas.clients.repositories.FindClientByNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -15,13 +16,17 @@ import java.util.UUID;
 
 @Repository
 public class ClientJPADao implements ClientDao {
-    ClientRepository repository;
-
-
     @Autowired
-    public ClientJPADao(ClientRepository clientRepository) {
-        this.repository = clientRepository;
-    }
+    ClientRepository repository;
+    @Autowired
+    FindClientByNameRepository findClientByNameRepository;
+
+
+
+//    public ClientJPADao(ClientRepository clientRepository) {
+//        this.repository = clientRepository;
+//
+//    }
 
 
     @Override
@@ -45,7 +50,10 @@ public class ClientJPADao implements ClientDao {
     public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
         return repository.findByUuid(id);
     }
-
+    @Override
+    public Optional<ClientAccountInfo> getClientByFirstName(String firstName) {
+        return findClientByNameRepository.findByFirstName(firstName);
+    }
     @Override
     public void deleteClientByUUID(UUID id) {
         Optional<ClientAccountInfo> client = repository.findById(id);
@@ -57,6 +65,13 @@ public class ClientJPADao implements ClientDao {
     public Page<ClientAccountInfo> getPage(Pageable pageable) {
         return repository.findAll(pageable);
     }
+
+    @Override
+    public Optional<ClientAccountInfo> getClientByUsername(String username) {
+        return Optional.empty();
+    }
+
+
 
 }
 
