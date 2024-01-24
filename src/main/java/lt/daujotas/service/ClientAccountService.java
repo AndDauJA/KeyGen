@@ -1,6 +1,9 @@
 package lt.daujotas.service;
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.dao.ClientDao;
 import lt.daujotas.clients.ClientAccountInfo;
 
@@ -15,26 +18,41 @@ import java.util.Optional;
 import java.util.UUID;
 
 
+
 @Service
 public class ClientAccountService {
 
 
     private ClientDao clientDao;
+    private final ClientLoginService clientLoginService;
+
 
 
     @Autowired
-    public ClientAccountService(ClientDao clientDao) {
+    public ClientAccountService(ClientDao clientDao,ClientLoginService clientLoginService) {
         this.clientDao = clientDao;
+        this.clientLoginService = clientLoginService;
     }
 
     public void saveClient(ClientAccountInfo clientAccountInfo) {
 
         clientDao.save(clientAccountInfo);
     }
+    public void saveClientWithLoginInfo(ClientAccountInfo clientAccountInfo, ClientLoginInfo clientLoginInfo) {
+        // Saugome kliento informaciją
+        clientDao.save(clientAccountInfo);
+
+        // Priskiriame kliento informaciją prisijungimo informacijai
+        clientLoginInfo.setClientAccountInfo(clientAccountInfo);
+
+        // Saugome prisijungimo informaciją
+        clientLoginService.saveLoginClient(clientLoginInfo);
+    }
+
 
 
     public void updateClient(ClientAccountInfo clientAccountInfo) {
-        clientDao.update(clientAccountInfo);
+        clientDao.merge(clientAccountInfo);
     }
 
     public void getClientByName(ClientAccountInfo clientAccountInfo) {

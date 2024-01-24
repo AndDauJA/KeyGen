@@ -7,10 +7,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ClientRepository extends JpaRepository<ClientAccountInfo, UUID> {
-    Optional<ClientAccountInfo> findByUuid (UUID id);
-//    Optional<ClientAccountInfo> getClientByUsername (String userName);
+    Optional<ClientAccountInfo> findByAccountUuid(UUID id);
 
 
 
-    void deleteClientByUuid (UUID id);
+    void deleteClientByAccountUuid (UUID accountUuind);
 }

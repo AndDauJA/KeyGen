@@ -23,6 +23,7 @@ public class ClientLoginService {
         clientLoginDao.login(clientLoginInfo);
     }
 
+
 //    public Page<ClientLoginPojo> getAllLoginClientsPages(Pageable pageable) {
 //        return clientLoginDao.getPage(pageable);
 //    }

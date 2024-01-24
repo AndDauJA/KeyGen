@@ -24,9 +24,9 @@
         <td th:text="${client.getLastName()}">a</td>
         <td th:text="${client.getPhoneNumber()}">a</td>
         <td th:text="${client.getEmailAddress()}">a</td>
-        <td th:text="${client.getUuid()}">a</td>
+        <td th:text="${client.getAccountUuid()}">a</td>
 <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
-        <td><a th:if="${client.uuid != null}" th:href="@{'/dbview/' + ${client.uuid} + '/delete'}">Delete</a></td>
+        <td><a th:if="${client.accountUuid != null}" th:href="@{'/dbview/' + ${client.accountUuid} + '/delete'}">Delete</a></td>
     </tr>
     </tbody>
 </table>

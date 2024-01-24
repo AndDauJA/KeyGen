@@ -1,10 +1,12 @@
 package lt.daujotas.clients;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import lombok.*;
+
 import java.sql.Date;
 import java.util.UUID;
 
@@ -21,11 +23,12 @@ public class ClientAccountInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(columnDefinition = "BINARY(16)",name = "uuid")
+    private UUID accountUuid;
 
     @Column(length = 50, nullable = false)
     @NotEmpty(message = "{NotEmpty.Name.message}")
     private String firstName;
-
     @Column(length = 30, nullable = true)
     private String middleName;
     @Column(length = 30, nullable = false)
@@ -36,15 +39,15 @@ public class ClientAccountInfo {
     private String phoneNumber;
     @Column(length = 250, nullable = false)
     private String emailAddress;
-    @Column(columnDefinition = "BINARY(16)")
-    private UUID uuid;
-    @Column(name="dateofbirth")
+    @Column(name = "dateofbirth")
     @Temporal(TemporalType.DATE)
     private Date dateofbirth;
     @Column(length = 10, nullable = true)
     private String gender;
-    @OneToOne(mappedBy = "clientAccountInfo")
-    private ClientLoginInfo loginInfo;
 
+
+    @OneToOne(mappedBy = "clientAccountInfo")
+    @JoinColumn(name = "id")
+      private ClientLoginInfo loginInfo;
 }
 

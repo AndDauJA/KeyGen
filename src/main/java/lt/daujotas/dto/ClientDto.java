@@ -16,7 +16,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 public class ClientDto {
-    private UUID clientID;
+    private UUID clientUuid;
     @NotNull (message= "Negali buti tuscia eilute ${ValidatedValue}")
     private String firstName;
     private String middleName;

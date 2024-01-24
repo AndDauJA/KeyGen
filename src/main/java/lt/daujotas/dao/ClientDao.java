@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface ClientDao {
     void save(ClientAccountInfo clientAccountInfo);
-
+void merge(ClientAccountInfo clientAccountInfo);
 
     void update(ClientAccountInfo clientAccountInfo);
 

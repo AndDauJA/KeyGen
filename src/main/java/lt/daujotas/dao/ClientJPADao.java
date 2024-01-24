@@ -21,24 +21,21 @@ public class ClientJPADao implements ClientDao {
     @Autowired
     FindClientByNameRepository findClientByNameRepository;
 
-
-
-//    public ClientJPADao(ClientRepository clientRepository) {
-//        this.repository = clientRepository;
-//
-//    }
-
-
     @Override
     public void save(ClientAccountInfo clientAccountInfo) {
-        clientAccountInfo.setUuid(UUID.randomUUID());
+        clientAccountInfo.setAccountUuid(UUID.randomUUID());
+        repository.save(clientAccountInfo);
+    }
+
+    @Override
+    public void merge(ClientAccountInfo clientAccountInfo) {
         repository.save(clientAccountInfo);
     }
 
 
     @Override
-    public void update(ClientAccountInfo clientAccountInfo) {
-        repository.save(clientAccountInfo);
+    public void update(ClientAccountInfo updatedClient) {
+        findClientByNameRepository.save(updatedClient);
     }
 
     @Override
@@ -48,12 +45,14 @@ public class ClientJPADao implements ClientDao {
 
     @Override
     public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
-        return repository.findByUuid(id);
+        return repository.findByAccountUuid(id);
     }
+
     @Override
     public Optional<ClientAccountInfo> getClientByFirstName(String firstName) {
         return findClientByNameRepository.findByFirstName(firstName);
     }
+
     @Override
     public void deleteClientByUUID(UUID id) {
         Optional<ClientAccountInfo> client = repository.findById(id);
@@ -70,7 +69,6 @@ public class ClientJPADao implements ClientDao {
     public Optional<ClientAccountInfo> getClientByUsername(String username) {
         return Optional.empty();
     }
-
 
 
 }
