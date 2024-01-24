@@ -1,6 +1,7 @@
 package lt.daujotas.dao;
 
 import lt.daujotas.clients.ClientAccountInfo;
+import lt.daujotas.clients.ClientLoginInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,13 +11,15 @@ import java.util.UUID;
 
 public interface ClientDao {
     void save(ClientAccountInfo clientAccountInfo);
-void merge(ClientAccountInfo clientAccountInfo);
+
+    void merge(ClientAccountInfo clientAccountInfo);
 
     void update(ClientAccountInfo clientAccountInfo);
 
     List<ClientAccountInfo> getAll();
 
     Optional<ClientAccountInfo> getClientByUUID(UUID id);
+
     Optional<ClientAccountInfo> getClientByFirstName(String firstName);
 
 
@@ -26,4 +29,5 @@ void merge(ClientAccountInfo clientAccountInfo);
 
     Optional<ClientAccountInfo> getClientByUsername(String username);
 
+    Optional<ClientLoginInfo> findByUsername(String username);
 }

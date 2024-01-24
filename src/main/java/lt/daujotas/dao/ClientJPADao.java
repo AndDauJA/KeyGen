@@ -3,8 +3,10 @@ package lt.daujotas.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaDelete;
+import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import lt.daujotas.clients.ClientAccountInfo;
+import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.clients.repositories.ClientRepository;
 import lt.daujotas.clients.repositories.FindClientByNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ public class ClientJPADao implements ClientDao {
     FindClientByNameRepository findClientByNameRepository;
     @Autowired
     private EntityManager entityManager;
+
     @Override
     public void save(ClientAccountInfo clientAccountInfo) {
         clientAccountInfo.setAccountUuid(UUID.randomUUID());
@@ -58,22 +61,12 @@ public class ClientJPADao implements ClientDao {
         return findClientByNameRepository.findByFirstName(firstName);
     }
 
-//    @Override
-//    public void deleteClientByUUID(UUID id) {
-//        Optional<ClientAccountInfo> client = repository.findById(id);
-//        client.ifPresent(repository::delete);
-
-//    }
     @Override
     public void deleteClientByUUID(UUID id) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaDelete<ClientAccountInfo> delete = criteriaBuilder.createCriteriaDelete(ClientAccountInfo.class);
-        Root<ClientAccountInfo> root = delete.from(ClientAccountInfo.class);
-        delete.where(criteriaBuilder.equal(root.get("accountUuid"), id));
+        Optional<ClientAccountInfo> client = repository.findByAccountUuid(id);
+        client.ifPresent(repository::delete);
 
-        entityManager.createQuery(delete).executeUpdate();
-    }
-
+        }
 
     @Override
     public Page<ClientAccountInfo> getPage(Pageable pageable) {
@@ -85,6 +78,20 @@ public class ClientJPADao implements ClientDao {
         return Optional.empty();
     }
 
+    @Override
+    public Optional<ClientLoginInfo> findByUsername(String username) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ClientLoginInfo> query = criteriaBuilder.createQuery(ClientLoginInfo.class);
+        Root<ClientLoginInfo> root = query.from(ClientLoginInfo.class);
+
+        query.select(root)
+                .where(criteriaBuilder.equal(root.get("username"), username));
+
+        List<ClientLoginInfo> resultList = entityManager.createQuery(query).getResultList();
+        return resultList.isEmpty() ? Optional.empty() : Optional.of(resultList.get(0));
+    }
+
 
 }
+
 

@@ -74,7 +74,7 @@
                     <div class="card ">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form id="formId" method="post" th:if="${findClient}" th:action="@{/findclient}"
+                            <form id="formId" method="post" th:if="${findClient}" th:action="@{findClient}"
 
                                   th:object="${findClient}">
                                 <!-- Form Group (username)-->
@@ -85,6 +85,18 @@
                                            placeholder="Enter first Name"
                                            th:field="*{firstName}"/>
                                 </label>
+                                <div class=""  >
+
+                                    <input class="form-control" id="id"
+                                           placeholder="id"
+                                           th:value="*{id}" disabled>
+                                </div>
+                                <div class="" >
+
+                                    <input class="form-control" id="Uuid" type="text"
+                                           placeholder="uuid"
+                                          th:value="*{accountUuid}" disabled>
+                                </div>
                                 <div class="">
                                     <label class="small" for="inputUsername">Username (how your name will
                                         appear to other users on the site)</label>
@@ -167,8 +179,7 @@
                                 <button class="btn btn-primary" type="button" onclick="updateClient()">Update Client
                                 </button>
 
-                                <button class="btn btn-primary" type="button" name="action" onclick="findClient()">Find
-                                    Client
+                                <button class="btn btn-primary" type="submit">Find Client
                                 </button>
                             </form>
                         </div>

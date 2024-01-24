@@ -41,6 +41,7 @@
 //            Date birthDate = new Date(utilBirthDate.getTime());
 //            String postAddress = faker.address().fullAddress();
 //            String email = faker.name().username();
+//            String username=faker.name().username();
 //            clientAccountService.saveClient(ClientAccountInfo.builder()
 //                    .firstName(firstName)
 //                    .lastName(lastName)
@@ -52,7 +53,7 @@
 //                    .postAddres(postAddress)
 //                    .build());
 //            clientLoginService.saveLoginClient(ClientLoginInfo.builder()
-//                    .username(firstName)
+//                    .username(username)
 //                    .password(lastName)
 //                    .build());
 //        }

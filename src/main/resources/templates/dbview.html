@@ -20,39 +20,29 @@
     </thead>
     <tbody>
     <tr th:each="client: ${clientList}">
-        <td th:text="${client.getFirstName()}">a</td>
-        <td th:text="${client.getLastName()}">a</td>
-        <td th:text="${client.getPhoneNumber()}">a</td>
-        <td th:text="${client.getEmailAddress()}">a</td>
-        <td th:text="${client.getAccountUuid()}">a</td>
+        <td th:text="${client.getFirstName()}?: 'N/A'">N/A</td>
+        <td th:text="${client.getLastName()}?: 'N/A'">N/A</td>
+        <td th:text="${client.getPhoneNumber()}?: 'N/A'">N/A</td>
+        <td th:text="${client.getEmailAddress()}?: 'N/A'">N/A</td>
+        <td th:text="${client.getAccountUuid()}?: 'N/A'">N/A</td>
 <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
-        <td><a th:if="${client.accountUuid != null}" th:href="@{'/dbview/' + ${client.accountUuid} + '/delete'}">Delete</a></td>
+        <td><a th:if="${client.accountUuid != null}"  th:href="@{'/dbview/' + ${client.accountUuid} + '/delete'}">Delete</a></td>
     </tr>
     </tbody>
 </table>
     <nav class="d-flex justify-content-end" aria-label="Page navigation">
         <ul class="pagination">
-            <li
-                    class="page-item"
-                    th:classappend="${!clientList.hasPrevious() ? 'disabled' : ''}"
-            >
-                <a class="page-link" th:href="@{/products(page=${productList.number} - 1)}">Previous</a>
+            <li class="page-item" th:classappend="${!clientList.hasPrevious() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/dbview(page=${clientList.number} - 1)}">Previous</a>
+            </li>
+            <li th:each="pageNumber : ${#numbers.sequence(0, clientList.totalPages - 1)}"
+                th:classappend="${pageNumber == clientList.number ? 'active' : ''}">
+                <a class="page-link" th:href="@{/dbview(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${!clientList.hasNext() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/dbview(page=${clientList.number} + 1)}">Next</a>
             </li>
 
-            <li
-                    class="page-item"
-                    th:each="pageNumber: ${#numbers.sequence(0, productList.totalPages - 1)}"
-                    th:classappend="${pageNumber == productList.number ? 'active' : ''}"
-            >
-                <a class="page-link" th:href="@{/products(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
-            </li>
-
-            <li
-                    class="page-item"
-                    th:classappend="${!productList.hasNext() ? 'disabled' : ''}"
-            >
-                <a class="page-link" th:href="@{/products(page=${productList.number} + 1)}">Next</a>
-            </li>
         </ul>
     </nav>
 </div>

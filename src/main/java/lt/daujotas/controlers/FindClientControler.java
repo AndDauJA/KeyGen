@@ -26,7 +26,7 @@ public class FindClientControler {
     }
 
 
-    @PostMapping("/findclient")
+    @PostMapping("/findClient")
 
     public String findClient(@ModelAttribute ClientAccountInfo findClient, Model model) {
 

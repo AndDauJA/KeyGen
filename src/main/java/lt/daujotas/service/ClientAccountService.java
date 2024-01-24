@@ -52,7 +52,10 @@ public class ClientAccountService {
 
 
     public void updateClient(ClientAccountInfo clientAccountInfo) {
-        clientDao.merge(clientAccountInfo);
+
+        ClientAccountInfo clientAccountInfo1= clientDao.getClientByUUID(clientAccountInfo.getAccountUuid()).get();
+        clientAccountInfo1.setPhoneNumber(clientAccountInfo.getPhoneNumber());
+        clientDao.save(clientAccountInfo1);
     }
 
     public void getClientByName(ClientAccountInfo clientAccountInfo) {
