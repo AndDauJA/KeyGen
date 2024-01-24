@@ -1,5 +1,9 @@
 package lt.daujotas.dao;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaDelete;
+import jakarta.persistence.criteria.Root;
 import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.clients.repositories.ClientRepository;
 import lt.daujotas.clients.repositories.FindClientByNameRepository;
@@ -20,7 +24,8 @@ public class ClientJPADao implements ClientDao {
     ClientRepository repository;
     @Autowired
     FindClientByNameRepository findClientByNameRepository;
-
+    @Autowired
+    private EntityManager entityManager;
     @Override
     public void save(ClientAccountInfo clientAccountInfo) {
         clientAccountInfo.setAccountUuid(UUID.randomUUID());
@@ -53,12 +58,22 @@ public class ClientJPADao implements ClientDao {
         return findClientByNameRepository.findByFirstName(firstName);
     }
 
+//    @Override
+//    public void deleteClientByUUID(UUID id) {
+//        Optional<ClientAccountInfo> client = repository.findById(id);
+//        client.ifPresent(repository::delete);
+
+//    }
     @Override
     public void deleteClientByUUID(UUID id) {
-        Optional<ClientAccountInfo> client = repository.findById(id);
-        client.ifPresent(repository::delete);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaDelete<ClientAccountInfo> delete = criteriaBuilder.createCriteriaDelete(ClientAccountInfo.class);
+        Root<ClientAccountInfo> root = delete.from(ClientAccountInfo.class);
+        delete.where(criteriaBuilder.equal(root.get("accountUuid"), id));
 
+        entityManager.createQuery(delete).executeUpdate();
     }
+
 
     @Override
     public Page<ClientAccountInfo> getPage(Pageable pageable) {

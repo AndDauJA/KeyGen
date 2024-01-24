@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.UUID;
 
 
 @Controller
@@ -15,17 +19,24 @@ public class ClientDBViewControler {
 
     @Autowired
     private ClientAccountService clientAccountService;
+
+
     @GetMapping("/dbview")  //sitas turi sutapti su return
-    public String dataBAseViewForm(Model model, Pageable pageable){
+    public String dataBAseViewForm(Model model, Pageable pageable) {
         try {
             final Page<ClientAccountInfo> clientAccounts = clientAccountService.getAllClientsPages(pageable);
             model.addAttribute("clientList", clientAccounts.getContent());
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("ClientDbViewControler - KLAIDA");
         }
         return "dbview";   // kelias iki failo
 
     }
-
+   @Transactional
+    @GetMapping("/dbview/{uuid}/delete")
+    public String deleteClient(@PathVariable String uuid) {
+        clientAccountService.deleteClientByUUID(UUID.fromString(uuid));
+        return "redirect:/dbview";
+    }
 }
