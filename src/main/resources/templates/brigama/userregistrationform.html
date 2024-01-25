@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="regform.css">
+    <title>Naujo kleinto registracijos forma</title>
+</head>
+<body>
+<div class="body-background">
+    <div class="header-main-container">
+
+        <header id="header-id" class="wrap-header mobile-only">
+
+            <div class="logo-menu-list">
+                <div class="logo-name-container">
+
+                    <img id="body-img-logo" src="/images/3786012.jpg" alt="">
+
+                    <h1 id="comany-name">UAB BRIGAMA</h1>
+
+                </div>
+                <div class="menu-list">
+                    <menu class="menu-container on-hover">
+                        <ul class="menu-ul">
+
+                            <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
+
+                        </ul>
+                    </menu>
+                </div>
+
+            </div>
+
+        </header>
+    </div>
+    <div class="main">
+        <h2>Naujo kleinto registracijos forma</h2>
+        <div th:if="${message ne null and message.length() > 0}"
+             class="alert alert-success" role="alert"
+             th:text="${message}">
+            Success message when add product
+        </div>
+        <form method="post" th:action="@{/userregistrationform}" th:object="${clientDto}">
+
+            <label for="first">First Name:</label>
+            <input type="text" id="first"
+                   name="firstName"
+                   placeholder="Enter your first name" th:field="*{firstName}">
+            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"  >
+            </span>
+
+            <label for="last">Last Name:</label>
+            <input type="text" id="last"
+                   name="lastName"
+                   placeholder="Enter your last name" th:field="*{lastName}" >
+            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+
+            <label for="middle">Middle Name:</label>
+            <input type="text" id="middle"
+                   name="middleName"
+                   placeholder="Enter your middle name" th:field="*{middleName}">
+
+            <label for="post">Post address:</label>
+            <input type="text" id="post"
+                   name="postAddress"
+                   placeholder="Enter your post address" th:field="*{postAddres}" >
+
+            <label for="email">Email:</label>
+            <input type="email" id="email"
+                   name="emailAddress"
+                   placeholder="Enter your email" th:field="*{emailAddress}">
+            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}"></span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password"
+                   name="password"
+                   placeholder="Enter your password" th:field="*{password}">
+            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+
+            <label for="repeatpassword">Repeatpassword:</label>
+            <input type="password" id="repeatpassword"
+                   name="repeatpassword"
+                   placeholder="Reenter your password " th:field="*{repeatPassrowd}">
+            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('global')}" th:errors="global"></span>
+            <label for="dob">Date of Birth:</label>
+            <input type="date"
+                   id="dob" name="dob"
+                   placeholder="Enter your DOB" th:field="*{dateofbirth}" >
+
+            <label for="mobile">Contact:</label>
+            <input type="text" id="mobile"
+                   name="mobile"
+                   placeholder="Enter your Mobile Number" th:field="*{phoneNumber}"
+                   maxlength="15">
+            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" th:field="*{gender}" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <div class="wrap">
+                <button type="submit" onclick="solve()">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

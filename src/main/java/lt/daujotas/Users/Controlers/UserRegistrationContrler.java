@@ -2,6 +2,7 @@ package lt.daujotas.Users.Controlers;
 
 
 import jakarta.validation.Valid;
+import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,26 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
-public class ClientRegistrationControler {
+public class UserRegistrationContrler {
 
     @Autowired
     private ClientAccountService clientAccountService;
 
-    @GetMapping("/registrationform")
+    @GetMapping("/userregistrationform")
     public String showLoginForm(Model model) {
-        model.addAttribute("clientAccountInfo", new ClientAccountInfo());
-        return "brigama/registrationform"; // kelias iki failo
+        model.addAttribute("clientDto", new ClientDto());
+        return "brigama/userregistrationform"; // kelias iki failo
     }
 
-    @PostMapping("/registrationform")
-    public String createLoginClient(Model model, @Valid ClientAccountInfo clientAccountInfo, BindingResult errors) {
+    @PostMapping("/userregistrationform")
+    public String createLoginClient(Model model, @Valid ClientDto clientDto, BindingResult errors) {
 
         if(errors.hasErrors()){
 
-            return "brigama/registrationform";
+            return "brigama/userregistrationform";
         }
 
-        clientAccountService.saveClient(clientAccountInfo);
+        clientAccountService.saveClientDto(clientDto);
 
         return "redirect:/client/clientTestWeb";
 

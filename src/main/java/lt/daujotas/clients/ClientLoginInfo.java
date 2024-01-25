@@ -22,9 +22,12 @@ public class ClientLoginInfo {
     @Column(length = 50, nullable = false)
     @NotEmpty(message = "{NotEmpty.Name.message.username}")
     private String username;
-    @Column(length = 50, nullable = false)
+    @Column(nullable = false)
     @NotEmpty(message = "{NotEmpty.Name.message.password}")
     private String password;
+    @NotEmpty
+    private String repeatPassword;
+
 
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "id")

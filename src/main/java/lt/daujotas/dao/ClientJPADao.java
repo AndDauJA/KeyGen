@@ -5,10 +5,12 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaDelete;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.clients.repositories.ClientRepository;
 import lt.daujotas.clients.repositories.FindClientByNameRepository;
+import lt.daujotas.clients.repositories.UserFirstRegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -28,11 +30,18 @@ public class ClientJPADao implements ClientDao {
     FindClientByNameRepository findClientByNameRepository;
     @Autowired
     private EntityManager entityManager;
+    @Autowired
+    private UserFirstRegistrationRepository userFirstRegistrationRepository;
 
     @Override
     public void save(ClientAccountInfo clientAccountInfo) {
         clientAccountInfo.setAccountUuid(UUID.randomUUID());
         repository.save(clientAccountInfo);
+    }
+
+    @Override
+    public void saveClientDto(ClientDto clientDto) {
+        userFirstRegistrationRepository.save(clientDto);
     }
 
 
@@ -61,7 +70,7 @@ public class ClientJPADao implements ClientDao {
         Optional<ClientAccountInfo> client = repository.findByAccountUuid(id);
         client.ifPresent(repository::delete);
 
-        }
+    }
 
     @Override
     public Page<ClientAccountInfo> getPage(Pageable pageable) {

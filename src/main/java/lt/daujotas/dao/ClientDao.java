@@ -1,5 +1,6 @@
 package lt.daujotas.dao;
 
+import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.clients.ClientLoginInfo;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import java.util.UUID;
 
 public interface ClientDao {
     void save(ClientAccountInfo clientAccountInfo);
+    void saveClientDto(ClientDto clientDto);
 
 
 

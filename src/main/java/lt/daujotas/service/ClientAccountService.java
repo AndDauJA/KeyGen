@@ -3,6 +3,7 @@ package lt.daujotas.service;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.dao.ClientDao;
 import lt.daujotas.clients.ClientAccountInfo;
@@ -37,6 +38,10 @@ public class ClientAccountService {
     public void saveClient(ClientAccountInfo clientAccountInfo) {
 
         clientDao.save(clientAccountInfo);
+    }
+    public void saveClientDto (ClientDto clientDto) {
+
+        clientDao.saveClientDto(clientDto);
     }
     public void saveClientWithLoginInfo(ClientAccountInfo clientAccountInfo, ClientLoginInfo clientLoginInfo) {
         // Saugome kliento informaciją
