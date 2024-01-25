@@ -1,4 +1,4 @@
-package lt.daujotas.controlers.Users;
+package lt.daujotas.Users.Controlers;
 
 
 import jakarta.validation.Valid;

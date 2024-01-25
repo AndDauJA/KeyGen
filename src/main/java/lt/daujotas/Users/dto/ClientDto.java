@@ -1,4 +1,4 @@
-package lt.daujotas.dto;
+package lt.daujotas.Users.dto;
 
 
 
