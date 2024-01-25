@@ -35,11 +35,6 @@ public class ClientJPADao implements ClientDao {
         repository.save(clientAccountInfo);
     }
 
-    @Override
-    public void merge(ClientAccountInfo clientAccountInfo) {
-        repository.save(clientAccountInfo);
-    }
-
 
     @Override
     public void update(ClientAccountInfo updatedClient) {
