@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 
 import lombok.*;
 import lt.daujotas.validation.PhoneNumber;
+import lt.daujotas.validation.PhoneNumberType;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -39,7 +40,7 @@ public class ClientAccountInfo {
     private String postAddres;
     @Column(length = 50, nullable = false)
     @NotEmpty(message = "{NotEmpty.Name.message.phone}")
-    @PhoneNumber
+    @PhoneNumber(numberType = PhoneNumberType.LOCAL)
     private String phoneNumber;
     @Column(length = 250, nullable = false)
     @NotEmpty(message = "{NotEmpty.Name.message.email}")

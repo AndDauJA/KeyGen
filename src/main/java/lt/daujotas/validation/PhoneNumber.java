@@ -12,11 +12,11 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = PhoneNumberValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PhoneNumber {
-    String message() default "Telefono numeris netinkamas turi buti ben 12 skaitmenu";
+    String message() default "Telefono numeris turi atitikti formatą +370";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-
+    PhoneNumberType numberType() default PhoneNumberType.GLOBAL;
 }
