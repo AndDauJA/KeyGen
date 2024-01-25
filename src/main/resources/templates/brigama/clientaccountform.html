@@ -74,9 +74,9 @@
                     <div class="card ">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form id="formId" method="post" th:if="${findClient}" th:action="@{findClient}"
+                            <form id="formId" method="post" th:if="${clientAccountInfo}" th:action="@{clientaccountform}"
 
-                                  th:object="${findClient}">
+                                  th:object="${clientAccountInfo}">
                                 <!-- Form Group (username)-->
                                 <label>Find me by Name</label>
                                 <label>
@@ -157,18 +157,18 @@
                                         <label class="small mb-1" for="inputPhone">Phone number</label>
                                         <input class="form-control" id="inputPhone" type="tel"
                                                placeholder="Enter your phone number"
-                                               th:field="${findClient.phoneNumber}">
+                                               th:field="*{phoneNumber}">
                                     </div>
                                     <!-- Form Group (birthday)-->
                                     <div class="col">
                                         <label class="small mb-1" for="inputBirthday">Birthday</label>
                                         <input class="form-control" id="inputBirthday" type="text" name="birthday"
-                                               placeholder="Enter your birthday" th:value="${findClient.dateofbirth}">
+                                               placeholder="Enter your birthday" th:value="*{dateofbirth}">
                                     </div>
                                     <div class="col">
                                         <label class="small mb-1" for="inputGender">Gender</label>
                                         <input class="form-control" id="inputGender" type="text" name="birthday"
-                                               placeholder="Enter your birthday" th:field="${findClient.gender}" disabled>
+                                               placeholder="Enter your birthday" th:field="*{gender}" disabled>
                                     </div>
 
                                     <div th:if="${error}">

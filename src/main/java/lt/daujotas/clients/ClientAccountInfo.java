@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import lombok.*;
+import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
 
@@ -55,7 +56,6 @@ public class ClientAccountInfo {
 
     @OneToOne(mappedBy = "clientAccountInfo")
     @JoinColumn(name = "Id")
-    private ClientLoginInfo loginInfo;
-
+    private ClientDto clientDto;
 }
 

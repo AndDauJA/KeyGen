@@ -1,5 +1,6 @@
 package lt.daujotas.controlers;
 
+import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ClientDBViewControler {
     @GetMapping("/dbview")  //sitas turi sutapti su return
     public String dataBAseViewForm(Model model, @PageableDefault(size = 5, sort = {"firstName"}, direction = Sort.Direction.ASC) Pageable pageable) {
 
-        final Page<ClientAccountInfo> clientAccounts = clientAccountService.getAllClientsPages(pageable);
+        final Page<ClientDto> clientAccounts = clientAccountService.getAllClientsPages(pageable);
         model.addAttribute("clientList", clientAccounts);
         return "dbview";   // kelias iki failo
 
@@ -34,9 +35,9 @@ public class ClientDBViewControler {
 
 
     @Transactional
-    @GetMapping("/dbview/{uuid}/delete")
-    public String deleteClient(@PathVariable String uuid) {
-        clientAccountService.deleteClientByUUID(UUID.fromString(uuid));
+    @GetMapping("/dbview/{id}/delete")
+    public String deleteClient(@PathVariable String userName) {
+        clientAccountService.deleteClientByUserName(userName);
         return "redirect:/dbview";
     }
 }

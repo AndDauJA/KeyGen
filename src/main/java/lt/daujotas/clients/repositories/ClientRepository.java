@@ -12,8 +12,8 @@ import java.util.UUID;
 public interface ClientRepository extends JpaRepository<ClientAccountInfo, UUID> {
     Optional<ClientAccountInfo> findByAccountUuid(UUID id);
 
-    @Query("SELECT ca FROM ClientAccountInfo ca JOIN ca.loginInfo la WHERE la.username = :username")
-    ClientAccountInfo findByUsername(@Param("username") String username);
+//    @Query("SELECT ca FROM ClientAccountInfo ca JOIN ca.loginInfo la WHERE la.username = :username")
+//    ClientAccountInfo findByUsername(@Param("username") String username);
 
     void deleteClientByAccountUuid (UUID accountUuind);
 }

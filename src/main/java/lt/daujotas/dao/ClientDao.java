@@ -27,7 +27,10 @@ public interface ClientDao {
 
     void deleteClientByUUID(UUID id);
 
-    Page<ClientAccountInfo> getPage(Pageable pageable);
+    void deleteByClientUserName(String userName);
+
+//    Page<ClientAccountInfo> getPage(Pageable pageable);
+    Page<ClientDto> getPage(Pageable pageable);
 
     Optional<ClientAccountInfo> getClientByUsername(String username);
 

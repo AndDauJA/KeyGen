@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
+import lt.daujotas.clients.ClientAccountInfo;
+import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
 import lt.daujotas.validation.RepeatPassword;
@@ -15,6 +17,7 @@ import java.sql.Date;
 
 @Entity
 @AllArgsConstructor
+@Table(name = "clientaccountDto")
 @Builder
 @Getter
 @Setter
@@ -25,6 +28,10 @@ public class ClientDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
+    @Column(name = "username")
+    private String userName;
     @NotEmpty
     @Column(name = "firstname")
     private String firstName;
@@ -56,5 +63,8 @@ public class ClientDto {
     private Date dateofbirth;
     private String gender;
 
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private ClientAccountInfo clientAccountInfo;
 
 }

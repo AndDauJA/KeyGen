@@ -20,13 +20,13 @@ public class FindClientControler {
 
     @GetMapping("/clientaccountform")
     public String showFindClientForm(Model model) {
-        model.addAttribute("findClient", new ClientAccountInfo());
+        model.addAttribute("clientAccountInfo", new ClientAccountInfo());
 //        model.addAttribute("clientList", clientAccountService.getAllClients());
         return "brigama/clientaccountform";
     }
 
 
-    @PostMapping("/findClient")
+    @PostMapping("/clientaccountform")
 
     public String findClient(@ModelAttribute ClientAccountInfo findClient, Model model) {
 
@@ -34,7 +34,7 @@ public class FindClientControler {
         Optional<ClientAccountInfo> clientByName = clientAccountService.getClientByFirstName(findClient.getFirstName());
 
         if (clientByName.isPresent()) {
-            model.addAttribute("findClient", clientByName.get());
+            model.addAttribute("clientAccountInfo", clientByName.get());
         } else {
             model.addAttribute("error", "Client not found");
         }

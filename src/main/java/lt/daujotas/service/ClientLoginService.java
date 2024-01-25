@@ -18,10 +18,7 @@ public class ClientLoginService {
         this.clientLoginDao=clientLoginDao;
     }
 
-    public void saveLoginClient(ClientLoginInfo clientLoginInfo) {
 
-        clientLoginDao.login(clientLoginInfo);
-    }
 
 
 //    public Page<ClientLoginPojo> getAllLoginClientsPages(Pageable pageable) {

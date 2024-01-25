@@ -3,8 +3,9 @@ package lt.daujotas.clients;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
+import lt.daujotas.Users.dto.ClientDto;
 
-@Entity
+
 @Table(name = "logintoaccount")
 @Getter
 @Setter
@@ -14,24 +15,17 @@ import lombok.*;
 @AllArgsConstructor
 public class ClientLoginInfo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long accountId;
 
-    @Column(length = 50, nullable = false)
+
+
     @NotEmpty(message = "{NotEmpty.Name.message.username}")
     private String username;
-    @Column(nullable = false)
     @NotEmpty(message = "{NotEmpty.Name.message.password}")
     private String password;
-    @NotEmpty
-    private String repeatPassword;
 
 
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private ClientAccountInfo clientAccountInfo;
+
+
 
 }
 

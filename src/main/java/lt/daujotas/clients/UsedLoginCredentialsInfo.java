@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "loginCredentials")
+@Table(name = "usedlogins")
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 @Builder
 @AllArgsConstructor
-public class LoginCredentialsInfo {
+public class UsedLoginCredentialsInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

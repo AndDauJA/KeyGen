@@ -73,8 +73,18 @@ public class ClientJPADao implements ClientDao {
     }
 
     @Override
-    public Page<ClientAccountInfo> getPage(Pageable pageable) {
-        return repository.findAll(pageable);
+    public void deleteByClientUserName(String userName) {
+        Optional<ClientDto> clientDto=userFirstRegistrationRepository.findClientDtoByUserName(userName);
+        clientDto.ifPresent(userFirstRegistrationRepository::delete);
+    }
+
+    //    @Override
+//    public Page<ClientAccountInfo> getPage(Pageable pageable) {
+//        return repository.findAll(pageable);
+//    }
+    @Override
+    public Page<ClientDto> getPage(Pageable pageable) {
+        return userFirstRegistrationRepository.findAll(pageable);
     }
 
     @Override

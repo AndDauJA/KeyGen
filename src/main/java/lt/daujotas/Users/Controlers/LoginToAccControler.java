@@ -25,14 +25,14 @@ public class LoginToAccControler {
         return "brigama/login"; // kelias iki failo
     }
 
-    @PostMapping("/login")
-    public String createLoginClient(Model model,@Valid ClientLoginInfo clientLoginInfo, BindingResult errors) {
-        if(errors.hasErrors()){
-            return "brigama/login";
-        }
-        clientLoginService.saveLoginClient(clientLoginInfo);
-
-        return "redirect:/client/clientTestWeb";
-
-    }
+//    @PostMapping("/login")
+//    public String createLoginClient(Model model,@Valid ClientLoginInfo clientLoginInfo, BindingResult errors) {
+//        if(errors.hasErrors()){
+//            return "brigama/login";
+//        }
+//        clientLoginService.saveLoginClient(clientLoginInfo);
+//
+//        return "redirect:/client/clientTestWeb";
+//
+//    }
 }
