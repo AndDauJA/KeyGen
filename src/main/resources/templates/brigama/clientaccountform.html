@@ -74,28 +74,22 @@
                     <div class="card ">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form id="formId" method="post" th:if="${clientAccountInfo}" th:action="@{clientaccountform}"
+                            <form id="formId" method="post" th:if="${clientDto}" th:action="@{clientaccountform}"
 
-                                  th:object="${clientAccountInfo}">
+                                  th:object="${clientDto}">
                                 <!-- Form Group (username)-->
-                                <label>Find me by Name</label>
+                                <label>Find me by UserName</label>
                                 <label>
                                     <!--        <input type="text" th:field="*{uuid}" placeholder="Enter Client ID"/>-->
                                     <input type="text"
-                                           placeholder="Enter first Name"
-                                           th:field="*{firstName}"/>
+                                           placeholder="Enter first UserName"
+                                           th:field="*{userName}"/>
                                 </label>
-                                <div class=""  >
+                                <div class="">
 
-                                    <input class="form-control" id="id"
-                                           placeholder="id"
-                                           th:value="*{id}" disabled>
-                                </div>
-                                <div class="" >
-
-                                    <input class="form-control" id="Uuid" type="text"
+                                    <input class="form-control" id="Uuid" type="hidden"
                                            placeholder="uuid"
-                                          th:value="*{accountUuid}" disabled>
+                                           th:field="*{accountUuid}" th:value="${clientDto.accountUuid}" >
                                 </div>
                                 <div class="">
                                     <label class="small" for="inputUsername">Username (how your name will
@@ -111,7 +105,7 @@
                                         <label class="small mb-1" for="inputFirstName">First name</label>
                                         <input class="form-control" id="inputFirstName" type="text"
                                                placeholder="Enter your first name"
-                                               th:value="*{firstName}">
+                                               th:field="*{firstName}">
                                     </div>
                                     <div class="col">
                                         <label class="small mb-1" for="inputMiddletName">Middle name</label>
@@ -131,18 +125,18 @@
 
                                 <div class="row ">
 
-<!--                                    <div class="col">-->
-<!--                                        <label class="small mb-1" for="inputOrgName">Organization name</label>-->
-<!--                                        <input class="form-control" id="inputOrgName" type="text"-->
-<!--                                               placeholder="Enter your organization name" value="Start Bootstrap">-->
-<!--                                    </div>-->
+                                    <!--                                    <div class="col">-->
+                                    <!--                                        <label class="small mb-1" for="inputOrgName">Organization name</label>-->
+                                    <!--                                        <input class="form-control" id="inputOrgName" type="text"-->
+                                    <!--                                               placeholder="Enter your organization name" value="Start Bootstrap">-->
+                                    <!--                                    </div>-->
                                     <!-- Form Group (location)-->
                                     <div class="col">
-                                    <label class="small mb-1" for="inputPostAddress">Post Address</label>
-                                    <input class="form-control" id="inputPostAddress" type="text"
-                                           placeholder="Enter your location"
-                                           th:field="*{postAddres}">
-                                </div>
+                                        <label class="small mb-1" for="inputPostAddress">Post Address</label>
+                                        <input class="form-control" id="inputPostAddress" type="text"
+                                               placeholder="Enter your location"
+                                               th:field="*{postAddres}">
+                                    </div>
                                 </div>
                                 <!-- Form Group (email address)-->
                                 <div class="mb-">

@@ -35,25 +35,25 @@ public class ClientAccountService {
 
     }
 
-    public void saveClient(ClientAccountInfo clientAccountInfo) {
-
-        clientDao.save(clientAccountInfo);
-    }
+//    public void saveClient(ClientAccountInfo clientAccountInfo) {
+//
+//        clientDao.save(clientAccountInfo);
+//    }
     public void saveClientDto (ClientDto clientDto) {
 
-        clientDao.saveClientDto(clientDto);
+        clientDao.save(clientDto);
     }
 
-    public void updateClient(ClientAccountInfo clientAccountInfo) {
+    public void updateClient(ClientDto clientDto) {
 
-        ClientAccountInfo clientAccountInfo1= clientDao.getClientByUUID(clientAccountInfo.getAccountUuid()).get();
-        clientAccountInfo1.setPhoneNumber(clientAccountInfo.getPhoneNumber());
-        clientDao.save(clientAccountInfo1);
+        ClientDto clientDto1= clientDao.getClientByUsername(clientDto.getUserName()).get();
+        clientDto1.setFirstName(clientDto.getFirstName());
+        clientDao.update(clientDto1);
+    }
+    public Optional<ClientDto> getClientByUserName(String userName) {
+        return clientDao.getClientByUsername(userName);
     }
 
-    public void getClientByName(ClientAccountInfo clientAccountInfo) {
-
-    }
 
     public List<ClientAccountInfo> getAllClients() {
         return clientDao.getAll();
@@ -62,9 +62,9 @@ public class ClientAccountService {
     public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
         return clientDao.getClientByUUID(id);
     }
-    public Optional<ClientAccountInfo> getClientByFirstName(String firstName) {
-        return clientDao.getClientByFirstName(firstName);
-    }
+//    public Optional<ClientAccountInfo> getClientByFirstName(String firstName) {
+//        return clientDao.getClientByFirstName(firstName);
+//    }
     public void deleteClientByUserName(String userName){
         clientDao.deleteByClientUserName(userName);
     }

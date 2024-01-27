@@ -11,18 +11,18 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ClientDao {
-    void save(ClientAccountInfo clientAccountInfo);
-    void saveClientDto(ClientDto clientDto);
+    void save(ClientDto clientDto);
+//    void saveClientDto(ClientDto clientDto);
+    Optional<ClientDto> getClientByFirstName(String firstName);
 
 
-
-    void update(ClientAccountInfo clientAccountInfo);
+    void update(ClientDto clientDto);
 
     List<ClientAccountInfo> getAll();
 
     Optional<ClientAccountInfo> getClientByUUID(UUID id);
 
-    Optional<ClientAccountInfo> getClientByFirstName(String firstName);
+//    Optional<ClientAccountInfo> getClientByFirstName(String firstName);
 
 
     void deleteClientByUUID(UUID id);
@@ -32,7 +32,7 @@ public interface ClientDao {
 //    Page<ClientAccountInfo> getPage(Pageable pageable);
     Page<ClientDto> getPage(Pageable pageable);
 
-    Optional<ClientAccountInfo> getClientByUsername(String username);
+    Optional<ClientDto> getClientByUsername(String username);
 
-    Optional<ClientLoginInfo> findByUsername(String username);
+
 }

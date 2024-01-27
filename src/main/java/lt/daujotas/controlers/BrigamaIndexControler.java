@@ -9,7 +9,7 @@ public class BrigamaIndexControler {
 
 
     @GetMapping("/")
-    public String showCreateForm(Model model) {
+    public String showWelcomeForm(Model model) {
 //        model.addAttribute("createClientAccount", new ClientAccountPojo());
         return "brigama/index"; // kelias iki failo
     }

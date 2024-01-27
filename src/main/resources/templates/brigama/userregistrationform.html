@@ -42,6 +42,12 @@
             Success message when add product
         </div>
         <form method="post" th:action="@{/userregistrationform}" th:object="${clientDto}">
+            <label for="user">User Name:</label>
+            <input type="text" id="user"
+                   name="userName"
+                   placeholder="Enter your username" th:field="*{userName}">
+            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"  >
+            </span>
 
             <label for="first">First Name:</label>
             <input type="text" id="first"

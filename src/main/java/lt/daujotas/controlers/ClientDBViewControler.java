@@ -20,9 +20,13 @@ import java.util.UUID;
 @Controller
 public class ClientDBViewControler {
 
-    @Autowired
+
     private ClientAccountService clientAccountService;
 
+    @Autowired
+    public ClientDBViewControler(ClientAccountService clientAccountService) {
+        this.clientAccountService = clientAccountService;
+    }
 
     @GetMapping("/dbview")  //sitas turi sutapti su return
     public String dataBAseViewForm(Model model, @PageableDefault(size = 5, sort = {"firstName"}, direction = Sort.Direction.ASC) Pageable pageable) {
@@ -35,7 +39,7 @@ public class ClientDBViewControler {
 
 
     @Transactional
-    @GetMapping("/dbview/{id}/delete")
+    @GetMapping("/dbview/{userName}/delete")
     public String deleteClient(@PathVariable String userName) {
         clientAccountService.deleteClientByUserName(userName);
         return "redirect:/dbview";

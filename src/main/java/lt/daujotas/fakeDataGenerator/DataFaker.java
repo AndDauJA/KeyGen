@@ -2,6 +2,7 @@
 //
 //import com.github.javafaker.Faker;
 //
+//import lt.daujotas.Users.dto.ClientDto;
 //import lt.daujotas.clients.ClientAccountInfo;
 //import lt.daujotas.clients.ClientLoginInfo;
 //import lt.daujotas.service.ClientAccountService;
@@ -18,12 +19,11 @@
 //    private static final int MAX_COUNT = 100;
 //
 //    private final ClientAccountService clientAccountService;
-//    private final ClientLoginService clientLoginService;
 //
 //
-//    public DataFaker(ClientAccountService clientAccountService, ClientLoginService clientLoginService) {
+//    public DataFaker(ClientAccountService clientAccountService) {
 //        this.clientAccountService = clientAccountService;
-//        this.clientLoginService = clientLoginService;
+//
 //
 //    }
 //
@@ -33,29 +33,30 @@
 //
 //        for (int i = 0; i < MAX_COUNT; i++) {
 //
-//            String firstName = faker.name().firstName(); // Unikalus vardas
-//            String lastName = faker.name().lastName(); // Unikali pavardė
-//            Long phoneNu = faker.number().randomNumber();
+//            String firstName = faker.name().firstName();
+//            String lastName = faker.name().lastName();
+//            String phoneNu = "+370"+faker.number().numberBetween(10000000, 99999999);
 //
 //            java.util.Date utilBirthDate = faker.date().birthday();
 //            Date birthDate = new Date(utilBirthDate.getTime());
 //            String postAddress = faker.address().fullAddress();
-//            String email = faker.name().username();
-//            String username=faker.name().username();
-//            clientAccountService.saveClient(ClientAccountInfo.builder()
+//            String email = faker.name().username()+"@"+"gmail.com";
+//            String username = faker.name().username();
+//            String password =faker.animal().name();
+//            clientAccountService.saveClientDto(ClientDto.builder()
+//                    .userName(username)
 //                    .firstName(firstName)
 //                    .lastName(lastName)
 //                    .middleName(firstName)
-//                    .phoneNumber(String.valueOf(phoneNu))
+//                    .phoneNumber(phoneNu)
 //                    .emailAddress(email)
 //                    .accountUuid(UUID.randomUUID())
 //                    .dateofbirth(birthDate)
 //                    .postAddres(postAddress)
+//                    .password(password)
+//                    .repeatPassrowd(password)
 //                    .build());
-//            clientLoginService.saveLoginClient(ClientLoginInfo.builder()
-//                    .username(username)
-//                    .password(lastName)
-//                    .build());
+//
 //        }
 //    }
 ////Papildziau duomenimins

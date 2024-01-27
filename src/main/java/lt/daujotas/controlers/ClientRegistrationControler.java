@@ -2,6 +2,7 @@ package lt.daujotas.controlers;
 
 
 import jakarta.validation.Valid;
+import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.clients.ClientAccountInfo;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,14 @@ public class ClientRegistrationControler {
     }
 
     @PostMapping("/registrationform")
-    public String createLoginClient(Model model, @Valid ClientAccountInfo clientAccountInfo, BindingResult errors) {
+    public String createLoginClient(Model model, @Valid ClientDto clientDto, BindingResult errors) {
 
         if(errors.hasErrors()){
 
             return "findandupdateregistrationform";
         }
 
-        clientAccountService.saveClient(clientAccountInfo);
+        clientAccountService.saveClientDto(clientDto);
 
         return "redirect:/client/clientTestWeb";
 

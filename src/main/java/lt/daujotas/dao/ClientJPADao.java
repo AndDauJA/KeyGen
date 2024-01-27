@@ -1,13 +1,8 @@
 package lt.daujotas.dao;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaDelete;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
 import lt.daujotas.Users.dto.ClientDto;
 import lt.daujotas.clients.ClientAccountInfo;
-import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.clients.repositories.ClientRepository;
 import lt.daujotas.clients.repositories.FindClientByNameRepository;
 import lt.daujotas.clients.repositories.UserFirstRegistrationRepository;
@@ -33,22 +28,25 @@ public class ClientJPADao implements ClientDao {
     @Autowired
     private UserFirstRegistrationRepository userFirstRegistrationRepository;
 
-    @Override
-    public void save(ClientAccountInfo clientAccountInfo) {
-        clientAccountInfo.setAccountUuid(UUID.randomUUID());
-        repository.save(clientAccountInfo);
-    }
 
     @Override
-    public void saveClientDto(ClientDto clientDto) {
+    public void save(ClientDto clientDto) {
+        clientDto.setAccountUuid(UUID.randomUUID());
         userFirstRegistrationRepository.save(clientDto);
     }
 
-
     @Override
-    public void update(ClientAccountInfo updatedClient) {
-        findClientByNameRepository.save(updatedClient);
+    public void update(ClientDto clientDto) {
+        Optional<ClientDto> savedOptionalUser = getClientByUsername(clientDto.getUserName());
+        if (savedOptionalUser.isPresent()) {
+
+            ClientDto savedByUserName = savedOptionalUser.get();
+            savedByUserName.setFirstName(clientDto.getFirstName());
+//             user.setPassword("newPassword");
+
+        userFirstRegistrationRepository.save(savedByUserName);
     }
+}
 
     @Override
     public List<ClientAccountInfo> getAll() {
@@ -61,8 +59,8 @@ public class ClientJPADao implements ClientDao {
     }
 
     @Override
-    public Optional<ClientAccountInfo> getClientByFirstName(String firstName) {
-        return findClientByNameRepository.findByFirstName(firstName);
+    public Optional<ClientDto> getClientByFirstName(String userName) {
+        return userFirstRegistrationRepository.findClientDtoByUserName(userName);
     }
 
     @Override
@@ -74,7 +72,7 @@ public class ClientJPADao implements ClientDao {
 
     @Override
     public void deleteByClientUserName(String userName) {
-        Optional<ClientDto> clientDto=userFirstRegistrationRepository.findClientDtoByUserName(userName);
+        Optional<ClientDto> clientDto = userFirstRegistrationRepository.findClientDtoByUserName(userName);
         clientDto.ifPresent(userFirstRegistrationRepository::delete);
     }
 
@@ -88,21 +86,9 @@ public class ClientJPADao implements ClientDao {
     }
 
     @Override
-    public Optional<ClientAccountInfo> getClientByUsername(String username) {
-        return Optional.empty();
-    }
+    public Optional<ClientDto> getClientByUsername(String username) {
 
-    @Override
-    public Optional<ClientLoginInfo> findByUsername(String username) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<ClientLoginInfo> query = criteriaBuilder.createQuery(ClientLoginInfo.class);
-        Root<ClientLoginInfo> root = query.from(ClientLoginInfo.class);
-
-        query.select(root)
-                .where(criteriaBuilder.equal(root.get("username"), username));
-
-        List<ClientLoginInfo> resultList = entityManager.createQuery(query).getResultList();
-        return resultList.isEmpty() ? Optional.empty() : Optional.of(resultList.get(0));
+        return userFirstRegistrationRepository.findClientDtoByUserName(username);
     }
 
 
