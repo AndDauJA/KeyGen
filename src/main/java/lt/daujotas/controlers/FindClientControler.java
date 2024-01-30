@@ -1,8 +1,7 @@
 package lt.daujotas.controlers;
 
 
-import lt.daujotas.Users.dto.ClientDto;
-import lt.daujotas.clients.ClientAccountInfo;
+import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +20,7 @@ public class FindClientControler {
 
     @GetMapping("/clientaccountform")
     public String showFindClientForm(Model model) {
-        model.addAttribute("clientDto", new ClientDto());
+        model.addAttribute("clientData", new ClientData());
 //        model.addAttribute("clientList", clientAccountService.getAllClients());
         return "brigama/clientaccountform";
     }
@@ -29,13 +28,13 @@ public class FindClientControler {
 
     @PostMapping("/clientaccountform")
 
-    public String findClient(@ModelAttribute ClientDto clientDto, Model model) {
+    public String findClient(@ModelAttribute ClientData clientData, Model model) {
 
 //        Optional<ClientAccountInfo> client = clientAccountService.getClientByUUID(findClient.getUuid());
 //        Optional<ClientAccountInfo> clientByName = clientAccountService.getClientByFirstName(findClient.getFirstName());
-        Optional<ClientDto> clientByUserName = clientAccountService.getClientByUserName(clientDto.getUserName());
+        Optional<ClientData> clientByUserName = clientAccountService.getClientByUserName(clientData.getUserName());
         if (clientByUserName.isPresent()) {
-            model.addAttribute("clientDto",  clientByUserName.get());
+            model.addAttribute("clientData", clientByUserName.get());
         } else {
             model.addAttribute("error", "Client not found");
         }
@@ -44,23 +43,41 @@ public class FindClientControler {
         return "brigama/clientaccountform";
     }
 
+    //    @PostMapping("/updateclient")
+//    public String updateClient(@ModelAttribute ClientData clientData, Model model) {
+//        try {
+//                        clientAccountService.updateAllClientData(clientData);
+//                        // Perduodame atnaujintą klientą į šabloną
+//            model.addAttribute("clientData", clientData);
+//            model.addAttribute("success", "Client updated successfully");
+//        } catch (Exception e) {
+//            model.addAttribute("error", "Failed to update client");
+//        }
+//
+//        return "brigama/clientaccountform";
+//    }
     @PostMapping("/updateclient")
-    public String updateClient(@ModelAttribute ClientDto updatedClient, Model model) {
+    public String updateClient(@ModelAttribute ClientData clientData, Model model) {
         try {
-            System.out.println(updatedClient);
-            clientAccountService.updateClient(updatedClient);
-            
-            // Perduodame atnaujintą klientą į šabloną
-            model.addAttribute("clientDto", updatedClient);
+            clientAccountService.updateAllClientData(
+                    clientData.getUserName(),
+                    clientData.getFirstName(),
+                    clientData.getLastName(),
+                    clientData.getMiddleName(),
+                    clientData.getPostAddres(),
+                    clientData.getPhoneNumber(),
+                    clientData.getEmailAddress());
+
+            model.addAttribute("clientData", clientData);
             model.addAttribute("success", "Client updated successfully");
         } catch (Exception e) {
             model.addAttribute("error", "Failed to update client");
         }
 
         return "brigama/clientaccountform";
+
+
     }
-
-
 }
 
 

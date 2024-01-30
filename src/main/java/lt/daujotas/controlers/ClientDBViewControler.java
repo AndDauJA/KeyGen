@@ -1,7 +1,6 @@
 package lt.daujotas.controlers;
 
-import lt.daujotas.Users.dto.ClientDto;
-import lt.daujotas.clients.ClientAccountInfo;
+import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.UUID;
 
 
 @Controller
@@ -29,9 +26,10 @@ public class ClientDBViewControler {
     }
 
     @GetMapping("/dbview")  //sitas turi sutapti su return
-    public String dataBAseViewForm(Model model, @PageableDefault(size = 5, sort = {"firstName"}, direction = Sort.Direction.ASC) Pageable pageable) {
+    public String dataBAseViewForm(Model model, @PageableDefault(size = 5,
+            sort = {"firstName"}, direction = Sort.Direction.ASC) Pageable pageable) {
 
-        final Page<ClientDto> clientAccounts = clientAccountService.getAllClientsPages(pageable);
+        final Page<ClientData> clientAccounts = clientAccountService.getAllClientsPages(pageable);
         model.addAttribute("clientList", clientAccounts);
         return "dbview";   // kelias iki failo
 

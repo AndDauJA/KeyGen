@@ -2,7 +2,7 @@
 //
 //import com.github.javafaker.Faker;
 //
-//import lt.daujotas.Users.dto.ClientDto;
+//import lt.daujotas.Users.dto.ClientData;
 //import lt.daujotas.clients.ClientAccountInfo;
 //import lt.daujotas.clients.ClientLoginInfo;
 //import lt.daujotas.service.ClientAccountService;
@@ -43,7 +43,7 @@
 //            String email = faker.name().username()+"@"+"gmail.com";
 //            String username = faker.name().username();
 //            String password =faker.animal().name();
-//            clientAccountService.saveClientDto(ClientDto.builder()
+//            clientAccountService.saveClientDto(ClientData.builder()
 //                    .userName(username)
 //                    .firstName(firstName)
 //                    .lastName(lastName)

@@ -2,17 +2,14 @@ package lt.daujotas.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import jakarta.validation.constraints.Email;
-import lt.daujotas.Users.dto.ClientDto;
+import lt.daujotas.Users.clientData.ClientData;
 
-import java.lang.annotation.Annotation;
-
-public class PasswordMatchValidator implements ConstraintValidator<RepeatPassword, ClientDto> {
+public class PasswordMatchValidator implements ConstraintValidator<RepeatPassword, ClientData> {
 
 
 
     @Override
-    public boolean isValid(ClientDto clientDto, ConstraintValidatorContext constraintValidatorContext) {
-       return clientDto.getPassword().equals((clientDto.getRepeatPassrowd()));
+    public boolean isValid(ClientData clientData, ConstraintValidatorContext constraintValidatorContext) {
+       return clientData.getPassword().equals((clientData.getRepeatPassrowd()));
     }
 }

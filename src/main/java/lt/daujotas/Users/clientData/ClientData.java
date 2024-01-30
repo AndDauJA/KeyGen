@@ -1,30 +1,27 @@
-package lt.daujotas.Users.dto;
+package lt.daujotas.Users.clientData;
 
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.*;
-import lt.daujotas.clients.ClientAccountInfo;
-import lt.daujotas.clients.ClientLoginInfo;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
 import lt.daujotas.validation.RepeatPassword;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
-@Table(name = "clientaccountDto")
+@Table(name = "clientaccountdata")
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 @RepeatPassword
-public class ClientDto {
+public class ClientData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -68,6 +65,7 @@ public class ClientDto {
     private UUID accountUuid;
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "id")
-    private ClientAccountInfo clientAccountInfo;
+    private ClientData clientData;
+
 
 }

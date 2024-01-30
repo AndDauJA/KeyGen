@@ -3,7 +3,6 @@ package lt.daujotas.clients;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import lt.daujotas.Users.dto.ClientDto;
 
 
 @Table(name = "logintoaccount")

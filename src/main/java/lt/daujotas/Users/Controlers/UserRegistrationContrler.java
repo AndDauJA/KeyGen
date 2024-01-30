@@ -2,8 +2,7 @@ package lt.daujotas.Users.Controlers;
 
 
 import jakarta.validation.Valid;
-import lt.daujotas.Users.dto.ClientDto;
-import lt.daujotas.clients.ClientAccountInfo;
+import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,19 +21,19 @@ public class UserRegistrationContrler {
 
     @GetMapping("/userregistrationform")
     public String showLoginForm(Model model) {
-        model.addAttribute("clientDto", new ClientDto());
+        model.addAttribute("clientData", new ClientData());
         return "brigama/userregistrationform"; // kelias iki failo
     }
 
     @PostMapping("/userregistrationform")
-    public String createLoginClient(Model model, @Valid ClientDto clientDto, BindingResult errors) {
+    public String createLoginClient(Model model, @Valid ClientData clientData, BindingResult errors) {
 
         if(errors.hasErrors()){
 
             return "brigama/userregistrationform";
         }
 
-        clientAccountService.saveClientDto(clientDto);
+        clientAccountService.saveClient(clientData);
 
         return "redirect:/client/clientTestWeb";
 

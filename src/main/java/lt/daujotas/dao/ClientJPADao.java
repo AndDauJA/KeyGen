@@ -1,11 +1,7 @@
 package lt.daujotas.dao;
 
 import jakarta.persistence.EntityManager;
-import lt.daujotas.Users.dto.ClientDto;
-import lt.daujotas.clients.ClientAccountInfo;
-import lt.daujotas.clients.repositories.ClientRepository;
-import lt.daujotas.clients.repositories.FindClientByNameRepository;
-import lt.daujotas.clients.repositories.UserFirstRegistrationRepository;
+import lt.daujotas.Users.clientData.ClientData;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -26,22 +22,22 @@ public class ClientJPADao implements ClientDao {
     @Autowired
     private EntityManager entityManager;
     @Autowired
-    private UserFirstRegistrationRepository userFirstRegistrationRepository;
+    UserFirstRegistrationRepository userFirstRegistrationRepository;
 
 
     @Override
-    public void save(ClientDto clientDto) {
-        clientDto.setAccountUuid(UUID.randomUUID());
-        userFirstRegistrationRepository.save(clientDto);
+    public void save(ClientData clientData) {
+        clientData.setAccountUuid(UUID.randomUUID());
+        userFirstRegistrationRepository.save(clientData);
     }
 
     @Override
-    public void update(ClientDto clientDto) {
-        Optional<ClientDto> savedOptionalUser = getClientByUsername(clientDto.getUserName());
+    public void update(ClientData clientData) {
+        Optional<ClientData> savedOptionalUser = getClientByUsername(clientData.getUserName());
         if (savedOptionalUser.isPresent()) {
 
-            ClientDto savedByUserName = savedOptionalUser.get();
-            savedByUserName.setFirstName(clientDto.getFirstName());
+            ClientData savedByUserName = savedOptionalUser.get();
+            savedByUserName.setFirstName(clientData.getFirstName());
 //             user.setPassword("newPassword");
 
         userFirstRegistrationRepository.save(savedByUserName);
@@ -49,44 +45,40 @@ public class ClientJPADao implements ClientDao {
 }
 
     @Override
-    public List<ClientAccountInfo> getAll() {
+    public List<ClientData> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
+    public Optional<ClientData> getClientByUUID(UUID id) {
         return repository.findByAccountUuid(id);
     }
 
     @Override
-    public Optional<ClientDto> getClientByFirstName(String userName) {
+    public Optional<ClientData> getClientByFirstName(String userName) {
         return userFirstRegistrationRepository.findClientDtoByUserName(userName);
     }
 
     @Override
     public void deleteClientByUUID(UUID id) {
-        Optional<ClientAccountInfo> client = repository.findByAccountUuid(id);
+        Optional<ClientData> client = repository.findByAccountUuid(id);
         client.ifPresent(repository::delete);
 
     }
 
     @Override
     public void deleteByClientUserName(String userName) {
-        Optional<ClientDto> clientDto = userFirstRegistrationRepository.findClientDtoByUserName(userName);
+        Optional<ClientData> clientDto = userFirstRegistrationRepository.findClientDtoByUserName(userName);
         clientDto.ifPresent(userFirstRegistrationRepository::delete);
     }
 
-    //    @Override
-//    public Page<ClientAccountInfo> getPage(Pageable pageable) {
-//        return repository.findAll(pageable);
-//    }
     @Override
-    public Page<ClientDto> getPage(Pageable pageable) {
+    public Page<ClientData> getPage(Pageable pageable) {
         return userFirstRegistrationRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<ClientDto> getClientByUsername(String username) {
+    public Optional<ClientData> getClientByUsername(String username) {
 
         return userFirstRegistrationRepository.findClientDtoByUserName(username);
     }

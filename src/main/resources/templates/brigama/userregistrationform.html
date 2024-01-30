@@ -41,7 +41,7 @@
              th:text="${message}">
             Success message when add product
         </div>
-        <form method="post" th:action="@{/userregistrationform}" th:object="${clientDto}">
+        <form method="post" th:action="@{/userregistrationform}" th:object="${clientData}">
             <label for="user">User Name:</label>
             <input type="text" id="user"
                    name="userName"
