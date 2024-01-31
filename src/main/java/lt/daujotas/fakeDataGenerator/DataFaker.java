@@ -2,11 +2,10 @@
 //
 //import com.github.javafaker.Faker;
 //
-//import lt.daujotas.Users.dto.ClientData;
-//import lt.daujotas.clients.ClientAccountInfo;
-//import lt.daujotas.clients.ClientLoginInfo;
+//import lt.daujotas.Users.clientData.ClientData;
+//
 //import lt.daujotas.service.ClientAccountService;
-//import lt.daujotas.service.ClientLoginService;
+//
 //import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
 //
@@ -43,7 +42,7 @@
 //            String email = faker.name().username()+"@"+"gmail.com";
 //            String username = faker.name().username();
 //            String password =faker.animal().name();
-//            clientAccountService.saveClientDto(ClientData.builder()
+//            clientAccountService.saveClient(ClientData.builder()
 //                    .userName(username)
 //                    .firstName(firstName)
 //                    .lastName(lastName)

@@ -21,18 +21,18 @@ public class LoginToAccControler {
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-        model.addAttribute("clientLoginInfo", new ClientLoginInfo());
+//        model.addAttribute("clientLoginInfo", new ClientLoginInfo());
         return "brigama/login"; // kelias iki failo
     }
 
-//    @PostMapping("/login")
-//    public String createLoginClient(Model model,@Valid ClientLoginInfo clientLoginInfo, BindingResult errors) {
-//        if(errors.hasErrors()){
-//            return "brigama/login";
-//        }
-//        clientLoginService.saveLoginClient(clientLoginInfo);
-//
-//        return "redirect:/client/clientTestWeb";
-//
-//    }
+    @PostMapping("/login")
+    public String createLoginClient(Model model,@Valid ClientLoginInfo clientLoginInfo, BindingResult errors) {
+        if(errors.hasErrors()){
+            return "brigama/login";
+        }
+
+
+        return "redirect:/brigama/clientaccountform";
+
+    }
 }

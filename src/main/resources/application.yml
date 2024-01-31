@@ -8,10 +8,14 @@ spring:
     username: KeyGenAdmin
     password: password
 
-#  sql:
-#    init:
-#      schema-locations: classpath:db/ddl-scripts.sql
-#      data-locations: classpath:db/dml-scripts.sql
+  #  sql:
+  #    init:
+  #      schema-locations: classpath:db/ddl-scripts.sql
+  #      data-locations: classpath:db/dml-scripts.sql
+  security:
+    user:
+      name: admin
+      password: admin123@#$
 
   jpa:
     hibernate:
@@ -33,4 +37,6 @@ spring:
 
   resources:
     cache-period: 0
+
+
 
