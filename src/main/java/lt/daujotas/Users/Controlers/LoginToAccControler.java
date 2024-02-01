@@ -16,23 +16,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginToAccControler {
 
-    @Autowired
-    private ClientLoginService clientLoginService;
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
 //        model.addAttribute("clientLoginInfo", new ClientLoginInfo());
         return "brigama/login"; // kelias iki failo
     }
-
-    @PostMapping("/login")
-    public String createLoginClient(Model model,@Valid ClientLoginInfo clientLoginInfo, BindingResult errors) {
-        if(errors.hasErrors()){
-            return "brigama/login";
-        }
-
-
-        return "redirect:/brigama/clientaccountform";
-
-    }
+//
+//    @PostMapping("/login")
+//    public String createLoginClient(Model model,@Valid ClientLoginInfo clientLoginInfo, BindingResult errors) {
+//        if(errors.hasErrors()){
+//            return "brigama/login";
+//        }
+//
+//
+//        return "redirect:/brigama/clientaccountform";
+//
+//    }
 }

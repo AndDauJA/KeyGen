@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Logind to User account</title>
-    <link rel="stylesheet" href="login_stile.css">
+    <link rel="stylesheet" th:href="@{css/login_stile.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
 <body>
 <div class="body-background">
-    <form method="post" th:action="@{/login}" th:object="${clientLoginInfo}">
+    <form method="post" >
         <div>
             <div class="imgcontainer">
                 <img id="body-img-logo" src="/images/3786012.jpg" alt="">
@@ -21,17 +21,17 @@
         </div>
         <div class="container">
             <label><b>Username</b></label>
-            <input type="username" name="username" placeholder="Enter Username" >
-<!--            <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span><br>-->
+            <input type="text" name="username" placeholder="Enter Username"  >
+            <span style="color: #f44336" class="form-error" ></span><br>
 
             <label><b>Password*</b></label>
-            <input type="password" name="password" placeholder="Enter Password " pattern=
+            <input type="password" name="password" placeholder="Enter Password "  pattern=
                     "^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$"
                    title="Password must contain at least one number,
                        one alphabet, one symbol, and be at
                        least 8 characters long">
             <b class="psw-lable-scndpart">(*min 8 simboliai,bent 1-raidė,1-skaičius,1-spec.symbolis)</b><br>
-<!--            <span style="color: #f44336"   class="form-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>-->
+            <span style="color: #f44336"   class="form-error" ></span>
 
             <button type="submit">Login</button>
             <label>
