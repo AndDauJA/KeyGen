@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Controller
 
-public class FindClientControler {
+public class ClientAccountControler {
     @Autowired
     ClientAccountService clientAccountService;
 

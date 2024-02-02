@@ -2,6 +2,7 @@ package lt.daujotas.Users.Controlers;
 
 
 import jakarta.validation.Valid;
+import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.clients.ClientLoginInfo;
 
 
@@ -24,13 +25,14 @@ public class LoginToAccControler {
     }
 //
 //    @PostMapping("/login")
-//    public String createLoginClient(Model model,@Valid ClientLoginInfo clientLoginInfo, BindingResult errors) {
+//    public String createLoginClient(Model model, @Valid ClientData clientData, BindingResult errors) {
+//        model.addAttribute("clientData", clientData);
 //        if(errors.hasErrors()){
 //            return "brigama/login";
 //        }
 //
 //
-//        return "redirect:/brigama/clientaccountform";
+//        return "redirect:brigama/clientaccountform";
 //
 //    }
 }

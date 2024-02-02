@@ -13,34 +13,34 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers ("/login/**",
-                                "/",
-                                "/client/**",
-                                "/cart/**",
-                                "/user/**",
-                                "clientaccountform/**",
-                                "/static/**",
-                                "/js/**"
-                                )
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated()
-                )
-                .formLogin(loginConfig -> loginConfig
-                        .permitAll()
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/clientaccountform", true)
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                )
-//                .logout(LogoutConfigurer::permitAll)
-                .build();
-    }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http
+//                .authorizeHttpRequests(authorize -> authorize
+//                        .requestMatchers ("/login/**",
+//                                "/",
+//                                "/client/**",
+//                                "/cart/**",
+//                                "/user/**",
+//                                "clientaccountform/**",
+//                                "/static/**",
+//                                "/js/**"
+//                                )
+//                        .permitAll()
+//                        .anyRequest()
+//                        .authenticated()
+//                )
+//                .formLogin(loginConfig -> loginConfig
+//                        .permitAll()
+//                        .loginPage("/login")
+//                        .loginProcessingUrl("/login")
+//                        .defaultSuccessUrl("/clientaccountform", true)
+//                        .usernameParameter("username")
+//                        .passwordParameter("password")
+//                )
+////                .logout(LogoutConfigurer::permitAll)
+//                .build();
+//    }
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()

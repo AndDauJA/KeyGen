@@ -1,11 +1,14 @@
 spring:
   main:
     banner-mode: console
+
+
 #cia tuo atveju jei turim H2 DB ir SecurityConfig class
 #  h2:
 #    console:
 #      path: eshop_h2
 #      enabled: true
+
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,9 +21,11 @@ spring:
   #      schema-locations: classpath:db/ddl-scripts.sql
   #      data-locations: classpath:db/dml-scripts.sql
   security:
+
     user:
       name: admin
       password: admin123@#$
+
 
   jpa:
     hibernate:
@@ -41,7 +46,19 @@ spring:
     cache: false
 
   resources:
-    cache-period: 0
+   cache-period: 0
 
 
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+logging:
+  level:
+    lt:
+      daujotas:
+        Keygenerator:
+          config: DEBUG
+          product: INFO
 
