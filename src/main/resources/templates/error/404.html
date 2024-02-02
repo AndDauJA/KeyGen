@@ -12,9 +12,9 @@
 
 <body>
 <div class="container"></div>
-<h1 th:text="'Page not found'+${path}" > Error! Key Generator rised error! 404.html</h1>
+<h1 th:text="'Page not found'+${path}+ ', my custom attribute: '+${myCustomAttribute}" ></h1>
 <h2 th:text="${timestamp}"></h2>
-<img class="img-fluid" th:src="@{/images/errors/404errorpage.png} ">
+<img class="width: 100%" th:src="@{/images/errors/404errorpage.png} ">
 
 </body>
 
