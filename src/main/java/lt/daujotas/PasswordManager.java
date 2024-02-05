@@ -44,13 +44,15 @@ public class PasswordManager implements ActionListener {
     //container settings
     public static void ContainerGUI(Container conn) {
         conn.setVisible(true);
-        conn.setBackground(Color.getHSBColor(20.4f, 10.5f, 12.9f));
+//        conn.setBackground(Color.getHSBColor(20.4f, 10.5f, 12.9f));
+        conn.setBackground(new Color(0xCCE572));
         conn.setLayout(null);
     }
 
 
     // buttons settings
     public void GUIButtonsSetting(JButton btn) {
+
         btn.setBackground(new Color(0XFB2576));
         btn.setForeground(Color.WHITE);
         btn.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
@@ -117,11 +119,32 @@ public class PasswordManager implements ActionListener {
     }
 
     //GUI of Password Manager
-    PasswordManager(int length) {
+    PasswordManager(int length)  {
 
         frame = new JFrame("Password Manager");
-        conn1 = frame.getContentPane();
+        Container conn1 = frame.getContentPane();
+        conn1.setLayout(new BorderLayout());
 
+        // Set the logo image
+        ImageIcon logoIcon = new ImageIcon("path/to/your/logo.jpg");
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setBounds(10, 10, logoIcon.getIconWidth(), logoIcon.getIconHeight());
+        conn1.add(logoLabel);
+
+        // Set the form title
+        JLabel titleLabel = new JLabel("Your Form Title");
+        titleLabel.setBounds(80, 10, 300, 30);
+        titleLabel.setFont(new Font("MV Boli", Font.BOLD, 20));
+        conn1.add(titleLabel);
+
+        // Create JPanel for logo and title
+        JPanel logoTitlePanel = new JPanel();
+        logoTitlePanel.setLayout(null);
+        logoTitlePanel.setBounds(0, 0, 400, 50);
+        logoTitlePanel.add(logoLabel);
+        logoTitlePanel.add(titleLabel);
+
+        conn1.add(logoTitlePanel);
         String cBox1Name = "123..+aBc..";
         JCheckBox checkBox1 = new JCheckBox(cBox1Name);
         checkBox1.setBackground(new Color(0XFF8787));
@@ -129,8 +152,7 @@ public class PasswordManager implements ActionListener {
         checkBox1.addActionListener(this);
         conn1.add(checkBox1);
 
-        String cBox2Name = "Special keys (@$@..)";
-        // Pridedame antrą žymimą langą (checkbox)
+        String cBox2Name = "Special keys (#$@..)";
         JCheckBox checkBox2 = new JCheckBox(cBox2Name);
         checkBox2.setBackground(new Color(0XFF8787));
         checkBox2.setBounds(90, 150, 150, 30);
@@ -138,7 +160,6 @@ public class PasswordManager implements ActionListener {
         conn1.add(checkBox2);
 
         String cBox3Name = "Loremips";
-        // Pridedame antrą žymimą langą (checkbox)
         JCheckBox checkBox3 = new JCheckBox(cBox3Name);
         checkBox3.setBackground(new Color(0XFF8787));
         checkBox3.setBounds(90, 200, 150, 30);
@@ -147,7 +168,7 @@ public class PasswordManager implements ActionListener {
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 650);
+        frame.setSize(400, 400);
         frame.setResizable(false);
 
         ImageIcon img = new ImageIcon("background.png");
@@ -185,31 +206,31 @@ public class PasswordManager implements ActionListener {
                         if ((checkBox1Selected && checkBox2Selected && checkBox3Selected) ||
                                 (!checkBox1Selected && !checkBox2Selected && !checkBox3Selected) ||
                                 ((checkBox1Selected || checkBox2Selected) && checkBox3Selected)) {
-                            JOptionPane.showMessageDialog(conn1, "Please select one or two checkboxes, and 3 can only be selected alone", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(conn2, "Please select one or two checkboxes, and 3 can only be selected alone", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
                         } else {
                             StringBuilder result = new StringBuilder();
 
                             if (checkBox1Selected) {
-                                result.append( passwd);
+                                result.append(passwd);
                             }
                             if (checkBox2Selected) {
                                 result.append(passwordWithSpecKeys);
                             }
                             if (checkBox3Selected) {
-                                result.append( passwdLoremips);
+                                result.append(passwdLoremips);
                             }
 
                             genePassArea = new JTextArea(5, 4);
                             textArea(result.toString(), genePassArea);
-                            JOptionPane.showMessageDialog(conn1, new JScrollPane(genePassArea), "Copy your password", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(conn2, new JScrollPane(genePassArea), "Copy your password", JOptionPane.INFORMATION_MESSAGE);
                         }
 
                     } else {
-                        JOptionPane.showMessageDialog(conn1, "Password length must be at least 8!", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(conn2, "Password length must be at least 8!", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
                     }
 
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(conn1, "Write something", "EXIT!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(conn2, "Write something", "EXIT!", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
