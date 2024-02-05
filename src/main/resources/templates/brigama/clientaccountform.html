@@ -21,7 +21,10 @@
         document.getElementById("formId").submit();
     }
 </script>
-
+<!--<div class="alert alert-success" role="alert"-->
+<!--     th:if="${successMessageFlashAttr ne null}" th:text="${successMessageFlashAttr}">-->
+<!--    A simple success alert—check it out!-->
+<!--</div>-->
 <div class="body-background">
 
     <div class="header-main-container">
@@ -75,8 +78,8 @@
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
                             <form id="formId" method="post" th:if="${clientData}" th:action="@{clientaccountform}"
-
                                   th:object="${clientData}">
+
                                 <!-- Form Group (username)-->
                                 <label>Find me by UserName</label>
                                 <label>
@@ -89,7 +92,7 @@
 
                                     <input class="form-control" id="Uuid" type="hidden"
                                            placeholder="uuid"
-                                           th:field="*{accountUuid}" th:value="${clientData.accountUuid}" >
+                                           th:field="*{accountUuid}" th:value="${clientData.accountUuid}">
                                 </div>
                                 <div class="">
                                     <label class="small" for="inputUsername">Username (how your name will
@@ -166,7 +169,8 @@
                                     </div>
 
                                     <div th:if="${error}">
-                                        <p th:text="${error}" th:style="'color: #f44336; font-size: 25px; font-weight: bold;'"></p>
+                                        <p th:text="${error}"
+                                           th:style="'color: #f44336; font-size: 25px; font-weight: bold;'"></p>
                                     </div>
                                 </div>
                                 <!-- Save changes button-->

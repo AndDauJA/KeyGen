@@ -56,11 +56,12 @@ public class ApplicationConfig implements WebMvcConfigurer {
     }
 
     @Override
-    public void addViewControllers(ViewControllerRegistry registry){
+    public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("/brigama/login");
     }
+
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry){
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("dbview/**")
                 .addResourceLocations("classpath;/static/dbview/");
     }

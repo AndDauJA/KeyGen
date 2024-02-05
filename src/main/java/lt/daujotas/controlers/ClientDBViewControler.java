@@ -26,7 +26,7 @@ public class ClientDBViewControler {
     }
 
     @GetMapping("/dbview")  //sitas turi sutapti su return
-    public String dataBAseViewForm(Model model, @PageableDefault(size = 5,
+    public String dataBAseViewForm(Model model, @PageableDefault(size = 25,
             sort = {"firstName"}, direction = Sort.Direction.ASC) Pageable pageable) {
 
         final Page<ClientData> clientAccounts = clientAccountService.getAllClientsPages(pageable);

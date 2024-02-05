@@ -9,6 +9,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -50,6 +56,21 @@ public class SecurityConfig {
                         PathRequest.toStaticResources().atCommonLocations()
                 );
     }
+
+    @Bean
+    public UserDetailsService inMemoryUserDetailsService() {
+        final UserDetails adminUser = User.builder()
+                .username("admin")
+                .password("{noop}admin!@#123")      // PasswordencodingFactories =>look for encoding
+                .roles("ADMN", "USER")
+                .build();
+        final UserDetails userUser= User.builder()
+                .username("user")
+                .password("{noop}user!@#123")
+                .roles("USER").build();
+return new InMemoryUserDetailsManager(adminUser, userUser)    ;
+    }
+
 }
 
 

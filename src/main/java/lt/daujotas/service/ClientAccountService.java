@@ -1,10 +1,13 @@
 package lt.daujotas.service;
 
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.clients.mappers.ClientMapper;
 import lt.daujotas.dao.ClientDao;
 import lt.daujotas.dto.ClientDto;
+import lt.daujotas.exception.ClientNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,17 +18,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class ClientAccountService {
 
     private final ClientDao clientDao;
     private final ClientMapper clientMapper;
-    @Autowired
-    public ClientAccountService(ClientDao clientDao, ClientMapper clientMapper) {
-        this.clientDao = clientDao;
-        this.clientMapper = clientMapper;
-    }
-
-
 
 
     public void saveClient(ClientData clientData) {
@@ -62,8 +59,10 @@ public void updateAllClientData(String userName, String firstName, String lastNa
     }
 }
 
-    public Optional<ClientData> getClientByUserName(String userName) {
+    public Optional<ClientData> getClientByUserName(String userName)
+    {
         return clientDao.getClientByUsername(userName);
+
     }
 
 
@@ -71,13 +70,16 @@ public void updateAllClientData(String userName, String firstName, String lastNa
         return clientDao.getAll();
     }
 
-    public Optional<ClientData> getClientByUUID(UUID id) {
-        return clientDao.getClientByUUID(id);
-    }
+//    public ClientDto getClientByUUID(UUID clientUUID) {
+//        return clientDao.getClientByUUID(clientUUID)
+//                .map(clientData -> clientMapper.toDto(clientData))
+//                .orElseThrow(()-> new ClientNotFoundException(clientUUID));
+//    }
     public void deleteClientByUserName(String userName){
         clientDao.deleteByClientUserName(userName);
     }
 
+    @Transactional
     public void deleteClientByUUID(UUID id) {
         clientDao.deleteClientByUUID(id);
     }

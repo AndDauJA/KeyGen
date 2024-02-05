@@ -20,12 +20,12 @@ spring:
   #    init:
   #      schema-locations: classpath:db/ddl-scripts.sql
   #      data-locations: classpath:db/dml-scripts.sql
-  security:
-
-    user:
-      name: admin
-      password: admin123@#$
-
+#  security:
+#
+#    user:
+#      name: admin
+#      password: admin123@#$
+# naudosime security is failo
 
   jpa:
     hibernate:
@@ -52,7 +52,7 @@ spring:
 server:
   error:
     whitelabel:
-      enabled: false
+      enabled: true
 
 logging:
   level:

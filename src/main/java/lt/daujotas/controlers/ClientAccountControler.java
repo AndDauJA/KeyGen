@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 
@@ -21,7 +23,6 @@ public class ClientAccountControler {
     @GetMapping("/clientaccountform")
     public String showFindClientForm(Model model) {
         model.addAttribute("clientData", new ClientData());
-//        model.addAttribute("clientList", clientAccountService.getAllClients());
         return "brigama/clientaccountform";
     }
 
@@ -33,13 +34,16 @@ public class ClientAccountControler {
 //        Optional<ClientAccountInfo> client = clientAccountService.getClientByUUID(findClient.getUuid());
 //        Optional<ClientAccountInfo> clientByName = clientAccountService.getClientByFirstName(findClient.getFirstName());
         Optional<ClientData> clientByUserName = clientAccountService.getClientByUserName(clientData.getUserName());
+
+
         if (clientByUserName.isPresent()) {
-            model.addAttribute("clientData", clientByUserName.get());
+            ClientData foundClient=clientByUserName.get();
+            model.addAttribute("clientData", foundClient);
         } else {
             model.addAttribute("error", "Client not found");
         }
 
-//        model.addAttribute("clientList", clientAccountService.getAllClients());
+
         return "brigama/clientaccountform";
     }
 
