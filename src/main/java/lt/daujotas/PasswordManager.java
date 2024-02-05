@@ -120,18 +120,30 @@ public class PasswordManager implements ActionListener {
     PasswordManager(int length) {
 
         frame = new JFrame("Password Manager");
-
         conn1 = frame.getContentPane();
-        JCheckBox checkBox1 = new JCheckBox("Option 1");
+
+        String cBox1Name = "123..+aBc..";
+        JCheckBox checkBox1 = new JCheckBox(cBox1Name);
         checkBox1.setBackground(new Color(0XFF8787));
-        checkBox1.setBounds(90, 450, 150, 30);
+        checkBox1.setBounds(90, 100, 150, 30);
+        checkBox1.addActionListener(this);
         conn1.add(checkBox1);
 
+        String cBox2Name = "Special keys (@$@..)";
         // Pridedame antrą žymimą langą (checkbox)
-        JCheckBox checkBox2 = new JCheckBox("Option 2");
+        JCheckBox checkBox2 = new JCheckBox(cBox2Name);
         checkBox2.setBackground(new Color(0XFF8787));
-        checkBox2.setBounds(250, 450, 150, 30);
+        checkBox2.setBounds(90, 150, 150, 30);
+        checkBox2.addActionListener(this);
         conn1.add(checkBox2);
+
+        String cBox3Name = "Loremips";
+        // Pridedame antrą žymimą langą (checkbox)
+        JCheckBox checkBox3 = new JCheckBox(cBox3Name);
+        checkBox3.setBackground(new Color(0XFF8787));
+        checkBox3.setBounds(90, 200, 150, 30);
+        checkBox3.addActionListener(this);
+        conn1.add(checkBox3);
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,27 +169,78 @@ public class PasswordManager implements ActionListener {
 
         //generating password
         PassGeneBtn.addActionListener(e -> {
-                    if (PassGeneBtn == e.getSource()) {
-                        try {
-                            int len = Integer.parseInt(JOptionPane.showInputDialog("Enter the password length"));
-                            if (len >= 8) {
-                                //  password generator class reference
+            if (PassGeneBtn == e.getSource()) {
+                try {
+                    int len = Integer.parseInt(JOptionPane.showInputDialog("Enter the password length"));
+                    if (len >= 8) {
 
+                        String passwordWithSpecKeys = KeyGen.generatespecKey(len);
+                        String passwd = KeyGen.generateNoKey(len);  // Jūsų passwd generavimas
+                        String passwdLoremips = KeyGen.generateLoremIps(len);
 
-                                String passwd = KeyGen.generateNoKey(len);
-                                genePassArea = new JTextArea(5, 4);
-                                textArea(passwd, genePassArea);
-                                JOptionPane.showMessageDialog(conn1, new JScrollPane(genePassArea), "Copy your password", JOptionPane.INFORMATION_MESSAGE);
+                        boolean checkBox1Selected = checkBox1.isSelected();
+                        boolean checkBox2Selected = checkBox2.isSelected();
+                        boolean checkBox3Selected = checkBox3.isSelected();
 
-                            } else
-                                JOptionPane.showMessageDialog(conn1, "Password length must be at least 8!", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
+                        if ((checkBox1Selected && checkBox2Selected && checkBox3Selected) ||
+                                (!checkBox1Selected && !checkBox2Selected && !checkBox3Selected) ||
+                                ((checkBox1Selected || checkBox2Selected) && checkBox3Selected)) {
+                            JOptionPane.showMessageDialog(conn1, "Please select one or two checkboxes, and 3 can only be selected alone", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            StringBuilder result = new StringBuilder();
 
-                        } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(conn1, "Write something", "EXIT!", JOptionPane.ERROR_MESSAGE);
+                            if (checkBox1Selected) {
+                                result.append( passwd);
+                            }
+                            if (checkBox2Selected) {
+                                result.append(passwordWithSpecKeys);
+                            }
+                            if (checkBox3Selected) {
+                                result.append( passwdLoremips);
+                            }
+
+                            genePassArea = new JTextArea(5, 4);
+                            textArea(result.toString(), genePassArea);
+                            JOptionPane.showMessageDialog(conn1, new JScrollPane(genePassArea), "Copy your password", JOptionPane.INFORMATION_MESSAGE);
                         }
+
+                    } else {
+                        JOptionPane.showMessageDialog(conn1, "Password length must be at least 8!", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
                     }
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(conn1, "Write something", "EXIT!", JOptionPane.ERROR_MESSAGE);
                 }
-        );
+            }
+        });
+
+
+        // Old paswrod form
+//        PassGeneBtn.addActionListener(e -> {
+//                    if (PassGeneBtn == e.getSource()) {
+//                        try {
+//                            int len = Integer.parseInt(JOptionPane.showInputDialog("Enter the password length"));
+//                            if (len >= 8) {
+//                                //  password generator class reference
+//
+//                                String passwordWithSpecKeys = KeyGen.generatespecKey(len);
+//                                String passwd = KeyGen.generateNoKey(len);   // KeyGenerator app
+//
+//
+//                                genePassArea = new JTextArea(5, 4);
+//                                textArea(passwd, genePassArea);
+//                                JOptionPane.showMessageDialog(conn1, new JScrollPane(genePassArea), "Copy your password", JOptionPane.INFORMATION_MESSAGE);
+//
+//                            } else
+//                                JOptionPane.showMessageDialog(conn1, "Password length must be at least 8!", "Invalid Input Error", JOptionPane.WARNING_MESSAGE);
+//
+//                        } catch (Exception ex) {
+//                            JOptionPane.showMessageDialog(conn1, "Write something", "EXIT!", JOptionPane.ERROR_MESSAGE);
+//                        }
+//                    }
+//                }
+
+//        );
 
 
         // add a encryption button and action

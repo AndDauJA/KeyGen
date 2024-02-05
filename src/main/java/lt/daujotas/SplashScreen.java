@@ -32,7 +32,7 @@ public class SplashScreen {
     }
 
     public void addImage() {
-        image.setSize(400, 200); // to set the size of the image
+        image.setSize(200, 200); // to set the size of the image
         frame.add(image);
 
     }

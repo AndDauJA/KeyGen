@@ -10,7 +10,7 @@ public class GenerateChars {
         return getCharToString(noOfRandChars);
     }
     private static String getCharToString(int minLength) {
-        String possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~abcdefghijklmnopqrstuvwxyz";
+        String possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         int minLetters = noOfRandChars;
         int minNumbers = noOfRandChars;
         int numLetters = Math.max(random.nextInt(minLength - minNumbers+1), minLetters);

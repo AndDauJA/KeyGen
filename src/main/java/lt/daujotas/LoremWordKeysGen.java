@@ -2,26 +2,29 @@ package lt.daujotas;
 
 import com.github.javafaker.Faker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LoremWordKeysGen {
 
 
-//     String name = faker.name().fullName(); // Miss Samanta Schmidt
-//    String firstName = faker.name().firstName(); // Emory
-//    String lastName = faker.name().lastName(); // Barton
-//    String streetAddress = faker.address().streetAddress();
 
-    public void keyWordGen(int fakeWordNumber) {
-        Faker faker = new Faker();
-        int lenghOFWordMin = 4;
-        for (int i = 0; i < fakeWordNumber; i++) {
-            String loremips;
-            do {
-                loremips = faker.lorem().word();
-            } while (countLetters(loremips) < lenghOFWordMin);
+public List<String> keyWordGen(int fakeWordNumber) {
+    Faker faker = new Faker();
+    int lenghOFWordMin = 4;
+    List<String> generatedWords = new ArrayList<>();
 
-            System.out.print(loremips + " ");
-        }
+    for (int i = 0; i < fakeWordNumber; i++) {
+        String loremips;
+        do {
+            loremips = faker.lorem().word();
+        } while (countLetters(loremips) < lenghOFWordMin);
+
+        generatedWords.add(loremips);
     }
+
+    return generatedWords;
+}
 
     private int countLetters(String word) {
         int letterCount = 0;
