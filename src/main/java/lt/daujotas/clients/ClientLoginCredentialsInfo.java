@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 @Builder
 @AllArgsConstructor
-public class UsedLoginCredentialsInfo {
+public class ClientLoginCredentialsInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

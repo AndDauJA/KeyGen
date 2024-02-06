@@ -28,7 +28,7 @@ import javax.sql.DataSource;
 @Profile("!unsecure")
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final DataSource dataSource;
+
     private final UserDetailsService userDetailsService;
 
     @Bean
@@ -38,9 +38,7 @@ public class SecurityConfig {
                         .requestMatchers("/",
                                 "/client/**",
                                 "/cart/**",
-                                "/user/**",
-                                "/clientaccountform/**",
-                                "/userregistrationform/**"
+                                "/user/**"
 
                         )
                         .permitAll()

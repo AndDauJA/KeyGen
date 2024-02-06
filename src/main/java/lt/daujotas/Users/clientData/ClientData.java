@@ -7,21 +7,26 @@ import lombok.*;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
 import lt.daujotas.validation.RepeatPassword;
-import org.springframework.stereotype.Repository;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 
 import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
 @Table(name = "clientaccountdata")
 @Builder
-@Getter
+
 @Setter
 @NoArgsConstructor
 @ToString
-@RepeatPassword
-public class ClientData {
+//@RepeatPassword
+public class ClientData implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -67,5 +72,90 @@ public class ClientData {
     @JoinColumn(name = "id", referencedColumnName = "id")
     private ClientData clientData;
 
+    public Long getId() {
+        return id;
+    }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPostAddres() {
+        return postAddres;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getRepeatPassrowd() {
+        return repeatPassrowd;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public Date getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public UUID getAccountUuid() {
+        return accountUuid;
+    }
+
+    public ClientData getClientData() {
+        return clientData;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("Admin"));
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

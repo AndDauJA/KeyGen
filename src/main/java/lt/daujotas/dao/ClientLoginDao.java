@@ -1,9 +1,9 @@
-package lt.daujotas.dao;
-
-import lt.daujotas.clients.ClientLoginInfo;
-
-
-public interface ClientLoginDao  {
-
-
-}
+//package lt.daujotas.dao;
+//
+//
+//
+//
+//public interface ClientLoginDao  {
+//
+//
+//}
