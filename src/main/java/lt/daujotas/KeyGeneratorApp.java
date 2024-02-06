@@ -9,7 +9,7 @@ import java.io.IOException;
 @SpringBootApplication
 public class KeyGeneratorApp {
     public static void main(String[] args) throws IOException {
-//        SpringApplication.run(KeyGeneratorApp.class, args);
+        SpringApplication.run(KeyGeneratorApp.class, args);
 //        System.out.println("data from NativeQuery -> SQL");
 //        nativeQueryExample();
 //        System.out.println("data from Query -> HQL");
@@ -24,12 +24,12 @@ public class KeyGeneratorApp {
 //        GenerateSpecialKey.noOfRandSpecChars = 1;                 // 1 - => 1 specraide ir simboli +1 skaicius arba spec simboli, etc
 //////
 //        KeyGen.generateNoKey(5);
-        new SplashScreen();
-        try {
-            new PasswordManager(8);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+//        new SplashScreen();
+//        try {
+//            new PasswordManager(8);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 //        GenKeySaveToFile.fileOutGoing(2);
 //      PasswEntrophyCalc.centrohyCalculator();
 //        System.out.println(generatePassword(8));

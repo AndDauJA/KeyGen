@@ -17,8 +17,12 @@ import java.util.UUID;
 @Controller
 
 public class ClientAccountControler {
-    @Autowired
+
     ClientAccountService clientAccountService;
+    @Autowired
+    public ClientAccountControler(ClientAccountService clientAccountService) {
+        this.clientAccountService = clientAccountService;
+    }
 
     @GetMapping("/clientaccountform")
     public String showFindClientForm(Model model) {

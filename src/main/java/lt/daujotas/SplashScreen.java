@@ -58,7 +58,7 @@ public class SplashScreen {
         int i = 0;//Creating an integer variable and initializing it to 0
         while (i <= 100) {
             try {
-                Thread.sleep(40);   //Pausing execution for 50 milliseconds
+                Thread.sleep(20);   //Pausing execution for 50 milliseconds
                 progressBar.setValue(i);    //Setting value of Progress Bar
                 i++;
                 if (i == 100)

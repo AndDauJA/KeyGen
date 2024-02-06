@@ -55,8 +55,8 @@ public class ClientJPADao implements ClientDao {
     }
 
     @Override
-    public Optional<ClientData> getClientByFirstName(String userName) {
-        return userFirstRegistrationRepository.findClientDtoByUserName(userName);
+    public Optional<ClientData> getClientByFirstName(String firsName) {
+        return findClientByNameRepository.findByFirstName(firsName);
     }
 
     @Override

@@ -143,8 +143,8 @@ public class PasswordManager implements ActionListener {
         logoTitlePanel.setBounds(0, 0, 400, 50);
         logoTitlePanel.add(logoLabel);
         logoTitlePanel.add(titleLabel);
-
         conn1.add(logoTitlePanel);
+
         String cBox1Name = "123..+aBc..";
         JCheckBox checkBox1 = new JCheckBox(cBox1Name);
         checkBox1.setBackground(new Color(0XFF8787));
