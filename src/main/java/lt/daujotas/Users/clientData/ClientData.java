@@ -63,7 +63,7 @@ public class ClientData implements UserDetails {
     private UUID accountUuid;
 
     @Column(nullable = false)
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Autohority> authorities;
 
     @Override

@@ -13,7 +13,7 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler
     public String productNotFound(ClientNotFoundException e, Model model) {
         model.addAttribute("productUUID", e.getClientUUID());
-        return "error/clienttNotFound";
+        return "/error";
     }
 
     @ExceptionHandler
