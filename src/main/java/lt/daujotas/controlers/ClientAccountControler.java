@@ -84,6 +84,7 @@ public class ClientAccountControler {
 
         return "brigama/clientaccountform";
 
+//TODO papildyti update client password metodu
 
     }
 }

@@ -4,6 +4,7 @@ package lt.daujotas.Users.Controlers;
 import jakarta.validation.Valid;
 import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.service.ClientAccountService;
+import lt.daujotas.service.UsersRegistrationSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ public class UserRegistrationControler {
 
     @Autowired
     private ClientAccountService clientAccountService;
+    @Autowired
+    private UsersRegistrationSerivce usersRegistrationSerivce;
 
     @GetMapping("/userregistrationform")
     public String showLoginForm(Model model) {
@@ -28,12 +31,12 @@ public class UserRegistrationControler {
     @PostMapping("/userregistrationform")
     public String createLoginClient(Model model, @Valid ClientData clientData, BindingResult errors) {
 
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
 
             return "brigama/userregistrationform";
         }
-
-        clientAccountService.saveClient(clientData);
+        usersRegistrationSerivce.register(clientData);
+//        clientAccountService.saveClient(clientData);
 
         return "redirect:/client/clientTestWeb";
 

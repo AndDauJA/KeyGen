@@ -25,18 +25,11 @@ public class ClientAccountService {
     private final ClientMapper clientMapper;
 
 
-    public void saveClient(ClientData clientData) {
-
-        clientDao.save(clientData);
-    }
-
-//    public void updateClient(ClientData clientData) {
+//    public void saveClient(ClientData clientData) {
 //
-//        ClientData clientData1 = clientDao.getClientByUsername(clientData.getUserName()).get();
-//        clientData1.setFirstName(clientData.getFirstName());
-//        clientData1.setLastName();
-//        clientDao.update(clientData1);
+//        clientDao.save(clientData);
 //    }
+
 public void updateAllClientData(String userName, String firstName, String lastName, String middleName,
                          String postAddress, String phoneNumber, String emailAddress) {
     Optional<ClientData> optionalClientData = clientDao.getClientByUsername(userName);
@@ -64,7 +57,6 @@ public void updateAllClientData(String userName, String firstName, String lastNa
         return clientDao.getClientByUsername(userName);
 
     }
-
 
     public List<ClientData> getAllClients() {
         return clientDao.getAll();
