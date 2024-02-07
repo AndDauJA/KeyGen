@@ -6,14 +6,13 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
+import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
 import java.sql.Date;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -69,8 +68,10 @@ public class ClientData implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+     Hibernate.initialize(authorities);
         return authorities;
     }
+
 
     public Long getId() {
         return id;
