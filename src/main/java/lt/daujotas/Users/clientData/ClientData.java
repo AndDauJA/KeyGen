@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
-import lt.daujotas.validation.RepeatPassword;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,23 +14,23 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
 @Table(name = "clientaccountdata")
 @Builder
-
 @Setter
 @NoArgsConstructor
 @ToString
-//@RepeatPassword
+
 public class ClientData implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty (message = "{NotEmpty.Name.message.userName}")
+    @NotEmpty(message = "{NotEmpty.Name.message.userName}")
     @Column(name = "username")
     private String userName;
     @NotEmpty(message = "{NotEmpty.Name.message.Name}")
@@ -40,27 +39,22 @@ public class ClientData implements UserDetails {
 
     @Column(name = "middlename")
     private String middleName;
-    @NotEmpty (message = "{NotEmpty.Name.message.lastName}")
+    @NotEmpty(message = "{NotEmpty.Name.message.lastName}")
     @Column(name = "lastname")
     private String lastName;
-    @NotEmpty (message = "{NotEmpty.Name.message.postAddress}")
+    @NotEmpty(message = "{NotEmpty.Name.message.postAddress}")
     @Column(name = "postaddress")
     private String postAddres;
-    @NotEmpty (message = "{NotEmpty.Name.message.phone}")
+    @NotEmpty(message = "{NotEmpty.Name.message.phone}")
     @Column(name = "phonenumber")
     @PhoneNumber(numberType = PhoneNumberType.GLOBAL)
     private String phoneNumber;
     @NotEmpty
     @NotEmpty(message = "{NotEmpty.Name.message.password}")
     private String password;
-
-    @Column(name = "repeatpassword")
-    private String repeatPassrowd;
-
     @NotEmpty(message = "{NotEmpty.Name.message.email}")
     @Column(name = "emailaddress")
     private String emailAddress;
-
     @Column(name = "dateofbirth")
     @Temporal(TemporalType.DATE)
     private Date dateofbirth;
@@ -68,9 +62,15 @@ public class ClientData implements UserDetails {
 
     @Column(columnDefinition = "BINARY(16)", name = "uuid")
     private UUID accountUuid;
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private ClientData clientData;
+
+    @Column(nullable = false)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private Set<Autohority> authorities;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
 
     public Long getId() {
         return id;
@@ -100,9 +100,7 @@ public class ClientData implements UserDetails {
         return phoneNumber;
     }
 
-    public String getRepeatPassrowd() {
-        return repeatPassrowd;
-    }
+
 
     public String getEmailAddress() {
         return emailAddress;
@@ -120,14 +118,6 @@ public class ClientData implements UserDetails {
         return accountUuid;
     }
 
-    public ClientData getClientData() {
-        return clientData;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("Admin"));
-    }
 
     @Override
     public String getPassword() {

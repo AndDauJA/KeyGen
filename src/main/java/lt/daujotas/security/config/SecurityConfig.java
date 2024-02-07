@@ -38,7 +38,9 @@ public class SecurityConfig {
                         .requestMatchers("/",
                                 "/client/**",
                                 "/cart/**",
-                                "/user/**"
+                                "/user/**",
+                                "error/**",
+                                "/userregistrationform/"
 
                         )
                         .permitAll()

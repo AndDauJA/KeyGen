@@ -6,6 +6,7 @@ import lombok.*;
 import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
+import lt.daujotas.validation.RepeatPassword;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @ToString
 @Builder
 @AllArgsConstructor
-
+@RepeatPassword
 public class ClientDto {
     private UUID accountUuid;
     private String userName;
@@ -28,6 +29,10 @@ public class ClientDto {
     private String phoneNumber;
     private String emailAddress;
     private Date dateofbirth;
+    private String password;
+    private String repeatPassword;
+    private String gender;
+
 
 
 

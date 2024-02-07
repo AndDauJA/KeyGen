@@ -41,7 +41,7 @@
              th:text="${message}">
             Success message when add product
         </div>
-        <form method="post" th:action="@{/userregistrationform}" th:object="${clientData}">
+        <form method="post" th:action="@{/userregistrationform}" th:object="${clientDto}">
             <label for="user">User Name:</label>
             <input type="text" id="user"
                    name="userName"
@@ -87,7 +87,7 @@
             <label for="repeatpassword">Repeatpassword:</label>
             <input type="password" id="repeatpassword"
                    name="repeatpassword"
-                   placeholder="Reenter your password " th:field="*{repeatPassrowd}">
+                   placeholder="Reenter your password " th:field="*{repeatPassword}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('global')}" th:errors="global"></span>
             <label for="dob">Date of Birth:</label>
             <input type="date"
