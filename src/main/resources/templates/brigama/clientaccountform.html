@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -39,9 +37,7 @@
                     <img id="body-img-logo" src="/images/3786012.jpg" alt="">
 
                     <h1 id="comany-name">UAB BRIGAMA</h1>
-<div>
-<span style="color: #f44336"  sec:authentication="principal.fullName"> </span>
-</div>
+
                 </div>
                 <div class="menu-list">
                     <menu class="menu-container on-hover">
@@ -50,10 +46,6 @@
                             <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
 
                         </ul>
-                        <div>
-                            <a class="nav-link" th:href="@{/logout}" th:text="'Logout'">Logout</a>
-                        </div>
-
                     </menu>
                 </div>
 
@@ -85,8 +77,8 @@
                     <div class="card ">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form id="formId" method="post" th:if="${clientDto}" th:action="@{clientaccountform}"
-                                  th:object="${clientDto}">
+                            <form id="formId" method="post" th:if="${clientData}" th:action="@{clientaccountform}"
+                                  th:object="${clientData}">
 
                                 <!-- Form Group (username)-->
                                 <label>Find me by UserName</label>
@@ -100,7 +92,7 @@
 
                                     <input class="form-control" id="Uuid" type="hidden"
                                            placeholder="uuid"
-                                           th:field="*{accountUuid}" th:value="${clientDto.accountUuid}">
+                                           th:field="*{accountUuid}" th:value="${clientData.accountUuid}">
                                 </div>
                                 <div class="">
                                     <label class="small" for="inputUsername">Username (how your name will

@@ -25,8 +25,8 @@ public class ClientAccountControler {
 
     @GetMapping("/clientaccountform")
     public String showFindClientForm(Model model) {
-//        model.addAttribute("clientData", new ClientData());
-        model.addAttribute("clientDto", ClientDto.builder().build());
+        model.addAttribute("clientData", new ClientData());
+//        model.addAttribute("clientDto", ClientDto.builder().build());
         return "brigama/clientaccountform";
     }
 

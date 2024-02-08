@@ -22,7 +22,6 @@ import java.util.UUID;
 @Builder
 @Setter
 @NoArgsConstructor
-@ToString
 
 public class ClientData implements UserDetails {
     @Id

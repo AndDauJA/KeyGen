@@ -20,7 +20,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userFirstRegistrationRepository.findClientDataByUsernameWithinAndAuthorities(username)
+        return userFirstRegistrationRepository.findClientDtoByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("'" + username + "' not found!"));
 
     }
