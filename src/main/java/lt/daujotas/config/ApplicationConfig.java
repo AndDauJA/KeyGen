@@ -63,7 +63,7 @@ public class ApplicationConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("dbview/**")
-                .addResourceLocations("classpath;/static/dbview/");
+                .addResourceLocations("classpath:/static/dbview/");
     }
 
 }

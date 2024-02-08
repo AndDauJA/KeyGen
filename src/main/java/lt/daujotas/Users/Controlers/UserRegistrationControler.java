@@ -3,10 +3,8 @@ package lt.daujotas.Users.Controlers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.dto.ClientDto;
 import lt.daujotas.service.UsersRegistrationSerivce;
-import lt.daujotas.validation.PasswordMatchValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

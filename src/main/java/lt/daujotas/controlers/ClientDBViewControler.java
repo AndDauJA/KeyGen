@@ -1,6 +1,6 @@
 package lt.daujotas.controlers;
 
-import lt.daujotas.Users.clientData.ClientData;
+import lt.daujotas.Users.clientDataPojo.ClientData;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

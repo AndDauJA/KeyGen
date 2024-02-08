@@ -3,12 +3,10 @@ package lt.daujotas.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lt.daujotas.Users.clientData.ClientData;
+import lt.daujotas.Users.clientDataPojo.ClientData;
 import lt.daujotas.clients.mappers.ClientMapper;
 import lt.daujotas.dao.ClientDao;
 import lt.daujotas.dto.ClientDto;
-import lt.daujotas.exception.ClientNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

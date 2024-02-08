@@ -2,7 +2,6 @@ package lt.daujotas.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import lt.daujotas.Users.clientData.ClientData;
 import lt.daujotas.dto.ClientDto;
 
 import java.util.Objects;

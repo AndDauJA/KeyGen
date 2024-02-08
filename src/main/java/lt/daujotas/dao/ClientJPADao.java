@@ -1,7 +1,7 @@
 package lt.daujotas.dao;
 
 import jakarta.persistence.EntityManager;
-import lt.daujotas.Users.clientData.ClientData;
+import lt.daujotas.Users.clientDataPojo.ClientData;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;

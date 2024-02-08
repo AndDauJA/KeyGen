@@ -1,4 +1,4 @@
-package lt.daujotas.Users.clientData;
+package lt.daujotas.Users.clientDataPojo;
 
 
 import jakarta.persistence.*;
@@ -64,7 +64,11 @@ public class ClientData implements UserDetails {
 
     @Column(nullable = false)
     @ManyToMany(cascade = CascadeType.PERSIST)
-    private Set<Autohority> authorities;
+    @JoinTable(
+            name = "clientaccountdata_authorities",
+            joinColumns = @JoinColumn(name = "client_data_id"),
+            inverseJoinColumns = @JoinColumn(name = "authorities_id"))
+      private Set<Authority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

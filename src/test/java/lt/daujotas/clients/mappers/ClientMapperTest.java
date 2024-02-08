@@ -1,13 +1,7 @@
 package lt.daujotas.clients.mappers;
 
-import lombok.var;
-import lt.daujotas.Users.clientData.ClientData;
+
 import org.junit.jupiter.api.Test;
-
-import java.sql.Date;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ClientMapperTest {
 

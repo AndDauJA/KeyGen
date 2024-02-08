@@ -1,6 +1,6 @@
 package lt.daujotas.clients.mappers;
 
-import lt.daujotas.Users.clientData.ClientData;
+import lt.daujotas.Users.clientDataPojo.ClientData;
 import lt.daujotas.dto.ClientDto;
 import lt.daujotas.mapper.Mapper;
 import org.springframework.stereotype.Component;

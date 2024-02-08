@@ -1,18 +1,17 @@
 package lt.daujotas.controlers;
 
 
-import lt.daujotas.Users.clientData.ClientData;
+import lt.daujotas.Users.clientDataPojo.ClientData;
+import lt.daujotas.dto.ClientDto;
 import lt.daujotas.service.ClientAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Controller
 
@@ -26,7 +25,8 @@ public class ClientAccountControler {
 
     @GetMapping("/clientaccountform")
     public String showFindClientForm(Model model) {
-        model.addAttribute("clientData", new ClientData());
+//        model.addAttribute("clientData", new ClientData());
+        model.addAttribute("clientDto", ClientDto.builder().build());
         return "brigama/clientaccountform";
     }
 

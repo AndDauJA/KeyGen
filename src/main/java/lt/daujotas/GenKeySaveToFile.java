@@ -1,7 +1,5 @@
 package lt.daujotas;
 
-import lombok.var;
-
 import java.io.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;

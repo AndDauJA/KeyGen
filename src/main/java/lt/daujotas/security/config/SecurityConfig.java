@@ -39,7 +39,7 @@ public class SecurityConfig {
                                 "/client/**",
                                 "/cart/**",
                                 "/user/**",
-                                "error/**",
+                                "/error/**",
                                 "/userregistrationform/"
 
                         )
