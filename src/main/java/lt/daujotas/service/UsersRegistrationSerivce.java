@@ -21,9 +21,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UsersRegistrationSerivce {
 
-    private final PasswordEncoder passwordEncoder;
+
     private final ClientRepository clientRepository;
-    private final UserFirstRegistrationRepository userFirstRegistrationRepository;
+
     private final AuthorityRepository authorityRepository;
 
     public void register(ClientDto clientDto) throws DataIntegrityViolationException {
@@ -31,11 +31,6 @@ public class UsersRegistrationSerivce {
                 .filter(authority -> authority.getName().equals("USER"))
                 .collect(Collectors.toSet());
 
-        if (authorities.isEmpty()) {
-            Authority defaultAuthority = new Authority();
-            defaultAuthority.setName("USER");
-            authorities.add(defaultAuthority);
-        }
         clientRepository.save(
                 ClientData.builder()
                         .userName(clientDto.getUserName())
@@ -52,6 +47,9 @@ public class UsersRegistrationSerivce {
                         .authorities(authorities)
                         .build()
         );
+
+
     }
 
 }
+

@@ -30,7 +30,7 @@ public class ClientData implements UserDetails {
     private Long id;
 
     @NotEmpty(message = "{NotEmpty.Name.message.userName}")
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String userName;
     @NotEmpty(message = "{NotEmpty.Name.message.Name}")
     @Column(name = "firstname")
@@ -52,7 +52,7 @@ public class ClientData implements UserDetails {
     @NotEmpty(message = "{NotEmpty.Name.message.password}")
     private String password;
     @NotEmpty(message = "{NotEmpty.Name.message.email}")
-    @Column(name = "emailaddress")
+    @Column(name = "emailaddress", unique = true)
     private String emailAddress;
     @Column(name = "dateofbirth")
     @Temporal(TemporalType.DATE)
@@ -68,11 +68,11 @@ public class ClientData implements UserDetails {
             name = "clientaccountdata_authorities",
             joinColumns = @JoinColumn(name = "client_data_id"),
             inverseJoinColumns = @JoinColumn(name = "authorities_id"))
-      private Set<Authority> authorities;
+    private Set<Authority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-     Hibernate.initialize(authorities);
+        Hibernate.initialize(authorities);
         return authorities;
     }
 
@@ -104,7 +104,6 @@ public class ClientData implements UserDetails {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
 
 
     public String getEmailAddress() {
@@ -152,5 +151,8 @@ public class ClientData implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public String getFullName(){
+        return firstName+' '+lastName;
     }
 }

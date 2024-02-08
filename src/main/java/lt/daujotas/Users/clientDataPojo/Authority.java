@@ -8,6 +8,7 @@ import java.io.Serial;
 
 @Builder
 @Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -15,6 +16,7 @@ public class Authority implements GrantedAuthority {
 
     @Serial
     private static final long serialVersionUID = -2759184906241814492L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +24,6 @@ public class Authority implements GrantedAuthority {
     @Getter
     @Column(name = "name")
     private String name;
-
     private String description;
 
     @Override

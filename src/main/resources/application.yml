@@ -34,7 +34,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql: false
+        format_sql: true
 
   data:
     web:
@@ -53,6 +53,9 @@ server:
   error:
     whitelabel:
       enabled: true
+  servlet:
+    session:
+      tracking-modes: cookie
 
 logging:
   level:
@@ -61,4 +64,5 @@ logging:
         Keygenerator:
           config: DEBUG
           product: INFO
+          filter: TRACE
 

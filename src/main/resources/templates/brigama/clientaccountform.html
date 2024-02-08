@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -37,7 +39,9 @@
                     <img id="body-img-logo" src="/images/3786012.jpg" alt="">
 
                     <h1 id="comany-name">UAB BRIGAMA</h1>
-
+<div>
+<span style="color: #f44336"  sec:authentication="principal.fullName"> </span>
+</div>
                 </div>
                 <div class="menu-list">
                     <menu class="menu-container on-hover">
@@ -46,6 +50,10 @@
                             <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
 
                         </ul>
+                        <div>
+                            <a class="nav-link" th:href="@{/logout}" th:text="'Logout'">Logout</a>
+                        </div>
+
                     </menu>
                 </div>
 
