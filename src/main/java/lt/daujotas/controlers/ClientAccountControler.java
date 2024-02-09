@@ -25,7 +25,7 @@ public class ClientAccountControler {
 
     @GetMapping("/clientaccountform")
     public String showFindClientForm(Model model) {
-        model.addAttribute("clientData", new ClientData());
+        model.addAttribute("clientDto", new ClientDto());
 //        model.addAttribute("clientDto", ClientDto.builder().build());
         return "brigama/clientaccountform";
     }
@@ -33,16 +33,16 @@ public class ClientAccountControler {
 
     @PostMapping("/clientaccountform")
 
-    public String findClient(@ModelAttribute ClientData clientData, Model model) {
+    public String findClient(@ModelAttribute ClientDto clientDto, Model model) {
 
 //        Optional<ClientAccountInfo> client = clientAccountService.getClientByUUID(findClient.getUuid());
 //        Optional<ClientAccountInfo> clientByName = clientAccountService.getClientByFirstName(findClient.getFirstName());
-        Optional<ClientData> clientByUserName = clientAccountService.getClientByUserName(clientData.getUserName());
+        Optional<ClientDto> clientByUserName = clientAccountService.getClientByUserName(clientDto.getUserName());
 
 
         if (clientByUserName.isPresent()) {
-            ClientData foundClient=clientByUserName.get();
-            model.addAttribute("clientData", foundClient);
+            ClientDto foundClient =clientByUserName.get();
+            model.addAttribute("clientDto", foundClient);
         } else {
             model.addAttribute("error", "Client not found");
         }
@@ -65,18 +65,18 @@ public class ClientAccountControler {
 //        return "brigama/clientaccountform";
 //    }
     @PostMapping("/updateclient")
-    public String updateClient(@ModelAttribute ClientData clientData, Model model) {
+    public String updateClient(@ModelAttribute ClientDto clientDto, Model model) {
         try {
             clientAccountService.updateAllClientData(
-                    clientData.getUserName(),
-                    clientData.getFirstName(),
-                    clientData.getLastName(),
-                    clientData.getMiddleName(),
-                    clientData.getPostAddres(),
-                    clientData.getPhoneNumber(),
-                    clientData.getEmailAddress());
+                    clientDto.getUserName(),
+                    clientDto.getFirstName(),
+                    clientDto.getLastName(),
+                    clientDto.getMiddleName(),
+                    clientDto.getPostAddres(),
+                    clientDto.getPhoneNumber(),
+                    clientDto.getEmailAddress());
 
-            model.addAttribute("clientData", clientData);
+            model.addAttribute("clientDto", clientDto);
             model.addAttribute("success", "Client updated successfully");
         } catch (Exception e) {
             model.addAttribute("error", "Failed to update client");

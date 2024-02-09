@@ -3,6 +3,7 @@ package lt.daujotas.clients.mappers;
 import lt.daujotas.Users.clientDataPojo.ClientData;
 import lt.daujotas.dto.ClientDto;
 import lt.daujotas.mapper.Mapper;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,20 +22,24 @@ public class ClientMapper implements Mapper<ClientData, ClientDto> {
                 .build();
     }
 
-    @Override
+
+
+
     public ClientData fromDto(ClientDto clientDto) {
-        return null;
-    }
 
+        return ClientData.builder()
+                .firstName(clientDto.getFirstName())
+                .lastName(clientDto.getLastName())
+                .middleName(clientDto.getMiddleName())
+                .accountUuid(clientDto.getAccountUuid())
+                .userName(clientDto.getUserName())
+                .gender(clientDto.getGender())
+                .emailAddress(clientDto.getEmailAddress())
+                .phoneNumber(clientDto.getPhoneNumber())
+                .dateofbirth(clientDto.getDateofbirth())
+                .postAddres(clientDto.getPostAddres())
 
-    public void fromDto(ClientDto clientDto, ClientData clientData) {
-        clientData.setFirstName(clientDto.getFirstName());
-        clientData.setLastName(clientDto.getLastName());
-        clientData.setMiddleName(clientDto.getMiddleName());
-        clientData.setPostAddres(clientDto.getPostAddres());
-        clientData.setPhoneNumber(clientDto.getPhoneNumber());
-        clientData.setEmailAddress(clientDto.getEmailAddress());
-        // Set other fields accordingly
+                .build();
     }
 
 

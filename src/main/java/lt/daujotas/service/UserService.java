@@ -2,6 +2,7 @@ package lt.daujotas.service;
 
 import lombok.AllArgsConstructor;
 
+import lt.daujotas.clients.mappers.ClientMapper;
 import lt.daujotas.dao.ClientRepository;
 import lt.daujotas.dao.UserFirstRegistrationRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,13 +15,13 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {
 
 
-    private final ClientRepository clientRepository;
-    private final UserFirstRegistrationRepository userFirstRegistrationRepository;
 
+    private final UserFirstRegistrationRepository userFirstRegistrationRepository;
+    private final ClientMapper clientMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userFirstRegistrationRepository.findClientDtoByUserName(username)
+        return userFirstRegistrationRepository.findClientDataByUsernameWithinAndAuthorities(username)
                 .orElseThrow(() -> new UsernameNotFoundException("'" + username + "' not found!"));
 
     }

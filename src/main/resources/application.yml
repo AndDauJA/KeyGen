@@ -2,7 +2,6 @@ spring:
   main:
     banner-mode: console
 
-
 #cia tuo atveju jei turim H2 DB ir SecurityConfig class
 #  h2:
 #    console:

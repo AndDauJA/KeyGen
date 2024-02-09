@@ -71,7 +71,10 @@ public class ClientData implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Hibernate.initialize(authorities);
+        if(!Hibernate.isInitialized(authorities)){
+            Hibernate.isInitialized(authorities);
+        }
+
         return authorities;
     }
 

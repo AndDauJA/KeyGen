@@ -77,8 +77,8 @@
                     <div class="card ">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form id="formId" method="post" th:if="${clientData}" th:action="@{clientaccountform}"
-                                  th:object="${clientData}">
+                            <form id="formId" method="post" th:if="${clientDto}" th:action="@{clientaccountform}"
+                                  th:object="${clientDto}">
 
                                 <!-- Form Group (username)-->
                                 <label>Find me by UserName</label>
@@ -92,7 +92,7 @@
 
                                     <input class="form-control" id="Uuid" type="hidden"
                                            placeholder="uuid"
-                                           th:field="*{accountUuid}" th:value="${clientData.accountUuid}">
+                                           th:field="*{accountUuid}" th:value="${clientDto.accountUuid}">
                                 </div>
                                 <div class="">
                                     <label class="small" for="inputUsername">Username (how your name will

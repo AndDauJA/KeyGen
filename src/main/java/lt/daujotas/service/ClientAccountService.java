@@ -28,44 +28,49 @@ public class ClientAccountService {
 //        clientDao.save(clientData);
 //    }
 
-public void updateAllClientData(String userName, String firstName, String lastName, String middleName,
-                         String postAddress, String phoneNumber, String emailAddress) {
+    public void updateAllClientData(String userName, String firstName, String lastName, String middleName,
+                                    String postAddress, String phoneNumber, String emailAddress) {
+        Optional<ClientData> optionalClientData = clientDao.getClientByUsername(userName);
+
+        if (optionalClientData.isPresent()) {
+            ClientData clientData = optionalClientData.get();
+
+            clientData.setFirstName(firstName);
+            clientData.setLastName(lastName);
+            clientData.setMiddleName(middleName);
+            clientData.setPostAddres(postAddress);
+            clientData.setPhoneNumber(phoneNumber);
+            clientData.setEmailAddress(emailAddress);
+            clientDao.update(clientData);
+
+        } else {
+
+            throw new RuntimeException("Client not found with username: " + userName);
+        }
+    }
+
+public Optional<ClientDto> getClientByUserName(String userName) {
     Optional<ClientData> optionalClientData = clientDao.getClientByUsername(userName);
 
     if (optionalClientData.isPresent()) {
         ClientData clientData = optionalClientData.get();
         ClientDto clientDto = clientMapper.toDto(clientData);
-
-        clientDto.setFirstName(firstName);
-        clientDto.setLastName(lastName);
-        clientDto.setMiddleName(middleName);
-        clientDto.setPostAddres(postAddress);
-        clientDto.setPhoneNumber(phoneNumber);
-        clientDto.setEmailAddress(emailAddress);
-        clientMapper.fromDto(clientDto, clientData);
-        clientDao.update(clientData);
+        return Optional.of(clientDto);
     } else {
-
-        throw new RuntimeException("Client not found with username: " + userName);
+        return Optional.empty();
     }
 }
-
-    public Optional<ClientData> getClientByUserName(String userName)
-    {
-        return clientDao.getClientByUsername(userName);
-
-    }
 
     public List<ClientData> getAllClients() {
         return clientDao.getAll();
     }
 
-//    public ClientDto getClientByUUID(UUID clientUUID) {
+    //    public ClientDto getClientByUUID(UUID clientUUID) {
 //        return clientDao.getClientByUUID(clientUUID)
 //                .map(clientData -> clientMapper.toDto(clientData))
 //                .orElseThrow(()-> new ClientNotFoundException(clientUUID));
 //    }
-    public void deleteClientByUserName(String userName){
+    public void deleteClientByUserName(String userName) {
         clientDao.deleteByClientUserName(userName);
     }
 
@@ -79,5 +84,5 @@ public void updateAllClientData(String userName, String firstName, String lastNa
     }
 
 
-    }
+}
 
