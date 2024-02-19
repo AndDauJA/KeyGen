@@ -123,8 +123,9 @@
 
                 </div>
                 <label for="basic-url">Kokio stiprumo kodo norite?</label>
-                <input type="number" class="form-control" aria-label="Ne mažiau nei 8 simboliai" id="number-strength"
-                       onchange="checkNumberStrength()">
+                <input type="number" class="form-control" aria-label="Įveskite Ne mažiau nei 8 simbolius"
+                       id="number-strength"
+                       onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
                 <label for="basic-url">Your Generated Key</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -151,34 +152,35 @@
             </form>
         </div>
 
-        <table class="table table-sm table-Secondary ">
+        <table class="table table-md table-Secondary ">
             <thead>
             <tr>
                 <th scope="col">Id</th>
                 <!--                <th scope="col">Meta</th>-->
-                <th scope="col">UserNname/email</th>
-                <th scope="col">Url/web page</th>
-                <th scope="col">Generated Key</th>
-                <th scope="col">Notes</th>
+                <th scope="col" style="font-size: 20px;">UserNname/email</th>
+                <th scope="col" style="font-size: 20px;">Url/web page</th>
+                <th scope="col" style="font-size: 20px;">Generated Key</th>
+                <th scope="col" style="font-size: 20px;">Notes</th>
                 <th scope="col" hidden="hidden">UUID</th>
             </tr>
             </thead>
 
             <tbody>
             <tr th:each="user, stat: ${userGeneralList}">
-                <td th:text="${stat.count}">N/A</td>
-                <!--                <td text="'N/A'">N/A</td>-->
-                <td th:text="${user.getUsername()}?: 'N/A'">N/A</td>
-                <td th:text="${user.getWebaddress()}?: 'N/A'">N/A</td>
-                <td th:text="${user.getGeneratedkey()}?: 'N/A'">N/A</td>
-                <td th:text="${user.getNotes()}?: 'N/A'">N/A</td>
-                <td><a th:if="${user.uuid != null}"
+                <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>
+                <td style="font-size: 20px;" th:text="${user.getUsername()}?: 'N/A'">N/A</td>
+                <td style="font-size: 20px;">
+                    <a th:href="@{${user.getWebaddress()}}" target="_blank" th:text="${user.getWebaddress()}?: 'N/A'">N/A</a>
+                </td>
+                <td style="font-size: 20px;" th:text="${user.getGeneratedkey()}?: 'N/A'">N/A</td>
+                <td style="font-size: 20px;" th:text="${user.getNotes()}?: 'N/A'">N/A</td>
+                <td><a style="font-size: 20px;" th:if="${user.uuid != null}"
                        th:href="@{'/usergeneralform/' + ${user.uuid} + '/delete'}">Delete</a></td>
             </tr>
             </tbody>
         </table>
 
-          </div>
+    </div>
 
 </div>
 
@@ -192,6 +194,7 @@
         } else {
             form.style.display = "none";
         }
+
     }
 
     function generateKey() {
@@ -233,6 +236,7 @@
 
     function checkNumberStrength() {
         var numberStrength = document.getElementById("number-strength").value;
+
         if (numberStrength < 8) {
             alert("Stiprumo kodas turi būti mažiausiai 8 simbolių ilgio!");
             // Galite papildomai išvalyti laukelį arba pakeisti jo spalvą, kad parodytumėte, jog įvestis netinkama
