@@ -7,12 +7,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+
 @Repository
 public interface UserGeneralLoginCredentialsDataRepository extends JpaRepository<UserGeneralLoginCredentialsData, UUID> {
-    Page<UserGeneralLoginCredentialsData> findClientLoginCredentialsDataByUuid(UUID id,
-                                                                               Pageable pageable);
-    void deleteUserGeneralLoginCredentialsDataByUuid (UUID loginId);
+    Optional<UserGeneralLoginCredentialsData> findClientLoginCredentialsDataByUuid(UUID id);
+
+    void deleteUserGeneralLoginCredentialsDataByUuid(UUID loginId);
+
+    void deleteByUuid(UUID uuid);
 
     Page<UserGeneralLoginCredentialsData> findByClientDataId(Long id,
                                                              Pageable pageable);

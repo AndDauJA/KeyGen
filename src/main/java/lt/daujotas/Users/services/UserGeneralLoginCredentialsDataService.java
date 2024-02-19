@@ -38,7 +38,7 @@ public class UserGeneralLoginCredentialsDataService {
     }
     @Transactional
     public void deleteUserGeneralDataByUUID(UUID credentialDataId) {
-        userGeneralLoginCredentialsDataRepository.deleteById(credentialDataId);
+        userGeneralLoginCredentialsDataRepository.deleteByUuid(credentialDataId);
     }
 
 
