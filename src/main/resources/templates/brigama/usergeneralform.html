@@ -13,7 +13,7 @@
     <title>Kleinto bendra forma</title>
 </head>
 
-<body>
+<body >
 
 <div class="body-background">
     <div class="header-main-container">
@@ -56,21 +56,21 @@
 
         </header>
     </div>
-    <div class="main row">
+    <div class="main row " style="font-size: 18px;">
         <div th:if="${message ne null and message.length() > 0}"
              class="alert alert-success" role="alert"
              th:text="${message}">
             Success message when add product
         </div>
-        <button id="toggle-form-btn" class="btn btn-secondary input-group mb-6" type="button"
+        <button style="font-size: 20px;" id="toggle-form-btn" class="btn btn-secondary input-group mb-6" type="button"
                 onclick="toggleForm()">Create New account and key
         </button>
 
-        <div id="new-account-form" class="input-group mb-3" style="display: none;">
-            <form method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
+        <div id="new-account-form" class="input-group mb-3" style="display: none;" >
+            <form  method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
                 <label for="basic-url">Your Username</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Username/email"
+                    <input style="font-size: 18px;" type="text" class="form-control" placeholder="Username/email"
                            aria-label="UserName/Email" aria-describedby="basic-addon2" th:field="*{userNameEmail}">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2" th:if="${#fields.hasErrors('userNameEmail')}"
@@ -79,7 +79,7 @@
                 </div>
                 <label for="basic-url">Your URL</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="URL/WEB address" th:field="*{webaddress}"
+                    <input style="font-size: 18px;" type="text" class="form-control" placeholder="URL/WEB address" th:field="*{webaddress}"
                            id="basic-url" aria-describedby="basic-addon3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3" th:if="${#fields.hasErrors('webaddress')}"
@@ -100,8 +100,8 @@
                 <!--                    <label class="form-check-label" for="Special_Key">Special Key</label>-->
                 <!--                </li>-->
                 <!--               </ul>-->
-                <div class="card-body">
-                    <div class="custom-control custom-checkbox">
+                <div class="card-body " style="font-size: 18px;">
+                    <div class="custom-control custom-checkbox ">
                         <input class="custom-control-input" type="checkbox" name="generateType" value="LoremIps"
                                id="LoremIps">
                         <label class="custom-control-label" for="LoremIps">Atsitiktiniai žodžių deriniai</label>
@@ -122,8 +122,8 @@
                     </div>
 
                 </div>
-                <label for="basic-url">Kokio stiprumo kodo norite?</label>
-                <input type="number" class="form-control" aria-label="Įveskite Ne mažiau nei 8 simbolius"
+                <label  for="basic-url">Kokio stiprumo kodo norite?</label>
+                <input style="font-size: 18px;" type="number" class="form-control" aria-label="Įveskite Ne mažiau nei 8 simbolius"
                        id="number-strength"
                        onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
                 <label for="basic-url">Your Generated Key</label>
@@ -131,21 +131,21 @@
                     <div class="input-group-prepend">
                         <img class="input-group-text img-fluid" src="/images/keyimg.jpg">
                     </div>
-                    <input type="text" class="form-control" aria-label="Generate key" th:field="*{generatedkey}">
+                    <input style="font-size: 18px;" type="text" class="form-control" aria-label="Generate key" th:field="*{generatedkey}">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary " onclick="generateKey()">Generate</button>
+                        <button type="button" class="btn btn-secondary " style="font-size: 20px;" onclick="generateKey()">Generate</button>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Notes</span>
+                        <span style="font-size: 18px;" class="input-group-text">Notes</span>
                     </div>
-                    <textarea class="form-control" aria-label="Your Notes" th:field="*{notes}"></textarea>
+                    <textarea style="font-size: 18px;" class="form-control" aria-label="Your Notes" th:field="*{notes}"></textarea>
                 </div>
                 <div class="wrap">
                     <div style="height: 20px;"></div>
-                    <button type="submit" onclick="solve()" class="btn-secondary mb-3">
+                    <button type="submit" onclick="solve()" class="btn-secondary mb-3" style="font-size: 20px;">
                         Save data to Date Base
                     </button>
                 </div>
