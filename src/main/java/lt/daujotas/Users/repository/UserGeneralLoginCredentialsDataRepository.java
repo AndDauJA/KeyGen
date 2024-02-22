@@ -13,11 +13,10 @@ import java.util.UUID;
 @Repository
 public interface UserGeneralLoginCredentialsDataRepository extends JpaRepository<UserGeneralLoginCredentialsData, UUID> {
     Optional<UserGeneralLoginCredentialsData> findClientLoginCredentialsDataByUuid(UUID id);
-
+Optional<UserGeneralLoginCredentialsData> findByClientDataId(Long id);
     void deleteUserGeneralLoginCredentialsDataByUuid(UUID loginId);
 
     void deleteByUuid(UUID uuid);
 
-    Page<UserGeneralLoginCredentialsData> findByClientDataId(Long id,
-                                                             Pageable pageable);
+    Page<UserGeneralLoginCredentialsData> findByClientDataId(Long id, Pageable pageable);
 }

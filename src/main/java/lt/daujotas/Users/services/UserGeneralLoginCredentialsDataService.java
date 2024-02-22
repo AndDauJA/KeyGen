@@ -7,10 +7,14 @@ import lt.daujotas.Users.dto.UserDto;
 import lt.daujotas.Users.repository.UserGeneralLoginCredentialsDataRepository;
 import lt.daujotas.clientPojo.ClientData;
 import lt.daujotas.sipher.Client;
+import lt.daujotas.sipher.Dao.IVKeyDao;
+import lt.daujotas.sipher.Dao.IVKeyJpaDao;
+import lt.daujotas.sipher.Dao.SpecialKeyDao;
 import lt.daujotas.sipher.pojo.IVKeyPojo;
 import lt.daujotas.sipher.pojo.SpecialKeyPojo;
 import lt.daujotas.sipher.repository.IVKeyRepository;
 import lt.daujotas.sipher.repository.SpecKeyRepository;
+import lt.daujotas.sipher.srvice.GeneretedKeyDecryptionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
@@ -27,6 +31,9 @@ public class UserGeneralLoginCredentialsDataService {
     private final UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository;
     private final SpecKeyRepository specKeyRepository;
     private final IVKeyRepository ivKeyRepository;
+    private final SpecialKeyDao specialKeyDao;
+    private final IVKeyDao ivKeyDao;
+    private final GeneretedKeyDecryptionService generetedKeyDecryptionService;
 
     public void inputKeyGenData(UserDto userDto) throws Exception {
 //        String encodedPassword = new BCryptPasswordEncoder().encode(userDto.getGeneratedkey());
@@ -49,6 +56,7 @@ public class UserGeneralLoginCredentialsDataService {
                 .build();
 
         userCredentialsData = userGeneralLoginCredentialsDataRepository.save(userCredentialsData);
+
         specKeyRepository.save(
                 SpecialKeyPojo.builder()
                         .specKeyId(UUID.randomUUID())
@@ -64,14 +72,15 @@ public class UserGeneralLoginCredentialsDataService {
                         .userGeneralLoginCredentialsData((userCredentialsData))
                         .build()
         );
+        String decryptedPassword = generetedKeyDecryptionService.decryptPassword(encryptedPassword, secretKey, IV);
     }
 
-    public String decryptPassword(String encryptedPassword, String secretKey, String IV) throws Exception {
-        Client client = new Client();
-        client.init();
-        client.initFromStrings(secretKey, IV);
-        return client.decrypt(encryptedPassword);
-    }
+//    public String decryptPassword(String encryptedPassword, String secretKey, String IV) throws Exception {
+//        Client client = new Client();
+//        client.init();
+//        client.initFromStrings(secretKey, IV);
+//        return client.decrypt(encryptedPassword);
+//    }
 
     @Transactional
     public void deleteUserGeneralDataByUUID(UUID credentialDataId) {

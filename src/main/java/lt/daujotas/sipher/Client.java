@@ -1,10 +1,12 @@
 package lt.daujotas.sipher;
 
+import lombok.Getter;
+import org.springframework.stereotype.Component;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
@@ -12,13 +14,15 @@ import java.util.Base64;
  * Possible KEY_SIZE values are 128, 192 and 256
  * Possible T_LEN values are 128, 120, 112, 104 and 96
  */
-
+@Getter
+@Component
 public class Client {
     private SecretKey key;
     private int KEY_SIZE = 128;
     private int T_LEN = 128;
     private byte[] IV;
     private Cipher encryptionCipher;
+//    private static final String ALGORITHM = "AES/GCM/NoPadding";
 
     public void init() throws Exception {
         KeyGenerator generator = KeyGenerator.getInstance("AES");
@@ -41,9 +45,9 @@ public class Client {
         return new String(decryptedBytes);
     }
 
-    public String getMessage() {
-        return "labas";
-    }
+//    public String getMessage() {
+//        return "labas";
+//    }
 
     private byte[] decode(String data) {
         return Base64.getDecoder().decode(data);

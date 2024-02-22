@@ -1,5 +1,7 @@
 package lt.daujotas.sipher;
 
+import org.springframework.stereotype.Component;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -11,7 +13,7 @@ import java.util.Base64;
  * Possible KEY_SIZE values are 128, 192 and 256
  * Possible T_LEN values are 128, 120, 112, 104 and 96
  */
-
+@Component
 public class Server {
     private SecretKey key;
     private static int KEY_SIZE = 128;
@@ -26,7 +28,7 @@ public class Server {
         keyGenerator.init(KEY_SIZE);
         SecretKey secretKey = keyGenerator.generateKey();
         Cipher cipher = Cipher.getInstance(ALGORITHM);
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+                cipher.init(Cipher.ENCRYPT_MODE, secretKey);
         byte[] encryptedBytes = cipher.doFinal(password.getBytes());
         String encryptedPassword = Base64.getEncoder().encodeToString(encryptedBytes);
         String secretKeyString = Base64.getEncoder().encodeToString(secretKey.getEncoded());
@@ -69,9 +71,9 @@ public class Server {
         return encode(IV);
     }
 
-    public String getMessageEncripted() throws Exception {
-        return encrypt(client.getMessage());
-    }
+//    public String getMessageEncripted() throws Exception {
+//        return encrypt(client.getMessage());
+//    }
 
     private static String encode(byte[] data) {
         return Base64.getEncoder().encodeToString(data);
@@ -81,24 +83,24 @@ public class Server {
         return Base64.getDecoder().decode(data);
     }
 
-    public static void runEncoding() {
-        Server server = new Server();
-
-        try {
-            server.init();
-            String mesage = server.getMessageEncripted();
-            System.out.println("encrypt message: " + mesage);
-            String secrKey = server.exportSecretKeys();
-            System.out.println("secret key: " + secrKey);
-            String iv = server.exportKeyIV();
-            System.out.println("IV: " + iv);
-            server.initFromStrings(secrKey, iv);
-
-//            String encryptedMessage = server.encrypt(mesage);
-//            System.err.println("Encrypted Message : " + encryptedMessage);
-        } catch (Exception ignored) {
-        }
-    }
+//    public static void runEncoding() {
+//        Server server = new Server();
+//
+//        try {
+//            server.init();
+//            String mesage = server.getMessageEncripted();
+//            System.out.println("encrypt message: " + mesage);
+//            String secrKey = server.exportSecretKeys();
+//            System.out.println("secret key: " + secrKey);
+//            String iv = server.exportKeyIV();
+//            System.out.println("IV: " + iv);
+//            server.initFromStrings(secrKey, iv);
+//
+////            String encryptedMessage = server.encrypt(mesage);
+////            System.err.println("Encrypted Message : " + encryptedMessage);
+//        } catch (Exception ignored) {
+//        }
+//    }
 
 //    public static void main(String[] args) {
 //        Server server = new Server();

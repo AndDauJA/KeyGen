@@ -1,5 +1,6 @@
 package lt.daujotas.sipher.Dao;
 
+import lt.daujotas.Users.clientDataPojo.UserGeneralLoginCredentialsData;
 import lt.daujotas.sipher.pojo.IVKeyPojo;
 import lt.daujotas.sipher.repository.IVKeyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,12 @@ public class IVKeyJpaDao implements IVKeyDao {
     }
 
     @Override
-    public Optional<IVKeyPojo> getIVKeyByUuid(UUID id) {
-        return Optional.empty();
+    public Optional<IVKeyPojo> getIVKeyByCredentialId(UserGeneralLoginCredentialsData credentialDataId) {
+        return ivKeyRepository.findByUserGeneralLoginCredentialsDataUuid(credentialDataId.getUuid());
+    }
+
+    @Override
+    public Optional<IVKeyPojo> getIVKeyByCredentialId(UUID uuid) {
+        return ivKeyRepository.findByUserGeneralLoginCredentialsDataUuid(uuid);
     }
 }

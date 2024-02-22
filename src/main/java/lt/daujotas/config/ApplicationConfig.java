@@ -60,7 +60,7 @@ public class ApplicationConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("/brigama/login");
     }
 
-//    @Override
+    //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //        registry.addResourceHandler("dbview/**")
 //                .addResourceLocations("classpath:/static/dbview/");
@@ -69,5 +69,9 @@ public class ApplicationConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("generate-key/**")
                 .addResourceLocations("classpath:/static/usergeneralform/");
+        registry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/public/");
     }
 }
+
+

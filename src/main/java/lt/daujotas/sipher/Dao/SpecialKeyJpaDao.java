@@ -28,4 +28,9 @@ public class SpecialKeyJpaDao implements SpecialKeyDao {
         return Optional.empty();
     }
 
+    @Override
+    public Optional<SpecialKeyPojo> getSecretKeyByCredentialId(UUID credentialDataId) {
+        return specKeyRepository.findByUserGeneralLoginCredentialsDataUuid(credentialDataId);
+    }
+
 }
