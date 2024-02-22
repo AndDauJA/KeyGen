@@ -54,11 +54,12 @@
                             <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{/login}" th:text="'Login'">Login</a></li>
                             <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
-                                <a th:href="@{signin}" th:text="'SignIn'">SignIn</a></li><li
-                                sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
-                            <a>Jus prisijunge : </a>
-                            <span style="color: #f44336" sec:authentication="principal.fullName"> </span>
-                        </li>
+                                <a th:href="@{signin}" th:text="'SignIn'">SignIn</a></li>
+                            <li
+                                    sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
+                                <a>Jus prisijunge : </a>
+                                <span style="color: #f44336" sec:authentication="principal.fullName"> </span>
+                            </li>
                             <li sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{/logout}" th:text="'Logout'">Logout</a></li>
 
@@ -94,28 +95,23 @@
                     <!-- Account details card-->
                     <div class="card ">
                         <div class="card-header">Account Details</div>
+
                         <div class="card-body">
-                            <form id="formId" method="post" th:if="${clientDto}" th:action="@{clientaccountform}"
+                            <form id="formId" method="post" th:if="${clientDto}" th:action="@{/updateclient}"
                                   th:object="${clientDto}">
 
                                 <!-- Form Group (username)-->
-                                <label>Find me by UserName</label>
-                                <label>
-                                    <!--        <input type="text" th:field="*{uuid}" placeholder="Enter Client ID"/>-->
-                                    <input type="text"
-                                           placeholder="Enter first UserName"
-                                           th:field="*{userName}"/>
-                                </label>
+                                <label>My UserName</label>
+<!--                                <input type="text" placeholder="Enter first UserName" th:field="*{userName}"/>-->
+                                <input class="form-control" id="inputUsername" type="text" th:field="*{userName}" disabled>
                                 <div class="">
-
-                                    <input class="form-control" id="Uuid" type="hidden"
-                                           placeholder="uuid"
+                                    <input class="form-control" id="Uuid" type="hidden" placeholder="uuid"
                                            th:field="*{accountUuid}" th:value="${clientDto.accountUuid}">
                                 </div>
                                 <div class="">
                                     <label class="small" for="inputUsername">Username (how your name will
                                         appear to other users on the site)</label>
-                                    <input class="form-control" id="inputUsername" type="text"
+                                    <input class="form-control" id="showusername" type="text"
                                            placeholder="Enter your username"
                                            value="userName" disabled>
                                 </div>

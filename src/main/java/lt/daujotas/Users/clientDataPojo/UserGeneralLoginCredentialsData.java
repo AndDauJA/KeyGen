@@ -5,8 +5,11 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import lt.daujotas.Users.utils.UserGeneralLoginCredentialsInfoListener;
 import lt.daujotas.clientPojo.ClientData;
+import lt.daujotas.sipher.pojo.IVKeyPojo;
+import lt.daujotas.sipher.pojo.SpecialKeyPojo;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -36,6 +39,13 @@ public class UserGeneralLoginCredentialsData {
     private String notes;
     private Date dateAdded;
     private Long clientDataId;
+
+
+    @OneToOne(mappedBy = "userGeneralLoginCredentialsData", cascade = CascadeType.ALL)
+    private SpecialKeyPojo specKeyId;
+
+    @OneToOne(mappedBy = "userGeneralLoginCredentialsData", cascade = CascadeType.ALL)
+    private IVKeyPojo IVKeyId;
 
 
 }

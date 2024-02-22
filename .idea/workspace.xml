@@ -4,8 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator v3.7.3 is lenteles galima tiesiai i URL nueiti, bet dar nesuveda issaugotu DB prisijungimo duomenu">
+    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator v3.4-3.7.3 truku failu kuriuos reikejo sukomitinti.">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/failai/alfakey.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/failai/fourkey.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/readFromFile/ReadFromFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/IVKeyDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/IVKeyJpaDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/SpecialKeyDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/SpecialKeyJpaDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/pojo/IVKeyPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/pojo/SpecialKeyPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/IVKeyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/SpecKeyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/service/SpecialKeyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/writeToFile/KeyIVToFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/writeToFile/SaveToFIle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/writeToFile/SecretKeySaveToFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/failai/Irasai.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/failai/Irasai.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/GenKeySaveToFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/KeyGeneratorApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/KeyGeneratorApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/UserRegistrationControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/UserRegistrationControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/clientDataPojo/UserGeneralLoginCredentialsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/clientDataPojo/UserGeneralLoginCredentialsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/common/ApplicationControllerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/common/ApplicationControllerAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/dto/ClientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/dto/ClientDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/UsersRegistrationSerivce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/UsersRegistrationSerivce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/AES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/AES.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/usergeneralform.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/usergeneralform.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/clientaccountform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/clientaccountform.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/userregistrationform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/userregistrationform.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,18 +66,27 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2cJtkrsN5Ce98QbbXuKSYhyIbg8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.AES.executor": "Run",
+    "Application.Client.executor": "Run",
+    "Application.Server.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "Maven.Key_Generator [clean].executor": "Run",
     "Maven.Key_Generator [install].executor": "Run",
@@ -54,7 +100,7 @@
     "Spring Boot.KeyGeneratorApp.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/JAVA/Demo/src/main/resources/templates/clothing.html",
+    "last_opened_file_path": "D:/JAVA/KEY_Generator",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,7 +130,33 @@
       <module name="TEstSpring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="lt.daujotas.sipher.*" />
+          <option name="PATTERN" value="lt.daujotas.sipher.pojo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lt.daujotas.sipher.Client" />
+      <module name="TEstSpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lt.daujotas.sipher.pojo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lt.daujotas.sipher.Server" />
+      <module name="TEstSpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lt.daujotas.sipher.pojo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,8 +195,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.KeyGeneratorApp" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Application.AES" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -151,6 +225,14 @@
       <workItem from="1708331586844" duration="4111000" />
       <workItem from="1708339550963" duration="5344000" />
       <workItem from="1708346342515" duration="19990000" />
+      <workItem from="1708416513902" duration="6301000" />
+      <workItem from="1708452541835" duration="48000" />
+      <workItem from="1708452868915" duration="608000" />
+      <workItem from="1708501995681" duration="4155000" />
+      <workItem from="1708507120787" duration="26738000" />
+      <workItem from="1708592163488" duration="363000" />
+      <workItem from="1708601281244" duration="613000" />
+      <workItem from="1708604882823" duration="10381000" />
     </task>
     <task id="LOCAL-00001" summary="Key Generator v3.5.0 Nauja forma pildyti generuotus slaptazodwius, bet dar nera surista su Clientaccount. Forma pildo ir isveda is DB">
       <option name="closed" value="true" />
@@ -200,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708366321424</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Key Generator v3.4-3.7.3 truku failu kuriuos reikejo sukomitinti.">
+      <option name="closed" value="true" />
+      <created>1708416623325</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708416623325</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,13 +308,15 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Key Generator v3.5.0 Nauja forma pildyti generuotus slaptazodwius, bet dar nera surista su Clientaccount. Forma pildo ir isveda is DB" />
     <MESSAGE value="Key Generator v3.6.0  - PAvelo pataisymai ir prisiloginus rodo tik to userio info, sutvarke logou." />
     <MESSAGE value="Key Generator v3.7.0  Pridejau KeuGenerator i webaplikacija, LoremIps, skaiciai ir raides ir spec simboliai. Viskas isaugona i DB, bet dar ne koduojama" />
     <MESSAGE value="Key Generator v3.7.1 pridejau lauko su stiprumo kodu validacija, ne maziau kaip 8 simboliai" />
     <MESSAGE value="Key Generator v3.7.2 pataisyto html formos veikia metodai" />
     <MESSAGE value="Key Generator v3.7.3 is lenteles galima tiesiai i URL nueiti, bet dar nesuveda issaugotu DB prisijungimo duomenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Key Generator v3.7.3 is lenteles galima tiesiai i URL nueiti, bet dar nesuveda issaugotu DB prisijungimo duomenu" />
+    <MESSAGE value="Key Generator v3.4-3.7.3 truku failu kuriuos reikejo sukomitinti." />
+    <option name="LAST_COMMIT_MESSAGE" value="Key Generator v3.4-3.7.3 truku failu kuriuos reikejo sukomitinti." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

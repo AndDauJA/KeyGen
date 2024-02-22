@@ -1,14 +1,13 @@
 package lt.daujotas;
-
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.io.IOException;
 
 @SpringBootApplication
 public class KeyGeneratorApp {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(KeyGeneratorApp.class, args);
+
+        
 //        System.out.println("data from NativeQuery -> SQL");
 //        nativeQueryExample();
 //        System.out.println("data from Query -> HQL");
@@ -30,7 +29,19 @@ public class KeyGeneratorApp {
 //        } catch (Exception ex) {
 //            ex.printStackTrace();
 //        }
-//        GenKeySaveToFile.fileOutGoing(2);
+//        new Server();
+
+//        SecretKeySaveToFile.fileOutGoing();
+//        KeyIVToFile.fileOutGoing();
+//        int targetId = 1; // Nurodomas norimas ID
+//        // Failo kelias
+//        String key = ReadSecretKeyFromFile(); // Gauname rakto reikšmę pagal ID
+//        if (key != null) {
+//            System.out.println("Raktas pagal ID " + targetId + ": " + key);
+//        } else {
+//            System.out.println("Raktas su ID " + targetId + " nerastas.");
+//        }
+//        SaveToFIle.fileOutGoing();
 //      PasswEntrophyCalc.centrohyCalculator();
 //        System.out.println(generatePassword(8));
 

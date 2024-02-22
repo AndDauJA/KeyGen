@@ -18,10 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UsersRegistrationSerivce {
 
-
     private final ClientRepository clientRepository;
-
-
     private final AuthorityRepository authorityRepository;
 
     public void register(ClientDto clientDto) throws DataIntegrityViolationException {
@@ -47,6 +44,12 @@ public class UsersRegistrationSerivce {
         );
 
 
+    }
+    public String getUsernameFromDto(ClientDto clientDto) {
+        return clientDto.getUserName();
+    }
+    public String encripedPasswSecKey(){
+return null;
     }
 
 

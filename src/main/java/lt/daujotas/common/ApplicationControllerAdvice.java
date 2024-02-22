@@ -16,10 +16,11 @@ public class ApplicationControllerAdvice {
         return "/error/clienttNotFound";
     }
 
-//    @ExceptionHandler
-//    public String otherErrors(Exception e) {
-//        throw new RuntimeException(e);
-//    }
+    @ExceptionHandler
+    public String otherErrors(Exception e) {
+        e.printStackTrace();
+        throw new RuntimeException(e);
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {

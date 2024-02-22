@@ -33,10 +33,7 @@
                             <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
                             <li sec:authorize="!isAuthenticated()" class="menu-ul-item-login">
                                 <a th:href="@{/login}">Login</a></li>
-                            <!--                            <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">-->
-                            <!--                                <a th:href="@{/userregistrationform}">SignIn</a></li>-->
-                            <!--                            <li sec:authorize="isAuthenticated()" class="menu-ul-item-logout">-->
-                            <!--                                <a th:href="@{logout}">Logout</a></li>-->
+
                         </ul>
                     </menu>
                 </div>
@@ -92,6 +89,10 @@
                    placeholder="Enter your email" th:field="*{emailAddress}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('emailAddress')}"
                   th:errors="*{emailAddress}"></span>
+            <div th:if="${duplicateEmailMessage != null}" class="alert alert-danger" role="alert">
+                <p th:text="${duplicateEmailMessage}"></p>
+            </div>
+
 
             <label for="password">Password:</label>
             <input type="password" id="password"

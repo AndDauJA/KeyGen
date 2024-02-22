@@ -12,10 +12,11 @@ import java.util.Base64;
  */
 
 public class AES {
-    private SecretKey key;
+    private static SecretKey key;
     private final int KEY_SIZE = 128;
     private final int T_LEN = 128;
     private Cipher encryptionCipher;
+    private byte[] IV;
 
     public void init() throws Exception {
         KeyGenerator generator = KeyGenerator.getInstance("AES");
@@ -27,6 +28,7 @@ public class AES {
         byte[] messageInBytes = message.getBytes();
         encryptionCipher = Cipher.getInstance("AES/GCM/NoPadding");
         encryptionCipher.init(Cipher.ENCRYPT_MODE, key);
+        IV = encryptionCipher.getIV();
         byte[] encryptedBytes = encryptionCipher.doFinal(messageInBytes);
         return encode(encryptedBytes);
     }
@@ -34,13 +36,13 @@ public class AES {
     public String decrypt(String encryptedMessage) throws Exception {
         byte[] messageInBytes = decode(encryptedMessage);
         Cipher decryptionCipher = Cipher.getInstance("AES/GCM/NoPadding");
-        GCMParameterSpec spec = new GCMParameterSpec(T_LEN, encryptionCipher.getIV());
+        GCMParameterSpec spec = new GCMParameterSpec(T_LEN, IV);
         decryptionCipher.init(Cipher.DECRYPT_MODE, key, spec);
         byte[] decryptedBytes = decryptionCipher.doFinal(messageInBytes);
         return new String(decryptedBytes);
     }
 
-    private String encode(byte[] data) {
+    private static String encode(byte[] data) {
         return Base64.getEncoder().encodeToString(data);
     }
 
@@ -48,16 +50,50 @@ public class AES {
         return Base64.getDecoder().decode(data);
     }
 
-    public static void main(String[] args) {
+    public String exportSecretKeys() {
+
+//        System.err.println("IV: " + encode(IV));
+        return encode(key.getEncoded());
+    }
+
+    public String exportKeyIV() {
+        return encode(IV);
+    }
+
+    public String encriptedMessage(String nameMessage) throws Exception {
+        return encrypt(nameMessage);
+    }
+
+    public static void main(String[] args) throws Exception {
+
+//        try {
+//            Server server = new Server();
+//            server.initFromStrings("CHuO1Fjd8YgJqTyapibFBQ==", "e3IYYJC2hxe24/EO");
+//            String encryptedMessage = server.encrypt("TheXCoders_2");
+//            System.err.println("Encrypted Message : " + encryptedMessage);
+//        } catch (Exception ignored) {
+//        }
+//        try {
+//            AES aes = new AES();
+//            aes.initFromStrings("38oskpgEmTOZCHlmjpFnqg==", "124M+To7dHTo4moD8uh/xg==");
+//            String decryptedMessage = .decrypt("TFf4bnfvr2RhmvBbKYPgog==");
+//            System.err.println("Decrypted Message : " + decryptedMessage);
+//        } catch (Exception ignored) {
+//        }
+
         try {
             AES aes = new AES();
             aes.init();
-            String encryptedMessage = aes.encrypt("TheXCoders");
-            String decryptedMessage = aes.decrypt(encryptedMessage);
-
-            System.err.println("Encrypted Message : " + encryptedMessage);
+//            String encryptedMessage = aes.encrypt(aes.getMessage());
+            String decryptedMessage = aes.decrypt("TFf4bnfvr2RhmvBbKYPgog==");
+//
+//            System.err.println("Encrypted Message : " + encryptedMessage);
             System.err.println("Decrypted Message : " + decryptedMessage);
+            System.err.println("secretkey: " + aes.exportSecretKeys());
+            System.err.println("IV: " + aes.exportKeyIV());
         } catch (Exception ignored) {
+
         }
+
     }
 }

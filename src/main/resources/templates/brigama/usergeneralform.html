@@ -172,7 +172,7 @@
                 <td style="font-size: 20px;">
                     <a th:href="@{${user.getWebaddress()}}" target="_blank" th:text="${user.getWebaddress()}?: 'N/A'">N/A</a>
                 </td>
-                <td style="font-size: 20px;" th:text="${user.getGeneratedkey()}?: 'N/A'">N/A</td>
+                <td style="font-size: 20px;" th:text="${user.generatedkey}?: 'N/A'">N/A</td>
                 <td style="font-size: 20px;" th:text="${user.getNotes()}?: 'N/A'">N/A</td>
                 <td><a style="font-size: 20px;" th:if="${user.uuid != null}"
                        th:href="@{'/usergeneralform/' + ${user.uuid} + '/delete'}">Delete</a></td>

@@ -10,9 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping
@@ -34,21 +32,33 @@ public class UserRegistrationControler {
     @PostMapping("/userregistrationform")
     public String registerNewUser(Model model, @Valid ClientDto clientDto, BindingResult errors) {
 
+
         if (errors.hasErrors()) {
 
             return "brigama/userregistrationform";
         }
+
         try {
             usersRegistrationSerivce.register(clientDto);
-
-
         } catch (DataIntegrityViolationException e) {
-            if (e.getMessage().contains("EMAIL"))
-                errors.addError(new FieldError(ClientDto.class.getName(), "emailAddress", "This email already in use"));
-        }   // TODO pabaigti kad mestu message
-//        clientAccountService.saveClient(clientData);
+            if (e.getMessage().contains("EMAIL")) {
+                String duplicateEmailMessage = "This email already in use";
+                model.addAttribute("duplicateEmailMessage", duplicateEmailMessage);
+                return "brigama/userregistrationform";
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         return "redirect:brigama/login";
+    }
 
+    @ControllerAdvice
+    public class GlobalExceptionHandler {
+        @ExceptionHandler(DataIntegrityViolationException.class)
+        public String handleDataIntegrityViolationException(Model model, DataIntegrityViolationException ex) {
+            model.addAttribute("duplicateEmailMessage", "This email already in use");
+            return "brigama/userregistrationform";
+        }
     }
 }
