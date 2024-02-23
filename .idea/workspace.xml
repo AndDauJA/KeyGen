@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator 3.8 papildzia 2 lentelemis su Specialkey ir IVKey, kurie reikalingi issifruoti uzshifruota splaptazodi.Leteles sjungto OneToOne(IVKey_pojo ir special_Key_pojo su usedlogins)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/GeneretedKeyDecryptionService.java" afterDir="false" />
+    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator 3.8.1 Neveikia Decoding">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/repository/UserGeneralLoginCredentialsDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/repository/UserGeneralLoginCredentialsDataRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/config/ApplicationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/IVKeyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/IVKeyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/IVKeyJpaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/IVKeyJpaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/SpecialKeyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/SpecialKeyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/SpecialKeyJpaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Dao/SpecialKeyJpaDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/IVKeyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/IVKeyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/SpecKeyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/SpecKeyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/service/SpecialKeyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/GeneretedKeyDecryptionService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,50 +50,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.AES.executor": "Run",
-    "Application.Client.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "Maven.Key_Generator [clean].executor": "Run",
-    "Maven.Key_Generator [install].executor": "Run",
-    "Maven.Key_Generator [validate].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.KeyGeneratorApp.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/JAVA/KEY_Generator",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "Errors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AES.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Key_Generator [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Key_Generator [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Key_Generator [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.KeyGeneratorApp.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/KEY_Generator&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\JAVA\KEY_Generator\src\main\resources" />
       <recent name="D:\JAVA\KEY_Generator\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.KeyGeneratorApp">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="AES" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lt.daujotas.sipher.AES" />
       <module name="TEstSpring" />
@@ -170,10 +163,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.KeyGeneratorApp" />
-        <item itemvalue="Application.AES" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Spring Boot.KeyGeneratorApp" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.AES" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -208,7 +201,8 @@
       <workItem from="1708507120787" duration="26738000" />
       <workItem from="1708592163488" duration="363000" />
       <workItem from="1708601281244" duration="613000" />
-      <workItem from="1708604882823" duration="19173000" />
+      <workItem from="1708604882823" duration="19334000" />
+      <workItem from="1708676033226" duration="10843000" />
     </task>
     <task id="LOCAL-00001" summary="Key Generator v3.5.0 Nauja forma pildyti generuotus slaptazodwius, bet dar nera surista su Clientaccount. Forma pildo ir isveda is DB">
       <option name="closed" value="true" />
@@ -274,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708615589000</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Key Generator 3.8.1 Neveikia Decoding">
+      <option name="closed" value="true" />
+      <created>1708627546772</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708627546772</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +303,8 @@
     <MESSAGE value="Key Generator v3.7.3 is lenteles galima tiesiai i URL nueiti, bet dar nesuveda issaugotu DB prisijungimo duomenu" />
     <MESSAGE value="Key Generator v3.4-3.7.3 truku failu kuriuos reikejo sukomitinti." />
     <MESSAGE value="Key Generator 3.8 papildzia 2 lentelemis su Specialkey ir IVKey, kurie reikalingi issifruoti uzshifruota splaptazodi.Leteles sjungto OneToOne(IVKey_pojo ir special_Key_pojo su usedlogins)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Key Generator 3.8 papildzia 2 lentelemis su Specialkey ir IVKey, kurie reikalingi issifruoti uzshifruota splaptazodi.Leteles sjungto OneToOne(IVKey_pojo ir special_Key_pojo su usedlogins)" />
+    <MESSAGE value="Key Generator 3.8.1 Neveikia Decoding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Key Generator 3.8.1 Neveikia Decoding" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
