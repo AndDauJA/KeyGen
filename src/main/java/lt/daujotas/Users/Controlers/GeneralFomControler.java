@@ -47,10 +47,11 @@ public class GeneralFomControler {
     public String showUserGeneralForm(Model model, @ModelAttribute UserDto userDto,
                                       @PageableDefault(size = 25) Pageable pageable){
         List<UserDto> userDtoList = decodingGenKeyService.getAllUsersWithDecryptedKeys(pageable);
+        //zemiau esantis kodas buvo pritaikytas gauti visiems duomenims is DB pirmineje stadijoje
 //           final Page<UserGeneralLoginCredentialsData> userGeneralLoginCredentialsData =
 //                userGeneralLoginCredentialsDataService.getAllClientsPages(userDto, pageable);
-        model.addAttribute("userDtoList", userDtoList);
 //        model.addAttribute("userGeneralList", userGeneralLoginCredentialsData);
+        model.addAttribute("userDtoList", userDtoList);
         model.addAttribute("userDto", UserDto.builder().build());
         return "brigama/usergeneralform";
     }
@@ -65,7 +66,7 @@ public class GeneralFomControler {
         }
         userGeneralLoginCredentialsDataService.inputKeyGenData(userDto);
         // TODO pabaigti kad mestu message
-        return "brigama/usergeneralform";
+        return "redirect:/usergeneralform";
 
     }
 

@@ -48,13 +48,11 @@ public class DecodingGenKeyService {
         if (!specKey.isPresent() || !ivKey.isPresent()) {
             return "Encryption key or IV not found";
         }
-
         // Naudokite Client klasę dekodavimui
         client.initFromStrings(specKey.get().getSecretKey(), ivKey.get().getSpecialIVKey());
         return client.decrypt(credentialsData.getGeneratedkey());
     }
-
-
+        // Naudoju metoda ivedimui i html
     public List<UserDto> getAllUsersWithDecryptedKeys(Pageable pageable) {
         Page<UserGeneralLoginCredentialsData> credentialsPage = userGeneralLoginCredentialsDataRepository.findAll(pageable);
 

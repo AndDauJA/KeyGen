@@ -1,4 +1,5 @@
 package lt.daujotas.Users.services;
+
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lt.daujotas.Users.clientDataPojo.UserGeneralLoginCredentialsData;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 import java.util.UUID;
 
 @Service
@@ -49,9 +51,9 @@ public class UserGeneralLoginCredentialsDataService {
         specKeyRepository.save(new SpecialKeyPojo(UUID.randomUUID(), secrKey, userCredentialsData));
         ivKeyRepository.save(new IVKeyPojo(UUID.randomUUID(), iv, userCredentialsData));
 
-        System.out.println("encrypt message: " + encryptedMessage);
-        System.out.println("secret key: " + secrKey);
-        System.out.println("IV: " + iv);
+//        System.out.println("encrypt message: " + encryptedMessage);
+//        System.out.println("secret key: " + secrKey);
+//        System.out.println("IV: " + iv);
 
     }
 

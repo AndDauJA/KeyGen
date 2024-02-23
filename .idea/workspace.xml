@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator 3.8.2 perdarytas encoding, ir pateikia tesingus duomenis is DB, rankiniu udu teisingai issikoduoja. Veikia.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/DecodingGenKeyService.java" afterDir="false" />
+    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator 3.9.0 Visi slaptazodziai uzkoduojamis, padedami i DB, ten sagomi or i html grazinant slaptawodi jis dekoduojamas ir padodomas priminiu pavidalu. VEIKIA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/IVKeyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/repository/IVKeyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/clientDataPojo/UserGeneralLoginCredentialsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/clientDataPojo/UserGeneralLoginCredentialsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/clientPojo/ClientData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/clientPojo/ClientData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/DecodingGenKeyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/DecodingGenKeyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,7 +203,7 @@
       <workItem from="1708592163488" duration="363000" />
       <workItem from="1708601281244" duration="613000" />
       <workItem from="1708604882823" duration="19334000" />
-      <workItem from="1708676033226" duration="17249000" />
+      <workItem from="1708676033226" duration="20704000" />
     </task>
     <task id="LOCAL-00001" summary="Key Generator v3.5.0 Nauja forma pildyti generuotus slaptazodwius, bet dar nera surista su Clientaccount. Forma pildo ir isveda is DB">
       <option name="closed" value="true" />
@@ -283,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708687148883</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Key Generator 3.9.0 Visi slaptazodziai uzkoduojamis, padedami i DB, ten sagomi or i html grazinant slaptawodi jis dekoduojamas ir padodomas priminiu pavidalu. VEIKIA">
+      <option name="closed" value="true" />
+      <created>1708695865528</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708695865528</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +322,8 @@
     <MESSAGE value="Key Generator 3.8 papildzia 2 lentelemis su Specialkey ir IVKey, kurie reikalingi issifruoti uzshifruota splaptazodi.Leteles sjungto OneToOne(IVKey_pojo ir special_Key_pojo su usedlogins)" />
     <MESSAGE value="Key Generator 3.8.1 Neveikia Decoding" />
     <MESSAGE value="Key Generator 3.8.2 perdarytas encoding, ir pateikia tesingus duomenis is DB, rankiniu udu teisingai issikoduoja. Veikia." />
-    <option name="LAST_COMMIT_MESSAGE" value="Key Generator 3.8.2 perdarytas encoding, ir pateikia tesingus duomenis is DB, rankiniu udu teisingai issikoduoja. Veikia." />
+    <MESSAGE value="Key Generator 3.9.0 Visi slaptazodziai uzkoduojamis, padedami i DB, ten sagomi or i html grazinant slaptawodi jis dekoduojamas ir padodomas priminiu pavidalu. VEIKIA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Key Generator 3.9.0 Visi slaptazodziai uzkoduojamis, padedami i DB, ten sagomi or i html grazinant slaptawodi jis dekoduojamas ir padodomas priminiu pavidalu. VEIKIA" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -28,7 +28,8 @@ public class UserGeneralLoginCredentialsData {
     private Long id;
     private UUID uuid;
     @NotEmpty(message = "{NotEmpty.Name.message.genkey}")
-    @Column(nullable = false)
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String generatedkey;
     @Column(length = 50, nullable = true)
     private String webbrowser;

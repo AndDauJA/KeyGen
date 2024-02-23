@@ -33,7 +33,7 @@ public class ClientData implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty( message= "{NotEmpty.Name.message.userName} ")
+    @NotEmpty(message = "{NotEmpty.Name.message.userName} ")
     @Column(name = "username", unique = true)
     private String userName;
     @NotEmpty(message = "{NotEmpty.Name.message.Name}")
@@ -54,6 +54,8 @@ public class ClientData implements UserDetails {
     private String phoneNumber;
     @NotEmpty
     @NotEmpty(message = "{NotEmpty.Name.message.password}")
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String password;
     @NotEmpty(message = "{NotEmpty.Name.message.email}")
     @Column(name = "emailaddress", unique = true)
@@ -84,7 +86,7 @@ public class ClientData implements UserDetails {
         return authorities;
     }
 
-    @OneToMany( cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "clientaccountdata_id")
     private Set<UserGeneralLoginCredentialsData> userData;
 
