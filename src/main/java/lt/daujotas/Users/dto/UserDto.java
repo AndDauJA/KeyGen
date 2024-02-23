@@ -23,5 +23,5 @@ public class UserDto {
     private String webaddress;
     private String notes;
     private Date dateAdded;
-
+    private String decryptedKey;
 }

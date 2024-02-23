@@ -13,7 +13,7 @@
     <title>Kleinto bendra forma</title>
 </head>
 
-<body >
+<body>
 
 <div class="body-background">
     <div class="header-main-container">
@@ -66,8 +66,8 @@
                 onclick="toggleForm()">Create New account and key
         </button>
 
-        <div id="new-account-form" class="input-group mb-3" style="display: none;" >
-            <form  method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
+        <div id="new-account-form" class="input-group mb-3" style="display: none;">
+            <form method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
                 <label for="basic-url">Your Username</label>
                 <div class="input-group mb-3">
                     <input style="font-size: 18px;" type="text" class="form-control" placeholder="Username/email"
@@ -79,7 +79,8 @@
                 </div>
                 <label for="basic-url">Your URL</label>
                 <div class="input-group mb-3">
-                    <input style="font-size: 18px;" type="text" class="form-control" placeholder="URL/WEB address" th:field="*{webaddress}"
+                    <input style="font-size: 18px;" type="text" class="form-control" placeholder="URL/WEB address"
+                           th:field="*{webaddress}"
                            id="basic-url" aria-describedby="basic-addon3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3" th:if="${#fields.hasErrors('webaddress')}"
@@ -122,8 +123,9 @@
                     </div>
 
                 </div>
-                <label  for="basic-url">Kokio stiprumo kodo norite?</label>
-                <input style="font-size: 18px;" type="number" class="form-control" aria-label="Įveskite Ne mažiau nei 8 simbolius"
+                <label for="basic-url">Kokio stiprumo kodo norite?</label>
+                <input style="font-size: 18px;" type="number" class="form-control"
+                       aria-label="Įveskite Ne mažiau nei 8 simbolius"
                        id="number-strength"
                        onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
                 <label for="basic-url">Your Generated Key</label>
@@ -131,9 +133,12 @@
                     <div class="input-group-prepend">
                         <img class="input-group-text img-fluid" src="/images/keyimg.jpg">
                     </div>
-                    <input style="font-size: 18px;" type="text" class="form-control" aria-label="Generate key" th:field="*{generatedkey}">
+                    <input style="font-size: 18px;" type="text" class="form-control" aria-label="Generate key"
+                           th:field="*{generatedkey}">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary " style="font-size: 20px;" onclick="generateKey()">Generate</button>
+                        <button type="button" class="btn btn-secondary " style="font-size: 20px;"
+                                onclick="generateKey()">Generate
+                        </button>
                     </div>
                 </div>
 
@@ -141,7 +146,8 @@
                     <div class="input-group-prepend">
                         <span style="font-size: 18px;" class="input-group-text">Notes</span>
                     </div>
-                    <textarea style="font-size: 18px;" class="form-control" aria-label="Your Notes" th:field="*{notes}"></textarea>
+                    <textarea style="font-size: 18px;" class="form-control" aria-label="Your Notes"
+                              th:field="*{notes}"></textarea>
                 </div>
                 <div class="wrap">
                     <div style="height: 20px;"></div>
@@ -162,22 +168,32 @@
                 <th scope="col" style="font-size: 20px;">Generated Key</th>
                 <th scope="col" style="font-size: 20px;">Notes</th>
                 <th scope="col" hidden="hidden">UUID</th>
+
             </tr>
             </thead>
 
             <tbody>
-            <tr th:each="user, stat: ${userGeneralList}">
-                <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>
-                <td style="font-size: 20px;" th:text="${user.getUsername()}?: 'N/A'">N/A</td>
-                <td style="font-size: 20px;">
-                    <a th:href="@{${user.getWebaddress()}}" target="_blank" th:text="${user.getWebaddress()}?: 'N/A'">N/A</a>
-                </td>
-                <td style="font-size: 20px;" th:text="${user.generatedkey}?: 'N/A'">N/A</td>
-                <td style="font-size: 20px;" th:text="${user.getNotes()}?: 'N/A'">N/A</td>
-                <td><a style="font-size: 20px;" th:if="${user.uuid != null}"
-                       th:href="@{'/usergeneralform/' + ${user.uuid} + '/delete'}">Delete</a></td>
+            <!--            <tr th:each="user, stat: ${userGeneralList}">-->
+            <!--                <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>-->
+            <!--                <td style="font-size: 20px;" th:text="${user.getUsername()}?: 'N/A'">N/A</td>-->
+            <!--                <td style="font-size: 20px;">-->
+            <!--                    <a th:href="@{${user.getWebaddress()}}" target="_blank" th:text="${user.getWebaddress()}?: 'N/A'">N/A</a>-->
+            <!--                </td>-->
+            <!--                <td style="font-size: 20px;" th:text="${user.generatedkey}?: 'N/A'">N/A</td>-->
+            <!--                <td style="font-size: 20px;" th:text="${user.getNotes()}?: 'N/A'">N/A</td>-->
+            <!--                <td><a style="font-size: 20px;" th:if="${user.uuid != null}"-->
+            <!--                       th:href="@{'/usergeneralform/' + ${user.uuid} + '/delete'}">Delete</a></td>-->
+            <!--                <td style="font-size: 20px;" th:text="${user.getNotes()}?: 'N/A'">N/A</td>-->
+            <!--            </tr>-->
+            <tr th:each="userDto, stat : ${userDtoList}">
+                <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>-->
+                <td th:text="${userDto.userNameEmail}"></td>
+                <td th:text="${userDto.webaddress}"></td>
+                <td th:text="${userDto.decryptedKey}"></td>
+                <td th:text="${userDto.notes}"></td>
+                 <!-- Atvaizduojamas dekoduotas slaptažodis -->
             </tr>
-            </tbody>
+
         </table>
 
     </div>

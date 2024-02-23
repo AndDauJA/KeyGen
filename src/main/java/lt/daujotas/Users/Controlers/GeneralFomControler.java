@@ -4,8 +4,11 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lt.daujotas.Users.clientDataPojo.UserGeneralLoginCredentialsData;
 import lt.daujotas.Users.dto.UserDto;
+import lt.daujotas.Users.repository.UserGeneralLoginCredentialsDataRepository;
 import lt.daujotas.Users.services.UserGeneralLoginCredentialsDataService;
+import lt.daujotas.dao.UserFirstRegistrationRepository;
 import lt.daujotas.sipher.Client;
+import lt.daujotas.sipher.srvice.DecodingGenKeyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,43 +22,39 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.PrivateKey;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
-
 
 
 @Controller
 public class GeneralFomControler {
+    private final DecodingGenKeyService decodingGenKeyService;
     private final UserGeneralLoginCredentialsDataService userGeneralLoginCredentialsDataService;
-
+    private final UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository;
 
     @Autowired
-    public GeneralFomControler(UserGeneralLoginCredentialsDataService userGeneralLoginCredentialsDataService) {
+    public GeneralFomControler(DecodingGenKeyService decodingGenKeyService, UserGeneralLoginCredentialsDataService userGeneralLoginCredentialsDataService, UserFirstRegistrationRepository userFirstRegistrationRepository, UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository) {
+        this.decodingGenKeyService = decodingGenKeyService;
         this.userGeneralLoginCredentialsDataService = userGeneralLoginCredentialsDataService;
+        this.userGeneralLoginCredentialsDataRepository = userGeneralLoginCredentialsDataRepository;
+
     }
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/usergeneralform")
     public String showUserGeneralForm(Model model, @ModelAttribute UserDto userDto,
-                                      @PageableDefault(size = 25) Pageable pageable,
-                                       String secretKey, String IV) {
-        final Page<UserGeneralLoginCredentialsData> userGeneralLoginCredentialsData =
-                userGeneralLoginCredentialsDataService.getAllClientsPages(userDto, pageable);
-//        userGeneralLoginCredentialsData.forEach(data -> {
-//            try {
-//                String decryptedKey = userGeneralLoginCredentialsDataService.decryptPassword(
-//                        data.getGeneratedkey(), "38oskpgEmTOZCHlmjpFnqg==", "124M+To7dHTo4moD8uh/xg==");
-//                data.setGeneratedkey(decryptedKey);
-//            } catch (Exception e) {
-//                // Handle decryption error
-//                e.printStackTrace();
-//            }
-//        });
-
-
-        model.addAttribute("userGeneralList", userGeneralLoginCredentialsData);
+                                      @PageableDefault(size = 25) Pageable pageable){
+        List<UserDto> userDtoList = decodingGenKeyService.getAllUsersWithDecryptedKeys(pageable);
+//           final Page<UserGeneralLoginCredentialsData> userGeneralLoginCredentialsData =
+//                userGeneralLoginCredentialsDataService.getAllClientsPages(userDto, pageable);
+        model.addAttribute("userDtoList", userDtoList);
+//        model.addAttribute("userGeneralList", userGeneralLoginCredentialsData);
         model.addAttribute("userDto", UserDto.builder().build());
         return "brigama/usergeneralform";
     }
+
 
 
     @PostMapping("/usergeneralform")
@@ -76,13 +75,10 @@ public class GeneralFomControler {
         userGeneralLoginCredentialsDataService.deleteUserGeneralDataByUUID(id);
         return "redirect:/usergeneralform";
     }
-//    @GetMapping("/decryptPassword")
-//    public ResponseEntity<String> decryptPassword(@RequestParam String encryptedPassword, @RequestParam String secretKey, @RequestParam String IV) {
-//        try {
-//            String decryptedPassword = userGeneralLoginCredentialsDataService.decryptPassword(encryptedPassword, secretKey, IV);
-//            return ResponseEntity.ok(decryptedPassword);
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error decrypting password");
-//        }
-//    }
+
+
+
+
 }
+
+

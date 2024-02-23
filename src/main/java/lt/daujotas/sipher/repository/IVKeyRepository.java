@@ -13,4 +13,5 @@ import java.util.UUID;
 public interface IVKeyRepository extends JpaRepository<IVKeyPojo, Long> {
     Optional<IVKeyPojo> findByUserGeneralLoginCredentialsDataUuid(UUID uuid);
     Optional<IVKeyPojo>findByUserGeneralLoginCredentialsDataUuid (UserGeneralLoginCredentialsData userGeneralLoginCredentialsData);
+Optional<IVKeyPojo> findByUserGeneralLoginCredentialsData(UserGeneralLoginCredentialsData userGeneralLoginCredentialsData);
 }
