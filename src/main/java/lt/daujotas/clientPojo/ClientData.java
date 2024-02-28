@@ -33,7 +33,7 @@ public class ClientData implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "{NotEmpty.Name.message.userName} ")
+    @NotEmpty(message = "{NotEmpty.Name.message.userName}")
     @Column(name = "username", unique = true)
     private String userName;
     @NotEmpty(message = "{NotEmpty.Name.message.Name}")

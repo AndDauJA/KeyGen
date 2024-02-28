@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class ClientAccountService {
 //    }
 
     public void updateAllClientData(String userName, String firstName, String lastName, String middleName,
-                                    String postAddress, String phoneNumber, String emailAddress) {
+                                    String postAddress, String phoneNumber, String emailAddress, Date birthDate) {
         Optional<ClientData> optionalClientData = clientDao.getClientByUsername(userName);
 
         if (optionalClientData.isPresent()) {
@@ -41,6 +42,7 @@ public class ClientAccountService {
             clientData.setPostAddres(postAddress);
             clientData.setPhoneNumber(phoneNumber);
             clientData.setEmailAddress(emailAddress);
+            clientData.setDateofbirth(birthDate);
             clientDao.update(clientData);
 
         } else {

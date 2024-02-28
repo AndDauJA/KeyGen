@@ -33,8 +33,10 @@ public class UserGeneralLoginCredentialsData {
     private String generatedkey;
     @Column(length = 50, nullable = true)
     private String webbrowser;
+    @NotEmpty(message = "{NotEmpty.Name.message.webaddress}")
     @Column(length = 255, nullable = true)
     private String webaddress;
+    @NotEmpty(message = "{NotEmpty.Name.message.userName}")
     @Column(length = 150, nullable = true)
     private String username;
     private String notes;

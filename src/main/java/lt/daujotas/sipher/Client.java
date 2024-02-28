@@ -48,19 +48,19 @@ public class Client {
         return Base64.getDecoder().decode(data);
     }
 
-    public String getMessage() {
-        return "123";
-    }
-
-    public static void main(String[] args) {
-        try {
-            Client client = new Client();
-            client.initFromStrings("FKT7LOEboWS0iltJjLR48Q==","47glJ78NAMWQaqW7");
-            String decryptedMessage = client.decrypt("Fw8ET0fI8DB7WxLeEuqSOiREZw==");
-            System.err.println("Decrypted Message : " + decryptedMessage);
-        } catch (Exception ignored) {
-        }
-    }
+//    public String getMessage() {
+//        return "123";
+//    }
+//
+//    public static void main(String[] args) {
+//        try {
+//            Client client = new Client();
+//            client.initFromStrings("FKT7LOEboWS0iltJjLR48Q==","47glJ78NAMWQaqW7");
+//            String decryptedMessage = client.decrypt("Fw8ET0fI8DB7WxLeEuqSOiREZw==");
+//            System.err.println("Decrypted Message : " + decryptedMessage);
+//        } catch (Exception ignored) {
+//        }
+//    }
 //        try {
 //            server.init();
 //            String mesage=server.getMessageEncripted();

@@ -18,6 +18,7 @@ public class ClientMapper implements Mapper<ClientData, ClientDto> {
                 .postAddres(entity.getPostAddres())
                 .phoneNumber(entity.getPhoneNumber())
                 .emailAddress(entity.getEmailAddress())
+                .dateofbirth(entity.getDateofbirth())
                 .build();
     }
 

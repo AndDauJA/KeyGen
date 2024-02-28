@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/usergeneralform.css}">
-    <link rel="stylesheet" href="/css/usergeneralform.css">
+<!--    <link rel="stylesheet" href="/css/usergeneralform.css">-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Kleinto bendra forma</title>
@@ -45,9 +45,20 @@
                             <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{signin}">SignIn</a></li>
 
+
+                            <li class="menu-ul-item ul-menulist ">
+                                <select class="selectpicker" data-width="fit"
+                                        onchange="window.location.href = '?lang=' + this.value;">
+                                    <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
+                                            value="lt">Lietuvių
+                                    </option>
+                                    <option data-content='<span class="flag-icon flag-icon-us fi-gr"></span> EN'
+                                            value="en">English
+                                    </option>
+                                </select>
+                            </li>
                             <li sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{/logout}" th:text="'Logout'">Logout</a></li>
-
                         </ul>
                     </menu>
                 </div>
@@ -73,7 +84,7 @@
                     <input style="font-size: 18px;" type="text" class="form-control" placeholder="Username/email"
                            aria-label="UserName/Email" aria-describedby="basic-addon2" th:field="*{userNameEmail}">
                     <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2" th:if="${#fields.hasErrors('userNameEmail')}"
+                        <span style="color: #f44336; font-weight: bold; font-size: 15px" class="input-group-text" id="basic-addon2" th:if="${#fields.hasErrors('userNameEmail')}"
                               th:errors="*{userNameEmail}">@example.com</span>
                     </div>
                 </div>
@@ -83,7 +94,9 @@
                            th:field="*{webaddress}"
                            id="basic-url" aria-describedby="basic-addon3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon3" th:if="${#fields.hasErrors('webaddress')}"
+                        <span style="color: #f44336; font-weight: bold; font-size: 15px"
+                              class="input-group-text" id="basic-addon3"
+                              th:if="${#fields.hasErrors('webaddress')}"
                               th:errors="*{webaddress}">https//example.com</span>
                     </div>
                 </div>
@@ -145,7 +158,7 @@
             </form>
         </div>
 
-        <table class="table table-md table-Secondary ">
+        <table class="table table-responsive table-md table-Secondary ">
             <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -164,7 +177,7 @@
             <tr th:each="userDto, stat : ${userDtoList}">
                 <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>-->
                 <td th:text="${userDto.userNameEmail}"></td>
-                <td th:text="${userDto.webaddress}"></td>
+                <td><a style="font-size: 15px; font-weight: bold;"th:href="@{${userDto.webaddress}}" th:text="${userDto.webaddress}"></a> </td>
                 <td th:text="${userDto.decryptedKey}"></td>
                 <td th:text="${userDto.notes}"></td>
                  <!-- Atvaizduojamas dekoduotas slaptažodis -->
@@ -188,7 +201,14 @@
         }
 
     }
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
+        if (lang) {
+            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
+        }
+    });
 
+    // ================================================REIKIA PERKELTIS I SERVER DALI=============================
     function generateKey() {
         var checkedBoxes = document.querySelectorAll('input[name="generateType"]:checked');
         if (checkedBoxes.length === 0) {
@@ -205,7 +225,6 @@
             url = '/generate-key-letters';
         } else if (document.getElementById('Special_Key').checked) {
             url = '/generate-key-special';
-
         }
         if (document.getElementById('Special_Key').checked && document.getElementById('lettersnumbers').checked) {
             url = '/generate-key-special-letters';

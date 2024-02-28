@@ -11,22 +11,6 @@
 </head>
 
 <body>
-<script>
-    function findClient() {
-        document.getElementById("formId").action = "/clientaccountform";
-        document.getElementById("formId").submit();
-    }
-
-    function updateClient() {
-        document.getElementById("formId").action = "/updateclient";
-        // document.getElementById("inputEmailAddress").value =" ";
-        document.getElementById("formId").submit();
-    }
-</script>
-<!--<div class="alert alert-success" role="alert"-->
-<!--     th:if="${successMessageFlashAttr ne null}" th:text="${successMessageFlashAttr}">-->
-<!--    A simple success alert—check it out!-->
-<!--</div>-->
 <div class="body-background">
 
     <div class="header-main-container">
@@ -45,10 +29,12 @@
                     <menu class="menu-container on-hover">
                         <ul class="menu-ul">
 
-                            <li class="menu-ul-item"><a href="/">Apie įmonę</a></li>
-                            <li class="menu-ul-item"><a href="/cybersecnews.html">Najienos</a></li>
-                            <li class="menu-ul-item"><a href="#">Projektai</a></li>
-                            <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
+                            <li class="menu-ul-item" th:text="#{ul.menu.about}"><a href="/">Apie įmonę</a></li>
+                            <li class="menu-ul-item" th:text="#{ul.menu.news}"><a href="/cybersecnews.html">Najienos</a>
+                            </li>
+                            <li class="menu-ul-item" th:text="#{ul.menu.project}"><a href="#">Projektai</a></li>
+                            <li class="menu-ul-item" th:text="#{ul.menu.contacts}"><a href="#contact-id">Kontaktai</a>
+                            </li>
                             <li class="menu-ul-item-signin"><a href="/usergeneralform">Bendrą formą</a></li>
 
                             <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
@@ -62,7 +48,17 @@
                             </li>
                             <li sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{/logout}" th:text="'Logout'">Logout</a></li>
-
+                            <li class="menu-ul-item ul-menulist ">
+                                <select class="selectpicker" data-width="fit"
+                                        onchange="window.location.href = '?lang=' + this.value;">
+                                    <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
+                                            value="lt">Lietuvių
+                                    </option>
+                                    <option data-content='<span class="flag-icon flag-icon-us fi-gr"></span> EN'
+                                            value="en">English
+                                    </option>
+                                </select>
+                            </li>
                         </ul>
 
                     </menu>
@@ -101,21 +97,14 @@
                                   th:object="${clientDto}">
 
                                 <!-- Form Group (username)-->
-                                <label>My UserName</label>
-<!--                                <input type="text" placeholder="Enter first UserName" th:field="*{userName}"/>-->
-                                <input class="form-control" id="inputUsername" type="text" th:field="*{userName}" disabled>
+                                <label>Username (how your name will appear to other users on the site)</label>
+
+                                <input class="form-control" id="inputUsername" type="text" th:field="*{userName}"
+                                       readonly>
                                 <div class="">
                                     <input class="form-control" id="Uuid" type="hidden" placeholder="uuid"
                                            th:field="*{accountUuid}" th:value="${clientDto.accountUuid}">
                                 </div>
-                                <div class="">
-                                    <label class="small" for="inputUsername">Username (how your name will
-                                        appear to other users on the site)</label>
-                                    <input class="form-control" id="showusername" type="text"
-                                           placeholder="Enter your username"
-                                           value="userName" disabled>
-                                </div>
-                                <!-- Form Row-->
                                 <div class="row ">
 
                                     <div class="col">
@@ -142,12 +131,6 @@
 
                                 <div class="row ">
 
-                                    <!--                                    <div class="col">-->
-                                    <!--                                        <label class="small mb-1" for="inputOrgName">Organization name</label>-->
-                                    <!--                                        <input class="form-control" id="inputOrgName" type="text"-->
-                                    <!--                                               placeholder="Enter your organization name" value="Start Bootstrap">-->
-                                    <!--                                    </div>-->
-                                    <!-- Form Group (location)-->
                                     <div class="col">
                                         <label class="small mb-1" for="inputPostAddress">Post Address</label>
                                         <input class="form-control" id="inputPostAddress" type="text"
@@ -155,27 +138,25 @@
                                                th:field="*{postAddres}">
                                     </div>
                                 </div>
-                                <!-- Form Group (email address)-->
+
                                 <div class="mb-">
                                     <label class="small " for="inputEmailAddress">Email address</label>
                                     <input class="form-control" id="inputEmailAddress" type="email"
                                            placeholder="Enter your email address" th:field="*{emailAddress}">
                                 </div>
-                                <!-- Form Row-->
+
                                 <div class="row ">
-                                    <!-- Form Group (phone number)-->
+
                                     <div class="col">
                                         <label class="small mb-1" for="inputPhone">Phone number</label>
                                         <input class="form-control" id="inputPhone" type="tel"
                                                placeholder="Enter your phone number"
                                                th:field="*{phoneNumber}">
                                     </div>
-                                    <!-- Form Group (birthday)-->
-                                    <div class="col">
-                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday"
-                                               placeholder="Enter your birthday" th:value="*{dateofbirth}">
-                                    </div>
+                                    <input type="date"
+                                           id="dob" name="dob"
+                                           placeholder="Enter your DOB" th:field="*{dateofbirth}">
+
                                     <div class="col">
                                         <label class="small mb-1" for="inputGender">Gender</label>
                                         <input class="form-control" id="inputGender" type="text" name="birthday"
@@ -190,12 +171,7 @@
                                 <div class="alert alert-success" role="alert" th:if="${success}">
                                     Duomenys sėkmingai atnaujinti!!
                                 </div>
-                                <!-- Save changes button-->
-                                <button class="btn btn-primary" type="button" onclick="updateClient()">Update Client
-                                </button>
-
-                                <button class="btn btn-primary" type="submit">Find Client
-                                </button>
+                                <button type="submit" class="btn btn-primary">Update Client</button>
                             </form>
                         </div>
                     </div>
@@ -218,6 +194,14 @@
         <a href="#header-id">Grįžti į meniu</a>
     </div>
 </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
+        if (lang) {
+            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
+        }
+    });
+</script>
 </body>
 
 </html>
