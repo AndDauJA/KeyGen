@@ -11,12 +11,12 @@ spring:
   #    init:
   #      schema-locations: classpath:db/ddl-scripts.sql
   #      data-locations: classpath:db/dml-scripts.sql
-#  security:
-#
-#    user:
-#      name: admin
-#      password: admin123@#$
-# naudosime security is failo
+  #  security:
+  #
+  #    user:
+  #      name: admin
+  #      password: admin123@#$
+  # naudosime security is failo
 
   jpa:
     hibernate:
@@ -33,7 +33,7 @@ spring:
         default-page-size: 50
 
   thymeleaf:
-#    prefix: file:src/main/resources/templates/
+    #    prefix: file:src/main/resources/templates/
     cache: false
 
 

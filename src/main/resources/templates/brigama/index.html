@@ -2,78 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="lt">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Home - Brigama</title>
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-</head>
+<head th:replace="~{fragments/layout::headindex('Brigama')}"></head>
 
 <body>
 
 <div class="body-background">
-    <div class="header-main-container">
+    <div class="header-main-container ">
 
         <header id="header-id" class="wrap-header mobile-only">
 
             <div class="logo-menu-list">
                 <div class="logo-name-container">
-
                     <img id="body-img-logo" src="/images/3786012.jpg" alt="">
-
                     <h1 id="comany-name">UAB BRIGAMA</h1>
-
                 </div>
-                <div class="menu-list">
-                    <menu class="menu-container on-hover">
-                        <ul class="menu-ul">
-                            <li class="menu-ul-item" th:text="#{ul.menu.about}"><a href="/"></a></li>
-                            <li class="menu-ul-item" th:text="#{ul.menu.news}"><a href="/cybersecnews.html">Najienos</a>
-                            </li>
-                            <li class="menu-ul-item" th:text="#{ul.menu.project}"><a href="#">Projektai</a></li>
-                            <li class="menu-ul-item" th:text="#{ul.menu.contacts}"><a href="#contact-id">Kontaktai</a>
-                            </li>
-
-                            <li sec:authorize="!isAuthenticated()" class="menu-ul-item">
-                                <a th:href="@{/login}" th:text="#{ul.menu.login}">Login</a></li>
-
-                            <li sec:authorize="isAuthenticated()" class="menu-ul-item">
-                                <a th:href="@{/usergeneralform}">Bendrą formą</a></li>
-                            <!--                            <li class="menu-ul-item"><a>Jus prisijunge : </a></li>-->
-                            <li
-                                    sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
-                                <a>Jus prisijunge : </a>
-                                <span style="color: #f44336" sec:authentication="principal.fullName"> </span>
-                            </li>
-
-                            <li sec:authorize="isAuthenticated()" class="menu-ul-item">
-                                <a th:href="@{/logout}" th:text="'Logout'">Logut</a></li>
-
-                            <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
-                                <a href="/userregistrationform" th:text="#{ul.menu.signin}">/ SignIn</a></li>
-
-
-                            <li class="menu-ul-item ul-menulist ">
-                                <select class="selectpicker" data-width="fit"
-                                        onchange="window.location.href = '?lang=' + this.value;">
-                                    <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
-                                            value="lt">Lietuvių
-                                    </option>
-                                    <option data-content='<span class="flag-icon flag-icon-us fi-gr"></span> EN'
-                                            value="en">English
-                                    </option>
-                                </select>
-                            </li>
-                        </ul>
-                    </menu>
-                </div>
-
+                <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
             </div>
-
         </header>
     </div>
     <div class="main-container">
@@ -93,23 +37,9 @@
             </div>
         </main>
     </div>
-    <footer id="contact-id" class="footer-wrap mobile-only">
-        <h2 class="kontaktai">Kontaktai</h2>
-        <div>
-            <ol class="wrap-kontakt-ul">
-                <li>UAB Brigama</li>
-                <li>Įmonės kodas: 302607361</li>
-                <li>PVM kodas: LT100007601018</li>
-                <li>El.pašto adresas: info@brigama.lt</li>
-            </ol>
-        </div>
-        <div class="go-home-link menu-ul-item-signin">
-            <a href="#header-id">Grįžti į meniu</a>
-        </div>
-        <div th:text="#{footer.message}"></div>
-    </footer>
-</div>
 
+</div>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL

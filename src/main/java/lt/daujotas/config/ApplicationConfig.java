@@ -70,6 +70,8 @@ public class ApplicationConfig implements WebMvcConfigurer {
         registry.addResourceHandler("generate-key/**")
                 .addResourceLocations("classpath:/static/usergeneralform/");
         registry.addResourceHandler("/favicon.ico")
+                .addResourceLocations("classpath:/usergeneralform");
+        registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/", "classpath:/public/");

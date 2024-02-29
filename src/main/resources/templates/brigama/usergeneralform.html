@@ -1,189 +1,158 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/usergeneralform.css}">
-<!--    <link rel="stylesheet" href="/css/usergeneralform.css">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Kleinto bendra forma</title>
-</head>
+      lang="lt">
+<head th:replace="~{fragments/general::headageneral('Brigama')}"></head>
 
 <body>
 
 <div class="body-background">
-    <div class="header-main-container">
+    <div class=".container-fluid">
 
         <header id="header-id" class="wrap-header mobile-only">
 
             <div class="logo-menu-list">
                 <div class="logo-name-container">
-
                     <img id="body-img-logo" src="/images/3786012.jpg" alt="">
-
                     <h1 id="comany-name">UAB BRIGAMA</h1>
-
                 </div>
-                <div class="menu-list">
-                    <menu class="menu-container on-hover">
-                        <ul class="menu-ul">
-
-                            <li class="menu-ul-item "><a class="ul-menulist " href="/">Apie įmonę</a></li>
-                            <li class="menu-ul-item"><a class="ul-menulist " href="/cybersecnews.html">Najienos</a></li>
-                            <li class="menu-ul-item"><a class="ul-menulist " href="#">Projektai</a></li>
-                            <li class="menu-ul-item"><a class="ul-menulist " href="#contact-id">Kontaktai</a></li>
-                            <li class="menu-ul-item"><a href="/clientaccountform">My account</a></li>
-                            <li class="menu-ul-item"><a>Sveiki prisijungę: </a>
-                                <span style="color: #f44336" sec:authentication="principal.fullName"> </span>
-                            </li>
-                            <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
-                                <a th:href="@{/login}">Login</a></li>
-                            <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
-                                <a th:href="@{signin}">SignIn</a></li>
-
-
-                            <li class="menu-ul-item ul-menulist ">
-                                <select class="selectpicker" data-width="fit"
-                                        onchange="window.location.href = '?lang=' + this.value;">
-                                    <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
-                                            value="lt">Lietuvių
-                                    </option>
-                                    <option data-content='<span class="flag-icon flag-icon-us fi-gr"></span> EN'
-                                            value="en">English
-                                    </option>
-                                </select>
-                            </li>
-                            <li sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
-                                <a th:href="@{/logout}" th:text="'Logout'">Logout</a></li>
-                        </ul>
-                    </menu>
-                </div>
-
+                <nav th:replace="~{fragments/general::navgeneral-bar}">placeholder</nav>
             </div>
-
         </header>
     </div>
-    <div class="main row " style="font-size: 18px;">
-        <div th:if="${message ne null and message.length() > 0}"
-             class="alert alert-success" role="alert"
-             th:text="${message}">
-            Success message when add product
-        </div>
-        <button style="font-size: 20px;" id="toggle-form-btn" class="btn btn-secondary input-group mb-6" type="button"
-                onclick="toggleForm()">Create New account and key
-        </button>
-
-        <div id="new-account-form" class="input-group mb-3" style="display: none;">
-            <form method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
-                <label for="basic-url">Your Username</label>
-                <div class="input-group mb-3">
-                    <input style="font-size: 18px;" type="text" class="form-control" placeholder="Username/email"
-                           aria-label="UserName/Email" aria-describedby="basic-addon2" th:field="*{userNameEmail}">
-                    <div class="input-group-append">
-                        <span style="color: #f44336; font-weight: bold; font-size: 15px" class="input-group-text" id="basic-addon2" th:if="${#fields.hasErrors('userNameEmail')}"
-                              th:errors="*{userNameEmail}">@example.com</span>
-                    </div>
+    <div class="main-container">
+        <main class="main-wrap">
+            <div class="main row " style="font-size: 18px;">
+                <div th:if="${message ne null and message.length() > 0}"
+                     class="alert alert-success" role="alert"
+                     th:text="${message}">
+                    Success message when add product
                 </div>
-                <label for="basic-url">Your URL</label>
-                <div class="input-group mb-3">
-                    <input style="font-size: 18px;" type="text" class="form-control" placeholder="URL/WEB address"
-                           th:field="*{webaddress}"
-                           id="basic-url" aria-describedby="basic-addon3">
-                    <div class="input-group-prepend">
+                <button style="font-size: 20px;" id="toggle-form-btn" class=" btn-secondary btn-block mb-6 text-center"
+                        type="button"
+                        onclick="toggleForm()">Create New account and key
+                </button>
+
+                <div id="new-account-form" class="input-group mb-3" style="display: none;">
+                    <form method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
+                        <label for="basic-url">Your Username</label>
+                        <div class="input-group mb-3">
+                            <input style="font-size: 18px;" type="text" class="form-control"
+                                   placeholder="Username/email"
+                                   aria-label="UserName/Email" aria-describedby="basic-addon2"
+                                   th:field="*{userNameEmail}">
+                            <div class="input-group-append">
+                        <span style="color: #f44336; font-weight: bold; font-size: 15px" class="input-group-text"
+                              id="basic-addon2" th:if="${#fields.hasErrors('userNameEmail')}"
+                              th:errors="*{userNameEmail}">@example.com</span>
+                            </div>
+                        </div>
+                        <label for="basic-url">Your URL</label>
+                        <div class="input-group mb-3">
+                            <input style="font-size: 18px;" type="text" class="form-control"
+                                   placeholder="URL/WEB address"
+                                   th:field="*{webaddress}"
+                                   id="basic-url" aria-describedby="basic-addon3">
+                            <div class="input-group-prepend">
                         <span style="color: #f44336; font-weight: bold; font-size: 15px"
                               class="input-group-text" id="basic-addon3"
                               th:if="${#fields.hasErrors('webaddress')}"
                               th:errors="*{webaddress}">https//example.com</span>
-                    </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body " style="font-size: 18px;">
+                            <div class="custom-control custom-checkbox ">
+                                <input class="custom-control-input" type="checkbox" name="generateType" value="LoremIps"
+                                       id="LoremIps">
+                                <label class="custom-control-label" for="LoremIps">Atsitiktiniai žodžių deriniai</label>
+                            </div>
+
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="generateType"
+                                       value="lettersnumbers"
+                                       id="lettersnumbers">
+                                <label class="custom-control-label" for="lettersnumbers">Letters and numbers (0-9 +
+                                    Aa)</label>
+                            </div>
+
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="generateType"
+                                       value="Special_Key"
+                                       id="Special_Key">
+                                <label class="custom-control-label" for="Special_Key">Special Key (#%*;/)</label>
+                            </div>
+
+                        </div>
+                        <label for="basic-url">Kokio stiprumo kodo norite?</label>
+                        <input style="font-size: 18px;" type="number" class="form-control"
+                               aria-label="Įveskite Ne mažiau nei 8 simbolius"
+                               id="number-strength"
+                               onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
+                        <label for="basic-url">Your Generated Key</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <img class="input-group-text img-fluid" src="/images/keyimg.jpg">
+                            </div>
+                            <input style="font-size: 18px;" type="text" class="form-control" aria-label="Generate key"
+                                   th:field="*{generatedkey}">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-secondary " style="font-size: 20px;"
+                                        onclick="generateKey()">Generate
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span style="font-size: 18px;" class="input-group-text">Notes</span>
+                            </div>
+                            <textarea style="font-size: 18px;" class="form-control" aria-label="Your Notes"
+                                      th:field="*{notes}"></textarea>
+                        </div>
+                        <div class="wrap">
+                            <div style="height: 20px;"></div>
+                            <button type="submit" onclick="solve()" class="btn-secondary mb-3" style="font-size: 20px;">
+                                Save data to Date Base
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
-                <div class="card-body " style="font-size: 18px;">
-                    <div class="custom-control custom-checkbox ">
-                        <input class="custom-control-input" type="checkbox" name="generateType" value="LoremIps"
-                               id="LoremIps">
-                        <label class="custom-control-label" for="LoremIps">Atsitiktiniai žodžių deriniai</label>
-                    </div>
+                <table class="table table-Secondary ">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <!--                <th scope="col">Meta</th>-->
+                        <th scope="col" style="font-size: 20px;">UserNname/email</th>
+                        <th scope="col" style="font-size: 20px;">Url/web page</th>
+                        <th scope="col" style="font-size: 20px;">Generated Key</th>
+                        <th scope="col" style="font-size: 20px;">Notes</th>
+                        <th scope="col" hidden="hidden">UUID</th>
 
+                    </tr>
+                    </thead>
 
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="generateType" value="lettersnumbers"
-                               id="lettersnumbers">
-                        <label class="custom-control-label" for="lettersnumbers">Letters and numbers (0-9 + Aa)</label>
-                    </div>
+                    <tbody>
 
+                    <tr th:each="userDto, stat : ${userDtoList}">
+                        <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>
+                        -->
+                        <td th:text="${userDto.userNameEmail}"></td>
+                        <td class=".text-nowrap"><a style="font-size: 15px; font-weight: bold;"
+                                                    th:href="@{${userDto.webaddress}}"
+                                                    th:text="${userDto.webaddress}"></a></td>
+                        <td class="d-inline-block text-truncate" style="max-width: 150px;" th:text="${userDto.decryptedKey}"></td>
+                        <td th:text="${userDto.notes}"></td>
+                        <!-- Atvaizduojamas dekoduotas slaptažodis -->
+                    </tr>
 
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="generateType" value="Special_Key"
-                               id="Special_Key">
-                        <label class="custom-control-label" for="Special_Key">Special Key (#%*;/)</label>
-                    </div>
+                </table>
+            </div>
+        </main>
 
-                </div>
-                <label for="basic-url">Kokio stiprumo kodo norite?</label>
-                <input style="font-size: 18px;" type="number" class="form-control"
-                       aria-label="Įveskite Ne mažiau nei 8 simbolius"
-                       id="number-strength"
-                       onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
-                <label for="basic-url">Your Generated Key</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <img class="input-group-text img-fluid" src="/images/keyimg.jpg">
-                    </div>
-                    <input style="font-size: 18px;" type="text" class="form-control" aria-label="Generate key"
-                           th:field="*{generatedkey}">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary " style="font-size: 20px;"
-                                onclick="generateKey()">Generate
-                        </button>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span style="font-size: 18px;" class="input-group-text">Notes</span>
-                    </div>
-                    <textarea style="font-size: 18px;" class="form-control" aria-label="Your Notes"
-                              th:field="*{notes}"></textarea>
-                </div>
-                <div class="wrap">
-                    <div style="height: 20px;"></div>
-                    <button type="submit" onclick="solve()" class="btn-secondary mb-3" style="font-size: 20px;">
-                        Save data to Date Base
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <table class="table table-responsive table-md table-Secondary ">
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <!--                <th scope="col">Meta</th>-->
-                <th scope="col" style="font-size: 20px;">UserNname/email</th>
-                <th scope="col" style="font-size: 20px;">Url/web page</th>
-                <th scope="col" style="font-size: 20px;">Generated Key</th>
-                <th scope="col" style="font-size: 20px;">Notes</th>
-                <th scope="col" hidden="hidden">UUID</th>
-
-            </tr>
-            </thead>
-
-            <tbody>
-
-            <tr th:each="userDto, stat : ${userDtoList}">
-                <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>-->
-                <td th:text="${userDto.userNameEmail}"></td>
-                <td><a style="font-size: 15px; font-weight: bold;"th:href="@{${userDto.webaddress}}" th:text="${userDto.webaddress}"></a> </td>
-                <td th:text="${userDto.decryptedKey}"></td>
-                <td th:text="${userDto.notes}"></td>
-                 <!-- Atvaizduojamas dekoduotas slaptažodis -->
-            </tr>
-
-        </table>
 
     </div>
 
@@ -201,6 +170,7 @@
         }
 
     }
+
     document.addEventListener('DOMContentLoaded', function () {
         var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
         if (lang) {

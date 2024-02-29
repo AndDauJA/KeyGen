@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="en">
+      lang="lt">
 
 <head>
     <meta charset="UTF-8">
@@ -29,13 +29,13 @@
                     <menu class="menu-container on-hover">
                         <ul class="menu-ul">
 
-                            <li class="menu-ul-item" th:text="#{ul.menu.about}"><a href="/">Apie įmonę</a></li>
-                            <li class="menu-ul-item" th:text="#{ul.menu.news}"><a href="/cybersecnews.html">Najienos</a>
+                            <li class="menu-ul-item" ><a th:text="#{ul.menu.about}" th:href="@{/}">Apie įmonę</a></li>
+                            <li class="menu-ul-item" ><a th:text="#{ul.menu.news}" th:href="@{/cybersecnews}">Najienos</a>
                             </li>
-                            <li class="menu-ul-item" th:text="#{ul.menu.project}"><a href="#">Projektai</a></li>
-                            <li class="menu-ul-item" th:text="#{ul.menu.contacts}"><a href="#contact-id">Kontaktai</a>
+                            <li class="menu-ul-item" ><a th:text="#{ul.menu.project}">Projektai</a></li>
+                            <li class="menu-ul-item" ><a th:text="#{ul.menu.contacts} ">Kontaktai</a>
                             </li>
-                            <li class="menu-ul-item-signin"><a href="/usergeneralform">Bendrą formą</a></li>
+                            <li class="menu-ul-item-signin"><a th:text="#{ul.menu.db}" th:href="@{/usergeneralform}"></a></li>
 
                             <li sec:authorize="!isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{/login}" th:text="'Login'">Login</a></li>
@@ -48,6 +48,7 @@
                             </li>
                             <li sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{/logout}" th:text="'Logout'">Logout</a></li>
+
                             <li class="menu-ul-item ul-menulist ">
                                 <select class="selectpicker" data-width="fit"
                                         onchange="window.location.href = '?lang=' + this.value;">
@@ -74,8 +75,7 @@
         <div class="container-xl px-4 mt-4">
             <div class="picture-form-container">
                 <div class="picture-form">
-                    <div class="card-header">Profile Picture
-                    </div>
+                    <div class="card-header" th:text="#{acc.form.profilepic}"></div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <img class="img-account-profile rounded-circle mb-2"
@@ -90,7 +90,7 @@
                 <div class="Form-container">
                     <!-- Account details card-->
                     <div class="card ">
-                        <div class="card-header">Account Details</div>
+                        <div class="card-header" th:text="#{acc.form.accdetales}"></div>
 
                         <div class="card-body">
                             <form id="formId" method="post" th:if="${clientDto}" th:action="@{/updateclient}"
@@ -171,7 +171,7 @@
                                 <div class="alert alert-success" role="alert" th:if="${success}">
                                     Duomenys sėkmingai atnaujinti!!
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update Client</button>
+                                <button type="submit" class="btn btn-primary" th:text="#{acc.form.update.btn}">Update Client</button>
                             </form>
                         </div>
                     </div>
