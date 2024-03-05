@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator 3.9.4 papildytas README failas kad susikuyrti bat faila arba runninti per Linux/MacOS">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GeneratorRun.bat" afterDir="false" />
+    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator 3.9.4 papildytas README failas kad susikurti bat faila arba runninti per Linux/MacOS. Susikuyriau Generatr.bat faila paleisti aplikacijai">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/styleOLD.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/index2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_lt.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_lt.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GeneratorRun.bat" beforeDir="false" afterPath="$PROJECT_DIR$/GeneratorRun.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/general.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/general.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/layout.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="branchnew" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JpbToolWindowState">
@@ -70,7 +80,7 @@
     &quot;Spring Boot.KeyGeneratorApp.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/KEY_Generator&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/Demo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -165,10 +175,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.KeyGeneratorApp" />
-        <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server" />
-        <item itemvalue="Application.AES" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.AES" />
       </list>
     </recent_temporary>
   </component>
@@ -213,6 +223,15 @@
       <workItem from="1709110700561" duration="10577000" />
       <workItem from="1709140943372" duration="1076000" />
       <workItem from="1709187307211" duration="21244000" />
+      <workItem from="1709457577258" duration="46000" />
+      <workItem from="1709543481308" duration="3249000" />
+      <workItem from="1709553000046" duration="7259000" />
+      <workItem from="1709575911879" duration="1057000" />
+      <workItem from="1709616604650" duration="3000" />
+      <workItem from="1709616698468" duration="58000" />
+      <workItem from="1709624290181" duration="7126000" />
+      <workItem from="1709637877499" duration="2075000" />
+      <workItem from="1709650232737" duration="4671000" />
     </task>
     <task id="LOCAL-00001" summary="Key Generator v3.5.0 Nauja forma pildyti generuotus slaptazodwius, bet dar nera surista su Clientaccount. Forma pildo ir isveda is DB">
       <option name="closed" value="true" />

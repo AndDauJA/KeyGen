@@ -7,19 +7,9 @@
 <body>
 
 <div class="body-background">
-    <div class=".container-fluid">
-
-        <header id="header-id" class="wrap-header mobile-only">
-
-            <div class="logo-menu-list">
-                <div class="logo-name-container">
-                    <img id="body-img-logo" src="/images/3786012.jpg" alt="">
-                    <h1 id="comany-name">UAB BRIGAMA</h1>
-                </div>
-                <nav th:replace="~{fragments/general::navgeneral-bar}">placeholder</nav>
-            </div>
-        </header>
-    </div>
+    <header>
+        <nav th:replace="~{fragments/general::navgeneral-bar}">placeholder</nav>
+    </header>
     <div class="main-container">
         <main class="main-wrap">
             <div class="main row " style="font-size: 18px;">
@@ -92,9 +82,9 @@
                                id="number-strength"
                                onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
                         <label for="basic-url">Your Generated Key</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <img class="input-group-text img-fluid" src="/images/keyimg.jpg">
+                        <div class="input-group mb-3 img-fluid " id="generatedKey-img">
+                            <div >
+                                <img class="input-group-text img-fluid" src="/images/keyimg.jpg" id="img-sige">
                             </div>
                             <input style="font-size: 18px;" type="text" class="form-control" aria-label="Generate key"
                                    th:field="*{generatedkey}">
@@ -109,7 +99,7 @@
                             <div class="input-group-prepend">
                                 <span style="font-size: 18px;" class="input-group-text">Notes</span>
                             </div>
-                            <textarea style="font-size: 18px;" class="form-control" aria-label="Your Notes"
+                            <textarea style="font-size: 18px;" class="form-control note-box-size" aria-label="Your Notes"
                                       th:field="*{notes}"></textarea>
                         </div>
                         <div class="wrap">
@@ -121,9 +111,9 @@
                     </form>
                 </div>
 
-                <table class="table table-Secondary ">
+                <table class="table-active   ">
                     <thead>
-                    <tr>
+                    <tr >
                         <th scope="col">Id</th>
                         <!--                <th scope="col">Meta</th>-->
                         <th scope="col" style="font-size: 20px;">UserNname/email</th>
@@ -135,27 +125,25 @@
                     </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody class="general-table">
 
                     <tr th:each="userDto, stat : ${userDtoList}">
                         <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>
                         -->
                         <td th:text="${userDto.userNameEmail}"></td>
-                        <td class=".text-nowrap"><a style="font-size: 15px; font-weight: bold;"
+                        <td class="text-nowrap"><a style="font-size: 15px; font-weight: bold;"
                                                     th:href="@{${userDto.webaddress}}"
                                                     th:text="${userDto.webaddress}"></a></td>
-                        <td class="d-inline-block text-truncate" style="max-width: 150px;" th:text="${userDto.decryptedKey}"></td>
+                        <td class="d-inline-block text-truncate" style="max-width: 150px;"
+                            th:text="${userDto.decryptedKey}"></td>
                         <td th:text="${userDto.notes}"></td>
                         <!-- Atvaizduojamas dekoduotas slaptažodis -->
                     </tr>
-
+                    </tbody>
                 </table>
             </div>
         </main>
-
-
     </div>
-
 </div>
 
 </body>

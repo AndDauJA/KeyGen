@@ -7,9 +7,19 @@
 <body>
 
 <div class="body-background">
-    <header>
-        <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
-    </header>
+    <div class="header-main-container ">
+
+        <header id="header-id" class="wrap-header mobile-only">
+
+            <div class="logo-menu-list">
+                <div class="logo-name-container">
+                    <img id="body-img-logo" src="/images/3786012.jpg" alt="">
+                    <h1 id="comany-name">UAB BRIGAMA</h1>
+                </div>
+                <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
+            </div>
+        </header>
+    </div>
     <div class="main-container">
         <main class="main-wrap">
             <h2>Įmonės veikla</h2>
