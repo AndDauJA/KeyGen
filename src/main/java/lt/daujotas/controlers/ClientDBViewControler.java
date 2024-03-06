@@ -23,16 +23,22 @@ public class ClientDBViewControler {
         this.clientAccountService = clientAccountService;
     }
 
-    @GetMapping("/dbview")  //sitas turi sutapti su return
-    public String dataBAseViewForm(Model model, @PageableDefault(size = 25,
-            sort = {"firstName"}, direction = Sort.Direction.ASC) Pageable pageable) {
+//    @GetMapping("/dbview")  //sitas turi sutapti su return
+//    public String dataBAseViewForm(Model model, @PageableDefault(size = 25,
+//            sort = {"firstName"}, direction = Sort.Direction.ASC) Pageable pageable) {
+//
+//        final Page<ClientData> clientAccounts = clientAccountService.getAllClientsPages(pageable);
+//        model.addAttribute("clientList", clientAccounts);
+//        return "dbview";   // kelias iki failo
+//
+//    }
+@GetMapping("/cybersecnews")  //sitas turi sutapti su return
+public String cybersecnewsForm() {
 
-        final Page<ClientData> clientAccounts = clientAccountService.getAllClientsPages(pageable);
-        model.addAttribute("clientList", clientAccounts);
-        return "dbview";   // kelias iki failo
 
-    }
+    return "brigama/cybersecnews";   // kelias iki failo
 
+}
 
     @Transactional
     @GetMapping("/dbview/{userName}/delete")

@@ -65,19 +65,19 @@ public class ApplicationConfig implements WebMvcConfigurer {
 //        registry.addResourceHandler("dbview/**")
 //                .addResourceLocations("classpath:/static/dbview/");
 //    }
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("generate-key/**")
-                .addResourceLocations("classpath:/static/usergeneralform/");
-        registry.addResourceHandler("/favicon.ico")
-                .addResourceLocations("classpath:/usergeneralform");
-        registry.addResourceHandler("/favicon.ico")
-                .addResourceLocations("classpath:/static/");
-        registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/", "classpath:/public/");
-        registry.addResourceHandler("/favicon.ico")
-                .addResourceLocations("classpath:/public/");
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("generate-key/**")
+//                .addResourceLocations("classpath:/static/usergeneralform/");
+//        registry.addResourceHandler("/favicon.ico")
+//                .addResourceLocations("classpath:/usergeneralform");
+//        registry.addResourceHandler("/favicon.ico")
+//                .addResourceLocations("classpath:/static/");
+//        registry.addResourceHandler("/**")
+//                .addResourceLocations("classpath:/static/", "classpath:/public/");
+//        registry.addResourceHandler("/favicon.ico")
+//                .addResourceLocations("classpath:/public/");
+//    }
 }
 
 

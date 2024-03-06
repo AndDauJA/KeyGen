@@ -12,18 +12,41 @@
     --bs-emphasis-color-rgb: 250, 235, 215, 100%;
     /*--bs-nav-link-hover-color: antiquewhite;*/
     /*--bs-nav-link-color: antiquewhite;*/
-    --bs-navbar-color: rgb(250,235,215);
+    --bs-navbar-color: rgb(250, 235, 215);
 }
 
 .navbar:hover {
+
     background-color: var(--bs-navbar-bg-color);
     transition: background-color 2s ease;
 }
 
-.navbar a .nav-item ul{
+.navbar a .nav-item ul {
     color: var(--fontcolor-primary);
 }
+
 .nav-link:hover {
+    text-decoration: none;
+    font-style: italic;
+}
+
+.nav-item {
+    margin: 1px;
+    padding: 50px;
+    color: var(--fontcolor-primary);
+}
+
+.nav-item {
+    font-size: clamp(16px, 2vw, 50px);
+}
+.nav-item, .color-general {
+    font-size: clamp(16px, 2vw, 50px);
+    color: var(--fontcolor-primary);
+    text-decoration: none;
+
+}
+.color-general:hover{
+    color: var(--fontcolor-primary);
     text-decoration: none;
     font-style: italic;
 }
@@ -33,7 +56,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /*justify-content: center;*/
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -47,30 +70,54 @@
 
 #comany-name {
     color: var(--fontcolor-primary);
-    margin: 20px;
-}
+    margin-right: 100px;
 
-/*#ul-id {*/
-/*    color: var(--bs-navbar-color);*/
-/*    text-decoration: none;*/
-/*}*/
+}
 
 #body-img-logo {
     width: 100%;
     max-width: 200px;
+    margin-left: 100px;
 }
 
-.nav-item {
-    margin: 1px;
-    padding: 50px;
-    /* padding-left: 70px;
-    padding-right: 70px; */
-    color: var(--fontcolor-primary);
+.logo-name-user {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
+h1{
+    font-size: clamp(50px, 2vw, 75px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h2 {
+    font-size: clamp(50px, 2vw, 75px);;
+}
+
+.navbar-toggler .fas {
+    color: white; /* Ikonos spalva */
+    font-size: 45px; /* Ikonos dydis */
+}
+
+.main-wrap {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-size: clamp(16px, 2vw, 50px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*width: 100%;*/
+    color: var(--fontcolor-primary);
+    font-style: italic;
+    padding-left: 40px;
+    position: relative; /* arba ištrinkite šią eilutę, jei nėra būtina */
+    top: 200px; /* arba ištrinkite šią eilutę */
+    left: 70px; /* arba ištrinkite šią eilutę */
+    margin-top: 0;
+}
+
 
 /* ==============================   FORM   ============================================ */
-
-.main {
+.general-form {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -88,6 +135,7 @@
     text-align: center;
 }
 
+
 .card-header {
     font-size: var(--fsize1230px-h2);
 
@@ -101,6 +149,7 @@ form {
     background-color: rgba(250, 246, 246, 0.4);
 
 }
+
 /*=============================Table===============================*/
 
 
@@ -112,18 +161,21 @@ form {
     align-items: center;
     /*width: 100%;*/
 }
+
 .input-group-text {
     /*height: 40px;*/
 }
+
 .img-fluid {
     max-height: 100%;
 }
-/*============================Notes==================*/
-.form-control, .note-box-size{
 
+/*============================Notes==================*/
+.form-control, .note-box-size {
 
 
 }
+
 label {
     display: block;
     width: 100%;
@@ -177,10 +229,10 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-align: center;
 
-    padding-left: 300px;
     background-color: rgb(59, 59, 84);
-    font-size: var(--fsizepx-footertext);
+    font-size: clamp(16px, 2vw, 40px);
     padding-bottom: 50px;
 }
 
@@ -201,4 +253,8 @@ div .go-home-link a {
     text-decoration: none;
     color: var(--fontcolor-primary);
     font-size: var(--fsizepx-homelink);
+}
+
+.center-infotext {
+    padding-top: 75px;
 }

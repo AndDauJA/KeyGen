@@ -49,7 +49,7 @@
                             <li sec:authorize="isAuthenticated()" class="menu-ul-item-signin">
                                 <a th:href="@{/logout}" th:text="'Logout'">Logout</a></li>
 
-                            <li class="menu-ul-item ul-menulist ">
+                            <li class="nav-item ul-menulist ">
                                 <select class="selectpicker" data-width="fit"
                                         onchange="window.location.href = '?lang=' + this.value;">
                                     <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'

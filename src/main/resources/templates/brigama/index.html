@@ -4,7 +4,7 @@
       lang="lt">
 <head th:replace="~{fragments/layout::headindex('Brigama')}"></head>
 
-<body>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
 
 <div class="body-background">
     <header>
@@ -27,9 +27,9 @@
             </div>
         </main>
     </div>
-
 </div>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL

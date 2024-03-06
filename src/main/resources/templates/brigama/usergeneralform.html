@@ -4,14 +4,14 @@
       lang="lt">
 <head th:replace="~{fragments/general::headageneral('Brigama')}"></head>
 
-<body>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
 
 <div class="body-background">
     <header>
         <nav th:replace="~{fragments/general::navgeneral-bar}">placeholder</nav>
     </header>
     <div class="main-container">
-        <main class="main-wrap">
+        <main class="general-form">
             <div class="main row " style="font-size: 18px;">
                 <div th:if="${message ne null and message.length() > 0}"
                      class="alert alert-success" role="alert"
@@ -145,6 +145,7 @@
         </main>
     </div>
 </div>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 
 </body>
 
