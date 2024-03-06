@@ -37,10 +37,10 @@
 }
 
 .nav-item {
-    font-size: clamp(16px, 2vw, 50px);
+    font-size: clamp(16px, 2vw, 40px);
 }
 .nav-item, .color-general {
-    font-size: clamp(16px, 2vw, 50px);
+    font-size: clamp(16px, 2vw, 40px);
     color: var(--fontcolor-primary);
     text-decoration: none;
 
@@ -133,12 +133,20 @@ h2 {
     transition: transform 0.2s;
     /*max-width: 1000px;*/
     text-align: center;
+    font-size: 32px;
 }
-
+.button-text{
+    font-size: 32px;
+}
+.generate-button-text{
+    font-size: 24px;
+}
+.input-gen-text{
+    font-size: 24px;
+}
 
 .card-header {
     font-size: var(--fsize1230px-h2);
-
 }
 
 form {
@@ -147,7 +155,34 @@ form {
     padding: 10px 20px;
     transition: transform 0.2s;
     background-color: rgba(250, 246, 246, 0.4);
+}
+/*===========================================checkBoxes ==================================*/
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    /*transform: scale(1.5);*/
+    background-position: center;
+}
+.custom-checkbox .custom-control-label::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -1em; /* Pakeiskite šią reikšmę pagal poreikį */
+    top: 0;
+    height: 1.25em;
+    width: 1.25em;
+    background-color: #fff;
+    border: #adb5bd solid 1px;
+}
 
+.custom-checkbox .custom-control-label::after {
+    position: relative;
+    left: -1em; /* Koreguokite šią reikšmę, jei reikia, kad varnelė būtų centre */
+    top: -1.5em; /* Koreguokite šią reikšmę, jei reikia, kad varnelė būtų centre */
+    display: block;
+    width: 1.25em;
+    height: 1.25em;
+    content: "";
+    background-size: 100% 100%;
+    background-position: center;
 }
 
 /*=============================Table===============================*/
@@ -160,10 +195,6 @@ form {
     flex-wrap: wrap;
     align-items: center;
     /*width: 100%;*/
-}
-
-.input-group-text {
-    /*height: 40px;*/
 }
 
 .img-fluid {

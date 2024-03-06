@@ -12,50 +12,49 @@
     </header>
     <div class="main-container">
         <main class="general-form">
-            <div class="main row " style="font-size: 18px;">
+            <div class="main row ">
                 <div th:if="${message ne null and message.length() > 0}"
                      class="alert alert-success" role="alert"
                      th:text="${message}">
                     Success message when add product
                 </div>
-                <button style="font-size: 20px;" id="toggle-form-btn" class=" btn-secondary btn-block mb-6 text-center"
+                <button id="toggle-form-btn" class="button-text btn-secondary btn-block mb-6 text-center"
                         type="button"
                         onclick="toggleForm()">Create New account and key
                 </button>
 
-                <div id="new-account-form" class="input-group mb-3" style="display: none;">
+                <div id="new-account-form" class=" mb-2 input-gen-text" style="display: none;">
                     <form method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
                         <label for="basic-url">Your Username</label>
-                        <div class="input-group mb-3">
-                            <input style="font-size: 18px;" type="text" class="form-control"
+                        <div class="input-group mb-3 input-group">
+                            <input type="text" class="form-control input-gen-text"
                                    placeholder="Username/email"
                                    aria-label="UserName/Email" aria-describedby="basic-addon2"
                                    th:field="*{userNameEmail}">
-                            <div class="input-group-append">
-                        <span style="color: #f44336; font-weight: bold; font-size: 15px" class="input-group-text"
-                              id="basic-addon2" th:if="${#fields.hasErrors('userNameEmail')}"
+                            <div class="input-group-append input-gen-text">
+                        <span class="input-gen-text" id="basic-addon2"
+                              th:if="${#fields.hasErrors('userNameEmail')}"
                               th:errors="*{userNameEmail}">@example.com</span>
                             </div>
                         </div>
                         <label for="basic-url">Your URL</label>
-                        <div class="input-group mb-3">
-                            <input style="font-size: 18px;" type="text" class="form-control"
+                        <div class="input-group mb-3 input-gen-text">
+                            <input type="text" class="form-control input-gen-text"
                                    placeholder="URL/WEB address"
                                    th:field="*{webaddress}"
                                    id="basic-url" aria-describedby="basic-addon3">
                             <div class="input-group-prepend">
-                        <span style="color: #f44336; font-weight: bold; font-size: 15px"
-                              class="input-group-text" id="basic-addon3"
+                        <span class="input-gen-text" id="basic-addon3"
                               th:if="${#fields.hasErrors('webaddress')}"
                               th:errors="*{webaddress}">https//example.com</span>
                             </div>
                         </div>
 
-                        <div class="card-body " style="font-size: 18px;">
+                        <div class="card-body input-gen-text" >
                             <div class="custom-control custom-checkbox ">
                                 <input class="custom-control-input" type="checkbox" name="generateType" value="LoremIps"
                                        id="LoremIps">
-                                <label class="custom-control-label" for="LoremIps">Atsitiktiniai žodžių deriniai</label>
+                                <label class="custom-control-label general-lable-text" for="LoremIps">Atsitiktiniai žodžių deriniai</label>
                             </div>
 
 
@@ -83,13 +82,13 @@
                                onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
                         <label for="basic-url">Your Generated Key</label>
                         <div class="input-group mb-3 img-fluid " id="generatedKey-img">
-                            <div >
+                            <div>
                                 <img class="input-group-text img-fluid" src="/images/keyimg.jpg" id="img-sige">
                             </div>
-                            <input style="font-size: 18px;" type="text" class="form-control" aria-label="Generate key"
+                            <input type="text" class="form-control" aria-label="Generate key"
                                    th:field="*{generatedkey}">
                             <div class="input-group-append">
-                                <button type="button" class="btn btn-secondary " style="font-size: 20px;"
+                                <button type="button" class="btn btn-secondary generate-button-text"
                                         onclick="generateKey()">Generate
                                 </button>
                             </div>
@@ -99,12 +98,13 @@
                             <div class="input-group-prepend">
                                 <span style="font-size: 18px;" class="input-group-text">Notes</span>
                             </div>
-                            <textarea style="font-size: 18px;" class="form-control note-box-size" aria-label="Your Notes"
+                            <textarea style="font-size: 18px;" class="form-control note-box-size"
+                                      aria-label="Your Notes"
                                       th:field="*{notes}"></textarea>
                         </div>
                         <div class="wrap">
                             <div style="height: 20px;"></div>
-                            <button type="submit" onclick="solve()" class="btn-secondary mb-3" style="font-size: 20px;">
+                            <button type="submit" onclick="solve()" class="btn-secondary mb-3 button-text">
                                 Save data to Date Base
                             </button>
                         </div>
@@ -113,7 +113,7 @@
 
                 <table class="table-active   ">
                     <thead>
-                    <tr >
+                    <tr>
                         <th scope="col">Id</th>
                         <!--                <th scope="col">Meta</th>-->
                         <th scope="col" style="font-size: 20px;">UserNname/email</th>
@@ -132,8 +132,8 @@
                         -->
                         <td th:text="${userDto.userNameEmail}"></td>
                         <td class="text-nowrap"><a style="font-size: 15px; font-weight: bold;"
-                                                    th:href="@{${userDto.webaddress}}"
-                                                    th:text="${userDto.webaddress}"></a></td>
+                                                   th:href="@{${userDto.webaddress}}"
+                                                   th:text="${userDto.webaddress}"></a></td>
                         <td class="d-inline-block text-truncate" style="max-width: 150px;"
                             th:text="${userDto.decryptedKey}"></td>
                         <td th:text="${userDto.notes}"></td>
