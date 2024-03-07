@@ -2,7 +2,7 @@ package lt.daujotas.service;
 
 import lombok.AllArgsConstructor;
 
-import lt.daujotas.clients.mappers.ClientMapper;
+import lt.daujotas.mapper.ClientMapper;
 import lt.daujotas.dao.UserFirstRegistrationRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

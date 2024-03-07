@@ -1,4 +1,4 @@
-package lt.daujotas.clients.mappers;
+package lt.daujotas.mapper;
 
 import lt.daujotas.clientPojo.ClientData;
 import lt.daujotas.dto.ClientDto;
@@ -19,6 +19,7 @@ public class ClientMapper implements Mapper<ClientData, ClientDto> {
                 .phoneNumber(entity.getPhoneNumber())
                 .emailAddress(entity.getEmailAddress())
                 .dateofbirth(entity.getDateofbirth())
+                .gender(entity.getGender())
                 .build();
     }
 

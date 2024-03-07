@@ -4,7 +4,7 @@ package lt.daujotas.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lt.daujotas.clientPojo.ClientData;
-import lt.daujotas.clients.mappers.ClientMapper;
+import lt.daujotas.mapper.ClientMapper;
 import lt.daujotas.dao.ClientDao;
 import lt.daujotas.dto.ClientDto;
 import org.springframework.data.domain.Page;
@@ -30,7 +30,7 @@ public class ClientAccountService {
 //    }
 
     public void updateAllClientData(String userName, String firstName, String lastName, String middleName,
-                                    String postAddress, String phoneNumber, String emailAddress, Date birthDate) {
+                                    String postAddress, String phoneNumber, String emailAddress, Date birthDate, String gender) {
         Optional<ClientData> optionalClientData = clientDao.getClientByUsername(userName);
 
         if (optionalClientData.isPresent()) {
@@ -43,6 +43,7 @@ public class ClientAccountService {
             clientData.setPhoneNumber(phoneNumber);
             clientData.setEmailAddress(emailAddress);
             clientData.setDateofbirth(birthDate);
+            clientData.setGender(gender);
             clientDao.update(clientData);
 
         } else {

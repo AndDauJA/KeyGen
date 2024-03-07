@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="lt">
-<head th:replace="~{fragments/general::headageneral('Brigama')}"></head>
+<head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>
 
-<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<body>
 
 <div class="body-background">
     <header>
-        <nav th:replace="~{fragments/general::navgeneral-bar}">placeholder</nav>
+        <nav th:replace="~{fragments/generallayout::navgeneral-bar}">placeholder</nav>
     </header>
-    <div class="main-container">
+    <div class="main-general-container">
         <main class="general-form">
             <div class="main row ">
                 <div th:if="${message ne null and message.length() > 0}"
@@ -50,11 +50,12 @@
                             </div>
                         </div>
 
-                        <div class="card-body input-gen-text" >
+                        <div class="card-body input-gen-text">
                             <div class="custom-control custom-checkbox ">
                                 <input class="custom-control-input" type="checkbox" name="generateType" value="LoremIps"
                                        id="LoremIps">
-                                <label class="custom-control-label general-lable-text" for="LoremIps">Atsitiktiniai žodžių deriniai</label>
+                                <label class="custom-control-label general-lable-text" for="LoremIps">Atsitiktiniai
+                                    žodžių deriniai</label>
                             </div>
 
 
@@ -76,16 +77,16 @@
 
                         </div>
                         <label for="basic-url">Kokio stiprumo kodo norite?</label>
-                        <input style="font-size: 18px;" type="number" class="form-control"
+                        <input type="number" class="form-control input-gen-text"
                                aria-label="Įveskite Ne mažiau nei 8 simbolius"
                                id="number-strength"
                                onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
                         <label for="basic-url">Your Generated Key</label>
-                        <div class="input-group mb-3 img-fluid " id="generatedKey-img">
+                        <div class="input-group mb-2 img-fluid input-gen-text" id="generatedKey-img">
                             <div>
-                                <img class="input-group-text img-fluid" src="/images/keyimg.jpg" id="img-sige">
+                                <img class="input-group-text img-fluid img-size" src="/images/keyimg.jpg" id="img-sige">
                             </div>
-                            <input type="text" class="form-control" aria-label="Generate key"
+                            <input type="text" class="form-control input-gen-text" aria-label="Generate key"
                                    th:field="*{generatedkey}">
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-secondary generate-button-text"
@@ -96,9 +97,9 @@
 
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span style="font-size: 18px;" class="input-group-text">Notes</span>
+                                <span class="input-group-text input-gen-text">Notes</span>
                             </div>
-                            <textarea style="font-size: 18px;" class="form-control note-box-size"
+                            <textarea class="form-control note-box-size input-gen-text"
                                       aria-label="Your Notes"
                                       th:field="*{notes}"></textarea>
                         </div>
@@ -110,37 +111,40 @@
                         </div>
                     </form>
                 </div>
+                <div class="general-table-container">
+                    <table class="table-active general-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <!--                <th scope="col">Meta</th>-->
+                            <th scope="col">UserNname/email</th>
+                            <th scope="col">Url/web page</th>
+                            <th scope="col">Generated Key</th>
+                            <th scope="col">Notes</th>
+                            <th scope="col" hidden="hidden">UUID</th>
 
-                <table class="table-active   ">
-                    <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <!--                <th scope="col">Meta</th>-->
-                        <th scope="col" style="font-size: 20px;">UserNname/email</th>
-                        <th scope="col" style="font-size: 20px;">Url/web page</th>
-                        <th scope="col" style="font-size: 20px;">Generated Key</th>
-                        <th scope="col" style="font-size: 20px;">Notes</th>
-                        <th scope="col" hidden="hidden">UUID</th>
+                        </tr>
+                        </thead>
 
-                    </tr>
-                    </thead>
+                        <tbody class="general-table">
+                        <tr th:each="userDto, stat : ${userDtoList}">
+                            <td class="input-gen-text gen-id-size" th:text="${stat.count}"></td>
 
-                    <tbody class="general-table">
+                            <td class="gentable-width" th:text="${userDto.userNameEmail}"></td>
+                            <td class="text-nowrap text-truncate gentable-width">
+                                <a class="input-gen-text"
+                                   th:href="@{${userDto.webaddress}}"
+                                   th:text="${userDto.webaddress}"></a></td>
 
-                    <tr th:each="userDto, stat : ${userDtoList}">
-                        <td style="font-size: 20px;" th:text="${stat.count}">N/A</td>
-                        -->
-                        <td th:text="${userDto.userNameEmail}"></td>
-                        <td class="text-nowrap"><a style="font-size: 15px; font-weight: bold;"
-                                                   th:href="@{${userDto.webaddress}}"
-                                                   th:text="${userDto.webaddress}"></a></td>
-                        <td class="d-inline-block text-truncate" style="max-width: 150px;"
-                            th:text="${userDto.decryptedKey}"></td>
-                        <td th:text="${userDto.notes}"></td>
-                        <!-- Atvaizduojamas dekoduotas slaptažodis -->
-                    </tr>
-                    </tbody>
-                </table>
+                            <td class=" text-truncate gentable-width"
+                                th:text="${userDto.decryptedKey}"></td>
+
+                            <td class="input-gen-text gentable-width"
+                                th:text="${userDto.notes}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
     </div>

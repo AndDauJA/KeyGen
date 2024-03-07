@@ -86,7 +86,8 @@ public class ClientAccountControler {
                         clientDto.getPostAddres(),
                         clientDto.getPhoneNumber(),
                         clientDto.getEmailAddress(),
-                        clientDto.getDateofbirth());
+                        clientDto.getDateofbirth(),
+                        clientDto.getGender());
 
                 model.addAttribute("clientDto", clientDto);
                 model.addAttribute("success", true);
