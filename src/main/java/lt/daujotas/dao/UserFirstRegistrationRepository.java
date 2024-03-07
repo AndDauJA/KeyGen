@@ -7,10 +7,11 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Repository
-public interface UserFirstRegistrationRepository extends JpaRepository<ClientData, String> {
+public interface UserFirstRegistrationRepository extends JpaRepository<ClientData, UUID> {
 
     Optional<ClientData> findClientDtoByUserName (String username);
     @Query(value = "SELECT u FROM ClientData u JOIN FETCH u.authorities WHERE u.userName= :username")

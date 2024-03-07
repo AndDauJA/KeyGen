@@ -4,21 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="Key Generator 3.9.7 Pakoreguoti formos checkbox">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/accountlayout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="KG 3.9.8 Pakoreguoti general ir account formos ir ju css.Nerode gender account formoje, pakoreguotas serivsas ir mapper">
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/utils/LanguageSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/clients/mappers/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/mapper/ClientMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/UserRegistrationControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/UserRegistrationControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/repository/UserGeneralLoginCredentialsDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/repository/UserGeneralLoginCredentialsDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/services/UserGeneralLoginCredentialsDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/config/ApplicationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/controlers/ClientAccountControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/controlers/ClientAccountControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/dao/UserFirstRegistrationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/dao/UserFirstRegistrationRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/ClientAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/ClientAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/UsersRegistrationSerivce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/service/UsersRegistrationSerivce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/DecodingGenKeyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/DecodingGenKeyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_lt.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_lt.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/clientaccountform.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/clientaccountform.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/clientaccountform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/clientaccountform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/general.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/generallayout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/accountlayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/accountlayout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/generallayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/generallayout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/layout.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -238,7 +246,7 @@
       <workItem from="1709650232737" duration="8504000" />
       <workItem from="1709706602754" duration="21443000" />
       <workItem from="1709733437458" duration="6374000" />
-      <workItem from="1709793996680" duration="11097000" />
+      <workItem from="1709793996680" duration="25480000" />
     </task>
     <task id="LOCAL-00001" summary="Key Generator v3.5.0 Nauja forma pildyti generuotus slaptazodwius, bet dar nera surista su Clientaccount. Forma pildo ir isveda is DB">
       <option name="closed" value="true" />
@@ -376,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709730372588</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="KG 3.9.8 Pakoreguoti general ir account formos ir ju css.Nerode gender account formoje, pakoreguotas serivsas ir mapper">
+      <option name="closed" value="true" />
+      <created>1709805333253</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1709805333253</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +403,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="Pavel" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -413,7 +441,8 @@
     <MESSAGE value="Key Generator 3.9.5 Pakoreguoti fragment ir sukelti i index,general.html TODO pakoreguoti clientaccountform" />
     <MESSAGE value="Key Generator 3.9.6 Pakoreguoti ir sulyginti fragment ir sukelti i index,general.html" />
     <MESSAGE value="Key Generator 3.9.7 Pakoreguoti formos checkbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Key Generator 3.9.7 Pakoreguoti formos checkbox" />
+    <MESSAGE value="KG 3.9.8 Pakoreguoti general ir account formos ir ju css.Nerode gender account formoje, pakoreguotas serivsas ir mapper" />
+    <option name="LAST_COMMIT_MESSAGE" value="KG 3.9.8 Pakoreguoti general ir account formos ir ju css.Nerode gender account formoje, pakoreguotas serivsas ir mapper" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

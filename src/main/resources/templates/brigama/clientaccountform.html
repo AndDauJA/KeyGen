@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 
 <head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>
 
@@ -151,9 +151,12 @@
 </footer>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
-        if (lang) {
-            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
+        var lang = new URLSearchParams(window.location.search).get('lang') || 'en'; // Jei lang parametras nenurodytas, numatytasis būtų 'en'
+        var languageSelector = document.getElementById('languageSelector');
+        if(languageSelector) {
+            languageSelector.value = lang;
+            // Papildomai, jei norite keisti <html> lang atributą:
+            document.documentElement.lang = lang;
         }
     });
 </script>

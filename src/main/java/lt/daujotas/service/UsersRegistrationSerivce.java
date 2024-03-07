@@ -5,6 +5,7 @@ import lt.daujotas.clientPojo.Authority;
 import lt.daujotas.clientPojo.ClientData;
 import lt.daujotas.Users.repository.AuthorityRepository;
 import lt.daujotas.dao.ClientRepository;
+import lt.daujotas.dao.UserFirstRegistrationRepository;
 import lt.daujotas.dto.ClientDto;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,13 +21,14 @@ public class UsersRegistrationSerivce {
 
     private final ClientRepository clientRepository;
     private final AuthorityRepository authorityRepository;
+    private final UserFirstRegistrationRepository userFirstRegistrationRepository;
 
     public void register(ClientDto clientDto) throws DataIntegrityViolationException {
         final Set<Authority> authorities = authorityRepository.findAll().stream()
                 .filter(authority -> authority.getName().equals("USER"))
                 .collect(Collectors.toSet());
 
-        clientRepository.save(
+        userFirstRegistrationRepository.save(
                 ClientData.builder()
                         .userName(clientDto.getUserName())
                         .password(new BCryptPasswordEncoder().encode(clientDto.getPassword()))

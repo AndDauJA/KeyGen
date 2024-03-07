@@ -41,17 +41,22 @@ public class UserRegistrationControler {
         try {
             usersRegistrationSerivce.register(clientDto);
         } catch (DataIntegrityViolationException e) {
-            if (e.getMessage().contains("EMAIL")) {
-                String duplicateEmailMessage = "This email already in use";
-                model.addAttribute("duplicateEmailMessage", duplicateEmailMessage);
-                return "brigama/userregistrationform";
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            if (e.getMessage().contains("EMAIL"))
+                errors.addError(new FieldError(ClientDto.class.getName(), "emailAddress", "This email already in use"));
+
+//                String duplicateEmailMessage = "This email already in use";
+//                model.addAttribute("duplicateEmailMessage", duplicateEmailMessage);
+//                return "brigama/userregistrationform";
         }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+
 
         return "redirect:brigama/login";
     }
+
+
+
 
     @ControllerAdvice
     public class GlobalExceptionHandler {

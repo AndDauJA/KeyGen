@@ -24,10 +24,6 @@ public class ClientAccountService {
     private final ClientMapper clientMapper;
 
 
-//    public void saveClient(ClientData clientData) {
-//
-//        clientDao.save(clientData);
-//    }
 
     public void updateAllClientData(String userName, String firstName, String lastName, String middleName,
                                     String postAddress, String phoneNumber, String emailAddress, Date birthDate, String gender) {

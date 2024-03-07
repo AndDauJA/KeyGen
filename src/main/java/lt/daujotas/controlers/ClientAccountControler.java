@@ -48,24 +48,6 @@ public class ClientAccountControler {
     }
 
 
-//    @PostMapping("/clientaccountform")
-//    public String findClient(@ModelAttribute ClientDto clientDto, Model model) {
-//
-////        Optional<ClientAccountInfo> client = clientAccountService.getClientByUUID(findClient.getUuid());
-////        Optional<ClientAccountInfo> clientByName = clientAccountService.getClientByFirstName(findClient.getFirstName());
-//        Optional<ClientDto> clientByUserName = clientAccountService.getClientByUserName(clientDto.getUserName());
-//
-//
-//        if (clientByUserName.isPresent()) {
-//            ClientDto foundClient = clientByUserName.get();
-//            model.addAttribute("clientDto", foundClient);
-//        } else {
-//            model.addAttribute("error", "Client not found");
-//        }
-//
-//
-//        return "brigama/clientaccountform";
-//    }
 
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/updateclient")

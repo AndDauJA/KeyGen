@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 <head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>
 
 <body>
@@ -150,9 +150,6 @@
     </div>
 </div>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
-
-</body>
-
 <script>
     function toggleForm() {
         var form = document.getElementById("new-account-form");
@@ -220,6 +217,17 @@
     }
 
 
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang') || 'en'; // Jei lang parametras nenurodytas, numatytasis būtų 'en'
+        var languageSelector = document.getElementById('languageSelector');
+        if (languageSelector) {
+            languageSelector.value = lang;
+            // Papildomai, jei norite keisti <html> lang atributą:
+            document.documentElement.lang = lang;
+        }
+    });
+
 </script>
+</body>
 
 </html>

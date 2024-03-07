@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 
 <head th:fragment="headaaccount(title)">
     <meta charset="UTF-8">
@@ -53,17 +53,18 @@
                     <a class="nav-item color-general" th:text="#{ul.menu.db}"
                        th:href="@{/usergeneralform}"></a></li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-item color-general" th:href="@{/logout}" th:text="'Logout'">Logut</a></li>
+                    <a class="nav-item color-general" th:href="@{/logout}" th:text="#{ul.menu.logout}"></a></li>
 
                 <li class="nav-item ul-menulist ">
                     <select class="selectpicker" data-width="fit"
                             onchange="window.location.href = '?lang=' + this.value;">
-                        <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
-                                value="lt">Lietuvių
-                        </option>
                         <option data-content='<span class="flag-icon flag-icon-us fi-gr"></span> EN'
                                 value="en">English
                         </option>
+                        <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
+                                value="lt">Lietuvių
+                        </option>
+
                     </select>
                 </li>
             </ul>

@@ -932,7 +932,7 @@ KeyGenerator|schema||KeyGenAdmin||UPDATE|G</Grants>
     </schema>
     <schema id="290" parent="1" name="KeyGenerator">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-02-22.15:23:15</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-03-07.13:22:40</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="291" parent="1" name="KeyGenAdmin"/>
@@ -961,7 +961,7 @@ KeyGenerator|schema||KeyGenAdmin||UPDATE|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="298" parent="292" name="id">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>3</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -985,7 +985,7 @@ KeyGenerator|schema||KeyGenAdmin||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="303" parent="293" name="id">
-      <AutoIncrement>15</AutoIncrement>
+      <AutoIncrement>17</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1019,7 +1019,7 @@ KeyGenerator|schema||KeyGenAdmin||UPDATE|G</Grants>
       <Position>8</Position>
     </column>
     <column id="311" parent="293" name="password">
-      <DasType>varchar(255)|0s</DasType>
+      <DasType>longtext|0s</DasType>
       <Position>9</Position>
     </column>
     <column id="312" parent="293" name="phonenumber">
@@ -1168,7 +1168,7 @@ authorities_id</ColNames>
       <UnderlyingIndexName>UK_l1qvgi2u0hprnb4gxle1c15ur</UnderlyingIndexName>
     </key>
     <column id="344" parent="297" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>34</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1182,8 +1182,7 @@ authorities_id</ColNames>
       <Position>3</Position>
     </column>
     <column id="347" parent="297" name="generatedkey">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
+      <DasType>longtext|0s</DasType>
       <Position>4</Position>
     </column>
     <column id="348" parent="297" name="notes">
