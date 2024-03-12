@@ -1,14 +1,11 @@
 package lt.daujotas.Users.dto;
 
-import jakarta.persistence.Table;
+
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import lt.daujotas.validation.RepeatPassword;
-
 
 import java.util.Date;
 import java.util.UUID;
-
 
 @Getter
 @Setter
@@ -16,10 +13,9 @@ import java.util.UUID;
 @ToString
 @Builder
 @AllArgsConstructor
-
 public class UserDto {
     private UUID uuid;
-    @NotEmpty( message= "{NotEmpty.Name.message.userNames} ")
+    @NotEmpty(message = "{NotEmpty.Name.message.userNames} ")
     private String userNameEmail;
     @NotEmpty(message = "NotEmpty.Name.message.genkey")
     private String generatedkey;
@@ -28,4 +24,6 @@ public class UserDto {
     private String notes;
     private Date dateAdded;
     private String decryptedKey;
+    private Long clientDataId;
 }
+

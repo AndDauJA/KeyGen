@@ -50,5 +50,7 @@ public class UserGeneralLoginCredentialsData {
     @OneToOne(mappedBy = "userGeneralLoginCredentialsData", cascade = CascadeType.ALL)
     private IVKeyPojo IVKeyId;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clientaccountdata_id", referencedColumnName = "id")
+    private ClientData clientData;
 }

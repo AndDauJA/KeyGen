@@ -6,6 +6,8 @@ import lt.daujotas.Users.clientDataPojo.UserGeneralLoginCredentialsData;
 import lt.daujotas.Users.dto.UserDto;
 import lt.daujotas.Users.repository.UserGeneralLoginCredentialsDataRepository;
 import lt.daujotas.Users.services.UserGeneralLoginCredentialsDataService;
+import lt.daujotas.clientPojo.ClientData;
+import lt.daujotas.dao.ClientRepository;
 import lt.daujotas.dao.UserFirstRegistrationRepository;
 import lt.daujotas.sipher.Client;
 import lt.daujotas.sipher.srvice.DecodingGenKeyService;
@@ -16,6 +18,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -33,24 +38,27 @@ public class GeneralFomControler {
     private final DecodingGenKeyService decodingGenKeyService;
     private final UserGeneralLoginCredentialsDataService userGeneralLoginCredentialsDataService;
     private final UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository;
+    private final ClientRepository clientRepository;
 
     @Autowired
-    public GeneralFomControler(DecodingGenKeyService decodingGenKeyService, UserGeneralLoginCredentialsDataService userGeneralLoginCredentialsDataService, UserFirstRegistrationRepository userFirstRegistrationRepository, UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository) {
+    public GeneralFomControler(DecodingGenKeyService decodingGenKeyService, UserGeneralLoginCredentialsDataService userGeneralLoginCredentialsDataService, UserFirstRegistrationRepository userFirstRegistrationRepository, UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository, ClientRepository clientRepository) {
         this.decodingGenKeyService = decodingGenKeyService;
         this.userGeneralLoginCredentialsDataService = userGeneralLoginCredentialsDataService;
         this.userGeneralLoginCredentialsDataRepository = userGeneralLoginCredentialsDataRepository;
-
+        this.clientRepository = clientRepository;
     }
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/usergeneralform")
     public String showUserGeneralForm(Model model, @ModelAttribute UserDto userDto,
                                       @PageableDefault(size = 25) Pageable pageable){
-        List<UserDto> userDtoList = decodingGenKeyService.getAllUsersWithDecryptedKeys(pageable);
-        //zemiau esantis kodas buvo pritaikytas gauti visiems duomenims is DB pirmineje stadijoje
-//           final Page<UserGeneralLoginCredentialsData> userGeneralLoginCredentialsData =
-//                userGeneralLoginCredentialsDataService.getAllClientsPages(userDto, pageable);
-//        model.addAttribute("userGeneralList", userGeneralLoginCredentialsData);
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName(); // Get username of the logged-in user
+        ClientData clientData = clientRepository.findByUserName(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+
+        List<UserDto> userDtoList = decodingGenKeyService.getUsersWithDecryptedKeysForClient(clientData.getId(),pageable);
+
         model.addAttribute("userDtoList", userDtoList);
         model.addAttribute("userDto", UserDto.builder().build());
         return "brigama/usergeneralform";
@@ -64,6 +72,8 @@ public class GeneralFomControler {
         if (errors.hasErrors()) {
             return "brigama/usergeneralform";
         }
+//        ClientData clientData = clientRepository.findById(userDto.getClientDataId())
+//                .orElseThrow(() -> new RuntimeException("ClientData not found for ID: " + userDto.getClientDataId()));
         userGeneralLoginCredentialsDataService.inputKeyGenData(userDto);
         // TODO pabaigti kad mestu message
         return "redirect:/usergeneralform";

@@ -31,8 +31,7 @@ public class ClientAccountControler {
     public String showClientForm(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
-            // Nukreipkite vartotoją į prisijungimo puslapį arba grąžinkite klaidos pranešimą
-            return "redirect:/login"; // arba rodykite klaidos pranešimą
+            return "redirect:/login";
         }
         String username = authentication.getName();
         Optional<ClientDto> clientByUserName = clientAccountService.getClientByUserName(username);
@@ -42,30 +41,10 @@ public class ClientAccountControler {
         } else {
             model.addAttribute("error", "Client not found");
         }
-//        model.addAttribute("clientDto", new ClientDto());
-//        model.addAttribute("clientDto", ClientDto.builder().build());
+
         return "brigama/clientaccountform";
     }
 
-
-//    @PostMapping("/clientaccountform")
-//    public String findClient(@ModelAttribute ClientDto clientDto, Model model) {
-//
-////        Optional<ClientAccountInfo> client = clientAccountService.getClientByUUID(findClient.getUuid());
-////        Optional<ClientAccountInfo> clientByName = clientAccountService.getClientByFirstName(findClient.getFirstName());
-//        Optional<ClientDto> clientByUserName = clientAccountService.getClientByUserName(clientDto.getUserName());
-//
-//
-//        if (clientByUserName.isPresent()) {
-//            ClientDto foundClient = clientByUserName.get();
-//            model.addAttribute("clientDto", foundClient);
-//        } else {
-//            model.addAttribute("error", "Client not found");
-//        }
-//
-//
-//        return "brigama/clientaccountform";
-//    }
 
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/updateclient")

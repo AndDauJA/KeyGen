@@ -149,11 +149,16 @@
         </main>
     </div>
 </div>
+<input type="hidden" id="serverErrorMessage" th:value="${session.errorMessage}"/>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+
 
 </body>
 
 <script>
+
+
+
     function toggleForm() {
         var form = document.getElementById("new-account-form");
         if (form.style.display === "none") {
@@ -168,6 +173,13 @@
         var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
         if (lang) {
             document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var errorMessage = document.getElementById('serverErrorMessage').value;
+        if (errorMessage) {
+            alert(errorMessage);
+            // Optionally, send a request to clear the session attribute or handle it server-side
         }
     });
 

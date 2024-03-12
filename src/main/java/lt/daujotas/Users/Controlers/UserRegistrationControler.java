@@ -1,6 +1,8 @@
 package lt.daujotas.Users.Controlers;
 
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lt.daujotas.dto.ClientDto;
 import lt.daujotas.service.UsersRegistrationSerivce;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping
@@ -24,7 +27,13 @@ public class UserRegistrationControler {
     }
 
     @GetMapping("/userregistrationform")
-    public String showLoginForm(Model model) {
+    public String showLoginForm(Model model, HttpServletRequest request) {
+//        HttpSession session = request.getSession(false);
+//        if (session != null) {
+//            System.out.println("Session errorMessage: " + session.getAttribute("errorMessage"));
+//        }
+        //TODO pakoreguoti kad tikrintu ir mestu info jog toks username jau yra ir email taip pat
+
         model.addAttribute("clientDto", ClientDto.builder().build());
         return "brigama/userregistrationform"; // kelias iki failo
     }
@@ -61,4 +70,6 @@ public class UserRegistrationControler {
             return "brigama/userregistrationform";
         }
     }
+
+
 }

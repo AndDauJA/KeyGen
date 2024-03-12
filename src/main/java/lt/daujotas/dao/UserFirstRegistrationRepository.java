@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface UserFirstRegistrationRepository extends JpaRepository<ClientData, String> {
+public interface UserFirstRegistrationRepository extends JpaRepository<ClientData, Long> {
 
     Optional<ClientData> findClientDtoByUserName (String username);
     @Query(value = "SELECT u FROM ClientData u JOIN FETCH u.authorities WHERE u.userName= :username")

@@ -3,6 +3,8 @@ package lt.daujotas.sipher.srvice;
 import lt.daujotas.Users.clientDataPojo.UserGeneralLoginCredentialsData;
 import lt.daujotas.Users.dto.UserDto;
 import lt.daujotas.Users.repository.UserGeneralLoginCredentialsDataRepository;
+import lt.daujotas.clientPojo.ClientData;
+import lt.daujotas.dao.ClientRepository;
 import lt.daujotas.sipher.Client;
 import lt.daujotas.sipher.pojo.IVKeyPojo;
 import lt.daujotas.sipher.pojo.SpecialKeyPojo;
@@ -11,6 +13,7 @@ import lt.daujotas.sipher.repository.SpecKeyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,16 +24,16 @@ import java.util.stream.Collectors;
 @Service
 public class DecodingGenKeyService {
     private final UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository;
+
+    private final ClientRepository clientRepository;
     private final SpecKeyRepository specKeyRepository;
     private final IVKeyRepository ivKeyRepository;
     private final Client client;
 
     @Autowired
-    public DecodingGenKeyService(UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository,
-                                 SpecKeyRepository specKeyRepository,
-                                 IVKeyRepository ivKeyRepository,
-                                 Client client) {
+    public DecodingGenKeyService(UserGeneralLoginCredentialsDataRepository userGeneralLoginCredentialsDataRepository, ClientRepository clientRepository, SpecKeyRepository specKeyRepository, IVKeyRepository ivKeyRepository, Client client) {
         this.userGeneralLoginCredentialsDataRepository = userGeneralLoginCredentialsDataRepository;
+        this.clientRepository = clientRepository;
         this.specKeyRepository = specKeyRepository;
         this.ivKeyRepository = ivKeyRepository;
         this.client = client;
@@ -52,9 +55,11 @@ public class DecodingGenKeyService {
         client.initFromStrings(specKey.get().getSecretKey(), ivKey.get().getSpecialIVKey());
         return client.decrypt(credentialsData.getGeneratedkey());
     }
-        // Naudoju metoda ivedimui i html
-    public List<UserDto> getAllUsersWithDecryptedKeys(Pageable pageable) {
-        Page<UserGeneralLoginCredentialsData> credentialsPage = userGeneralLoginCredentialsDataRepository.findAll(pageable);
+
+    // Naudoju metoda ivedimui i html
+    public List<UserDto> getUsersWithDecryptedKeysForClient(Long clientId, Pageable pageable) {
+
+        Page<UserGeneralLoginCredentialsData> credentialsPage = userGeneralLoginCredentialsDataRepository.findByClientDataId(clientId, pageable);
 
         return credentialsPage.stream().map(credentials -> {
             UserDto dto = new UserDto();
@@ -64,11 +69,13 @@ public class DecodingGenKeyService {
             dto.setWebaddress(credentials.getWebaddress());
             dto.setNotes(credentials.getNotes());
             dto.setDateAdded(credentials.getDateAdded());
+
             try {
                 dto.setDecryptedKey(decryptMessage(credentials.getUuid()));
             } catch (Exception e) {
                 dto.setDecryptedKey("Error decrypting key");
             }
+            dto.setDecryptedKey("**********");
             return dto;
         }).collect(Collectors.toList());
 

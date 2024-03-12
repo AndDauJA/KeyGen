@@ -27,6 +27,7 @@ public class UserGeneralLoginCredentialsDataService {
     private final IVKeyRepository ivKeyRepository;
     private final Server server;
 
+    @Transactional
     public void inputKeyGenData(UserDto userDto) throws Exception {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         final ClientData clientData = (ClientData) authentication.getPrincipal();
@@ -45,16 +46,12 @@ public class UserGeneralLoginCredentialsDataService {
                 .webaddress(userDto.getWebaddress())
                 .notes(userDto.getNotes())
                 .clientDataId(clientData.getId())
+                .clientData(clientData)
                 .build();
 
         userCredentialsData = userGeneralLoginCredentialsDataRepository.save(userCredentialsData);
         specKeyRepository.save(new SpecialKeyPojo(UUID.randomUUID(), secrKey, userCredentialsData));
         ivKeyRepository.save(new IVKeyPojo(UUID.randomUUID(), iv, userCredentialsData));
-
-//        System.out.println("encrypt message: " + encryptedMessage);
-//        System.out.println("secret key: " + secrKey);
-//        System.out.println("IV: " + iv);
-
     }
 
     @Transactional

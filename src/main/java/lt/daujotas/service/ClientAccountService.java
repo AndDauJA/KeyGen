@@ -35,7 +35,6 @@ public class ClientAccountService {
 
         if (optionalClientData.isPresent()) {
             ClientData clientData = optionalClientData.get();
-
             clientData.setFirstName(firstName);
             clientData.setLastName(lastName);
             clientData.setMiddleName(middleName);

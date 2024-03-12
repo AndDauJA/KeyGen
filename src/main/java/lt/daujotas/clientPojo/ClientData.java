@@ -86,8 +86,7 @@ public class ClientData implements UserDetails {
         return authorities;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "clientaccountdata_id")
+    @OneToMany(mappedBy = "clientData", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<UserGeneralLoginCredentialsData> userData;
 
 

@@ -1,5 +1,6 @@
 package lt.daujotas.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lt.daujotas.clientPojo.Authority;
 import lt.daujotas.clientPojo.ClientData;
@@ -21,6 +22,8 @@ public class UsersRegistrationSerivce {
     private final ClientRepository clientRepository;
     private final AuthorityRepository authorityRepository;
 
+
+    @Transactional
     public void register(ClientDto clientDto) throws DataIntegrityViolationException {
         final Set<Authority> authorities = authorityRepository.findAll().stream()
                 .filter(authority -> authority.getName().equals("USER"))
@@ -45,13 +48,14 @@ public class UsersRegistrationSerivce {
 
 
     }
+
     public String getUsernameFromDto(ClientDto clientDto) {
         return clientDto.getUserName();
     }
-    public String encripedPasswSecKey(){
-return null;
-    }
 
+    public String encripedPasswSecKey() {
+        return null;
+    }
 
 
 }

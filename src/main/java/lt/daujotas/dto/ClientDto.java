@@ -30,7 +30,7 @@ public class ClientDto {
     @NotEmpty(message = "{NotEmpty.Name.message.postAddress}")
     private String postAddres;
     @NotEmpty(message = "{NotEmpty.Name.message.phone}")
-//    @PhoneNumber(numberType = PhoneNumberType.GLOBAL)
+    @PhoneNumber(numberType = PhoneNumberType.GLOBAL)
     private String phoneNumber;
     @NotEmpty(message = "{NotEmpty.Name.message.email}")
     @Column(name = "emailaddress", unique = true)
