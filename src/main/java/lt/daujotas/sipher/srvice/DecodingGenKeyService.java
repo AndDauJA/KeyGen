@@ -69,15 +69,20 @@ public class DecodingGenKeyService {
             dto.setWebaddress(credentials.getWebaddress());
             dto.setNotes(credentials.getNotes());
             dto.setDateAdded(credentials.getDateAdded());
-
             try {
                 dto.setDecryptedKey(decryptMessage(credentials.getUuid()));
             } catch (Exception e) {
                 dto.setDecryptedKey("Error decrypting key");
             }
-            dto.setDecryptedKey("**********");
             return dto;
         }).collect(Collectors.toList());
 
     }
+    public List<UserDto> hideTheGeneratedKey(Long clientId, Pageable pageable){
+        List<UserDto> userDtoList = getUsersWithDecryptedKeysForClient(clientId, pageable);
+        userDtoList.forEach(dto -> dto.setDecryptedKey("**********"));
+
+        return userDtoList;
+    }
+
 }

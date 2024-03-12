@@ -135,9 +135,13 @@
                                 <a class="input-gen-text"
                                    th:href="@{${userDto.webaddress}}"
                                    th:text="${userDto.webaddress}"></a></td>
-
-                            <td class=" text-truncate gentable-width"
-                                th:text="${userDto.decryptedKey}"></td>
+                            <!--                            <td class=" text-truncate gentable-width"-->
+                            <!--                                th:text="${userDto.decryptedKey}"></td>-->
+                            <td class="text-truncate gentable-width"
+                                th:text="${userDto.decryptedKey}"
+                                th:attr="data-uuid=${userDto.uuid}"
+                                onclick="getAndCopyDecryptedKey(this.getAttribute('data-uuid'))"
+                                style="cursor: pointer;"></td>
 
                             <td class="input-gen-text gentable-width"
                                 th:text="${userDto.notes}"></td>
@@ -156,7 +160,6 @@
 </body>
 
 <script>
-
 
 
     function toggleForm() {
@@ -231,7 +234,39 @@
         }
     }
 
+    //======================================Sugeneruoto rakto kopijavimas=======================//
 
+
+    function copyToClipboard(textToCopy) {
+        // Sukurkite laikiną elementą, kuris bus naudojamas tekstui įklijuoti
+        const tempElement = document.createElement("textarea");
+        tempElement.value = textToCopy;
+        document.body.appendChild(tempElement);
+        tempElement.select(); // Pažymėkite tekstą laikinajame elemente
+        document.execCommand("copy"); // Nukopijuokite tekstą
+        document.body.removeChild(tempElement); // Pašalinkite laikinąjį elementą
+
+        // Parodykite pranešimą, kad tekstas nukopijuotas
+        alert("Dešifruotas raktas nukopijuotas į iškarpinę.");
+    }
+
+    function getAndCopyDecryptedKey(uuid) {
+        console.log(`UUID: ${uuid}`);
+        const url = `/api/decrypted-key/${uuid}`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(decryptedKey => {
+                navigator.clipboard.writeText(decryptedKey).then(() => {
+                    alert("Raktas nukopijuotas į iškarpinę.");
+                });
+            })
+            .catch(error => alert("Klaida gaunant raktą: " + error));
+    }
 </script>
 
 </html>

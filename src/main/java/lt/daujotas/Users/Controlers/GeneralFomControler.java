@@ -57,14 +57,24 @@ public class GeneralFomControler {
         ClientData clientData = clientRepository.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
-        List<UserDto> userDtoList = decodingGenKeyService.getUsersWithDecryptedKeysForClient(clientData.getId(),pageable);
+        List<UserDto> userDtoList = decodingGenKeyService.hideTheGeneratedKey(clientData.getId(),pageable);
 
         model.addAttribute("userDtoList", userDtoList);
         model.addAttribute("userDto", UserDto.builder().build());
         return "brigama/usergeneralform";
     }
-
-
+    // Pavyzdys su Spring Boot
+    @GetMapping("/api/decrypted-key/{uuid}")
+    public ResponseEntity<?> getDecryptedKey(@PathVariable UUID uuid, Authentication authentication) {
+        try {
+            ClientData clientData = (ClientData) authentication.getPrincipal();
+            // Čia tikrinama, ar UUID priklauso prisijungusiam vartotojui, galite pridėti šią logiką
+            String decryptedKey = decodingGenKeyService.decryptMessage(uuid);
+            return ResponseEntity.ok(decryptedKey);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Nepavyko dešifruoti rakto: " + e.getMessage());
+        }
+    }
 
     @PostMapping("/usergeneralform")
     public String registerNewUser(Model model, @Valid UserDto userDto, BindingResult errors) throws Exception {

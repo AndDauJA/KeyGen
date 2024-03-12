@@ -10,6 +10,7 @@ public class UserMapper implements Mapper<UserGeneralLoginCredentialsData, UserD
     @Override
     public UserDto toDto(UserGeneralLoginCredentialsData entity) {
         return UserDto.builder()
+                .uuid(entity.getUuid())
                 .userNameEmail(entity.getUsername())
                 .generatedkey(entity.getGeneratedkey())
                 .webaddress(entity.getWebaddress())
