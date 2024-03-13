@@ -51,19 +51,19 @@ public class GeneralFomControler {
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/usergeneralform")
     public String showUserGeneralForm(Model model, @ModelAttribute UserDto userDto,
-                                      @PageableDefault(size = 25) Pageable pageable){
+                                      @PageableDefault(size = 25) Pageable pageable) {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName(); // Get username of the logged-in user
         ClientData clientData = clientRepository.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
-        List<UserDto> userDtoList = decodingGenKeyService.hideTheGeneratedKey(clientData.getId(),pageable);
+        List<UserDto> userDtoList = decodingGenKeyService.hideTheGeneratedKey(clientData.getId(), pageable);
 
         model.addAttribute("userDtoList", userDtoList);
         model.addAttribute("userDto", UserDto.builder().build());
         return "brigama/usergeneralform";
     }
-    // Pavyzdys su Spring Boot
+
     @GetMapping("/api/decrypted-key/{uuid}")
     public ResponseEntity<?> getDecryptedKey(@PathVariable UUID uuid, Authentication authentication) {
         try {
@@ -82,8 +82,6 @@ public class GeneralFomControler {
         if (errors.hasErrors()) {
             return "brigama/usergeneralform";
         }
-//        ClientData clientData = clientRepository.findById(userDto.getClientDataId())
-//                .orElseThrow(() -> new RuntimeException("ClientData not found for ID: " + userDto.getClientDataId()));
         userGeneralLoginCredentialsDataService.inputKeyGenData(userDto);
         // TODO pabaigti kad mestu message
         return "redirect:/usergeneralform";
@@ -91,13 +89,11 @@ public class GeneralFomControler {
     }
 
     @Transactional
-    @GetMapping("/usergeneralform/{id}/delete")
-    public String deleteClient(@PathVariable UUID id) {
-        userGeneralLoginCredentialsDataService.deleteUserGeneralDataByUUID(id);
+    @GetMapping("/usergeneralform/{uuid}/delete")
+    public String deleteClient(@PathVariable UUID uuid) {
+        userGeneralLoginCredentialsDataService.deleteUserGeneralDataByUUID(uuid);
         return "redirect:/usergeneralform";
     }
-
-
 
 
 }

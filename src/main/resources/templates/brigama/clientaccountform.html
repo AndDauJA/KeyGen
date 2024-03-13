@@ -135,20 +135,7 @@
         </main>
     </div>
 </div>
-<footer id="contact-id" class="footer-wrap mobile-only">
-    <h2 class="kontaktai">Kontaktai</h2>
-    <div>
-        <ol class="wrap-kontakt-ul">
-            <li>UAB Brigama</li>
-            <li>Įmonės kodas: 302607361</li>
-            <li>PVM kodas: LT100007601018</li>
-            <li>El.pašto adresas: info@brigama.lt</li>
-        </ol>
-    </div>
-    <div class="go-home-link">
-        <a href="#header-id">Grįžti į meniu</a>
-    </div>
-</footer>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL

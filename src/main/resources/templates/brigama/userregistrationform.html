@@ -1,56 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="en">
+      lang="lt">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{css/regform.css}">
-    <link rel="stylesheet" href="/css/regform.css">
-    <title>Naujo kleinto registracijos forma</title>
+<head th:replace="~{fragments/regformlayout::headregform('Naujo kleinto registracijos forma')}">
+
 </head>
+
 <body>
 <div class="body-background">
-    <div class="header-main-container">
+    <header>
+        <nav th:replace="~{fragments/regformlayout::navigational-bar}">placeholder</nav>
+    </header>
 
-        <header id="header-id" class="wrap-header mobile-only">
-
-            <div class="logo-menu-list">
-                <div class="logo-name-container">
-
-                    <img id="body-img-logo" src="/images/3786012.jpg" alt="">
-
-                    <h1 id="comany-name">UAB BRIGAMA</h1>
-
-                </div>
-                <div class="menu-list">
-                    <menu class="menu-container on-hover">
-                        <ul class="menu-ul">
-                            <li class="menu-ul-item"><a href="#">Apie įmonę</a></li>
-                            <li class="menu-ul-item"><a href="#">Najienos</a></li>
-                            <li class="menu-ul-item"><a href="#">Projektai</a></li>
-                            <li class="menu-ul-item"><a href="#contact-id">Kontaktai</a></li>
-                            <li sec:authorize="!isAuthenticated()" class="menu-ul-item-login">
-                                <a th:href="@{/login}">Login</a></li>
-
-                        </ul>
-                    </menu>
-                </div>
-
-            </div>
-
-        </header>
-    </div>
-    <div class="main">
-        <h2>Naujo kleinto registracijos forma</h2>
+    <div class="main-reg-container">
+        <h2 class="main-reg-h2">Naujo kleinto registracijos forma</h2>
         <div th:if="${message ne null and message.length() > 0}"
              class="alert alert-success" role="alert"
              th:text="${message}">
             Success message when add product
         </div>
-        <form method="post" th:action="@{/userregistrationform}" th:object="${clientDto}">
-            <label for="user">User Name:</label>
+        <form class="form-reg reg-form-text-size" method="post" th:action="@{/userregistrationform}" th:object="${clientDto}">
+            <label for="user" th:text="#{reg.form.username}">User Name:</label>
             <input type="text" id="user"
                    name="userName"
                    placeholder="Enter your username" th:field="*{userName}">
@@ -58,7 +29,7 @@
                   th:errors="*{userName}">
             </span>
 
-            <label for="first">First Name:</label>
+            <label for="first" th:text="#{reg.form.firstName}">First Name:</label>
             <input type="text" id="first"
                    name="firstName"
                    placeholder="Enter your first name" th:field="*{firstName}">
@@ -66,24 +37,24 @@
                   th:errors="*{firstName}">
             </span>
 
-            <label for="last">Last Name:</label>
+            <label for="last" th:text="#{reg.form.lastName}">Last Name:</label>
             <input type="text" id="last"
                    name="lastName"
                    placeholder="Enter your last name" th:field="*{lastName}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('lastName')}"
                   th:errors="*{lastName}"></span>
 
-            <label for="middle">Middle Name:</label>
+            <label for="middle" th:text="#{acc.form.middleName}">Middle Name:</label>
             <input type="text" id="middle"
                    name="middleName"
                    placeholder="Enter your middle name" th:field="*{middleName}">
 
-            <label for="post">Post address:</label>
+            <label for="post" th:text="#{acc.form.postaddress}">Post address:</label>
             <input type="text" id="post"
                    name="postAddress"
                    placeholder="Enter your post address" th:field="*{postAddres}">
 
-            <label for="email">Email:</label>
+            <label for="email" th:text="#{reg.form.email}">Email:</label>
             <input type="email" id="email"
                    name="emailAddress"
                    placeholder="Enter your email" th:field="*{emailAddress}">
@@ -94,25 +65,25 @@
             </div>
 
 
-            <label for="password">Password:</label>
+            <label for="password" th:text="#{reg.form.password}">:</label>
             <input type="password" id="password"
                    name="password"
                    placeholder="Enter your password" th:field="*{password}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('password')}"
                   th:errors="*{password}"></span>
 
-            <label for="repeatpassword">Repeatpassword:</label>
+            <label for="repeatpassword" th:text="#{reg.form.repeat.password}"></label>
             <input type="password" id="repeatpassword"
                    name="repeatpassword"
                    placeholder="Reenter your password " th:field="*{repeatPassword}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('global')}"
                   th:errors="global"></span>
-            <label for="dob">Date of Birth:</label>
+            <label for="dob" th:text="#{acc.form.dateofbirth}">Date of Birth:</label>
             <input type="date"
                    id="dob" name="dob"
                    placeholder="Enter your DOB" th:field="*{dateofbirth}">
 
-            <label for="mobile">Contact:</label>
+            <label for="mobile" th:text="#{reg.form.phone}">Contact:</label>
             <input type="text" id="mobile"
                    name="mobile"
                    placeholder="Enter your Mobile Number" th:field="*{phoneNumber}"
@@ -120,21 +91,35 @@
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('phoneNumber')}"
                   th:errors="*{phoneNumber}"></span>
 
-            <label for="gender">Gender:</label>
+            <label for="gender" th:text="#{acc.form.gender}">Gender:</label>
             <select id="gender" name="gender" th:field="*{gender}" required>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-
-            <div class="wrap">
-                <button type="submit" onclick="solve()">
-                    Submit
-                </button>
-            </div>
+            <button class=" button-text text-center reg-form-btn" type="submit" onclick="solve()" th:text="#{reg.form.btn}">
+                Submit
+            </button>
         </form>
     </div>
-</div>
 
+</div>
+<input type="hidden" id="serverErrorMessage" th:value="${session.errorMessage}"/>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
+        if (lang) {
+            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var errorMessage = document.getElementById('serverErrorMessage').value;
+        if (errorMessage) {
+            customAlert(errorMessage);
+        }
+    });
+</script>
 </body>
 </html>

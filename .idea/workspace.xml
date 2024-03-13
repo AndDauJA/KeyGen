@@ -4,12 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="KG 4.0.0 gaunu tik prisiloginusio user data, pasleptas slaptazodis i html,">
+    <list default="true" id="0f4cd282-83af-448c-947f-619d63f110fa" name="Changes" comment="KG 4.0.2 papildziau EN ir LT i generalForm pavadinimus ir reiksmes">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/loginlayout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/regformlayout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/941f04fa-6240-46cd-9794-638062bab60e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/Controlers/GeneralFomControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/Users/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/DecodingGenKeyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/sipher/srvice/DecodingGenKeyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/daujotas/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/daujotas/security/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_lt.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_lt.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/regform.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/regform.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/clientaccountform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/clientaccountform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/usergeneralform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/brigama/userregistrationform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/brigama/userregistrationform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/accountlayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/accountlayout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/generallayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/generallayout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/layout.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,44 +70,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.AES.executor": "Run",
-    "Application.Client.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "Maven.Key_Generator [clean].executor": "Run",
-    "Maven.Key_Generator [install].executor": "Run",
-    "Maven.Key_Generator [validate].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.KeyGeneratorApp.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/JAVA/Demo/src/main/resources/application.yml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AES.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Key_Generator [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Key_Generator [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Key_Generator [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.KeyGeneratorApp.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/Demo/src/main/resources/application.yml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\JAVA\KEY_Generator\src\main\resources" />
@@ -236,7 +251,10 @@
       <workItem from="1709892972959" duration="8462000" />
       <workItem from="1709911012534" duration="37000" />
       <workItem from="1710153868151" duration="3910000" />
-      <workItem from="1710225697651" duration="14558000" />
+      <workItem from="1710225697651" duration="22374000" />
+      <workItem from="1710311603503" duration="29000" />
+      <workItem from="1710311795669" duration="891000" />
+      <workItem from="1710313142487" duration="24215000" />
     </task>
     <task id="LOCAL-00001" summary="Key Generator v3.5.0 Nauja forma pildyti generuotus slaptazodwius, bet dar nera surista su Clientaccount. Forma pildo ir isveda is DB">
       <option name="closed" value="true" />
@@ -390,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710229873839</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="KG 4.0.1 html generated Key nerodo o kai paspaudi nat jo nukopijuoja">
+      <option name="closed" value="true" />
+      <created>1710246722534</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1710246722534</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +455,9 @@
     <MESSAGE value="Key Generator 3.9.7 Pakoreguoti formos checkbox" />
     <MESSAGE value="KG 3.9.8 Pakoreguoti general ir account formos ir ju css.Nerode gender account formoje, pakoreguotas serivsas ir mapper" />
     <MESSAGE value="KG 4.0.0 gaunu tik prisiloginusio user data, pasleptas slaptazodis i html," />
-    <option name="LAST_COMMIT_MESSAGE" value="KG 4.0.0 gaunu tik prisiloginusio user data, pasleptas slaptazodis i html," />
+    <MESSAGE value="KG 4.0.1 html generated Key nerodo o kai paspaudi nat jo nukopijuoja" />
+    <MESSAGE value="KG 4.0.2 papildziau EN ir LT i generalForm pavadinimus ir reiksmes" />
+    <option name="LAST_COMMIT_MESSAGE" value="KG 4.0.2 papildziau EN ir LT i generalForm pavadinimus ir reiksmes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

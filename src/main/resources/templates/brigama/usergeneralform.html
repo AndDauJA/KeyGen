@@ -2,7 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="lt">
-<head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>
+<head th:replace="~{fragments/generallayout::headageneral('Brigama')}">
+    <!-- Modal Structure -->
+    <div id="myModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+</head>
 
 <body>
 
@@ -20,15 +29,15 @@
                 </div>
                 <button id="toggle-form-btn" class="button-text btn-secondary btn-block mb-6 text-center"
                         type="button"
-                        onclick="toggleForm()">Create New account and key
+                        onclick="toggleForm()" th:text="#{gen.form.creat.button}">
                 </button>
 
                 <div id="new-account-form" class=" mb-2 input-gen-text" style="display: none;">
                     <form method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
-                        <label for="basic-url">Your Username</label>
+                        <label for="basic-url" th:text="#{gen.form.userName}"></label>
                         <div class="input-group mb-3 input-group">
                             <input type="text" class="form-control input-gen-text"
-                                   placeholder="Username/email"
+                                   th:placeholder="#{gen.form.userName.here}"
                                    aria-label="UserName/Email" aria-describedby="basic-addon2"
                                    th:field="*{userNameEmail}">
                             <div class="input-group-append input-gen-text">
@@ -37,10 +46,10 @@
                               th:errors="*{userNameEmail}">@example.com</span>
                             </div>
                         </div>
-                        <label for="basic-url">Your URL</label>
+                        <label for="basic-url" th:text="#{gen.form.your.url}"></label>
                         <div class="input-group mb-3 input-gen-text">
                             <input type="text" class="form-control input-gen-text"
-                                   placeholder="URL/WEB address"
+                                   th:placeholder="#{gen.form.your.url.place}"
                                    th:field="*{webaddress}"
                                    id="basic-url" aria-describedby="basic-addon3">
                             <div class="input-group-prepend">
@@ -54,8 +63,8 @@
                             <div class="custom-control custom-checkbox ">
                                 <input class="custom-control-input" type="checkbox" name="generateType" value="LoremIps"
                                        id="LoremIps">
-                                <label class="custom-control-label general-lable-text" for="LoremIps">Atsitiktiniai
-                                    žodžių deriniai</label>
+                                <label class="custom-control-label general-lable-text" for="LoremIps"
+                                       th:text="#{gen.form.loremIps}"></label>
                             </div>
 
 
@@ -63,7 +72,8 @@
                                 <input class="custom-control-input" type="checkbox" name="generateType"
                                        value="lettersnumbers"
                                        id="lettersnumbers">
-                                <label class="custom-control-label" for="lettersnumbers">Letters and numbers (0-9 +
+                                <label class="custom-control-label" for="lettersnumbers"
+                                       th:text="#{gen.form.letters.numbers}"> (0-9 +
                                     Aa)</label>
                             </div>
 
@@ -72,16 +82,17 @@
                                 <input class="custom-control-input" type="checkbox" name="generateType"
                                        value="Special_Key"
                                        id="Special_Key">
-                                <label class="custom-control-label" for="Special_Key">Special Key (#%*;/)</label>
+                                <label class="custom-control-label" for="Special_Key"
+                                       th:text="#{gen.form.speckey}"></label>
                             </div>
 
                         </div>
-                        <label for="basic-url">Kokio stiprumo kodo norite?</label>
+                        <label for="basic-url" th:text="#{gen.form.code.strength}"></label>
                         <input type="number" class="form-control input-gen-text"
-                               aria-label="Įveskite Ne mažiau nei 8 simbolius"
+                               aria-label="Strength"
                                id="number-strength"
-                               onchange="checkNumberStrength()" placeholder="Įveskite Ne mažiau nei 8 simbolius">
-                        <label for="basic-url">Your Generated Key</label>
+                               onchange="checkNumberStrength()" th:placeholder="#{gen.form.code.length}">
+                        <label for="basic-url" th:text="#{gen.form.generated.key}"></label>
                         <div class="input-group mb-2 img-fluid input-gen-text" id="generatedKey-img">
                             <div>
                                 <img class="input-group-text img-fluid img-size" src="/images/keyimg.jpg" id="img-sige">
@@ -90,14 +101,14 @@
                                    th:field="*{generatedkey}">
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-secondary generate-button-text"
-                                        onclick="generateKey()">Generate
+                                        onclick="generateKey()" th:text="#{gen.form.generate}">
                                 </button>
                             </div>
                         </div>
 
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text input-gen-text">Notes</span>
+                                <span class="input-group-text input-gen-text" th:text="#{gen.form.notes}"></span>
                             </div>
                             <textarea class="form-control note-box-size input-gen-text"
                                       aria-label="Your Notes"
@@ -105,7 +116,8 @@
                         </div>
                         <div class="wrap">
                             <div style="height: 20px;"></div>
-                            <button type="submit" onclick="solve()" class="btn-secondary mb-3 button-text">
+                            <button type="submit" onclick="solve()" class="btn-secondary mb-3 button-text"
+                                    th:text="#{gen.form.save.toDB}">
                                 Save data to Date Base
                             </button>
                         </div>
@@ -117,10 +129,10 @@
                         <tr>
                             <th scope="col">Id</th>
                             <!--                <th scope="col">Meta</th>-->
-                            <th scope="col">UserNname/email</th>
-                            <th scope="col">Url/web page</th>
-                            <th scope="col">Generated Key</th>
-                            <th scope="col">Notes</th>
+                            <th scope="col" th:text="#{gen.form.table.username}"></th>
+                            <th scope="col" th:text="#{gen.form.table.url}"></th>
+                            <th scope="col" th:text="#{gen.form.table.genkey}"></th>
+                            <th scope="col" th:text="#{gen.form.table.notes}"></th>
                             <th scope="col" hidden="hidden">UUID</th>
 
                         </tr>
@@ -132,22 +144,44 @@
 
                             <td class="gentable-width" th:text="${userDto.userNameEmail}"></td>
                             <td class="text-nowrap text-truncate gentable-width">
-                                <a class="input-gen-text"
+                                <a class="input-gen-text gen-url-size"
                                    th:href="@{${userDto.webaddress}}"
                                    th:text="${userDto.webaddress}"></a></td>
-                            <!--                            <td class=" text-truncate gentable-width"-->
-                            <!--                                th:text="${userDto.decryptedKey}"></td>-->
                             <td class="text-truncate gentable-width"
                                 th:text="${userDto.decryptedKey}"
                                 th:attr="data-uuid=${userDto.uuid}"
                                 onclick="getAndCopyDecryptedKey(this.getAttribute('data-uuid'))"
                                 style="cursor: pointer;"></td>
+                            <!--                            <td class="input-gen-text text-truncate gentable-width"-->
+                            <!--                                th:text="${userDto.notes}"></td>-->
+                            <td class="input-gen-text text-truncate gentable-width gen-notes-size"
+                                onclick="showFullNoteText(this.innerText)"
+                                style="cursor: pointer;" th:text="${userDto.notes}">
 
-                            <td class="input-gen-text gentable-width"
-                                th:text="${userDto.notes}"></td>
+                            </td>
+
+                            <td class="bt-delete-width">
+                                <button th:text="#{gen.form.table.delete}"
+                                        th:attr="data-uuid=${userDto.uuid},
+                                        data-delete-confirm='#{gen.form.confirm.delete}',
+                                        data-delete-success='#{gen.form.success.delete}',
+                                        data-delete-error='#{gen.form.error.delete}'"
+                                        onclick="confirmDelete(this.getAttribute('data-uuid'))"
+                                        class="btn btn-danger"></button>
+                            </td>
+
+
+                            <div id="customAlert"
+                                 style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+                                <div style="background: white; padding: 20px; border-radius: 5px; max-width: 500px; width: 80%;">
+                                    <p id="customAlertText" style="white-space: pre-wrap;"></p>
+                                    <button onclick="closeCustomAlert()">Close</button>
+                                </div>
+                            </div>
                         </tr>
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </main>
@@ -157,19 +191,34 @@
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 
 
-</body>
+<script th:inline="javascript">
+    var deleteConfirm = /*[[#{gen.form.confirm.delete}]]*/ '';
+    var deleteSuccess = /*[[#{gen.form.success.delete}]]*/ '';
+    var deleteError = /*[[#{gen.form.error.delete}]]*/ 'Default message for delete error';
+    var closeForm =/*[[#{gen.form.creat.button.close}]]*/'';
+    var createForm =/*[[#{gen.form.creat.button}]]*/'';
+    var keyGenType =/*[[#{gem.form.generate.type}]]*/'';
 
-<script>
-
-
+    // function toggleForm() {
+    //     var form = document.getElementById("new-account-form");
+    //     if (form.style.display === "none") {
+    //         form.style.display = "block";
+    //     } else {
+    //         form.style.display = "none";
+    //     }
+    // }
     function toggleForm() {
-        var form = document.getElementById("new-account-form");
-        if (form.style.display === "none") {
-            form.style.display = "block";
-        } else {
-            form.style.display = "none";
-        }
+        var form = document.getElementById('new-account-form');
+        var toggleButton = document.getElementById('toggle-form-btn');
 
+        // Patikriname, ar forma šiuo metu matoma
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block'; // Rodome formą
+            toggleButton.textContent = (closeForm); // Keičiame mygtuko tekstą į "Close form"
+        } else {
+            form.style.display = 'none'; // Paslepiame formą
+            toggleButton.textContent = (createForm); // Grąžiname pradinį mygtuko tekstą
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -181,8 +230,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         var errorMessage = document.getElementById('serverErrorMessage').value;
         if (errorMessage) {
-            alert(errorMessage);
-            // Optionally, send a request to clear the session attribute or handle it server-side
+            customAlert(errorMessage);
         }
     });
 
@@ -190,13 +238,12 @@
     function generateKey() {
         var checkedBoxes = document.querySelectorAll('input[name="generateType"]:checked');
         if (checkedBoxes.length === 0) {
-            alert("Pasirinkite bent vieną generavimo tipą.");
+            customAlert(keyGenType);
             return;
         }
         var noOfRandomChars = document.getElementById("number-strength").value;
         var xhr = new XMLHttpRequest();
         var url;
-
         if (document.getElementById('LoremIps').checked) {
             url = '/generate-key-lorem';
         } else if (document.getElementById('lettersnumbers').checked) {
@@ -222,36 +269,50 @@
 
     }
 
-
     function checkNumberStrength() {
         var numberStrength = document.getElementById("number-strength").value;
-
         if (numberStrength < 8) {
-            alert("Stiprumo kodas turi būti mažiausiai 8 simbolių ilgio!");
-            // Galite papildomai išvalyti laukelį arba pakeisti jo spalvą, kad parodytumėte, jog įvestis netinkama
+            customAlert("Stiprumo kodas turi būti mažiausiai 8 simbolių ilgio!");
             document.getElementById("number-strength").value = "";
             document.getElementById("number-strength").style.borderColor = "red";
         }
     }
 
-    //======================================Sugeneruoto rakto kopijavimas=======================//
 
+    function showFullNoteText(noteText) {
+        alert(noteText);
+    }
 
-    function copyToClipboard(textToCopy) {
-        // Sukurkite laikiną elementą, kuris bus naudojamas tekstui įklijuoti
-        const tempElement = document.createElement("textarea");
-        tempElement.value = textToCopy;
-        document.body.appendChild(tempElement);
-        tempElement.select(); // Pažymėkite tekstą laikinajame elemente
-        document.execCommand("copy"); // Nukopijuokite tekstą
-        document.body.removeChild(tempElement); // Pašalinkite laikinąjį elementą
+    //===================================================================//
 
-        // Parodykite pranešimą, kad tekstas nukopijuotas
-        alert("Dešifruotas raktas nukopijuotas į iškarpinę.");
+    function confirmDelete(uuid) {
+        var btn = document.querySelector(`[data-uuid="${uuid}"]`);
+        if (confirm(deleteConfirm)) {
+            fetch(`/usergeneralform/${uuid}/delete`, {method: 'GET'})
+                .then(response => {
+                    if (response.ok) {
+                        customAlert(deleteSuccess);
+                        window.location.reload();
+                    } else {
+                        throw new Error(deleteError);
+                    }
+                })
+                .catch(error => {
+                    customAlert(error.message);
+                });
+        }
+    }
+
+    document.querySelector('.close').onclick = function () {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    function customAlert(msg) {
+        document.getElementById('modalText').innerText = msg;
+        document.getElementById('myModal').style.display = "block";
     }
 
     function getAndCopyDecryptedKey(uuid) {
-        console.log(`UUID: ${uuid}`);
         const url = `/api/decrypted-key/${uuid}`;
         fetch(url)
             .then(response => {
@@ -262,11 +323,12 @@
             })
             .then(decryptedKey => {
                 navigator.clipboard.writeText(decryptedKey).then(() => {
-                    alert("Raktas nukopijuotas į iškarpinę.");
+                    customAlert(`Raktas nukopijuotas į iškarpinę:
+                 ${decryptedKey}`);
                 });
             })
-            .catch(error => alert("Klaida gaunant raktą: " + error));
+            .catch(error => customAlert("Klaida gaunant raktą: " + error));
     }
 </script>
-
+</body>
 </html>

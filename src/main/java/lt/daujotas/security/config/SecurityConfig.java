@@ -39,7 +39,8 @@ public class SecurityConfig {
                                 "/cart/**",
                                 "/user/**",
                                 "/error/**",
-                                "/userregistrationform"
+                                "/userregistrationform",
+                                "/login**"
 
                         )
                         .permitAll()
