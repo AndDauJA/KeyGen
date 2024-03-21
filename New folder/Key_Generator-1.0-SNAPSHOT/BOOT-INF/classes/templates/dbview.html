@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Visa info apie esamus klientus DB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div th:if="${clientList.isEmpty()}">Duomenu bazė tuščia</div>
+<div th:unless="${clientList.isEmpty()}">
+    <h1>Musu klientai</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>First name</th>
+            <th>Surnname</th>
+            <th>phone Number</th>
+            <th>Email</th>
+            <th>UserName</th>
+            <th></th> <!-- empty row for buttons (edit, delete etc-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client: ${clientList}">
+            <td th:text="${client.getFirstName()}?: 'N/A'">N/A</td>
+            <td th:text="${client.getLastName()}?: 'N/A'">N/A</td>
+            <td th:text="${client.getPhoneNumber()}?: 'N/A'">N/A</td>
+            <td th:text="${client.getEmailAddress()}?: 'N/A'">N/A</td>
+            <td th:text="${client.getUserName()}?: 'N/A'">N/A</td>
+            <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
+            <td><a th:if="${client.userName != null}"
+                   th:href="@{'/dbview/' + ${client.userName} + '/delete'}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <nav class="navbar navbar-light bg-light" aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${!clientList.hasPrevious() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/dbview(page=${clientList.number} - 1)}">Previous</a>
+            </li>
+            <li th:each="pageNumber : ${#numbers.sequence(0, clientList.totalPages - 1)}"
+                th:classappend="${pageNumber == clientList.number ? 'active' : ''}">
+                <a class="page-link" th:href="@{/dbview(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${!clientList.hasNext() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/dbview(page=${clientList.number} + 1)}">Next</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

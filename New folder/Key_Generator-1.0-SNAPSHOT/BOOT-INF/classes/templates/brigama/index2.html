@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="lt">
+<head th:replace="~{fragments/layout::headindex('Brigama')}"></head>
+
+<body>
+
+<div class="body-background">
+    <div class="header-main-container ">
+
+        <header id="header-id" class="wrap-header mobile-only">
+
+            <div class="logo-menu-list">
+                <div class="logo-name-container">
+                    <img id="body-img-logo" src="/images/3786012.jpg" alt="">
+                    <h1 id="comany-name">UAB BRIGAMA</h1>
+                </div>
+                <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
+            </div>
+        </header>
+    </div>
+    <div class="main-container">
+        <main class="main-wrap">
+            <h2>Įmonės veikla</h2>
+            <div>
+                <p>Įmonė siūlo aukščiausios kokybės technologinius sprendimus įvairioms pramonės šakoms. Mūsų <br>
+                    komanda deda pastangas, kad sukurtų unikalias ir pritaikytas technologijas, padedančias mūsų
+                    klientams inovuoti ir siekti aukštumų. </p>
+            </div>
+            <p>
+                <a class="link-check-email" href="https://haveibeenpwned.com/">Čia galite pasitikrinti, ar jūsų
+                    elektorninis paštas nebuvo nutekintas!!!</a>
+            </p>
+            <div>
+                <p>Internetinis puslpapis yra naujinamas! <br> WebPage is being updated!!</p>
+            </div>
+        </main>
+    </div>
+
+</div>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
+        if (lang) {
+            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
+        }
+    });
+</script>
+
+</body>
+
+</html>

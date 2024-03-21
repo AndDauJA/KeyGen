@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="lt">
+
+<head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>
+
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+<div class="body-background">
+    <header th:replace="~{fragments/accountlayout::navaccount-bar}"></header>
+
+    <div class="main-account-container">
+        <main class="main-account-form">
+
+            <div class="cards-container-size px-10 mt-10">
+                <div class="picture-form-container">
+                    <div class="picture-form">
+                        <div class="picture-card-name" th:text="#{acc.form.profilepic}"></div>
+                        <div class="card-body">
+                            <!-- Profile picture image-->
+                            <img class="img-account-profile rounded-circle mb-2"
+                                 src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                                 alt="profiel-picture">
+                            <!-- Profile picture help block-->
+                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                            <!-- Profile picture upload button-->
+                            <button class="general-form-button button-text" type="submit"
+                                    th:text="#{acc.form.upload.photo}"></button>
+                        </div>
+                    </div>
+
+                    <!-- Account details card-->
+                    <div class="account-detail-card ">
+                        <div class="card-header-names" th:text="#{acc.form.accdetales}"></div>
+
+                        <form id="form-id" class="account-detail-card-fill-form" method="post" th:if="${clientDto}"
+                              th:action="@{/updateclient}"
+                              th:object="${clientDto}">
+                            <div class="mb-3 card-form">
+                                <!-- Form Group (username)-->
+                                <label class="form-label input-gen-text" th:text="#{acc.form.username}"></label>
+
+                                <input class="form-control input-gen-text" id="inputUsername" type="text"
+                                       th:field="*{userName}"
+                                       readonly>
+                                <div class="">
+                                    <input class="form-control" id="Uuid" type="hidden" placeholder="uuid"
+                                           th:field="*{accountUuid}" th:value="${clientDto.accountUuid}">
+                                </div>
+                            </div>
+                            <div class="row mb-3 ">
+
+                                <div class="col">
+                                    <label class=" input-gen-text" for="inputFirstName"
+                                           th:text="#{acc.form.firstName}"></label>
+                                    <input class="form-control input-gen-text" id="inputFirstName" type="text"
+                                           placeholder="Enter your first name"
+                                           th:field="*{firstName}">
+                                </div>
+                                <div class="col">
+                                    <label class="input-gen-text" for="inputMiddletName"
+                                           th:text="#{acc.form.middleName}"></label>
+                                    <input class="form-control input-gen-text" id="inputMiddletName" type="text"
+                                           placeholder="Enter your first name"
+                                           th:field="*{middleName}">
+                                </div>
+
+                                <div class="col">
+                                    <label class="input-gen-text" for="inputLastName"
+                                           th:text="#{acc.form.lastName}"></label>
+                                    <input class="form-control input-gen-text" id="inputLastName" type="text"
+                                           placeholder="Enter your last name"
+                                           th:field="*{lastName}">
+
+                                </div>
+                            </div>
+
+                            <div class="row ">
+
+                                <div class="col">
+                                    <label class="input-gen-text" for="inputPostAddress"
+                                           th:text="#{acc.form.postaddress}"></label>
+                                    <input class="form-control input-gen-text" id="inputPostAddress" type="text"
+                                           placeholder="Enter your location"
+                                           th:field="*{postAddres}">
+                                </div>
+                            </div>
+
+                            <div class="mb-">
+                                <label class="input-gen-text " for="inputEmailAddress"
+                                       th:text="#{acc.form.email}"></label>
+                                <input class="form-control input-gen-text" id="inputEmailAddress" type="email"
+                                       placeholder="Enter your email address" th:field="*{emailAddress}">
+                            </div>
+
+                            <div class="row ">
+
+                                <div class="col">
+                                    <label class="input-gen-text" for="inputPhone" th:text="#{acc.form.phone}"></label>
+                                    <input class="form-control input-gen-text" id="inputPhone" type="tel"
+                                           placeholder="Enter your phone number"
+                                           th:field="*{phoneNumber}">
+                                </div>
+                                <div class="col">
+                                    <label class="input-gen-text" for="inputBirthDate"
+                                           th:text="#{acc.form.dateofbirth}"></label>
+                                    <input type="date" class="input-gen-text"
+                                           id="inputBirthDate" name="dob"
+                                           placeholder="Enter your DOB" th:field="*{dateofbirth}">
+                                </div>
+                                <div class="col">
+                                    <label class="input-gen-text" for="inputGender" th:text="#{acc.form.gender}"></label>
+                                    <input class="form-control input-gen-text" id="inputGender" type="text"
+                                           placeholder="Gender"
+                                           th:field="*{gender}" readonly>
+                                </div>
+
+                                <div class="input-gen-text" th:if="${error}">
+                                    <p th:text="${error}"
+                                       th:style="'color: #f44336; font-weight: bold;'"></p>
+                                </div>
+                            </div>
+                            <div class="alert alert-success" role="alert" th:if="${success}">
+                                Duomenys sėkmingai atnaujinti!!
+                            </div>
+                            <button type="submit" class=" general-form-button button-text"
+                                    th:text="#{acc.form.update.btn}">
+                                Update Client
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+<div th:replace="~{fragments/layout :: language-script}"></div>
+</body>
+
+</html>

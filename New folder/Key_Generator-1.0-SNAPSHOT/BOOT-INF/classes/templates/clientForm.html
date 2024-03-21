@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Client form</title>
+</head>
+<body>
+<h3>Let's create a Client:</h3>
+<form method="post" th:action="@{/creat/clientForm}" th:object="${createClientAccount}">
+    <!--  createClientAccount=  atribute shablonas-->
+
+    <label>Name:</label>
+    <input type="text" placeholder="First name" th:field="*{firstName}"><br/>
+
+    <label>Surname:</label>
+    <input type="text" placeholder="Surnname" th:field="*{lastName}"><br/>
+
+    <label>Phone Number:</label>
+    <input type="text" placeholder="phone Number" th:field="*{phoneNumber}"><br/>
+
+    <label>emailAddress:</label>
+    <input type="text" placeholder="email" th:field="*{emailAddress}"><br/>
+
+
+    <button type="submit">SUBMIT FORM</button>
+</form>
+</body>
+</html>

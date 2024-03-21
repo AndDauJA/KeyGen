@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="lt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kleinto registracijos forma</title>
+</head>
+
+<body>
+<main >
+    <div id="section1" class="section-container"></div>
+    <div id="section2" class="section-container"></div>
+
+</main>
+</body>
+<script>
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     document.querySelector("#about").textContent = 'Testinis pavadinimas';
+    //     document.querySelector("#description").innerHTML = 'Testinis aprašymas';
+    // });
+    //   function loadLanguage(language) {
+    //     fetch(`${language}.json`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             document.querySelector("#about").textContent = data.about;
+    //             // document.querySelector("#description").textContent = data.description;
+    //             document.querySelector("#description").innerHTML = data.description;
+    //
+    //             // document.querySelector("#about").textContent = 'Testinis antraštės tekstas';
+    //             // document.querySelector("#description").innerHTML = 'Testinis aprašymo tekstas';
+    //         })
+    //         .catch(error => console.error("Error loading the language file:", error));
+    // }
+    //
+    // // Iškviečiama funkcija, kad įkelti pradinę kalbą, pavyzdžiui, anglų.
+    // loadLanguage('en');
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
+        if (lang) {
+            loadLanguage(lang); // Įkeliamas tinkamas vertimas pagal pasirinktą kalbą
+        } else {
+            loadLanguage('en'); // Kaip numatytoji vertė
+        }
+    });
+
+    function loadLanguage(language) {
+        fetch(`${language}.json`)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(section => {
+                    // Sukuriamas antraštės elementas
+                    const aboutElement = document.createElement("h2");
+                    aboutElement.textContent = section.about;
+
+                    // Sukuriamas aprašymo elementas
+                    const descriptionElement = document.createElement("p");
+                    descriptionElement.innerHTML = section.description;
+
+                    // Pridedamas sukurtas sekcijos elementas į atitinkamą konteinerį
+                    document.querySelector("#about").appendChild(aboutElement);
+                    document.querySelector("section.section2").appendChild(descriptionElement);
+                });
+            })
+            .catch(error => console.error("Error loading the language file:", error));
+    }
+    loadLanguage('en');
+
+</script>
+
+</html>

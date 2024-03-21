@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head th:replace="~{fragments/generallayout::headageneral('Brigama')}">
+    <!-- Modal Structure -->
+    <div id="myModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+</head>
+
+<body>
+
+<div class="body-background">
+    <header>
+        <nav th:replace="~{fragments/generallayout::navgeneral-bar}">placeholder</nav>
+    </header>
+    <div class="main-general-container">
+        <main class="general-form">
+            <div class="main row ">
+                <div th:if="${message ne null and message.length() > 0}"
+                     class="alert alert-success" role="alert"
+                     th:text="${message}">
+                    Success message when add product
+                </div>
+                <button id="toggle-form-btn" class="button-text general-form-button text-center"
+                        type="button"
+                        onclick="toggleForm()" th:text="#{gen.form.creat.button}">
+                </button>
+
+                <div id="new-account-form" class=" mb-2 input-gen-text" style="display: none;">
+                    <form method="post" th:action="@{/usergeneralform}" th:object="${userDto}">
+                        <label for="basic-url" th:text="#{gen.form.userName}"></label>
+                        <div class="input-group mb-3 input-group">
+                            <input type="text" class="form-control input-gen-text"
+                                   th:placeholder="#{gen.form.userName.here}"
+                                   aria-label="UserName/Email" aria-describedby="basic-addon2"
+                                   th:field="*{userNameEmail}">
+                            <div class="input-group-append input-gen-text">
+                        <span class="input-gen-text" id="basic-addon2"
+                              th:if="${#fields.hasErrors('userNameEmail')}"
+                              th:errors="*{userNameEmail}">@example.com</span>
+                            </div>
+                        </div>
+                        <label for="basic-url" th:text="#{gen.form.your.url}"></label>
+                        <div class="input-group mb-3 input-gen-text">
+                            <input type="text" class="form-control input-gen-text"
+                                   th:placeholder="#{gen.form.your.url.place}"
+                                   th:field="*{webaddress}"
+                                   id="basic-url" aria-describedby="basic-addon3">
+                            <div class="input-group-prepend">
+                        <span class="input-gen-text" id="basic-addon3"
+                              th:if="${#fields.hasErrors('webaddress')}"
+                              th:errors="*{webaddress}">https//example.com</span>
+                            </div>
+                        </div>
+
+                        <div class="card-body input-gen-text">
+                            <div class="custom-control custom-checkbox ">
+                                <input class="custom-control-input" type="checkbox" name="generateType" value="LoremIps"
+                                       id="LoremIps">
+                                <label class="custom-control-label general-lable-text" for="LoremIps"
+                                       th:text="#{gen.form.loremIps}"></label>
+                            </div>
+
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="generateType"
+                                       value="lettersnumbers"
+                                       id="lettersnumbers">
+                                <label class="custom-control-label" for="lettersnumbers"
+                                       th:text="#{gen.form.letters.numbers}"> (0-9 +
+                                    Aa)</label>
+                            </div>
+
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="generateType"
+                                       value="Special_Key"
+                                       id="Special_Key">
+                                <label class="custom-control-label" for="Special_Key"
+                                       th:text="#{gen.form.speckey}"></label>
+                            </div>
+
+                        </div>
+                        <label for="basic-url" th:text="#{gen.form.code.strength}"></label>
+                        <input type="number" class="form-control input-gen-text"
+                               aria-label="Strength"
+                               id="number-strength"
+                               onchange="checkNumberStrength()" th:placeholder="#{gen.form.code.length}">
+                        <label for="basic-url" th:text="#{gen.form.generated.key}"></label>
+                        <div class="input-group mb-2 img-fluid input-gen-text" id="generatedKey-img">
+                            <div>
+                                <img class="input-group-text img-fluid img-size" src="/images/keyimg.jpg" id="img-sige">
+                            </div>
+                            <input type="text" class="form-control input-gen-text" aria-label="Generate key"
+                                   th:field="*{generatedkey}">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-secondary generate-button-text"
+                                        onclick="generateKey()" th:text="#{gen.form.generate}">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text input-gen-text" th:text="#{gen.form.notes}"></span>
+                            </div>
+                            <textarea class="form-control note-box-size input-gen-text"
+                                      aria-label="Your Notes"
+                                      th:field="*{notes}"></textarea>
+                        </div>
+                        <div class="wrap">
+                            <div style="height: 20px;"></div>
+                            <button type="submit" onclick="solve()" class="btn-secondary general-form-button button-text"
+                                    th:text="#{gen.form.save.toDB}">
+                                Save data to Date Base
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="general-table-container">
+                    <table class="table-active general-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <!--                <th scope="col">Meta</th>-->
+                            <th scope="col" th:text="#{gen.form.table.username}"></th>
+                            <th scope="col" th:text="#{gen.form.table.url}"></th>
+                            <th scope="col" th:text="#{gen.form.table.genkey}"></th>
+                            <th scope="col" th:text="#{gen.form.table.notes}"></th>
+                            <th scope="col" hidden="hidden">UUID</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody class="general-table">
+                        <tr th:each="userDto, stat : ${userDtoList}">
+                            <td class="input-gen-text gen-id-size" th:text="${stat.count}"></td>
+
+                            <td class="gentable-width" th:text="${userDto.userNameEmail}"></td>
+                            <td class="text-nowrap text-truncate gentable-width">
+                                <a class="input-gen-text gen-url-size"
+                                   th:href="@{${userDto.webaddress}}"
+                                   th:text="${userDto.webaddress}" target="_blank"></a></td>
+                            <td class="text-truncate gentable-width"
+                                th:text="${userDto.decryptedKey}"
+                                th:attr="data-uuid=${userDto.uuid}"
+                                onclick="getAndCopyDecryptedKey(this.getAttribute('data-uuid'))"
+                                style="cursor: pointer;"></td>
+                            <!--                            <td class="input-gen-text text-truncate gentable-width"-->
+                            <!--                                th:text="${userDto.notes}"></td>-->
+                            <td class="input-gen-text text-truncate gentable-width gen-notes-size"
+                                onclick="showFullNoteText(this.innerText)"
+                                style="cursor: pointer;" th:text="${userDto.notes}">
+
+                            </td>
+
+                            <td class="bt-delete-width">
+                                <button th:text="#{gen.form.table.delete}"
+                                        th:attr="data-uuid=${userDto.uuid},
+                                        data-delete-confirm='#{gen.form.confirm.delete}',
+                                        data-delete-success='#{gen.form.success.delete}',
+                                        data-delete-error='#{gen.form.error.delete}'"
+                                        onclick="confirmDelete(this.getAttribute('data-uuid'))"
+                                        class="btn btn-danger"></button>
+                            </td>
+
+
+                            <div id="customAlert"
+                                 style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+                                <div style="background: white; padding: 20px; border-radius: 5px; max-width: 500px; width: 80%;">
+                                    <p id="customAlertText" style="white-space: pre-wrap;"></p>
+                                    <button onclick="closeCustomAlert()">Close</button>
+                                </div>
+                            </div>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<input type="hidden" id="serverErrorMessage" th:value="${session.errorMessage}"/>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+<div th:replace="~{fragments/layout :: language-script}"></div>
+<div th:replace="~{fragments/generallayout::general-form-scripts}"></div>
+
+</body>
+</html>
