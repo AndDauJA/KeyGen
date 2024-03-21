@@ -27,7 +27,7 @@
                      th:text="${message}">
                     Success message when add product
                 </div>
-                <button id="toggle-form-btn" class="button-text btn-secondary btn-block mb-6 text-center"
+                <button id="toggle-form-btn" class="button-text general-form-button text-center"
                         type="button"
                         onclick="toggleForm()" th:text="#{gen.form.creat.button}">
                 </button>
@@ -100,7 +100,7 @@
                             <input type="text" class="form-control input-gen-text" aria-label="Generate key"
                                    th:field="*{generatedkey}">
                             <div class="input-group-append">
-                                <button type="button" class="btn btn-secondary generate-button-text"
+                                <button type="button" class="btn general-form-button generate-button-text"
                                         onclick="generateKey()" th:text="#{gen.form.generate}">
                                 </button>
                             </div>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="wrap">
                             <div style="height: 20px;"></div>
-                            <button type="submit" onclick="solve()" class="btn-secondary mb-3 button-text"
+                            <button type="submit" onclick="solve()" class="general-form-button button-text"
                                     th:text="#{gen.form.save.toDB}">
                                 Save data to Date Base
                             </button>
@@ -160,14 +160,14 @@
 
                             </td>
 
-                            <td class="bt-delete-width">
+                            <td class="">
                                 <button th:text="#{gen.form.table.delete}"
                                         th:attr="data-uuid=${userDto.uuid},
                                         data-delete-confirm='#{gen.form.confirm.delete}',
                                         data-delete-success='#{gen.form.success.delete}',
                                         data-delete-error='#{gen.form.error.delete}'"
                                         onclick="confirmDelete(this.getAttribute('data-uuid'))"
-                                        class="btn btn-danger"></button>
+                                        class="bt-delete-width btn-danger"></button>
                             </td>
 
 
