@@ -10,7 +10,7 @@
     <header>
         <nav th:replace="~{fragments/loginlayout::navigational-bar}">placeholder</nav>
     </header>
-    <form method="post" class="login-form-container login-form-text-size" id="loginForm" action="/sendLogin"
+    <form method="post" class="login-form-container login-form-text-size" id="loginForm" action="/login"
           th:action="@{/login}">
         <div>
             <div class="imgcontainer ">
@@ -20,10 +20,10 @@
         </div>
         <div class="container  ">
             <label th:text="#{login.username}"></label>
-            <input type="text" name="username" th:placeholder="#{login.username.enter}" class="login-form-text-size">
+            <input id="username" type="text" name="username" th:placeholder="#{login.username.enter}" class="login-form-text-size" >
             <span style="color: #f44336" class="form-error"></span><br>
             <label th:text="#{login.password}"></label>
-            <input type="password" name="password" th:placeholder="#{login.password.enter}"
+            <input id="password" type="password" name="password" th:placeholder="#{login.password.enter}"
                    class="login-form-text-size">
             <!--                               pattern=-->
             <!--                                "^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$"-->
@@ -32,7 +32,7 @@
             <!--                                   least 8 characters long">-->
             <b class="psw-lable-scndpart" th:text="#{login.decription}"></b><br>
             <span style="color: #f44336" class="form-error"></span>
-            <button type="submit" class="login-form-text-size" th:text="#{login.btn.login}"></button>
+            <button type="submit" class="login-button login-form-text-size" th:text="#{login.btn.login}"></button>
 
             <!--            <div class="remember-me-container" >-->
             <!--                <input type="checkbox" checked="checked" name="remember" id="rememberMe" >-->
@@ -77,12 +77,29 @@
     //     document.getElementById('loginForm').reset();
     // };
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var lang = new URLSearchParams(window.location.search).get('lang');
         if (lang) {
-            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
+            document.querySelector('.selectpicker').value = lang;
+        }
+        var errorMessage = document.getElementById('serverErrorMessage').value;
+        if (errorMessage) {
+            customAlert(errorMessage);
         }
     });
+    function changeLanguage(lang) {
+        let currentUrl = window.location.href;
+        if (currentUrl.includes("?")) {
+            if (currentUrl.includes("lang=")) {
+                window.location.href = currentUrl.replace(/(lang=)[^\&]+/, '$1' + lang);
+            } else {
+                window.location.href = currentUrl + "&lang=" + lang;
+            }
+        } else {
+            window.location.href = currentUrl + "?lang=" + lang;
+        }
+    }
 
 
 </script>

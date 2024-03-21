@@ -192,7 +192,18 @@
     document.querySelector('.close').onclick = function () {
         document.getElementById('myModal').style.display = "none";
     }
-
+    function changeLanguage(lang) {
+        let currentUrl = window.location.href;
+        if (currentUrl.includes("?")) {
+            if (currentUrl.includes("lang=")) {
+                window.location.href = currentUrl.replace(/(lang=)[^\&]+/, '$1' + lang);
+            } else {
+                window.location.href = currentUrl + "&lang=" + lang;
+            }
+        } else {
+            window.location.href = currentUrl + "?lang=" + lang;
+        }
+    }
 
 
     function getAndCopyDecryptedKey(uuid) {
