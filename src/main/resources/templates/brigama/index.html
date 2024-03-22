@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 <head th:replace="~{fragments/layout::headindex('Brigama')}"></head>
 
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
@@ -54,14 +54,7 @@
 </div>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
-        if (lang) {
-            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
-        }
-    });
-</script>
+<script th:replace="~{fragments/layout::language-script}"></script>
 
 </body>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 
 <head th:replace="~{fragments/regformlayout::headregform('Naujo kleinto registracijos forma')}">
 
@@ -20,7 +20,8 @@
              th:text="${message}">
             Success message when add product
         </div>
-        <form class="form-reg reg-form-text-size" method="post" th:action="@{/userregistrationform}" th:object="${clientDto}">
+        <form class="form-reg reg-form-text-size" method="post" th:action="@{/userregistrationform}"
+              th:object="${clientDto}">
             <label for="user" th:text="#{reg.form.username}">User Name:</label>
             <input type="text" id="user"
                    name="userName"
@@ -97,7 +98,8 @@
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-            <button class=" button-text text-center reg-form-btn" type="submit" onclick="solve()" th:text="#{reg.form.btn}">
+            <button class=" button-text text-center reg-form-btn" type="submit" onclick="solve()"
+                    th:text="#{reg.form.btn}">
                 Submit
             </button>
         </form>
@@ -106,31 +108,6 @@
 </div>
 <input type="hidden" id="serverErrorMessage" th:value="${session.errorMessage}"/>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var lang = new URLSearchParams(window.location.search).get('lang');
-        if (lang) {
-            document.querySelector('.selectpicker').value = lang;
-        }
-        var errorMessage = document.getElementById('serverErrorMessage').value;
-        if (errorMessage) {
-            customAlert(errorMessage);
-        }
-    });
-
-    function changeLanguage(lang) {
-        let currentUrl = window.location.href;
-        if (currentUrl.includes("?")) {
-            if (currentUrl.includes("lang=")) {
-                window.location.href = currentUrl.replace(/(lang=)[^\&]+/, '$1' + lang);
-            } else {
-                window.location.href = currentUrl + "&lang=" + lang;
-            }
-        } else {
-            window.location.href = currentUrl + "?lang=" + lang;
-        }
-    }
-</script>
+<script th:replace="~{fragments/layout::language-script}"></script>
 </body>
 </html>

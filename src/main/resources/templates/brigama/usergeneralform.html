@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 <head th:replace="~{fragments/generallayout::headageneral('Brigama')}">
     <!-- Modal Structure -->
     <div id="myModal" class="modal" style="display:none;">
@@ -221,18 +221,6 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var lang = new URLSearchParams(window.location.search).get('lang'); // Gaunama 'lang' reikšmė iš URL
-        if (lang) {
-            document.querySelector('.selectpicker').value = lang; // Nustatoma pasirinkimo elemento reikšmė
-        }
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-        var errorMessage = document.getElementById('serverErrorMessage').value;
-        if (errorMessage) {
-            customAlert(errorMessage);
-        }
-    });
 
     // ================================================REIKIA PERKELTIS I SERVER DALI=============================
     function generateKey() {
@@ -328,6 +316,30 @@
                 });
             })
             .catch(error => customAlert("Klaida gaunant raktą: " + error));
+    }
+    //===============language==================================//
+    document.addEventListener('DOMContentLoaded', function() {
+        var lang = new URLSearchParams(window.location.search).get('lang');
+        if (lang) {
+            document.querySelector('.selectpicker').value = lang;
+        }
+        var errorMessage = document.getElementById('serverErrorMessage').value;
+        if (errorMessage) {
+            customAlert(errorMessage);
+        }
+    });
+
+    function changeLanguage(lang) {
+        let currentUrl = window.location.href;
+        if (currentUrl.includes("?")) {
+            if (currentUrl.includes("lang=")) {
+                window.location.href = currentUrl.replace(/(lang=)[^\&]+/, '$1' + lang);
+            } else {
+                window.location.href = currentUrl + "&lang=" + lang;
+            }
+        } else {
+            window.location.href = currentUrl + "?lang=" + lang;
+        }
     }
 </script>
 </body>

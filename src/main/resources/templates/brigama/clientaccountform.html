@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 
 <head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>
 
@@ -136,31 +136,7 @@
     </div>
 </div>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var lang = new URLSearchParams(window.location.search).get('lang');
-        if (lang) {
-            document.querySelector('.selectpicker').value = lang;
-        }
-        var errorMessage = document.getElementById('serverErrorMessage').value;
-        if (errorMessage) {
-            customAlert(errorMessage);
-        }
-    });
-
-    function changeLanguage(lang) {
-        let currentUrl = window.location.href;
-        if (currentUrl.includes("?")) {
-            if (currentUrl.includes("lang=")) {
-                window.location.href = currentUrl.replace(/(lang=)[^\&]+/, '$1' + lang);
-            } else {
-                window.location.href = currentUrl + "&lang=" + lang;
-            }
-        } else {
-            window.location.href = currentUrl + "?lang=" + lang;
-        }
-    }
-</script>
+<script th:replace="~{fragments/layout::language-script}"></script>
 </body>
 
 </html>

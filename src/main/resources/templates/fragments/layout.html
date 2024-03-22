@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="lt">
+      lang="en">
 
 <head th:fragment="headindex(title)">
     <meta charset="UTF-8">
@@ -87,7 +87,31 @@
 
     <div class="center-infotext" th:text="#{footer.message}"></div>
 
-
 </footer>
+<script th:fragment="language-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang');
+        if (lang) {
+            document.querySelector('.selectpicker').value = lang;
+        }
+        var errorMessage = document.getElementById('serverErrorMessage').value;
+        if (errorMessage) {
+            customAlert(errorMessage);
+        }
+    });
 
+    function changeLanguage(lang) {
+        let currentUrl = window.location.href;
+        if (currentUrl.includes("?")) {
+            if (currentUrl.includes("lang=")) {
+                window.location.href = currentUrl.replace(/(lang=)[^\&]+/, '$1' + lang);
+            } else {
+                window.location.href = currentUrl + "&lang=" + lang;
+            }
+        } else {
+            window.location.href = currentUrl + "?lang=" + lang;
+        }
+    }
+
+</script>
 </html>
