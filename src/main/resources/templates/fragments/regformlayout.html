@@ -35,23 +35,23 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarScroll">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                <li class="nav-item" id="ul-id"><a class="nav-item" th:text="#{ul.menu.about}" th:href="@{/}">Apie
+                <li class="li-item" id="ul-id"><a class="nav-item" th:text="#{ul.menu.about}" th:href="@{/}">Apie
                     įmonę</a></li>
-                <li class="nav-item"><a class="nav-item" th:text="#{ul.menu.news}"
+                <li class="li-item"><a class="nav-item" th:text="#{ul.menu.news}"
                                         th:href="@{/cybersecnews}">Najienos</a>
                 </li>
-                <li class="nav-item"><a class="nav-item" th:text="#{ul.menu.project}" href="#"></a></li>
-                <li class="nav-item"><a class="nav-item" th:text="#{ul.menu.contacts}" href="#contact-id"></a>
+                <li class="li-item"><a class="nav-item" th:text="#{ul.menu.project}" href="#"></a></li>
+                <li class="li-item"><a class="nav-item" th:text="#{ul.menu.contacts}" href="#contact-id"></a>
                 </li>
-                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                <li sec:authorize="!isAuthenticated()" class="li-item">
                     <a class="nav-item" th:href="@{/login}" th:text="#{ul.menu.login}"></a></li>
-                <li class="nav-item ul-menulist ">
+                <li class="select-language ul-menulist ">
                     <select class="selectpicker" data-width="fit" onchange="changeLanguage(this.value)">
                         <option data-content='<span class="flag-icon flag-icon-us fi-gr"></span> EN'
-                                value="en">English
+                                value="en">EN
                         </option>
                         <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
-                                value="lt">Lietuvių
+                                value="lt">LT
                         </option>
                     </select>
                 </li>

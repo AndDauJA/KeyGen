@@ -10,7 +10,7 @@
     <header>
         <nav th:replace="~{fragments/loginlayout::navigational-bar}">placeholder</nav>
     </header>
-    <form method="post" class="login-form-container login-form-text-size" id="loginForm" action="/login"
+    <form method="post" class="login-form-container login-form-text-size" id="loginForm"
           th:action="@{/login}">
         <div>
             <div class="imgcontainer ">
@@ -66,7 +66,7 @@
 
 </div>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
-<div class="center-infotext" th:text="#{footer.message}"></div>
+
 <script>
     document.querySelector('.cancelbtn').addEventListener('click', function () {
         // Čia įrašykite kodą, kuris atliks veiksmus, kai paspaudžiamas "Cancel" mygtukas

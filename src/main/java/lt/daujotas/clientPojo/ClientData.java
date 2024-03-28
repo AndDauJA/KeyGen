@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serial;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -75,7 +76,7 @@ public class ClientData implements UserDetails {
             name = "clientaccountdata_authorities",
             joinColumns = @JoinColumn(name = "client_data_id"),
             inverseJoinColumns = @JoinColumn(name = "authorities_id"))
-    private Set<Authority> authorities;
+    private Set<Authority> authorities = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -55,10 +55,7 @@ public class ApplicationConfig implements WebMvcConfigurer {
         registry.addInterceptor(localeChangeInterceptor());
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("/brigama/login");
-    }
+
 
     //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {

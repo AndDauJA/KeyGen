@@ -14,7 +14,7 @@
     </header>
 
     <div class="main-reg-container">
-        <h2 class="main-reg-h2">Naujo kleinto registracijos forma</h2>
+        <h2 class="main-reg-h2" th:text="#{reg.form.new.client}">Naujo kleinto registracijos forma</h2>
         <div th:if="${message ne null and message.length() > 0}"
              class="alert alert-success" role="alert"
              th:text="${message}">
@@ -98,7 +98,7 @@
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-            <button class=" button-text text-center reg-form-btn" type="submit" onclick="solve()"
+            <button class=" button-text text-center general-form-button" type="submit" onclick="solve()"
                     th:text="#{reg.form.btn}">
                 Submit
             </button>
