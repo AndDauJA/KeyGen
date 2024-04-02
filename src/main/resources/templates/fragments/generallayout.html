@@ -21,11 +21,7 @@
         <div class="logo-name-user">
             <div class=" d-flex align-items-center">
                 <img src="/images/3786012.jpg" alt="UAB Brigama" id="body-img-logo">
-                <h1 id="comany-name">UAB BRIGAMA</h1>
-            </div>
-            <div sec:authorize="isAuthenticated()" class="nav-item signin">
-                <a th:text="#{ul.menu.sayhello}"></a>
-                <span style="color: #f44336" sec:authentication="principal.fullName"> </span>
+                <h1 id="comany-name" class="navbar-brand fs-1">UAB BRIGAMA</h1>
             </div>
         </div>
         <a class="navbar-brand" href="#"></a>
@@ -34,20 +30,20 @@
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarScroll">
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                <li class="li-item" id="ul-id"><a class="nav-item color-general" th:text="#{ul.menu.about}"
-                                                   th:href="@{/}">Apie
-                    įmonę</a></li>
-                <li class="li-item"><a class="nav-item color-general" th:text="#{ul.menu.news}"
-                                        th:href="@{/cybersecnews}">Najienos</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="fs-4 nav-link" id="ul-id"><a class="nav-item color-general" th:text="#{ul.menu.about}"
+                                                        th:href="@{/}"></a></li>
+                <li class="fs-4 nav-link"><a class="nav-item color-general" th:text="#{ul.menu.news}"
+                                             th:href="@{/cybersecnews}"></a>
                 </li>
-                <li class="li-item"><a class="nav-item color-general" th:text="#{ul.menu.project}"
-                                        href="#">Projektai</a></li>
-                <li class="li-item"><a class="nav-item color-general" th:text="#{ul.menu.contacts}" href="#contact-id">Kontaktai</a>
+                <li class="fs-4 nav-link"><a class="nav-item color-general" th:text="#{ul.menu.project}"
+                                             href="#"></a></li>
+                <li class="fs-4 nav-link"><a class="nav-item color-general" th:text="#{ul.menu.contacts}"
+                                             href="#contact-id"></a>
                 </li>
-                <li class="li-item"><a class="nav-item color-general" th:text="#{ul.menu.myaccount}"
-                                        th:href="@{/clientaccountform}">Mano paskyra</a></li>
-                <li sec:authorize="isAuthenticated()" class="li-item">
+                <li class="fs-4 nav-link"><a class="nav-item color-general" th:text="#{ul.menu.myaccount}"
+                                             th:href="@{/clientaccountform}"></a></li>
+                <li sec:authorize="isAuthenticated()" class="fs-4 nav-link">
                     <a class="nav-item color-general" th:href="@{/logout}" th:text="#{ul.menu.logout}"></a></li>
 
                 <li class="select-language ul-menulist ">
@@ -64,9 +60,182 @@
             </ul>
         </div>
     </div>
-    </div>
 </nav>
 
+<script th:fragment="reg-form-script" th:inline="javascript">
+    var deleteConfirm = /*[[#{gen.form.confirm.delete}]]*/ '';
+    var deleteSuccess = /*[[#{gen.form.success.delete}]]*/ '';
+    var deleteError = /*[[#{gen.form.error.delete}]]*/ 'Default message for delete error';
+    var closeForm =/*[[#{gen.form.creat.button.close}]]*/'';
+    var createForm =/*[[#{gen.form.creat.button}]]*/'';
+    var keyGenType =/*[[#{gem.form.generate.type}]]*/'';
+
+    // function toggleForm() {
+    //     var form = document.getElementById("new-account-form");
+    //     if (form.style.display === "none") {
+    //         form.style.display = "block";
+    //     } else {
+    //         form.style.display = "none";
+    //     }
+    // }
+    function toggleForm() {
+        var form = document.getElementById('new-account-form');
+        var toggleButton = document.getElementById('toggle-form-btn');
+
+        // Patikriname, ar forma šiuo metu matoma
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block'; // Rodome formą
+            toggleButton.textContent = (closeForm); // Keičiame mygtuko tekstą į "Close form"
+        } else {
+            form.style.display = 'none'; // Paslepiame formą
+            toggleButton.textContent = (createForm); // Grąžiname pradinį mygtuko tekstą
+        }
+    }
+
+
+    // ================================================REIKIA PERKELTIS I SERVER DALI=============================
+    function generateKey() {
+        var checkedBoxes = document.querySelectorAll('input[name="generateType"]:checked');
+        if (checkedBoxes.length === 0) {
+            customAlert(keyGenType);
+            return;
+        }
+        var noOfRandomChars = document.getElementById("number-strength").value;
+        var xhr = new XMLHttpRequest();
+        var url;
+        if (document.getElementById('LoremIps').checked) {
+            url = '/generate-key-lorem';
+        } else if (document.getElementById('lettersnumbers').checked) {
+            url = '/generate-key-letters';
+        } else if (document.getElementById('Special_Key').checked) {
+            url = '/generate-key-special';
+        }
+        if (document.getElementById('Special_Key').checked && document.getElementById('lettersnumbers').checked) {
+            url = '/generate-key-special-letters';
+        }
+        if (url) {
+            xhr.open('GET', url + '?noOfRandomChars=' + noOfRandomChars, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var generatedKey = xhr.responseText;
+                    document.getElementById('generatedkey').value = generatedKey;
+                }
+            };
+            xhr.send();
+        } else {
+            console.log('Nepasirinktas joks variantas!');
+        }
+
+    }
+
+    function checkNumberStrength() {
+        var numberStrength = document.getElementById("number-strength").value;
+        if (numberStrength < 8) {
+            customAlert("Stiprumo kodas turi būti mažiausiai 8 simbolių ilgio!");
+            document.getElementById("number-strength").value = "";
+            document.getElementById("number-strength").style.borderColor = "red";
+        }
+    }
+
+
+    function showFullNoteText(noteText) {
+        alert(noteText);
+    }
+
+    //===================================================================//
+
+    function confirmDelete(uuid) {
+        var btn = document.querySelector(`[data-uuid="${uuid}"]`);
+        if (confirm(deleteConfirm)) {
+            fetch(`/usergeneralform/${uuid}/delete`, {method: 'GET'})
+                .then(response => {
+                    if (response.ok) {
+                        customAlert(deleteSuccess);
+                        window.location.reload();
+                    } else {
+                        throw new Error(deleteError);
+                    }
+                })
+                .catch(error => {
+                    customAlert(error.message);
+                });
+        }
+    }
+
+    document.querySelector('.close').onclick = function () {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    function customAlert(msg, copyText = '') {
+        const modalContent = document.querySelector('.modal-content');
+        // Išvalome seną turinį, išskyrus uždarymo (close) elementą
+        modalContent.innerHTML = '<span class="close">&times;</span><p id="modalText"></p>';
+        document.getElementById('modalText').innerText = msg;
+
+        const closeBtn = document.querySelector('.close');
+        closeBtn.onclick = function () {
+            document.getElementById('myModal').style.display = "none";
+        };
+
+        if (copyText) {
+            const copyButton = document.createElement('button');
+            copyButton.innerText = 'Kopijuoti';
+            copyButton.addEventListener('click', function () {
+                navigator.clipboard.writeText(copyText).then(() => {
+                    document.getElementById('myModal').style.display = "none";
+                }).catch(err => {
+                    console.error('Klaida kopijuojant tekstą: ', err);
+                });
+            });
+            modalContent.appendChild(copyButton); // Pridedame mygtuką prie modal turinio
+        }
+
+        document.getElementById('myModal').style.display = "block";
+    }
+
+
+    function getAndCopyDecryptedKey(uuid) {
+        const url = `/api/decrypted-key/${uuid}`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(decryptedKey => {
+                navigator.clipboard.writeText(decryptedKey).then(() => {
+                    customAlert(`Raktas: ${decryptedKey}`, decryptedKey);
+                });
+            })
+            .catch(error => customAlert("Klaida gaunant raktą: " + error));
+    }
+
+    //===============language==================================//
+    document.addEventListener('DOMContentLoaded', function () {
+        var lang = new URLSearchParams(window.location.search).get('lang');
+        if (lang) {
+            document.querySelector('.selectpicker').value = lang;
+        }
+        var errorMessage = document.getElementById('serverErrorMessage').value;
+        if (errorMessage) {
+            customAlert(errorMessage);
+        }
+    });
+
+    function changeLanguage(lang) {
+        let currentUrl = window.location.href;
+        if (currentUrl.includes("?")) {
+            if (currentUrl.includes("lang=")) {
+                window.location.href = currentUrl.replace(/(lang=)[^\&]+/, '$1' + lang);
+            } else {
+                window.location.href = currentUrl + "&lang=" + lang;
+            }
+        } else {
+            window.location.href = currentUrl + "?lang=" + lang;
+        }
+    }
+</script>
 <footer th:fragment="footer" id="contact-id" class="footer-wrap mobile-only">
     <h2 class="kontaktai">Kontaktai</h2>
     <div>

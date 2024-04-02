@@ -15,51 +15,7 @@
 
 </head>
 
-<nav th:fragment="navigational-bar" class="navbar  navbar-expand-xl  navbar-light ">
-
-    <div class="container-fluid on-hover nav-il-size">
-        <div class="logo-name-user">
-            <div class=" d-flex align-items-center">
-                <img src="/images/3786012.jpg" alt="UAB Brigama" id="body-img-logo">
-                <h1 id="comany-name">UAB BRIGAMA</h1>
-            </div>
-        </div>
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarScroll">
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                <li class="li-item" id="ul-id"><a class="nav-item" th:text="#{ul.menu.about}" th:href="@{/}">
-                    </a></li>
-                <li class="li-item"><a class="nav-item" th:text="#{ul.menu.news}"
-                                        th:href="@{/cybersecnews}"></a>
-                </li>
-                <li class="li-item"><a class="nav-item" th:text="#{ul.menu.project}" href="#"></a></li>
-                <li class="li-item"><a class="nav-item" th:text="#{ul.menu.contacts}" href="#contact-id"></a>
-                </li>
-                <li sec:authorize="!isAuthenticated()" class="li-item signin">
-                    <a class="nav-item" th:href="@{/userregistrationform}" th:text="#{ul.menu.signin}"></a></li>
-
-                <li class="select-language ul-menulist ">
-                    <select class="selectpicker" data-width="fit"
-                            onchange="window.location.href = '?lang=' + this.value;">
-                        <option data-content='<span class="flag-icon flag-icon-lt fi-gr"></span> LT'
-                                value="lt">Lietuvių
-                        </option>
-                        <option data-content='<span class="flag-icon flag-icon-us fi-gr"></span> EN'
-                                value="en">English
-                        </option>
-                    </select>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-    <div class="center-infotext" th:text="#{footer.message}"></div>
+<div class="center-infotext" th:text="#{footer.message}"></div>
 
 
 </footer>

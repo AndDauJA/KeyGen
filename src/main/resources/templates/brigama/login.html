@@ -3,13 +3,14 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="lt">
 
-<head th:replace="~{fragments/loginlayout::headlogin('Logind to User account')}">
+<head th:replace="~{fragments/layout::headindex('Logind to User account')}">
 </head>
-<body>
-<div class="body-background">
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<div class="login-body-background">
     <header>
-        <nav th:replace="~{fragments/loginlayout::navigational-bar}">placeholder</nav>
+        <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
     </header>
+
     <form method="post" class="login-form-container login-form-text-size" id="loginForm"
           th:action="@{/login}">
         <div>

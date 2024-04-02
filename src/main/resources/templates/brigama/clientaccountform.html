@@ -3,13 +3,14 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
 
-<head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>
-
+<!--<head th:replace="~{fragments/generallayout::headageneral('Brigama')}"></head>-->
+<head th:replace="~{fragments/layout::headindex('Brigama')}"></head>
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
-
-<div class="body-background">
-    <header th:replace="~{fragments/accountlayout::navaccount-bar}"></header>
-
+<div class="account-body-background">
+    <header>
+        <nav th:replace="~{fragments/accountlayout::navigational-bar}">placeholder</nav>
+    </header>
+    <div th:replace="~{fragments/layout::connected-username}"></div>
     <div class="main-account-container">
         <main class="main-account-form">
 
@@ -19,7 +20,7 @@
                         <div class="picture-card-name" th:text="#{acc.form.profilepic}"></div>
                         <div class="card-body">
                             <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle mb-2"
+                            <img class="img-account-profile rounded-circle mb-10"
                                  src="http://bootdey.com/img/Content/avatar/avatar1.png"
                                  alt="profiel-picture">
                             <!-- Profile picture help block-->
@@ -34,10 +35,10 @@
                     <div class="account-detail-card ">
                         <div class="card-header-names" th:text="#{acc.form.accdetales}"></div>
 
-                        <form id="form-id" class="account-detail-card-fill-form" method="post" th:if="${clientDto}"
+                        <form id="form-id" class="" method="post" th:if="${clientDto}"
                               th:action="@{/updateclient}"
                               th:object="${clientDto}">
-                            <div class="mb-3 card-form">
+                            <div class=" card-form">
                                 <!-- Form Group (username)-->
                                 <label class="form-label input-gen-text" th:text="#{acc.form.username}"></label>
 
@@ -51,17 +52,17 @@
                             </div>
                             <div class="row mb-3 ">
 
-                                <div class="col">
+                                <div class="col ">
                                     <label class=" input-gen-text" for="inputFirstName"
                                            th:text="#{acc.form.firstName}"></label>
-                                    <input class="form-control input-gen-text" id="inputFirstName" type="text"
+                                    <input class="input-gen-text" id="inputFirstName" type="text"
                                            placeholder="Enter your first name"
                                            th:field="*{firstName}">
                                 </div>
                                 <div class="col">
                                     <label class="input-gen-text" for="inputMiddletName"
                                            th:text="#{acc.form.middleName}"></label>
-                                    <input class="form-control input-gen-text" id="inputMiddletName" type="text"
+                                    <input class=" input-gen-text" id="inputMiddletName" type="text"
                                            placeholder="Enter your first name"
                                            th:field="*{middleName}">
                                 </div>

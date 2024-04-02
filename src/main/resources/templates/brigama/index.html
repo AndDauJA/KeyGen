@@ -6,14 +6,16 @@
 
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
 
-<div class="body-background">
+<div class="body-background ">
     <header>
         <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
     </header>
+    <div th:replace="~{fragments/layout::connected-username}"></div>
     <div class="main-container">
+
         <main class="main-wrap">
             <div>
-                <h2>Įmonės veikla</h2>
+                <h2 class="fw-bold">Įmonės veikla</h2>
                 <p>Įmonė siūlo aukščiausios kokybės technologinius sprendimus įvairioms pramonės šakoms. Mūsų <br>
                     komanda deda pastangas, kad sukurtų unikalias ir pritaikytas technologijas, padedančias mūsų
                     klientams inovuoti ir siekti aukštumų. </p>
@@ -23,7 +25,7 @@
                 <div class="index-container">
                     <div class="index-first-advertisement">
                         <div class="p-container">
-                            <a class="a-container" href="/usergeneralform">
+                            <a class="a-container fs-3" href="/usergeneralform">
                                 <= Išbandykite naują galimybę kurti
                                 savo slaptažodžius ir juos saugiai saugoti duomenų bazėje!!
                             </a>
@@ -36,9 +38,6 @@
                     </div>
                 </div>
                 <div class="index-second-advertisement">
-                    <div>
-
-                    </div>
                     <div class="index-second-img">
 
                     </div>

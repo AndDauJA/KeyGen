@@ -1,27 +1,19 @@
-
 :root {
     --fontcolor-primary: antiquewhite; /* Pagrindinė šrifto spalva, jei norite ją keisti */
-    --testcolre-1: none;
-    --testcolre-2: none;
-    --testcolre-3: none;
-    --testcolre-4: none;
-    --testcolre-5: none;
     --bs-navbar-bg-color: rgb(59, 59, 84, 0.8); /* Pakeisti nauja norima spalva */
     --bs-emphasis-color-rgb: 250, 235, 215, 100%;
     --bs-navbar-color: rgb(250, 235, 215);
 }
 
 .navbar:hover {
-
     background-color: var(--bs-navbar-bg-color);
     transition: background-color 2s ease;
-    font-style: italic;
 }
 
 
-.navbar a .nav-item ul {
-    color: var(--fontcolor-primary);
-}
+/*.navbar a .nav-item ul {*/
+/*    color: var(--fontcolor-primary);*/
+/*}*/
 
 .nav-link:hover {
     text-decoration: none;
@@ -32,13 +24,17 @@
     margin: 30px;
     padding: 20px;
     color: var(--fontcolor-primary);
-    font-size: 40px;
+    /*font-size: clamp(14px, 2vw, 35px);*/
     text-decoration: none;
 }
 
-.li-item {
-    justify-content: center;
+.connected-username {
+    margin: 30px;
+    padding: 20px;
+    color: var(--fontcolor-primary);
+    font-size: clamp(14px, 2vw, 35px);
 }
+
 
 .select-language {
 
@@ -62,7 +58,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    min-height: 90vh;
+    min-height: 120vh;
     background-repeat: no-repeat;
     /*background-size: cover;*/
     background-position: center;
@@ -77,6 +73,7 @@
 
 }
 
+
 #body-img-logo {
     max-width: 200px;
     margin-left: 100px;
@@ -89,25 +86,20 @@
 }
 
 h1 {
-    font-size: 50px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 h2 {
-    font-size: 75px;
+    font-size: clamp(16px, 2vw, 50px);
 }
 
-/*.navbar-toggler .fas {*/
-/*    color: white; !* Ikonos spalva *!*/
-/*    font-size: 100px; !* Ikonos dydis *!*/
-/*}*/
 
 .main-wrap {
     display: flex;
     flex-direction: column;
     position: relative; /* arba ištrinkite šią eilutę, jei nėra būtina */
     /*align-content: baseline;*/
-    font-size: clamp(16px, 2vw, 50px);
+    font-size: clamp(16px, 2vw, 35px);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /*width: 100%;*/
     color: var(--fontcolor-primary);
@@ -136,7 +128,7 @@ h2 {
 }
 
 .index-img {
-    width: clamp(100px, 50vw, 1900px); /* Minimalus plotis 50px, maksimalus 1900px, o tarp šių reikšmių - 50% ekrano pločio */
+    width: clamp(100px, 50vw, 1300px); /* Minimalus plotis 50px, maksimalus 1900px, o tarp šių reikšmių - 50% ekrano pločio */
     height: auto; /* Išlaiko paveikslėlio proporcijas */
 }
 
@@ -158,6 +150,19 @@ h2 {
 }
 
 /*============================Registration Form===================================*/
+.registration-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/fonas-webpage.jpeg");
+    background-size: 100% 100%;
+}
+
 .main-reg-container {
     position: absolute;
     top: 1000px;
@@ -231,8 +236,171 @@ label {
     font-weight: bold;
 }
 
+/*===================================== Login form===========================*/
+.login-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 120vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/fonas-webpage.jpeg");
+    background-size: 100% 100%;
+}
+
+.login-form-container {
+    position: absolute;
+    border: 3px solid #f1f1f1;
+    /*max-width: clamp(24%, 2vw, 40%);*/
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(250, 246, 246, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.psw-lable-scndpart {
+    text-align: center;
+    /*font-size: 12px;*/
+    align-self: center;
+    color: rgb(113, 111, 111);
+
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.login-button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 100%;
+
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.6;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: 15%;
+    padding: 10px 18px;
+    background-color: #f44336;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2px 0 12px 0;
+
+    .text-with-thick-border {
+
+        text-shadow: -2px -2px 0 #8a8787,
+        2px -2px 0 #8a8787,
+        -2px 2px 0 #8a8787,
+        2px 2px 0 #8a8787,
+        -1px -2px 0 #8a8787,
+        1px -2px 0 #8a8787,
+        -2px -1px 0 #8a8787,
+        2px -1px 0 #8a8787,
+        -2px 1px 0 #8a8787,
+        2px 1px 0 #8a8787,
+        -1px 2px 0 #8a8787,
+        1px 2px 0 #8a8787;
+    }
+
+}
+
+.login-form-text-size {
+    font-size: 26px;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+.cancle-container {
+    display: flex;
+    padding: 16px;
+}
+
+.register-forgot-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-left: auto;
+}
+
+.psw-forgot {
+    margin-left: auto;
+}
+
+.login-announcment {
+    /*display: flex;*/
+    /*display: block;*/
+    align-items: center;
+    text-align: center;
+    /*font-size: 12px;*/
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.remember-me-container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-left: 10px;
+}
+
+/*==========================================================================================*/
+
 
 /* ==============================   FORM  User GENERAL  ============================================ */
+.general-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/fonas-webpage.jpeg");
+    background-size: 100% 100%;
+}
 
 .general-form {
     position: absolute;
@@ -381,10 +549,7 @@ label {
 }
 
 /*============================Notes==================*/
-.form-control, .note-box-size {
 
-
-}
 
 /* ==============================Modal content ================================*/
 .modal {
@@ -433,6 +598,19 @@ label {
 }
 
 /* ==============================   FORM  User ACCOUNT  ============================================ */
+.account-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 120vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/fonas-webpage.jpeg");
+    background-size: 100% 100%;
+}
+
 .picture-form-container {
     display: flex;
     flex-direction: row;
@@ -441,8 +619,8 @@ label {
 }
 
 .picture-form {
-    width: 600px;
-    height: 50%;
+    width: 300px;
+    /*height: 50%;*/
     border-width: 0 3px 3px 3px;
     border-radius: 15px;
     padding: 10px 20px;
@@ -451,11 +629,15 @@ label {
     /*background-color: greenyellow;*/
 }
 
+.img-account-profile {
+    width: 150px;
+}
+
 .main-account-form {
     position: absolute;
     display: flex;
     flex-direction: row;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.4);
@@ -463,16 +645,16 @@ label {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     padding: 10px 20px;
     transition: transform 0.2s;
-    max-width: 10000px;
-    max-height: 3000px;
+    max-width: 800px;
+    max-height: 1000px;
     text-align: center;
 }
 
 
 .cards-container-size {
-    width: 2000px;
+    width: 1000px;
     /*height: auto;*/
-    height: 1000px;
+    height: 600px;
 
 }
 
@@ -493,167 +675,24 @@ label {
 
 .account-detail-card-fill-form {
     border-width: 0 3px 3px 3px;
-    /*border-style: solid;*/
-    /*border-color: #f1f1f1;*/
     border-radius: 15px;
-    /* max-width: 460px; */
     width: 100%;
-    height: 900px;
+    height: 600px;
     padding: 10px 20px;
     transition: transform 0.2s;
-    /* width: 500px; */
     background-color: rgba(250, 246, 246, 0.2);
-    /*background-color: red;*/
 }
 
 .picture-card-name {
     color: black;
-    font-size: 45px;
+    font-size: 25px;
 }
 
 .card-header-names {
     color: black;
-    font-size: 50px;
+    font-size: 35px;
 }
 
-
-/*===================================== Login form===========================*/
-.login-form-container {
-    position: absolute;
-    border: 3px solid #f1f1f1;
-    /*max-width: clamp(24%, 2vw, 40%);*/
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(250, 246, 246, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 10px 20px;
-    transition: transform 0.2s;
-    text-align: center;
-}
-
-.psw-lable-scndpart {
-    text-align: center;
-    /*font-size: 12px;*/
-    align-self: center;
-    color: rgb(113, 111, 111);
-
-}
-
-/* Full-width inputs */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-
-.login-button {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    width: 100%;
-
-}
-
-/* Add a hover effect for buttons */
-button:hover {
-    opacity: 0.6;
-}
-
-/* Extra style for the cancel button (red) */
-.cancelbtn {
-    width: 15%;
-    padding: 10px 18px;
-    background-color: #f44336;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-
-/* Center the avatar image inside this container */
-.imgcontainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 2px 0 12px 0;
-
-    .text-with-thick-border {
-
-        text-shadow: -2px -2px 0 #8a8787,
-        2px -2px 0 #8a8787,
-        -2px 2px 0 #8a8787,
-        2px 2px 0 #8a8787,
-        -1px -2px 0 #8a8787,
-        1px -2px 0 #8a8787,
-        -2px -1px 0 #8a8787,
-        2px -1px 0 #8a8787,
-        -2px 1px 0 #8a8787,
-        2px 1px 0 #8a8787,
-        -1px 2px 0 #8a8787,
-        1px 2px 0 #8a8787;
-    }
-
-}
-
-.login-form-text-size {
-    font-size: 26px;
-}
-
-/* Add padding to containers */
-.container {
-    padding: 16px;
-}
-
-.cancle-container {
-    display: flex;
-    padding: 16px;
-}
-
-.register-forgot-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-    margin-left: auto;
-}
-
-.psw-forgot {
-    margin-left: auto;
-}
-
-.login-announcment {
-    /*display: flex;*/
-    /*display: block;*/
-    align-items: center;
-    text-align: center;
-    /*font-size: 12px;*/
-}
-
-/* The "Forgot password" text */
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-.remember-me-container {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    margin-left: 10px;
-}
-
-/*==========================================================================================*/
 
 #pass {
     color: red;
@@ -719,297 +758,87 @@ div .go-home-link a {
     padding-top: 75px;
 }
 
-/*=====================================================3840x2160 Media ============================================================*/
-/*============================================================================================================================*/
+/*======================================================MEDIA======================================================*/
+/*===================================================================================================================*/
+
+
 @media screen and (max-width: 3840px) {
     .body-background {
-        min-height: 85vh;
+        min-height: 90vh;
+    }
+
+    .registration-body-background {
+
+        min-height: 150vh;
 
     }
 
-}
-
-
-/*=====================================================2400x1647 Media ============================================================*/
-/*============================================================================================================================*/
-@media screen and (max-width: 2400px) {
-    .body-background {
-        min-height: 120vh;
-
-    }
-    /*============================Registration Form===================================*/
-    .main-reg-container {
-        top: 750px;
-        width: 610px;
-
-    }
-
-    .form-reg {
-        max-width: 660px;
-        width: 570px;
-
-    }
-
-    .main-reg-h2 {
-        font-size: 24px;
-    }
-
-    .reg-form-text-size {
-        font-size: 18px;
-    }
-
-    label {
-
-    }
-
-    /*===================================== Login form===========================*/
-
-
-    .login-form-container {
-        max-width: 1500px;
-        top: 50%;
-    }
-
-    .psw-lable-scndpart {
-        font-size: 24px;
-    }
-
-    /* Full-width inputs */
-    input[type=text], input[type=password] {
-        padding: 10px 10px;
-        margin: 8px 0;
-    }
-
-
-    .login-button {
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 25px;
-        margin-bottom: 25px;
-    }
-
-    /* Add a hover effect for buttons */
-    button:hover {
-
-    }
-
-    /* Extra style for the cancel button (red) */
-    .cancelbtn {
-        width: 25%;
-        padding: 15px 25px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        cursor: pointer;
-    }
-
-    /* Center the avatar image inside this container */
-    .imgcontainer {
-
-    }
-
-    .login-form-text-size {
-        font-size: 24px;
-    }
-
-    /* Add padding to containers */
-    .container {
-        padding: 8px;
-    }
-
-    .cancle-container {
-        width: 100%;
-        display: flex;
-        padding: 16px;
-    }
-
-    .register-forgot-container {
-        display: flex;
-        flex-direction: column;
-        margin-top: 5px;
-        margin-left: auto;
-    }
-
-    .psw-forgot {
-
-    }
-
-    .login-announcment {
-        /*font-size: 12px;*/
-    }
-
-    /* The "Forgot password" text */
-    span.psw {
-
-
-    }
-
-    .remember-me-container {
-
-        margin-left: 10px;
-    }
-
-    label {
-        margin-top: 5px;
-        margin-bottom: 0px;
-
-    }
-
-    /*==========================================================================================*/
-
-}
-
-/*==========================================1230 Media =======================================================================*/
-/*============================================================================================================================*/
-
-@media screen and (max-width: 1230px) {
-    .body-background {
-        min-height: 135vh;
-
+    #body-img-logo {
+        max-width: 200px;
+        margin-left: 20px;
     }
 
     .nav-item {
-        font-size: 18px;
         margin: 15px;
         padding: 10px;
-
-    }
-
-
-    .color-general {
-        font-size: 18px;
         color: var(--fontcolor-primary);
+        /*font-size: clamp(14px, 2vw, 35px);*/
         text-decoration: none;
+    }
+
+    .login-body-background {
+        min-height: 120vh;
 
     }
 
-    .color-general:hover {
-        color: var(--fontcolor-primary);
-        text-decoration: none;
-        font-style: italic;
+    .general-body-background {
+        min-height: 100vh;
+    }
+    .generate-button-text {
+        font-size: 24px;
     }
 
-
-    #comany-name {
-        color: var(--fontcolor-primary);
-        font-size: 20px;
+    .input-gen-text {
+        font-size: 24px;
     }
 
+    .img-size {
+        width: 65px;
+        height: auto;
+    }
+
+    .card-header {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 2400px) {
+    .body-background {
+        min-height: 50vh;
+    }
+
+    .registration-body-background {
+
+        min-height: 120vh;
+
+    }
 
     #body-img-logo {
-        max-width: 150px;
-        margin-left: 50px;
+        max-width: 200px;
+        margin-left: 20px;
     }
 
-    .logo-name-user {
-        margin-right: 10px;
+    .login-body-background {
+        min-height: 120vh;
+
     }
 
-
-    h2 {
-        font-size: 35px;
+    .general-body-background {
+        min-height: 100vh;
     }
-
-    /*.navbar-toggler .fas {*/
-    /*    color: white; !* Ikonos spalva *!*/
-    /*    font-size: 45px; !* Ikonos dydis *!*/
-    /*}*/
-    .main-wrap {
-        display: flex;
-        flex-direction: column;
-        position: relative; /* arba ištrinkite šią eilutę, jei nėra būtina */
-        /*align-content: baseline;*/
-        font-size: clamp(16px, 2vw, 50px);
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        /*width: 100%;*/
-        color: var(--fontcolor-primary);
-        font-style: italic;
-        padding-left: 70px;
-        top: 100px; /* arba ištrinkite šią eilutę */
-        margin-top: 0;
-    }
-
-    /*==================================Index ===========================================================*/
-    .index-main-container {
-
-        margin-right: auto;
-        padding: 50px 20px 50px 20px;
-        font-size: 24px;
-    }
-
-    /*.index-first-advertisement {*/
-    /*    display: flex;*/
-    /*    flex-direction: row-reverse;*/
-    /*    padding-bottom: 50px;*/
-    /*}*/
-    /*.index-img {*/
-    /*    width: clamp(100px, 50vw, 1900px); !* Minimalus plotis 50px, maksimalus 500px, o tarp šių reikšmių - 50% ekrano pločio *!*/
-    /*    height: auto; !* Išlaiko paveikslėlio proporcijas *!*/
-    /*}*/
-    /*.index-second-advertisement {*/
-    /*    display: flex;*/
-    /*    flex-direction: row-reverse;*/
-    /*}*/
-    /*============================Registration Form===================================*/
-    .main-reg-container {
-        top: 580px;
-        width: 450px;
-    }
-
-    .form-reg {
-        max-width: 660px;
-        width: 410px;
-    }
-
-    .main-reg-h2 {
-        font-size: 24px;
-    }
-
-    .reg-form-text-size {
+    .button-text {
         font-size: 15px;
     }
-
-    label {
-
-    }
-
-    /* ==============================   FORM  User GENERAL  ============================================ */
-    .general-form {
-        position: absolute;
-        display: flex;
-        flex-direction: row;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        /*max-height: calc(100vh - 60px);*/
-        background-color: rgba(255, 255, 255, 0.6);
-        overflow-y: auto;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-        padding: 10px 20px;
-        transition: transform 0.2s;
-        text-align: center;
-        font-size: 32px;
-    }
-
-    .general-form-button {
-        background-color: #5a6268;
-        border-color: #545b62;
-        color: white;
-        padding: 15px;
-        border-radius: 10px;
-        /*margin-top: 25px;*/
-        margin-bottom: 15px;
-        cursor: pointer;
-        width: 100%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Šešėlis, kad atrodytų iškilęs */
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacija paspaudus */
-
-    }
-
-    .button-text {
-        font-size: 32px;
-    }
-
     .generate-button-text {
         font-size: 24px;
     }
@@ -1027,402 +856,121 @@ div .go-home-link a {
         font-size: 50px;
     }
 
+}
 
-    /*===========================================checkBoxes ==================================*/
-    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-        /*transform: scale(1.5);*/
-        background-position: center;
+@media screen and (max-width: 1920px) {
+    .body-background {
+        min-height: 50vh;
     }
 
-    .custom-checkbox .custom-control-label::before {
-        content: "";
-        display: inline-block;
-        position: relative;
-        left: -1em; /* Pakeiskite šią reikšmę pagal poreikį */
-        top: 0;
-        height: 1.25em;
-        width: 1.25em;
-        background-color: #fff;
-        border: #adb5bd solid 1px;
-    }
+    .registration-body-background {
 
-    .custom-checkbox .custom-control-label::after {
-        position: relative;
-        left: -1em; /* Koreguokite šią reikšmę, jei reikia, kad varnelė būtų centre */
-        top: -1.5em; /* Koreguokite šią reikšmę, jei reikia, kad varnelė būtų centre */
-        display: block;
-        width: 1.25em;
-        height: 1.25em;
-        content: "";
-        background-size: 100% 100%;
-        background-position: center;
-    }
-
-    /*=============================Table===============================*/
-    .gentable-width {
-        width: 800px;
-        max-width: 800px;
-    }
-
-    .gen-id-size {
-        text-align: justify;
-        padding-left: 20px;
-        width: 100px;
-    }
-
-    .gen-notes-size {
-        max-width: 350px; /* Maksimalus plotis */
-        width: 350px; /* Fiksuotas plotis */
-        padding-right: 20px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .gen-url-size {
-        max-width: 250px; /* Maksimalus plotis */
-        width: 250px; /* Fiksuotas plotis */
-        padding-right: 20px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-
-    .general-table-container {
-        max-height: 620px; /* Nustato maksimalų konteinerio aukštį */
-        overflow-y: auto; /* Leidžia turiniui slenkti vertikaliai */
-    }
-
-    .bt-delete-width {
-        max-width: 100px; /* Maksimalus plotis */
-        width: 100px; /* Fiksuotas plotis */
-        font-size: 24px;
-        border-radius: 10px;
-        /*margin-top: 25px;*/
-        margin-bottom: 15px;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Šešėlis, kad atrodytų iškilęs */
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacija paspaudus */
-    }
-
-    /*============================Generated key img==================*/
-    #generatedKey-img {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        /*width: 100%;*/
-    }
-
-    .img-fluid {
-        max-height: 100%;
-    }
-
-    /*============================Notes==================*/
-    .form-control, .note-box-size {
-
+        min-height: 150vh;
 
     }
 
-    /* ==============================Modal content ================================*/
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        top: 35%;
-        left: 60%;
-        transform: translate(-50%, -50%);
-        z-index: 1; /* Sit on top */
-        width: 35%; /* Full width */
-        height: 350px; /* Full height */
-        background-color: rgba(255, 255, 255, 0.6);
-        overflow-y: auto;
-        border-radius: 15px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-        padding: 20px;
-
-        max-width: 600px; /* Maximum width */
-        text-align: center;
-        font-size: 24px;
+    .login-body-background {
+        min-height: 120vh;
 
     }
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 2%; /* 15% from the top and centered */
-        padding: 35px;
-        border: 1px solid #888;
-        /*width: 98%; !* Could be more or less, depending on screen size *!*/
-        height: 80%;
+    .general-body-background {
+        min-height: 100vh;
     }
 
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
+    .button-text {
+        font-size: 15px;
     }
-
-    .close:hover,
-    .close:focus {
-
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* ==============================   FORM  User ACCOUNT  ============================================ */
-    .picture-form-container {
-        display: flex;
-        flex-direction: row;
-        /* Adjust this based on your preference */
-
-    }
-
-    .picture-form {
-        width: 600px;
-        height: 50%;
-        border-width: 0 3px 3px 3px;
-        border-radius: 15px;
-        padding: 10px 20px;
-        transition: transform 0.2s;
-        background-color: rgba(250, 246, 246, 0.4);
-        /*background-color: greenyellow;*/
-    }
-
-    .main-account-form {
-        position: absolute;
-        display: flex;
-        flex-direction: row;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(255, 255, 255, 0.4);
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-        padding: 10px 20px;
-        transition: transform 0.2s;
-        max-width: 10000px;
-        max-height: 3000px;
-        text-align: center;
-    }
-
-
-    .cards-container-size {
-        width: 2000px;
-        /*height: auto;*/
-        height: 1000px;
-
-    }
-
-    .account-detail-card {
-        border-width: 0 3px 3px 3px;
-        /*border-style: solid;*/
-        /*border-color: #f1f1f1;*/
-        border-radius: 15px;
-        /* max-width: 460px; */
-        width: 100%;
-        height: 100%;
-        padding: 10px 20px;
-        transition: transform 0.2s;
-        /* width: 500px; */
-        background-color: rgba(250, 246, 246, 0.1);
-        /*background-color: #04AA6D;*/
-    }
-
-    .account-detail-card-fill-form {
-        border-width: 0 3px 3px 3px;
-        /*border-style: solid;*/
-        /*border-color: #f1f1f1;*/
-        border-radius: 15px;
-        /* max-width: 460px; */
-        width: 100%;
-        height: 900px;
-        padding: 10px 20px;
-        transition: transform 0.2s;
-        /* width: 500px; */
-        background-color: rgba(250, 246, 246, 0.2);
-        /*background-color: red;*/
-    }
-
-    .picture-card-name {
-        color: black;
-        font-size: 45px;
-    }
-
-    .card-header-names {
-        color: black;
-        font-size: 50px;
-    }
-
-
-    /*===================================== Login form===========================*/
-    /*.body-background {*/
-    /*    min-height: 90vh;*/
-
-    /*}*/
-
-    .login-form-container {
-        max-width: 2000px;
-        top: 52%;
-
-
-        padding: 10px 20px;
-    }
-
-    .psw-lable-scndpart {
-        font-size: 16px;
-    }
-
-    /* Full-width inputs */
-    input[type=text], input[type=password] {
-        width: 100%;
-        padding: 6px 10px;
-        margin: 4px 0;
-    }
-
-
-    .login-button {
-        background-color: #04AA6D;
-        border: none;
-        color: white;
-        padding: 10px;
-        border-radius: 10px;
-        margin-top: 15px;
-        margin-bottom: 5px;
-    }
-
-    /* Add a hover effect for buttons */
-    button:hover {
-
-    }
-
-    /* Extra style for the cancel button (red) */
-    .cancelbtn {
-        width: 25%;
-        padding: 10px 18px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        cursor: pointer;
-    }
-
-    /* Center the avatar image inside this container */
-    .imgcontainer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        margin: 2px 0 12px 0;
-    }
-
-    .login-form-text-size {
+    .generate-button-text {
         font-size: 14px;
     }
 
-    /* Add padding to containers */
-    .container {
-        padding: 8px;
+    .input-gen-text {
+        font-size: 14px;
+        height: auto;
     }
 
-    .cancle-container {
-        width: 100%;
-        display: flex;
-        padding: 16px;
-    }
-
-    .register-forgot-container {
-        display: flex;
-        flex-direction: column;
-        margin-top: 5px;
-        margin-left: auto;
-    }
-
-    .psw-forgot {
+    .img-size {
+        width: 45px;
 
     }
+    /*reg form*/
+    /*.card-header {*/
+    /*    font-size: 50px;*/
+    /*}*/
 
-    .login-announcment {
-        /*font-size: 12px;*/
+}
+
+@media screen and (max-width: 1230px) {
+    .body-background {
+        min-height: 50vh;
     }
 
-    /* The "Forgot password" text */
-    span.psw {
-        float: right;
-        padding-top: 16px;
-    }
+    .registration-body-background {
 
-    .remember-me-container {
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
-        margin-left: 10px;
-    }
-
-    label {
-
-        margin-top: 2px;
-        margin-bottom: 0px;
+        min-height: 120vh;
 
     }
 
-    /*==========================================================================================*/
-    #pass {
-        color: red;
-        font-size: 12px;
-    }
-
-    input {
-        display: block;
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 10px;
-        box-sizing: border-box;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-
-    select {
-        margin-right: 2px;
-    }
-
-    .select-language {
-        margin-top: 5px;
-        text-align: center;
-    }
-
-
-    .footer-wrap {
-        padding-bottom: 10px;
-    }
-
-    .kontaktai {
-        font-size: var(--fsizepx-footertext);
-        color: var(--fontcolor-primary);
+    .login-body-background {
+        min-height: 120vh;
 
     }
-
-    .wrap-kontakt-ul {
-        list-style: none;
-        color: var(--fontcolor-primary);
+    .button-text {
+        font-size: 10px;
     }
 
-    div .go-home-link a {
-        padding-left: 40px;
-        padding-bottom: 40px;
-        text-decoration: none;
-        color: var(--fontcolor-primary);
-        font-size: var(--fsizepx-homelink);
+    .generate-button-text {
+        font-size: 10px;
     }
 
-    .center-infotext {
-        padding-top: 75px;
+    .input-gen-text {
+        font-size: 10px;
     }
+
+    .img-size {
+        width: 35px;
+        height: auto;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
+    .body-background {
+        min-height: 50vh;
+    }
 
+    .registration-body-background {
+
+        min-height: 120vh;
+
+    }
+
+    .login-body-background {
+        min-height: 120vh;
+
+    }
+    .button-text {
+        font-size: 5px;
+    }
 }
 
-@media screen and (max-width: 399px) {
+@media screen and (max-width: 480px) {
+    .body-background {
+        min-height: 50vh;
+    }
 
+    .registration-body-background {
+
+        min-height: 90vh;
+
+    }
+
+    .login-body-background {
+        min-height: 120vh;
+
+    }
+    .button-text {
+        font-size: 5px;
+    }
 }
