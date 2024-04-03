@@ -3,14 +3,11 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
 
-<head th:replace="~{fragments/regformlayout::headregform('Naujo kleinto registracijos forma')}">
-
-</head>
-
-<body>
-<div class="body-background">
+<head th:replace="~{fragments/layout::headindex('Naujo kleinto registracijos forma')}"></head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<div class="registration-body-background">
     <header>
-        <nav th:replace="~{fragments/regformlayout::navigational-bar}">placeholder</nav>
+        <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
     </header>
 
     <div class="main-reg-container">
@@ -79,12 +76,12 @@
                    placeholder="Reenter your password " th:field="*{repeatPassword}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('global')}"
                   th:errors="global"></span>
-            <label for="dob" th:text="#{acc.form.dateofbirth}">Date of Birth:</label>
+            <label for="dob" th:text="#{acc.form.dateofbirth}"></label>
             <input type="date"
                    id="dob" name="dob"
                    placeholder="Enter your DOB" th:field="*{dateofbirth}">
 
-            <label for="mobile" th:text="#{reg.form.phone}">Contact:</label>
+            <label for="mobile" th:text="#{reg.form.phone}"></label>
             <input type="text" id="mobile"
                    name="mobile"
                    placeholder="Enter your Mobile Number" th:field="*{phoneNumber}"
@@ -92,11 +89,11 @@
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('phoneNumber')}"
                   th:errors="*{phoneNumber}"></span>
 
-            <label for="gender" th:text="#{acc.form.gender}">Gender:</label>
+            <label for="gender" th:text="#{acc.form.gender}"></label>
             <select id="gender" name="gender" th:field="*{gender}" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="male" th:text="#{acc.form.gender.male}"></option>
+                <option value="female" th:text="#{acc.form.gender.female}"></option>
+                <option value="other" th:text="#{acc.form.gender.other}"></option>
             </select>
             <button class=" button-text text-center general-form-button" type="submit" onclick="solve()"
                     th:text="#{reg.form.btn}">

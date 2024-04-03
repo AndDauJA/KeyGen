@@ -26,7 +26,7 @@
                             <!-- Profile picture help block-->
                             <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                             <!-- Profile picture upload button-->
-                            <button class="general-form-button button-text" type="submit"
+                            <button class="account-form-button button-text" type="submit"
                                     th:text="#{acc.form.upload.photo}"></button>
                         </div>
                     </div>
@@ -35,14 +35,14 @@
                     <div class="account-detail-card ">
                         <div class="card-header-names" th:text="#{acc.form.accdetales}"></div>
 
-                        <form id="form-id" class="" method="post" th:if="${clientDto}"
+                        <form id="form-id" class="account-detail-card-fill-form" method="post" th:if="${clientDto}"
                               th:action="@{/updateclient}"
                               th:object="${clientDto}">
-                            <div class=" card-form">
+                            <div class=" acc-card-form">
                                 <!-- Form Group (username)-->
-                                <label class="form-label input-gen-text" th:text="#{acc.form.username}"></label>
+                                <label class="acc-label input-acc-text" th:text="#{acc.form.username}"></label>
 
-                                <input class="form-control input-gen-text" id="inputUsername" type="text"
+                                <input class=" input-acc-text " id="inputUsername" type="text"
                                        th:field="*{userName}"
                                        readonly>
                                 <div class="">
@@ -50,74 +50,70 @@
                                            th:field="*{accountUuid}" th:value="${clientDto.accountUuid}">
                                 </div>
                             </div>
-                            <div class="row mb-3 ">
+                            <div class="row mb-3">
 
                                 <div class="col ">
-                                    <label class=" input-gen-text" for="inputFirstName"
+                                    <label class="acc-label input-acc-text" for="inputFirstName"
                                            th:text="#{acc.form.firstName}"></label>
-                                    <input class="input-gen-text" id="inputFirstName" type="text"
+                                    <input class="input-acc-text" id="inputFirstName" type="text"
                                            placeholder="Enter your first name"
                                            th:field="*{firstName}">
                                 </div>
                                 <div class="col">
-                                    <label class="input-gen-text" for="inputMiddletName"
+                                    <label class="acc-label input-acc-text" for="inputMiddletName"
                                            th:text="#{acc.form.middleName}"></label>
-                                    <input class=" input-gen-text" id="inputMiddletName" type="text"
+                                    <input class=" input-acc-text" id="inputMiddletName" type="text"
                                            placeholder="Enter your first name"
                                            th:field="*{middleName}">
                                 </div>
-
                                 <div class="col">
-                                    <label class="input-gen-text" for="inputLastName"
+                                    <label class="acc-label input-acc-text" for="inputLastName"
                                            th:text="#{acc.form.lastName}"></label>
-                                    <input class="form-control input-gen-text" id="inputLastName" type="text"
+                                    <input class="form-control input-acc-text" id="inputLastName" type="text"
                                            placeholder="Enter your last name"
                                            th:field="*{lastName}">
-
                                 </div>
                             </div>
-
-                            <div class="row ">
-
+                            <div class="row  ">
                                 <div class="col">
-                                    <label class="input-gen-text" for="inputPostAddress"
+                                    <label class="acc-label input-acc-text" for="inputPostAddress"
                                            th:text="#{acc.form.postaddress}"></label>
-                                    <input class="form-control input-gen-text" id="inputPostAddress" type="text"
+                                    <input class="form-control input-acc-text" id="inputPostAddress" type="text"
                                            placeholder="Enter your location"
                                            th:field="*{postAddres}">
                                 </div>
                             </div>
 
-                            <div class="mb-">
-                                <label class="input-gen-text " for="inputEmailAddress"
+                            <div class="mb-3">
+                                <label class="acc-label input-acc-text " for="inputEmailAddress"
                                        th:text="#{acc.form.email}"></label>
-                                <input class="form-control input-gen-text" id="inputEmailAddress" type="email"
+                                <input class="form-control input-acc-text" id="inputEmailAddress" type="email"
                                        placeholder="Enter your email address" th:field="*{emailAddress}">
                             </div>
 
-                            <div class="row ">
+                            <div class="row mb-3">
 
                                 <div class="col">
-                                    <label class="input-gen-text" for="inputPhone" th:text="#{acc.form.phone}"></label>
-                                    <input class="form-control input-gen-text" id="inputPhone" type="tel"
+                                    <label class="acc-label input-acc-text" for="inputPhone" th:text="#{acc.form.phone}"></label>
+                                    <input type="tel" class="form-control input-acc-text" id="inputPhone"
                                            placeholder="Enter your phone number"
                                            th:field="*{phoneNumber}">
                                 </div>
                                 <div class="col">
-                                    <label class="input-gen-text" for="inputBirthDate"
+                                    <label class="acc-label input-acc-text" for="inputBirthDate"
                                            th:text="#{acc.form.dateofbirth}"></label>
-                                    <input type="date" class="input-gen-text"
-                                           id="inputBirthDate" name="dob"
+                                    <input type="date" class="form-control input-acc-text"
+                                           id="inputBirthDate"
                                            placeholder="Enter your DOB" th:field="*{dateofbirth}">
                                 </div>
                                 <div class="col">
-                                    <label class="input-gen-text" for="inputGender" th:text="#{acc.form.gender}"></label>
-                                    <input class="form-control input-gen-text" id="inputGender" type="text"
-                                           placeholder="Gender"
-                                           th:field="*{gender}" readonly>
+                                    <label class="acc-label input-acc-text" for="inputGender"
+                                           th:text="#{acc.form.gender}"></label>
+                                    <input type="tel" class="form-control input-acc-text" id="inputGender"
+                                           placeholder="Gender" th:field="*{gender}" readonly>
                                 </div>
 
-                                <div class="input-gen-text" th:if="${error}">
+                                <div class="input-acc-text" th:if="${error}">
                                     <p th:text="${error}"
                                        th:style="'color: #f44336; font-weight: bold;'"></p>
                                 </div>
@@ -125,7 +121,7 @@
                             <div class="alert alert-success" role="alert" th:if="${success}">
                                 Duomenys sėkmingai atnaujinti!!
                             </div>
-                            <button type="submit" class="general-form-button button-text"
+                            <button type="submit" class="account-form-button button-text"
                                     th:text="#{acc.form.update.btn}">
                                 Update Client
                             </button>
