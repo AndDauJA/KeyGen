@@ -21,11 +21,11 @@
         <div class="logo-name-user">
             <div class=" d-flex align-items-center">
                 <img src="/images/3786012.jpg" alt="UAB Brigama" id="body-img-logo">
-                <h1 id="comany-name" class="navbar-brand fs-1">UAB BRIGAMA</h1>
+                <h1 id="comany-name" class="company-name">UAB BRIGAMA</h1>
             </div>
         </div>
         <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+        <button class="navbar-toggler ms-auto " type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
         </button>
@@ -81,14 +81,42 @@
     function toggleForm() {
         var form = document.getElementById('new-account-form');
         var toggleButton = document.getElementById('toggle-form-btn');
+        var background = document.querySelector('.general-body-background'); // Gauname .general-body-background elementą
+        var generalform=document.querySelector('.general-form')
+        var generalformopen=document.querySelector('.general-form-open')
 
         // Patikriname, ar forma šiuo metu matoma
         if (form.style.display === 'none' || form.style.display === '') {
             form.style.display = 'block'; // Rodome formą
             toggleButton.textContent = (closeForm); // Keičiame mygtuko tekstą į "Close form"
+            if (window.innerWidth >= 1920) {
+                background.style.minHeight = '150vh'; // Didiname .general-body-background min-height
+                generalform.style.top='70%' ;
+            }
+            if (window.innerWidth <= 1920) {
+                background.style.minHeight = '150vh'; // Didiname .general-body-background min-height
+                generalform.style.top='80%' ;
+            }
+            if (window.innerWidth <= 1230) {
+                background.style.minHeight = '200vh'; // Didiname .general-body-background min-height
+                generalform.style.top='110%' ;
+            }
         } else {
             form.style.display = 'none'; // Paslepiame formą
             toggleButton.textContent = (createForm); // Grąžiname pradinį mygtuko tekstą
+            if (window.innerWidth >= 1920) {
+                background.style.minHeight = '90vh'; // Atstatome .general-body-background min-height į pradinę reikšmę
+                generalform.style.top='60%';
+            }
+            if (window.innerWidth <= 1920) {
+                background.style.minHeight = '100vh'; // Didiname .general-body-background min-height
+                generalform.style.top='60%' ;
+            }
+            if (window.innerWidth <= 1230) {
+                background.style.minHeight = '100vh'; // Didiname .general-body-background min-height
+                generalform.style.top='55%' ;
+            }
+
         }
     }
 

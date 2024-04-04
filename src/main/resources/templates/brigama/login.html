@@ -15,16 +15,16 @@
           th:action="@{/login}">
         <div>
             <div class="imgcontainer ">
-                <img id="body-img-logo" src="/images/3786012.jpg" alt="">
-                <h1 id="comany-name" class="text-with-thick-border">UAB BRIGAMA</h1>
+                <img id="login-img-logo" src="/images/3786012.jpg" alt="">
+                <h1 id="login-company-name" class="text-with-thick-border">UAB BRIGAMA</h1>
             </div>
         </div>
-        <div class="container  ">
+        <div class="container">
             <label th:text="#{login.username}"></label>
-            <input id="username" type="text" name="username" th:placeholder="#{login.username.enter}" class="login-form-text-size" >
+            <input id="loginusername" type="text" name="username" th:placeholder="#{login.username.enter}" class="login-form-text-size" >
             <span style="color: #f44336" class="form-error"></span><br>
             <label th:text="#{login.password}"></label>
-            <input id="password" type="password" name="password" th:placeholder="#{login.password.enter}"
+            <input id="loginpassword" type="password" name="password" th:placeholder="#{login.password.enter}"
                    class="login-form-text-size">
             <!--                               pattern=-->
             <!--                                "^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$"-->

@@ -8,7 +8,7 @@
 
 }
 :root {
-    --fontcolor-primary: antiquewhite;
+    --fontcolor-primary: rgba(250, 235, 215, 0.92);
     --testcolre-1: none;
     --testcolre-2: none;
     --testcolre-3: none;

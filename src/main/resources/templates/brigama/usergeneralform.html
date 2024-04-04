@@ -24,7 +24,7 @@
 </div>
 <div class="main-general-container">
 
-    <main class="general-form">
+    <main class="general-form general-form-open">
 
         <div class="main row ">
             <div th:if="${message ne null and message.length() > 0}"
@@ -134,13 +134,13 @@
                 <table class="table-active general-table">
                     <thead>
                     <tr>
-                        <th scope="col">Id</th>
+                        <th class="gen-table-text-size" scope="col">Id</th>
                         <!--                <th scope="col">Meta</th>-->
-                        <th scope="col" th:text="#{gen.form.table.username}"></th>
-                        <th scope="col" th:text="#{gen.form.table.url}"></th>
-                        <th scope="col" th:text="#{gen.form.table.genkey}"></th>
-                        <th scope="col" th:text="#{gen.form.table.notes}"></th>
-                        <th scope="col" hidden="hidden">UUID</th>
+                        <th class="gen-table-text-size" scope="col" th:text="#{gen.form.table.username}"></th>
+                        <th class="gen-table-text-size" scope="col" th:text="#{gen.form.table.url}"></th>
+                        <th class="gen-table-text-size" scope="col" th:text="#{gen.form.table.genkey}"></th>
+                        <th class="gen-table-text-size" scope="col" th:text="#{gen.form.table.notes}"></th>
+                        <th class="gen-table-text-size" scope="col" hidden="hidden">UUID</th>
 
                     </tr>
                     </thead>
