@@ -19,41 +19,41 @@
         </div>
         <form class="form-reg reg-form-text-size" method="post" th:action="@{/userregistrationform}"
               th:object="${clientDto}">
-            <label for="user" th:text="#{reg.form.username}">User Name:</label>
-            <input type="text" id="user"
+            <label class="reg-label-text-size" for="user" th:text="#{reg.form.username}">User Name:</label>
+            <input class="reguser" type="text" id="user"
                    name="userName"
                    placeholder="Enter your username" th:field="*{userName}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('userName')}"
                   th:errors="*{userName}">
             </span>
 
-            <label for="first" th:text="#{reg.form.firstName}">First Name:</label>
-            <input type="text" id="first"
+            <label class="reg-label-text-size" for="first" th:text="#{reg.form.firstName}">First Name:</label>
+            <input class="reguser" type="text" id="first"
                    name="firstName"
                    placeholder="Enter your first name" th:field="*{firstName}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('firstName')}"
                   th:errors="*{firstName}">
             </span>
 
-            <label for="last" th:text="#{reg.form.lastName}">Last Name:</label>
-            <input type="text" id="last"
+            <label class="reg-label-text-size" for="last" th:text="#{reg.form.lastName}">Last Name:</label>
+            <input class="reguser" type="text" id="last"
                    name="lastName"
                    placeholder="Enter your last name" th:field="*{lastName}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('lastName')}"
                   th:errors="*{lastName}"></span>
 
-            <label for="middle" th:text="#{acc.form.middleName}">Middle Name:</label>
-            <input type="text" id="middle"
+            <label class="reg-label-text-size" for="middle" th:text="#{acc.form.middleName}">Middle Name:</label>
+            <input class="reguser"  type="text" id="middle"
                    name="middleName"
                    placeholder="Enter your middle name" th:field="*{middleName}">
 
-            <label for="post" th:text="#{acc.form.postaddress}">Post address:</label>
-            <input type="text" id="post"
+            <label class="reg-label-text-size" for="post" th:text="#{acc.form.postaddress}">Post address:</label>
+            <input class="reguser" type="text" id="post"
                    name="postAddress"
                    placeholder="Enter your post address" th:field="*{postAddres}">
 
-            <label for="email" th:text="#{reg.form.email}">Email:</label>
-            <input type="email" id="email"
+            <label class="reg-label-text-size" for="email" th:text="#{reg.form.email}">Email:</label>
+            <input class="reguser" type="email" id="email"
                    name="emailAddress"
                    placeholder="Enter your email" th:field="*{emailAddress}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('emailAddress')}"
@@ -63,34 +63,34 @@
             </div>
 
 
-            <label for="password" th:text="#{reg.form.password}">:</label>
-            <input type="password" id="password"
+            <label class="reg-label-text-size" for="password" th:text="#{reg.form.password}">:</label>
+            <input class="reguser" type="password" id="password"
                    name="password"
                    placeholder="Enter your password" th:field="*{password}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('password')}"
                   th:errors="*{password}"></span>
 
-            <label for="repeatpassword" th:text="#{reg.form.repeat.password}"></label>
-            <input type="password" id="repeatpassword"
+            <label class="reg-label-text-size" for="repeatpassword" th:text="#{reg.form.repeat.password}"></label>
+            <input class="reguser" type="password" id="repeatpassword"
                    name="repeatpassword"
                    placeholder="Reenter your password " th:field="*{repeatPassword}">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('global')}"
                   th:errors="global"></span>
-            <label for="dob" th:text="#{acc.form.dateofbirth}"></label>
-            <input type="date"
+            <label class="reg-label-text-size" for="dob" th:text="#{acc.form.dateofbirth}"></label>
+            <input class="reguser" type="date"
                    id="dob" name="dob"
                    placeholder="Enter your DOB" th:field="*{dateofbirth}">
 
-            <label for="mobile" th:text="#{reg.form.phone}"></label>
-            <input type="text" id="mobile"
+            <label class="reg-label-text-size" for="mobile" th:text="#{reg.form.phone}"></label>
+            <input class="reguser" type="text" id="mobile"
                    name="mobile"
                    placeholder="Enter your Mobile Number" th:field="*{phoneNumber}"
                    maxlength="15">
             <span style="color: #f44336" class="form-error" th:if="${#fields.hasErrors('phoneNumber')}"
                   th:errors="*{phoneNumber}"></span>
 
-            <label for="gender" th:text="#{acc.form.gender}"></label>
-            <select id="gender" name="gender" th:field="*{gender}" required>
+            <label class="reg-label-text-size" for="gender" th:text="#{acc.form.gender}"></label>
+            <select  id="gender" name="gender" th:field="*{gender}" required>
                 <option value="male" th:text="#{acc.form.gender.male}"></option>
                 <option value="female" th:text="#{acc.form.gender.female}"></option>
                 <option value="other" th:text="#{acc.form.gender.other}"></option>

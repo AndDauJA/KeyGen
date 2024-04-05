@@ -1,6 +1,6 @@
 
 :root {
-    --fontcolor-primary: antiquewhite; /* Pagrindinė šrifto spalva, jei norite ją keisti */
+    --fontcolor-primary: rgba(250, 235, 215, 0.5); /* Pagrindinė šrifto spalva, jei norite ją keisti */
     --testcolre-1: none;
     --testcolre-2: none;
     --testcolre-3: none;
@@ -368,17 +368,9 @@ h2 {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     padding: 10px 20px;
     transition: transform 0.2s;
-    max-width: 10000px;
-    max-height: 3000px;
+    max-width: 1000px;
+    max-height: 2000px;
     text-align: center;
-}
-
-
-.cards-container-size {
-    width: 2000px;
-    /*height: auto;*/
-    height: 1000px;
-
 }
 
 .account-detail-card {
