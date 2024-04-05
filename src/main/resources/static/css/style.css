@@ -817,6 +817,11 @@ div .go-home-link a {
     .body-background {
         min-height: 50vh;
     }
+    .nav-item {
+        margin: 15px;
+        padding: 5px;
+        font-size: clamp(5px, 2vw, 25px);
+    }
 
     .connected-username {
         margin: 5px;
