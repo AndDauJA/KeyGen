@@ -6,6 +6,7 @@ import lombok.*;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
 import lt.daujotas.validation.RepeatPassword;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -27,7 +28,7 @@ public class ClientDto {
     private String middleName;
     @NotEmpty(message = "{NotEmpty.Name.message.lastName}")
     private String lastName;
-    @NotEmpty(message = "{NotEmpty.Name.message.postAddress}")
+
     private String postAddres;
     @NotEmpty(message = "{NotEmpty.Name.message.phone}")
     @PhoneNumber(numberType = PhoneNumberType.GLOBAL)
@@ -35,7 +36,8 @@ public class ClientDto {
     @NotEmpty(message = "{NotEmpty.Name.message.email}")
     @Column(name = "emailaddress", unique = true)
     private String emailAddress;
-    @Column(name = "dateofbirth")
+    @Column(name = "dateofbirth" )
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateofbirth;
     @NotEmpty(message = "{NotEmpty.Name.message.password}")

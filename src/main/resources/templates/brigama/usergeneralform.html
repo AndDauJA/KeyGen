@@ -9,6 +9,14 @@
             <span class="close">&times;</span>
             <p id="modalText"></p>
         </div>
+
+    </div>
+    <div id="myModalgenerate" class="modal-generate" style="display:none;">
+
+        <div class="generate-modal-content">
+            <span class="close">&times;</span>
+            <p id="generate-modal"></p>
+        </div>
     </div>
 
 </head>
@@ -198,6 +206,6 @@
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 
 
-<script th:replace="fragments/generallayout::reg-form-script"></script>
+<script th:replace="fragments/generallayout::gen-form-script"></script>
 </body>
 </html>

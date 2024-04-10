@@ -19,7 +19,8 @@
         <div class="logo-name-user">
             <div class=" d-flex align-items-center">
                 <img src="/images/3786012.jpg" alt="UAB Brigama" id="body-img-logo">
-                <h1 id="company-name" class="company-name ">UAB BRIGAMA</h1>
+                <h1 id="company-name" >
+                    <a th:href="@{/}" class="company-name ">UAB BRIGAMA</a> </h1>
             </div>
 
         </div>
@@ -29,10 +30,10 @@
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0  ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-item-container ">
 
                 <li id="ul-id" class="fs-4 nav-link"><a class="nav-item" th:text="#{ul.menu.about}"
-                                                        th:href="@{/}"></a></li>
+                                                        th:href="@{/aboutform}"></a></li>
                 <li class="fs-4 nav-link"><a class="nav-item" th:text="#{ul.menu.news}" href="#"></a>
                 </li>
                 <li class="fs-4 nav-link"><a class="nav-item" th:text="#{ul.menu.project}" href="#"></a></li>

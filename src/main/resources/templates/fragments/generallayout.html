@@ -62,7 +62,7 @@
     </div>
 </nav>
 
-<script th:fragment="reg-form-script" th:inline="javascript">
+<script th:fragment="gen-form-script" th:inline="javascript">
     var deleteConfirm = /*[[#{gen.form.confirm.delete}]]*/ '';
     var deleteSuccess = /*[[#{gen.form.success.delete}]]*/ '';
     var deleteError = /*[[#{gen.form.error.delete}]]*/ 'Default message for delete error';
@@ -70,15 +70,7 @@
     var createForm =/*[[#{gen.form.creat.button}]]*/'';
     var keyGenType =/*[[#{gem.form.generate.type}]]*/'';
 
-    // function toggleForm() {
-    //     var form = document.getElementById("new-account-form");
-    //     if (form.style.display === "none") {
-    //         form.style.display = "block";
-    //     } else {
-    //         form.style.display = "none";
-    //     }
-    // }
-    function toggleForm() {
+       function toggleForm() {
         var form = document.getElementById('new-account-form');
         var toggleButton = document.getElementById('toggle-form-btn');
         var background = document.querySelector('.general-body-background'); // Gauname .general-body-background elementą
@@ -89,13 +81,13 @@
         if (form.style.display === 'none' || form.style.display === '') {
             form.style.display = 'block'; // Rodome formą
             toggleButton.textContent = (closeForm); // Keičiame mygtuko tekstą į "Close form"
-            if (window.innerWidth >= 1920) {
+            if (window.innerWidth > 1920) {
                 background.style.minHeight = '150vh'; // Didiname .general-body-background min-height
-                generalform.style.top='70%' ;
+                generalform.style.top='70%' ; //70
             }
             if (window.innerWidth <= 1920) {
-                background.style.minHeight = '150vh'; // Didiname .general-body-background min-height
-                generalform.style.top='80%' ;
+                background.style.minHeight = '165vh'; // Didiname .general-body-background min-height
+                generalform.style.top='90%' ; //80
             }
             if (window.innerWidth <= 1230) {
                 background.style.minHeight = '200vh'; // Didiname .general-body-background min-height
@@ -104,7 +96,7 @@
         } else {
             form.style.display = 'none'; // Paslepiame formą
             toggleButton.textContent = (createForm); // Grąžiname pradinį mygtuko tekstą
-            if (window.innerWidth >= 1920) {
+            if (window.innerWidth > 1920) {
                 background.style.minHeight = '90vh'; // Atstatome .general-body-background min-height į pradinę reikšmę
                 generalform.style.top='60%';
             }
@@ -123,12 +115,24 @@
 
     // ================================================REIKIA PERKELTIS I SERVER DALI=============================
     function generateKey() {
-        var checkedBoxes = document.querySelectorAll('input[name="generateType"]:checked');
-        if (checkedBoxes.length === 0) {
-            customAlert(keyGenType);
-            return;
-        }
+
         var noOfRandomChars = document.getElementById("number-strength").value;
+        var checkedBoxes = document.querySelectorAll('input[name="generateType"]:checked');
+
+            if (checkedBoxes.length === 0) {
+                customAlert('Pasirinkite generavimo tipą.');
+                return;
+            }
+            if (noOfRandomChars.trim() === ""|| noOfRandomChars < 8) {
+                customAlert('Pasirinkite rakto stiprumą, turi būti mažiausiai nei 8 simboliai.');
+                return;
+            }else if (noOfRandomChars < 8) {
+                customAlert('Rakto stiprumas turi būti mažiausiai 8 simboliai.');
+                return;
+            }
+
+
+
         var xhr = new XMLHttpRequest();
         var url;
         if (document.getElementById('LoremIps').checked) {

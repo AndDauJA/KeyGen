@@ -1,11 +1,13 @@
 :root {
-    --fontcolor-primary: rgba(250, 235, 215, 0.92); /* Pagrindinė šrifto spalva, jei norite ją keisti */
-    --bs-navbar-bg-color: rgb(59, 59, 84, 0.8); /* Pakeisti nauja norima spalva */
+    --fontcolor-primary: rgb(250, 235, 215, 0.92); /* Pagrindinė šrifto spalva, jei norite ją keisti */
+    --bs-navbar-bg-color: rgb(59, 59, 84, 0.9); /* Pakeisti nauja norima spalva */
     --bs-emphasis-color-rgb: 250, 235, 215, 100%;
     --bs-navbar-color: rgb(250, 235, 215);
+    --fontcolor-about: rgb(72, 50, 22);
 }
 
-.navbar:hover {
+.navbar {
+
     background-color: var(--bs-navbar-bg-color);
     transition: background-color 2s ease;
 }
@@ -15,8 +17,12 @@
     font-style: italic;
 }
 
+.nav-item-container {
+    margin-left: 20px;
+}
+
 .nav-item {
-    margin: 30px;
+    margin-left: 20px;
     padding: 20px;
     color: var(--fontcolor-primary);
     /*font-size: clamp(14px, 2vw, 35px);*/
@@ -36,13 +42,11 @@
 
 
 .select-language {
-
+    margin-top: 15px;
+    text-align: center;
 }
 
 .color-general {
-    /*font-size: 40px;*/
-    /*color: var(--fontcolor-primary);*/
-    /*text-decoration: none;*/
 
 }
 
@@ -63,20 +67,22 @@
     /*background-size: cover;*/
     background-position: center;
     background-attachment: fixed;
-    background-image: url("../images/fonas-webpage.jpeg");
-    background-size: 100% 100%;
+    /*background-image: url("../images/fonas-webpage.jpeg");*/
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 80% 100%;
 }
 
 .company-name {
     color: var(--fontcolor-primary);
-    margin-right: 20px;
-    font-size: 45px;
+    margin-left: 20px;
+    font-size: 25px;
+    text-decoration: none;
 }
 
 
 #body-img-logo {
-    max-width: clamp(200px, 2vw, 300px);
-    margin-left: 100px;
+    max-width: clamp(150px, 2vw, 250px);
+    margin-left: clamp(250px, 2vw, 250px);
 }
 
 
@@ -84,6 +90,7 @@
     display: flex;
     flex-direction: column;
     align-content: center;
+    margin-right: 50px;
 }
 
 h1 {
@@ -103,11 +110,28 @@ h2 {
     font-size: clamp(16px, 2vw, 35px);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /*width: 100%;*/
-    color: var(--fontcolor-primary);
+    color: var(--fontcolor-about);
     font-style: italic;
-    padding-left: 70px;
-    top: 100px; /* arba ištrinkite šią eilutę */
+    font-weight: bold;
+    padding-left: 300px;
+    padding-right: 180px;
+    top: 300px; /* arba ištrinkite šią eilutę */
     margin-top: 0;
+}
+
+/*========================================About======================================================*/
+.about-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 80vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    /*background-image: url("../images/fonas-webpage.jpeg");*/
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 80% 100%;
 }
 
 /*==================================Index ===========================================================*/
@@ -116,20 +140,21 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    /*margin-right: 150px;*/
+    /*margin-left: clamp(10px, 50vw, 50px);*/
     padding-top: 100px;
-    padding-left: clamp(10px, 50vw, 50px);
     padding-bottom: clamp(50px, 50vw, 250px);
     font-size: clamp(16px, 2vw, 50px);
 }
 
 .index-first-advertisement {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     padding-bottom: 50px;
 }
 
 .index-img {
-    width: clamp(100px, 50vw, 1300px); /* Minimalus plotis 50px, maksimalus 1900px, o tarp šių reikšmių - 50% ekrano pločio */
+    width: 70%; /* Minimalus plotis 50px, maksimalus 1900px, o tarp šių reikšmių - 50% ekrano pločio */
     height: auto; /* Išlaiko paveikslėlio proporcijas */
 }
 
@@ -139,7 +164,7 @@ h2 {
 }
 
 .p-container {
-    background-color: rgba(250, 246, 246, 0.4);
+
 }
 
 .a-container {
@@ -518,6 +543,7 @@ span.psw {
 .gentable-width {
     width: 800px;
     max-width: 800px;
+    max-height: 300px;
 }
 
 .gen-id-size {
@@ -546,7 +572,7 @@ span.psw {
 
 
 .general-table-container {
-    max-height: 620px; /* Nustato maksimalų konteinerio aukštį */
+    max-height: 420px; /* Nustato maksimalų konteinerio aukštį */
     overflow-y: auto; /* Leidžia turiniui slenkti vertikaliai */
 }
 
@@ -607,6 +633,36 @@ span.psw {
     border: 1px solid #888;
     /*width: 98%; !* Could be more or less, depending on screen size *!*/
     height: 80%;
+}
+
+.modal-generate {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    top: 35%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Sit on top */
+    width: 35%; /* Full width */
+    height: 150px; /* Full height */
+    background-color: rgba(255, 255, 255, 0.6);
+    overflow-y: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+
+    max-width: 100px; /* Maximum width */
+    text-align: center;
+    font-size: 24px;
+
+}
+
+.generate-modal-content {
+    background-color: #fefefe;
+    margin: 2%; /* 15% from the top and centered */
+    padding: 35px;
+    border: 1px solid #888;
+    /*width: 98%; !* Could be more or less, depending on screen size *!*/
+    height: 50%;
 }
 
 .close {
@@ -769,29 +825,20 @@ select {
     border-radius: 5px;
 }
 
-.select-language {
-    margin-top: 15px;
-    text-align: center;
-}
 
-
+/*=============================================Footer==============================================================*/
 .footer-wrap {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: center;
     background-color: rgb(59, 59, 84);
-    font-size: clamp(16px, 2vw, 40px);
+    font-size: clamp(16px, 2vw, 25px);
     padding-bottom: 10px;
 }
 
-.kontaktai {
-    font-size: var(--fsizepx-footertext);
-    color: var(--fontcolor-primary);
 
-}
-
-.wrap-kontakt-ul {
+.wrap-kontakt-ul, .kontaktai {
     list-style: none;
     color: var(--fontcolor-primary);
 }
@@ -801,7 +848,7 @@ div .go-home-link a {
     padding-bottom: 40px;
     text-decoration: none;
     color: var(--fontcolor-primary);
-    font-size: var(--fsizepx-homelink);
+    /*font-size: 20px;*/
 }
 
 .center-infotext {
@@ -817,6 +864,11 @@ div .go-home-link a {
     .body-background {
         min-height: 50vh;
     }
+
+    .nav-item-container {
+        margin-left: 100px;
+    }
+
     .nav-item {
         margin: 15px;
         padding: 5px;
@@ -832,11 +884,34 @@ div .go-home-link a {
 
     #body-img-logo {
         max-width: clamp(150px, 2vw, 200px);
-        margin-left: 20px;
+        margin-left: 170px;
     }
 
     .company-name {
+
         font-size: 30px;
+    }
+
+
+    /*==================================Index=================================*/
+    .index-main-container {
+
+        padding-top: 50px;
+        padding-bottom: clamp(50px, 50vw, 250px);
+        font-size: clamp(16px, 2vw, 50px);
+    }
+    .main-wrap {
+        padding-left: 200px;
+        margin-right: 75px;
+        /*padding-right: 150px;*/
+        top: 150px; /* arba ištrinkite šią eilutę */
+
+    }
+
+    /*===================================About==============================*/
+    .about-body-background {
+        min-height: 20vh;
+
     }
 
     /*============================Registration Form===================================*/
@@ -846,7 +921,7 @@ div .go-home-link a {
 
     .main-reg-container {
         position: absolute;
-        top: 37%;
+        top: 40%;
         left: 50%;
         width: 500px;
 
@@ -1015,7 +1090,7 @@ div .go-home-link a {
 
     .login-form-container {
         width: 400px;
-        top: 32%;
+        top: 40%;
         padding: 10px 20px;
     }
 
@@ -1177,7 +1252,7 @@ div .go-home-link a {
 
 
 }
-
+/*===================================Rezolution 1230============================================*/
 @media screen and (max-width: 1230px) {
     .body-background {
         min-height: 50vh;
@@ -1203,6 +1278,28 @@ div .go-home-link a {
 
     .company-name {
         font-size: 20px;
+    }
+
+
+    /*==============================About===============================================*/
+    .about-body-background {
+        min-height: 10vh;
+
+    }
+    /*==================================Index=================================*/
+    .index-main-container {
+        padding-top: 50px;
+        padding-bottom: clamp(50px, 50vw, 250px);
+        font-size: clamp(16px, 2vw, 50px);
+    }
+
+    .main-wrap {
+        top: 50px; /* arba ištrinkite šią eilutę */
+        padding-left: 105px;
+        margin-right: 20px;
+        font-size: 22px;
+
+
     }
 
 

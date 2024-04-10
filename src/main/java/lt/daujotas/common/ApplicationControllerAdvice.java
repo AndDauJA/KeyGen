@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @ControllerAdvice
 public class ApplicationControllerAdvice {
@@ -31,14 +32,33 @@ public class ApplicationControllerAdvice {
         StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
         webDataBinder.registerCustomEditor(String.class, trimmerEditor);
     }
+
+//    @ExceptionHandler(DataIntegrityViolationException.class)
+//    public ModelAndView handleDataIntegrityViolationException(DataIntegrityViolationException ex, HttpServletRequest request) {
+//
+//        HttpSession session = request.getSession();
+//        if (ex.getMessage().contains("EMAIL")) {
+//
+//            session.setAttribute("duplicateEmailMessage", "This email is already in use.");
+//        } else {
+//            session.setAttribute("errorMessage", "A data integrity error occurred.");
+//
+//        }
+//        return new ModelAndView("redirect:/userregistrationform");
+//
+//    }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ModelAndView handleDataIntegrityViolationException(DataIntegrityViolationException ex, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        if (ex.getMessage().contains("EMAIL")) {
-            session.setAttribute("errorMessage", "This email is already in use.");
+    public String handleDataIntegrityViolationException(DataIntegrityViolationException ex, RedirectAttributes redirectAttributes) {
+
+
+        if (ex.getMessage().contains("emailaddress") || ex.getMessage().contains("UK_h6xys3okd86n206wvado39ien")) {
+
+            redirectAttributes.addFlashAttribute("duplicateEmailMessage", "This email is already in use.");
         } else {
-            session.setAttribute("errorMessage", "A data integrity error occurred.");
+            redirectAttributes.addFlashAttribute("errorMessage", "A data integrity error occurred.");
         }
-        return new ModelAndView("redirect:/userregistrationform");
+        return "redirect:/userregistrationform";
     }
+
 }

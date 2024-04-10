@@ -8,6 +8,7 @@ import lt.daujotas.Users.clientDataPojo.UserGeneralLoginCredentialsData;
 import lt.daujotas.validation.PhoneNumber;
 import lt.daujotas.validation.PhoneNumberType;
 import org.hibernate.Hibernate;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -46,7 +47,7 @@ public class ClientData implements UserDetails {
     @NotEmpty(message = "{NotEmpty.Name.message.lastName}")
     @Column(name = "lastname")
     private String lastName;
-    @NotEmpty(message = "{NotEmpty.Name.message.postAddress}")
+
     @Column(name = "postaddress")
     private String postAddres;
     @NotEmpty(message = "{NotEmpty.Name.message.phone}")
@@ -62,6 +63,7 @@ public class ClientData implements UserDetails {
     @Column(name = "emailaddress", unique = true)
     private String emailAddress;
     @Column(name = "dateofbirth")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateofbirth;
     private String gender;

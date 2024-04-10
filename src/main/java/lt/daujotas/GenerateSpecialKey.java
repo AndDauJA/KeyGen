@@ -11,7 +11,7 @@ public class GenerateSpecialKey {
     }
 
     private static String getCharToString(int minLength) {
-        String possibleChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        String possibleChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
         int minLetters = noOfRandSpecChars;
         int minNumbers = noOfRandSpecChars;
         int numLetters = Math.max(random.nextInt(minLength - minNumbers + 1), minLetters); // Ensure at least minLetters
@@ -27,7 +27,7 @@ public class GenerateSpecialKey {
 
         // Append numbers
         for (int i = 0; i < numNumbers; i++) {
-            int index = random.nextInt(10); // Index for numbers (0-9)
+            int index = random.nextInt(9); // Index for numbers (0-9)
             result.append((char) ('0' + index)); // Convert the index to the corresponding digit
         }
 

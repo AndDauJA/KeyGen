@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head th:replace="~{fragments/layout::headindex('Brigama-About')}"></head>
+
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+<div class="about-body-background">
+    <header>
+        <nav th:replace="~{fragments/layout::navigational-bar}">placeholder</nav>
+    </header>
+    <div th:replace="~{fragments/layout::connected-username}"></div>
+    <div class="main-container">
+
+        <main class="main-wrap">
+            <div>
+                <h2 class="fw-bold">Įmonės veikla</h2>
+                <p>Įmonė siūlo aukščiausios kokybės technologinius sprendimus įvairioms pramonės šakoms. Mūsų <br>
+                    komanda kuria unikalias ir pritaikytas technologijas, padedančias mūsų
+                    klientams inovuoti ir siekti aukštumų. </p>
+
+            </div>
+            <div class="index-main-container">
+                <div class="index-container">
+                    <div class="index-first-advertisement">
+
+                    </div>
+                </div>
+                <div class="index-second-advertisement">
+                    <div class="index-second-img">
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+
+<script th:replace="~{fragments/layout::language-script}"></script>
+
+</body>
+
+</html>
